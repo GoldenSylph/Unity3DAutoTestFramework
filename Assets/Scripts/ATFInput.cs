@@ -108,113 +108,193 @@ namespace ATF {
         //     Device physical orientation as reported by OS. (Read Only)
         public static DeviceOrientation deviceOrientation { get; }
 
-        //
-        // Сводка:
         //     Last measured linear acceleration of a device in three-dimensional space. (Read
         //     Only)
-        public static Vector3 acceleration { get; }
+        public static Vector3 acceleration
+        {
+            get
+            {
+                return Input.acceleration;
+            }
+        }
 
-        //
-        // Сводка:
         //     This property controls if input sensors should be compensated for screen orientation.
-        public static bool compensateSensors { get; set; }
+        public static bool compensateSensors
+        {
+            get
+            {
+                return Input.compensateSensors;
+            }
 
-        //
-        // Сводка:
+            set
+            {
+                Input.compensateSensors = value;
+            }
+        }
+
         //     Number of acceleration measurements which occurred during last frame.
-        public static int accelerationEventCount { get; }
+        public static int accelerationEventCount
+        {
+            get
+            {
+                return Input.accelerationEventCount;
+            }
+        }
 
-        //
-        // Сводка:
         //     Should Back button quit the application? Only usable on Android, Windows Phone
         //     or Windows Tablets.
-        public static bool backButtonLeavesApp { get; set; }
+        public static bool backButtonLeavesApp
+        {
+            get
+            {
+                return Input.backButtonLeavesApp;
+            }
 
-        //
-        // Сводка:
+            set
+            {
+                Input.backButtonLeavesApp = value;
+            }
+        }
+
         //     Property for accessing device location (handheld devices only). (Read Only)
-        public static LocationService location { get; }
+        public static LocationService location
+        {
+            get
+            {
+                return Input.location;
+            }
+        }
 
-        //
-        // Сводка:
         //     Property for accessing compass (handheld devices only). (Read Only)
-        public static Compass compass { get; }
+        public static Compass compass
+        {
+            get
+            {
+                return Input.compass;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns default gyroscope.
-        public static Gyroscope gyro { get; }
+        public static Gyroscope gyro
+        {
+            get
+            {
+                return Input.gyro;
+            }
+        }
 
-        //
-        // Сводка:
         //     Property indicating whether the system handles multiple touches.
-        public static bool multiTouchEnabled { get; set; }
+        public static bool multiTouchEnabled
+        {
+            get
+            {
+                return Input.multiTouchEnabled;
+            }
 
-        //
-        // Сводка:
+            set
+            {
+                Input.multiTouchEnabled = value;
+            }
+        }
+
         //     The current mouse position in pixel coordinates. (Read Only)
-        public static Vector3 mousePosition { get; }
+        public new static Vector3 mousePosition
+        {
+            get
+            {
+                return Input.mousePosition;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns the keyboard input entered this frame. (Read Only)
-        public static string inputString { get; }
+        public static string inputString
+        {
+            get
+            {
+                return Input.inputString;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns true the first frame the user hits any key or mouse button. (Read Only)
-        public static bool anyKeyDown { get; }
+        public static bool anyKeyDown
+        {
+            get
+            {
+                return Input.anyKeyDown;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns list of objects representing status of all touches during last frame.
         //     (Read Only) (Allocates temporary variables).
-        public static Touch[] touches { get; }
+        public static Touch[] touches
+        {
+            get
+            {
+                return Input.touches;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns list of acceleration measurements which occurred during the last frame.
         //     (Read Only) (Allocates temporary variables).
-        public static AccelerationEvent[] accelerationEvents { get; }
+        public static AccelerationEvent[] accelerationEvents
+        {
+            get
+            {
+                return Input.accelerationEvents;
+            }
+        }
 
-        //
-        // Сводка:
         //     Is any key or mouse button currently held down? (Read Only)
-        public static bool anyKey { get; }
+        public static bool anyKey
+        {
+            get
+            {
+                return Input.anyKey;
+            }
+        }
 
-        //
-        // Сводка:
         //     Enables/Disables mouse simulation with touches. By default this option is enabled.
-        public static bool simulateMouseWithTouches { get; set; }
+        public static bool simulateMouseWithTouches
+        {
+            get
+            {
+                return Input.simulateMouseWithTouches;
+            }
+            set
+            {
+                Input.simulateMouseWithTouches = value;
+            }
+        }
 
-        //
-        // Сводка:
         //     Returns specific acceleration measurement which occurred during last frame. (Does
         //     not allocate temporary variables).
         //
         // Параметры:
         //   index:
-        public static AccelerationEvent GetAccelerationEvent(int index);
+        public static AccelerationEvent GetAccelerationEvent(int index)
+        {
+            return Input.GetAccelerationEvent(index);
+        }
 
-        //
-        // Сводка:
         //     Returns the value of the virtual axis identified by axisName.
         //
         // Параметры:
         //   axisName:
-        public static float GetAxis(string axisName);
+        public static float GetAxis(string axisName)
+        {
+            return Input.GetAxis(axisName);
+        }
 
-        //
-        // Сводка:
         //     Returns the value of the virtual axis identified by axisName with no smoothing
         //     filtering applied.
         //
         // Параметры:
         //   axisName:
-        public static float GetAxisRaw(string axisName);
+        public new static float GetAxisRaw(string axisName)
+        {
+            return Input.GetAxisRaw(axisName);
+        }
 
-        //
-        // Сводка:
         //     Returns true while the virtual button identified by buttonName is held down.
         //
         // Параметры:
@@ -223,109 +303,122 @@ namespace ATF {
         //
         // Возврат:
         //     True when an axis has been pressed and not released.
-        public static bool GetButton(string buttonName);
+        public static bool GetButton(string buttonName)
+        {
+            return Input.GetButton(buttonName);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user pressed down the virtual button identified
         //     by buttonName.
         //
         // Параметры:
         //   buttonName:
-        public static bool GetButtonDown(string buttonName);
+        public new static bool GetButtonDown(string buttonName)
+        {
+            return Input.GetButtonDown(buttonName);
+        }
 
-        //
-        // Сводка:
         //     Returns true the first frame the user releases the virtual button identified
         //     by buttonName.
         //
         // Параметры:
         //   buttonName:
-        public static bool GetButtonUp(string buttonName);
+        public static bool GetButtonUp(string buttonName)
+        {
+            return Input.GetButtonUp(buttonName);
+        }
 
-        //
-        // Сводка:
         //     Returns an array of strings describing the connected joysticks.
-        public static string[] GetJoystickNames();
+        public static string[] GetJoystickNames()
+        {
+            return Input.GetJoystickNames();
+        }
 
-        //
-        // Сводка:
         //     Returns true while the user holds down the key identified by name.
         //
         // Параметры:
         //   name:
-        public static bool GetKey(string name);
+        public static bool GetKey(string name)
+        {
+            return Input.GetKey(name);
+        }
 
-        //
-        // Сводка:
         //     Returns true while the user holds down the key identified by the key KeyCode
         //     enum parameter.
         //
         // Параметры:
         //   key:
-        public static bool GetKey(KeyCode key);
+        public static bool GetKey(KeyCode key)
+        {
+            return Input.GetKey(key);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user starts pressing down the key identified
         //     by name.
         //
         // Параметры:
         //   name:
-        public static bool GetKeyDown(string name);
+        public static bool GetKeyDown(string name)
+        {
+            return Input.GetKeyDown(name);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user starts pressing down the key identified
         //     by the key KeyCode enum parameter.
         //
         // Параметры:
         //   key:
-        public static bool GetKeyDown(KeyCode key);
+        public static bool GetKeyDown(KeyCode key)
+        {
+            return Input.GetKeyDown(key);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user releases the key identified by the key
         //     KeyCode enum parameter.
         //
         // Параметры:
         //   key:
-        public static bool GetKeyUp(KeyCode key);
+        public static bool GetKeyUp(KeyCode key)
+        {
+            return Input.GetKeyUp(key);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user releases the key identified by name.
         //
         // Параметры:
         //   name:
-        public static bool GetKeyUp(string name);
+        public static bool GetKeyUp(string name)
+        {
+            return Input.GetKeyUp(name);
+        }
 
-        //
-        // Сводка:
         //     Returns whether the given mouse button is held down.
         //
         // Параметры:
         //   button:
-        public static bool GetMouseButton(int button);
+        public new static bool GetMouseButton(int button)
+        {
+            return Input.GetMouseButton(button);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user pressed the given mouse button.
         //
         // Параметры:
         //   button:
-        public static bool GetMouseButtonDown(int button);
+        public new static bool GetMouseButtonDown(int button)
+        {
+            return Input.GetMouseButtonDown(button);
+        }
 
-        //
-        // Сводка:
         //     Returns true during the frame the user releases the given mouse button.
         //
         // Параметры:
         //   button:
-        public static bool GetMouseButtonUp(int button);
+        public new static bool GetMouseButtonUp(int button)
+        {
+            return Input.GetMouseButtonUp(button);
+        }
 
-        //
-        // Сводка:
         //     Call Input.GetTouch to obtain a Touch struct.
         //
         // Параметры:
@@ -334,10 +427,11 @@ namespace ATF {
         //
         // Возврат:
         //     Touch details in the struct.
-        public static Touch GetTouch(int index);
+        public new static Touch GetTouch(int index)
+        {
+            return Input.GetTouch(index);
+        }
 
-        //
-        // Сводка:
         //     Determine whether a particular joystick model has been preconfigured by Unity.
         //     (Linux-only).
         //
@@ -347,12 +441,16 @@ namespace ATF {
         //
         // Возврат:
         //     True if the joystick layout has been preconfigured; false otherwise.
-        public static bool IsJoystickPreconfigured(string joystickName);
+        public static bool IsJoystickPreconfigured(string joystickName)
+        {
+            return Input.IsJoystickPreconfigured(joystickName);
+        }
 
-        //
-        // Сводка:
         //     Resets all input. After ResetInputAxes all axes return to 0 and all buttons return
         //     to 0 for one frame.
-        public static void ResetInputAxes();
+        public static void ResetInputAxes()
+        {
+            Input.ResetInputAxes();
+        }
     }
 }

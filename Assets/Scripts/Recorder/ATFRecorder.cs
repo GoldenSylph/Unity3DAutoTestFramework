@@ -2,12 +2,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using ATF.Helper;
-using ATF.DI;
+using Bedrin.Helper;
+using Bedrin.DI;
 
 namespace ATF.Recorder
 {
-    [ATFInjectable]
+    [Injectable]
     public abstract class ATFRecorder : MonoSingleton<ATFRecorder>
     {
         [Header("General Settings:")]

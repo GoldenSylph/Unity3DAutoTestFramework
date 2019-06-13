@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ATF.Helper
+namespace Bedrin.Helper
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {

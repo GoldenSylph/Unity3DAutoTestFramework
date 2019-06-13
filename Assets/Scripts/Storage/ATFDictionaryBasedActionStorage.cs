@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ATF.Helper;
+using Bedrin.Helper;
+using ATF.InputTest;
+using Bedrin.DI;
 
 namespace ATF.Storage
 {
+    [Injectable]
     public class ATFDictionaryBasedActionStorage : ATFActionStorage
     {
+
+        [Inject]
+        public Mover mover;
 
         private readonly Dictionary<string, List<Action>> Storage = new Dictionary<string, List<Action>>();
 

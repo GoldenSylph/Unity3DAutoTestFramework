@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ATF.Helper;
-using ATF.DI;
+using Bedrin.Helper;
+using Bedrin.DI;
 
 namespace ATF.Storage
 {
-    [ATFInjectable]
     public abstract class ATFActionStorage : MonoSingleton<ATFActionStorage>
     {
         public abstract void AddAction(string scenarioName, Action action);

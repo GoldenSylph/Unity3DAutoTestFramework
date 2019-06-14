@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace ATF.Storage
 {
-    public struct Action
+    public class Action
     {
         public string name;
         public float duration;
+        public float intensity;
     }
 }
 

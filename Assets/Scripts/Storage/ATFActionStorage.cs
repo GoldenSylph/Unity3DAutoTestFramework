@@ -6,11 +6,11 @@ using Bedrin.DI;
 
 namespace ATF.Storage
 {
-    public abstract class ATFActionStorage : MonoSingleton<ATFActionStorage>
+    public interface IATFActionStorage : IATFInitializable
     {
-        public abstract void AddAction(string scenarioName, Action action);
-        public abstract Action GetAction(string scenarioName, int actionIndex);
-        public abstract void AddActions(string scenarioName, List<Action> actions);
-        public abstract List<Action> GetActions(string scenarioName);
+        void AddAction(string scenarioName, Action action);
+        Action GetAction(string scenarioName, int actionIndex);
+        void AddActions(string scenarioName, List<Action> actions);
+        List<Action> GetActions(string scenarioName);
     }
 }

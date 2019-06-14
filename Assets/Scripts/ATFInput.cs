@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using ATF.Storage;
+using ATF.Recorder;
+using Bedrin.DI;
 
 namespace ATF {
 
+    [Injectable]
     public class ATFInput : BaseInput
     {
+        //[Inject(typeof(ATFCoroutineBasedRecorder))]
+        //public IATFRecorder recorder;
+
+        //[Inject(typeof(ATFDictionaryBasedActionStorage))]
+        //public IATFActionStorage storage;
+
         //     Controls enabling and disabling of IME input composition.
         public new static IMECompositionMode imeCompositionMode {
+
             get
             {
                 return Input.imeCompositionMode;
@@ -282,7 +293,13 @@ namespace ATF {
         //   axisName:
         public static float GetAxis(string axisName)
         {
-            return Input.GetAxis(axisName);
+            if (false)
+            {
+
+            } else
+            {
+                return Input.GetAxis(axisName);
+            }
         }
 
         //     Returns the value of the virtual axis identified by axisName with no smoothing

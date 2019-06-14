@@ -2,27 +2,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bedrin.DI;
+using Bedrin.Helper;
 
 namespace ATF.Recorder
 {
-    public class ATFCoroutineBasedRecorder : ATFRecorder
+    [Injectable]
+    public class ATFCoroutineBasedRecorder : MonoSingleton<ATFCoroutineBasedRecorder>, IATFRecorder
     {
-        public override void PauseRecord(string recordName)
+        private bool Recording;
+
+        public void Initialize()
+        {
+            Recording = false;
+        }
+
+        public bool IsPlaying()
+        {
+            return !Recording;
+        }
+
+        public bool IsRecording()
+        {
+            return Recording;
+        }
+
+        public void PauseRecord(string recordName)
         {
             throw new NotImplementedException();
         }
 
-        public override void PlayRecord(string recordName)
+        public void PlayRecord(string recordName)
         {
             throw new NotImplementedException();
         }
 
-        public override void StartRecord(string recordName)
+        public void StartRecord(string recordName)
         {
             throw new NotImplementedException();
         }
 
-        public override void StopRecord(string recordName)
+        public void StopRecord(string recordName)
         {
             throw new NotImplementedException();
         }

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bedrin.AOP
-{
-    public class Advisor : MonoBehaviour
+namespace ATF {
+    public interface IATFInitializable
     {
-
+        void Initialize();
     }
 }

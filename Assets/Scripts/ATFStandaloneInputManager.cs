@@ -18,11 +18,13 @@ namespace ATF
          *Interceptors for Input and All events
          *
          * */
+        public BaseInput CurrentInput;
 
         protected override void Awake()
         {
             base.Awake();
             m_InputOverride = gameObject.AddComponent<ATFInput>();
+            CurrentInput = m_InputOverride;
         }
     }
 }

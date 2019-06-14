@@ -8,15 +8,19 @@ using Bedrin.DI;
 namespace ATF.Storage
 {
     [Injectable]
-    public class ATFDictionaryBasedActionStorage : ATFActionStorage
+    public class ATFDictionaryBasedActionStorage : MonoSingleton<ATFDictionaryBasedActionStorage>, IATFActionStorage
     {
-
         [Inject]
         public Mover mover;
 
-        private readonly Dictionary<string, List<Action>> Storage = new Dictionary<string, List<Action>>();
+        private Dictionary<string, List<Action>> Storage;
 
-        public override void AddAction(string scenarioName, Action action)
+        public void Initialize()
+        {
+            Storage = new Dictionary<string, List<Action>>();
+        }
+
+        public void AddAction(string scenarioName, Action action)
         {
             if (Storage[scenarioName] == null)
             {
@@ -25,17 +29,17 @@ namespace ATF.Storage
             Storage[scenarioName].Add(action);
         }
 
-        public override Action GetAction(string scenarioName, int actionIndex)
+        public Action GetAction(string scenarioName, int actionIndex)
         {
             return Storage[scenarioName][actionIndex];
         }
 
-        public override void AddActions(string scenarioName, List<Action> actions)
+        public void AddActions(string scenarioName, List<Action> actions)
         {
             Storage[scenarioName] = actions;
         }
 
-        public override List<Action> GetActions(string scenarioName)
+        public List<Action> GetActions(string scenarioName)
         {
             return Storage[scenarioName];
         }

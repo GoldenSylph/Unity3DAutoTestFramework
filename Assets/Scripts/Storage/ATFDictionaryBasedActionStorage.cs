@@ -10,38 +10,46 @@ namespace ATF.Storage
     [Injectable]
     public class ATFDictionaryBasedActionStorage : MonoSingleton<ATFDictionaryBasedActionStorage>, IATFActionStorage
     {
-        [Inject]
-        public Mover mover;
+        private Dictionary<string, Dictionary<FakeInput, Queue<Action>>> ActionStorage;
+        private Dictionary<string, Dictionary<FakeInput, bool>> LeversStorage;
 
-        private Dictionary<string, List<Action>> Storage;
+        public object GetContentOfRecordingAndType(string recordName, FakeInput kind)
+        {
+            if (LeversStorage[recordName][kind])
+            {
+                return ActionStorage[recordName][kind].Peek().content;
+            }
+            return null;
+        }
+
+        public void SetLever(string recordName, FakeInput kind, bool value)
+        {
+            LeversStorage[recordName][kind] = value;
+        }
+
+        public void Enqueue(string recordName, FakeInput kind, Action action)
+        {
+            if (ActionStorage[recordName][kind] == null)
+            {
+                ActionStorage[recordName][kind] = new Queue<Action>();
+            }
+            ActionStorage[recordName][kind].Enqueue(action);
+        }
+
+        public Action Dequeue(string recordName, FakeInput kind)
+        {
+            return ActionStorage[recordName][kind].Dequeue();
+        }
+
+        public float GetPeekDuration(string recordName, FakeInput kind)
+        {
+            return ActionStorage[recordName][kind].Peek().duration;
+        }
 
         public void Initialize()
         {
-            Storage = new Dictionary<string, List<Action>>();
-        }
-
-        public void AddAction(string scenarioName, Action action)
-        {
-            if (Storage[scenarioName] == null)
-            {
-                Storage[scenarioName] = new List<Action>();
-            }
-            Storage[scenarioName].Add(action);
-        }
-
-        public Action GetAction(string scenarioName, int actionIndex)
-        {
-            return Storage[scenarioName][actionIndex];
-        }
-
-        public void AddActions(string scenarioName, List<Action> actions)
-        {
-            Storage[scenarioName] = actions;
-        }
-
-        public List<Action> GetActions(string scenarioName)
-        {
-            return Storage[scenarioName];
+            ActionStorage = new Dictionary<string, Dictionary<FakeInput, Queue<Action>>>();
+            LeversStorage = new Dictionary<string, Dictionary<FakeInput, bool>>();
         }
 
     }

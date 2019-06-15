@@ -6,9 +6,8 @@ namespace ATF.Storage
 {
     public class Action
     {
-        public string name;
         public float duration;
-        public float intensity;
+        public object content;
     }
 }
 

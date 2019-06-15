@@ -4,17 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bedrin.DI;
 using Bedrin.Helper;
+using ATF.Storage;
 
 namespace ATF.Recorder
 {
     [Injectable]
     public class ATFCoroutineBasedRecorder : MonoSingleton<ATFCoroutineBasedRecorder>, IATFRecorder
     {
+        [Inject(typeof(ATFDictionaryBasedActionStorage))]
+        public readonly static IATFActionStorage STORAGE;
+
+        [SerializeField]
         private bool Recording;
+
+        [SerializeField]
+        private string CurrentRecording;
+
+        [SerializeField]
+        private float CurrentStartRecordingTime;
+
+        public string GetCurrentRecordingName()
+        {
+            return CurrentRecording = "Test recording";
+        }
 
         public void Initialize()
         {
-            Recording = false;
+            SetRecording(false);
         }
 
         public bool IsPlaying()
@@ -27,24 +43,43 @@ namespace ATF.Recorder
             return Recording;
         }
 
-        public void PauseRecord(string recordName)
+        public void SetRecording(bool value)
         {
-            throw new NotImplementedException();
+            Recording = value;
+        }
+
+        public void PauseRecord()
+        {
+            SetRecording(false);
         }
 
         public void PlayRecord(string recordName)
         {
-            throw new NotImplementedException();
+            SetRecording(false);
         }
 
         public void StartRecord(string recordName)
         {
-            throw new NotImplementedException();
+            SetRecording(true);
+            CurrentStartRecordingTime = Time.deltaTime;
+            foreach (FakeInput fin in Enum.GetValues(typeof(FakeInput)))
+            {
+                Storage.Action ac = new Storage.Action
+                {
+                    duration = CurrentStartRecordingTime
+                };
+                STORAGE.Enqueue(GetCurrentRecordingName(), fin, ac);
+            }
         }
 
-        public void StopRecord(string recordName)
+        public void Record(object input)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public void StopRecord()
+        {
+            SetRecording(false);
         }
     }
 }

@@ -108,32 +108,10 @@ namespace Bedrin.DI
                         .ToArray();
         }
 
-        public void Inject()
+        public void InjectType(Type t)
         {
-            InjectMemory(CurrentNamespace);
-            InjectScene(CurrentNamespace);
-        }
-
-        protected void ForEachTypeInTypesOfNamespace(string _namespace, Action<Type> action)
-        {
-            foreach (Type t in GetInjectableTypesInNamespace(_namespace))
+            if (ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute)))
             {
-                action(t);
-            }
-        }
-
-        protected void InjectMemory(string _namespace)
-        {
-            Print(string.Format("ATF.DI: Start injecting the dependencies into memory from {0} namespace...", _namespace));
-            ForEachTypeInTypesOfNamespace(_namespace, (t) => {
-                ///Inject to memory from memory
-            });
-        }
-
-        protected void InjectScene(string _namespace)
-        {
-            Print(string.Format("ATF.DI: Start injecting the dependencies into scene from {0} namespace...", _namespace));
-            ForEachTypeInTypesOfNamespace(_namespace, (t) => {
                 foreach (FieldInfo fi in t.GetFields())
                 {
                     object[] fiAttributes = fi.GetCustomAttributes(true);
@@ -156,29 +134,33 @@ namespace Bedrin.DI
                             PathValidationResult hierarchyAndComponent = GetHierarchyPathAndComponentName(temp.ScenePath);
                             if (!hierarchyAndComponent.Valid)
                             {
-                                throw new Exception(string.Format("The path is not valid: {0} in injection ({1}) of injectable ({2})", hierarchyAndComponent.FullPath, fi, t));
+                                Print(string.Format("Injectable ({2}): The path is not valid: {0} in injection ({1}). Moving on...", hierarchyAndComponent.FullPath, fi, t));
+                                continue;
                             }
                             gameObjectContainingObjectToInject = GameObject.Find(hierarchyAndComponent.Result[0]);
                             if (!gameObjectContainingObjectToInject)
                             {
-                                throw new Exception(string.Format("Injectable {0}: cannot find object to inject on scene.", t));
+                                Print(string.Format("Injectable {0}: cannot find object to inject on scene. Moving on...", t));
+                                continue;
                             }
                             objectToInject = gameObjectContainingObjectToInject.GetComponent(hierarchyAndComponent.Result[1]);
                         }
                         else
                         {
                             objectToInject = FindObjectOfType(temp.ComponentType);
-                            if (!objectToInject && !temp.LookInScene)
+                            if (objectToInject)
+                            {
+                                gameObjectContainingObjectToInject = GameObject.Find(objectToInject.name);
+                            }
+                            if (!gameObjectContainingObjectToInject && !temp.LookInScene)
                             {
                                 objectToInject = Activator.CreateInstance(temp.ComponentType) as UnityEngine.Object;
                                 if (!objectToInject)
                                 {
-                                    throw new Exception(string.Format("Injectable {0}: could not create the instance of injection {1}.", t, temp.ComponentType));
+                                    Print(string.Format("Injectable {0}: could not create the instance of injection {1}. Moving on...", t, temp.ComponentType));
+                                    continue;
                                 }
                                 Print(string.Format("Injectable {0}: injection {1} created from type {2}.", t, fi, temp.ComponentType));
-                            } else
-                            {
-                                gameObjectContainingObjectToInject = GameObject.Find(objectToInject.name);
                             }
                         }
 
@@ -187,20 +169,41 @@ namespace Bedrin.DI
 
                         if (!gameObjectContainingObjectToInject && objectToInject == null && temp.LookInScene)
                         {
-                            throw new Exception(string.Format("Injectable {0}: cannot find object to inject on scene.", t));
+                            Print(string.Format("Injectable {0}: cannot find object to inject on scene. Moving on...", t));
+                            continue;
                         }
 
                         Print(string.Format("Injectable {0}: trying to inject found object {1} at path {2}.", t, objectToInject, pathOfGameObject));
                         dynamic typeToWhichInjected = FindObjectOfType(t.GetTypeInfo());
                         if (typeToWhichInjected == null)
                         {
-                            throw new Exception(string.Format("Injectable {0}: cannot find injectable object on scene.", t));
+                            Print(string.Format("Injectable {0}: cannot find injectable object in memory or on scene. Moving on...", t));
+                            continue;
                         }
-
                         fi.SetValue(typeToWhichInjected, objectToInject);
                         Print(string.Format("Injectable {0}: injected {1} at path {2}.", t, objectToInject, pathOfGameObject));
                     }
                 }
+            }
+        }
+
+        public void Inject()
+        {
+            InjectScene(CurrentNamespace);
+        }
+
+        protected void ForEachTypeInTypesOfNamespace(string _namespace, Action<Type> action)
+        {
+            foreach (Type t in GetInjectableTypesInNamespace(_namespace))
+            {
+                action(t);
+            }
+        }
+
+        protected void InjectScene(string _namespace)
+        {
+            ForEachTypeInTypesOfNamespace(_namespace, (t) => {
+                InjectType(t);
             });
         }
 

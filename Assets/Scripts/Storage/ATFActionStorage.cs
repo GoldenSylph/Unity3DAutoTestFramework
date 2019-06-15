@@ -8,9 +8,10 @@ namespace ATF.Storage
 {
     public interface IATFActionStorage : IATFInitializable
     {
-        void AddAction(string scenarioName, Action action);
-        Action GetAction(string scenarioName, int actionIndex);
-        void AddActions(string scenarioName, List<Action> actions);
-        List<Action> GetActions(string scenarioName);
+        object GetContentOfRecordingAndType(string recordName, FakeInput kind);
+        void SetLever(string recordName, FakeInput kind, bool value);
+        void Enqueue(string recordName, FakeInput kind, Action action);
+        Action Dequeue(string recordName, FakeInput kind);
+        float GetPeekDuration(string recordName, FakeInput kind);
     }
 }

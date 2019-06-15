@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Bedrin.DI;
 
 namespace ATF
 {
@@ -18,13 +19,12 @@ namespace ATF
          *Interceptors for Input and All events
          *
          * */
-        public BaseInput CurrentInput;
 
-        protected override void Awake()
+        protected override void Start()
         {
-            base.Awake();
+            base.Start();
             m_InputOverride = gameObject.AddComponent<ATFInput>();
-            CurrentInput = m_InputOverride;
+            DependencyInjector.Instance.InjectType(m_InputOverride.GetType());
         }
     }
 }

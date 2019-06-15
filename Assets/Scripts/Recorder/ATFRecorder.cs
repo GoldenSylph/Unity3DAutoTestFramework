@@ -10,9 +10,16 @@ namespace ATF.Recorder
     {
         bool IsRecording();
         bool IsPlaying();
-        void StartRecord(string recordName);
+
         void PlayRecord(string recordName);
-        void PauseRecord(string recordName);
-        void StopRecord(string recordName);
+        void StartRecord(string recordName);
+
+        void PauseRecord();
+        void StopRecord();
+
+        void SetRecording(bool value);
+
+        string GetCurrentRecordingName();
+        void Record(object input);
     }
 }

@@ -38,55 +38,59 @@ namespace ATF.Editor
                     GUILayout.Label("Recording control", EditorStyles.boldLabel);
                     Recorder.SetCurrentRecordingName(EditorGUILayout.TextField("Name of the recording", Recorder.GetCurrentRecordingName()));
                     GUILayout.Label(string.Format("Current recording name: {0}", Recorder.GetCurrentRecordingName()), EditorStyles.label);
-                    EditorGUILayout.BeginHorizontal();
 
-                    if (!Recorder.IsRecording() && GUILayout.Button("Start"))
+                    if (!Recorder.IsPlaying())
                     {
-                        Recorder.StartRecord();
+                        EditorGUILayout.BeginHorizontal();
+                        if (!Recorder.IsRecording() && GUILayout.Button("Start"))
+                        {
+                            Recorder.StartRecord();
+                        }
+
+                        if (Recorder.IsRecording() && !Recorder.IsRecordingPaused() && GUILayout.Button("Pause"))
+                        {
+                            Recorder.PauseRecord();
+                        }
+
+                        if (Recorder.IsRecording() && Recorder.IsRecordingPaused() && GUILayout.Button("Continue"))
+                        {
+                            Recorder.ContinueRecord();
+                        }
+
+                        if (Recorder.IsRecording() && GUILayout.Button("Stop"))
+                        {
+                            Recorder.StopRecord();
+                        }
+
+                        EditorGUILayout.EndHorizontal();
                     }
 
-                    if (Recorder.IsRecording() && !Recorder.IsRecordingPaused() && GUILayout.Button("Pause"))
+
+                    if (!Recorder.IsRecording())
                     {
-                        Recorder.PauseRecord();
+                        GUILayout.Label("Replay control", EditorStyles.boldLabel);
+                        EditorGUILayout.BeginHorizontal();
+                        if (!Recorder.IsPlaying() && GUILayout.Button("Start"))
+                        {
+                            Recorder.PlayRecord();
+                        }
+
+                        if (Recorder.IsPlaying() && !Recorder.IsPlayPaused() && GUILayout.Button("Pause"))
+                        {
+                            Recorder.PausePlay();
+                        }
+
+                        if (Recorder.IsPlaying() && Recorder.IsPlayPaused() && GUILayout.Button("Continue"))
+                        {
+                            Recorder.ContinuePlay();
+                        }
+
+                        if (Recorder.IsPlaying() && GUILayout.Button("Stop"))
+                        {
+                            Recorder.StopPlay();
+                        }
+                        EditorGUILayout.EndHorizontal();
                     }
-
-                    if (Recorder.IsRecording() && Recorder.IsRecordingPaused() && GUILayout.Button("Continue"))
-                    {
-                        Recorder.ContinueRecord();
-                    }
-
-                    if (Recorder.IsRecording() && GUILayout.Button("Stop"))
-                    {
-                        Recorder.StopRecord();
-                    }
-
-                    EditorGUILayout.EndHorizontal();
-
-
-                    GUILayout.Label("Replay control", EditorStyles.boldLabel);
-                    EditorGUILayout.BeginHorizontal();
-
-                    if (!Recorder.IsPlaying() && GUILayout.Button("Start"))
-                    {
-                        Recorder.PlayRecord();
-                    }
-
-                    if (Recorder.IsPlaying() && !Recorder.IsPlayPaused() && GUILayout.Button("Pause"))
-                    {
-                        Recorder.PausePlay();
-                    }
-
-                    if (Recorder.IsPlaying() && Recorder.IsPlayPaused() && GUILayout.Button("Continue"))
-                    {
-                        Recorder.ContinuePlay();
-                    }
-
-                    if (Recorder.IsPlaying() && GUILayout.Button("Stop"))
-                    {
-                        Recorder.StopPlay();
-                    }
-
-                    EditorGUILayout.EndHorizontal();
                 }
                 else
                 {

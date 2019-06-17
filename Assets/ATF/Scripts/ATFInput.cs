@@ -10,7 +10,7 @@ using System;
 namespace ATF {
 
     public enum FakeInput {
-        ANY_KEY_DOWN, ANY_KEY, GET_AXIS, GET_AXIS_RAW, GET_BUTTON,
+        NONE, ANY_KEY_DOWN, ANY_KEY, GET_AXIS, GET_AXIS_RAW, GET_BUTTON,
         GET_BUTTON_DOWN, GET_BUTTON_UP, GET_KEY, GET_KEY_DOWN, GET_KEY_UP,
         GET_MOUSE_BUTTON, GET_MOUSE_BUTTON_DOWN, GET_MOUSE_BUTTON_UP
     }
@@ -19,24 +19,26 @@ namespace ATF {
     [Injectable]
     public class ATFInput : BaseInput
     {
-        [Inject(typeof(ATFCoroutineBasedRecorder))]
+        [Inject(typeof(ATFQueueBasedRecorder))]
         public static readonly IATFRecorder RECORDER;
 
         [Inject(typeof(ATFDictionaryBasedActionStorage))]
         public static readonly IATFActionStorage STORAGE;
 
-        private static object RealOrFakeInputOrRecord(object realInput, object fakeInput)
+        private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, FakeInput kind)
         {
-            if (RECORDER.IsPlaying() && !RECORDER.IsRecording())
+            if (RECORDER.IsPlaying() && !RECORDER.IsPlayPaused() && !RECORDER.IsRecording())
             {
                 return fakeInput;
             }
-            else if (!RECORDER.IsPlaying() && RECORDER.IsRecording())
+            else if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
             {
-                RECORDER.Record(realInput);
+                RECORDER.Record(kind, realInput);
                 return realInput;
             }
-            else if (!RECORDER.IsPlaying() && !RECORDER.IsRecording())
+            else if ((!RECORDER.IsPlaying() && !RECORDER.IsRecording()) || 
+                (RECORDER.IsRecording() && RECORDER.IsRecordingPaused()) ||
+                (RECORDER.IsPlaying() || RECORDER.IsPlayPaused()))
             {
                 return realInput;
             } else
@@ -50,20 +52,27 @@ namespace ATF {
             try
             {
                 return function();
-            } catch (Exception)
+            } catch (Exception e)
             {
+                if (DependencyInjector.DebugOn)
+                {
+                    print(e);
+                }
                 return defaultValue;
             }
         }
 
         private static object GetCurrentFakeInput(FakeInput inputKind)
         {
-            return STORAGE.GetContentOfRecordingAndType(RECORDER.GetCurrentRecordingName(), inputKind);
+            return STORAGE.GetPartOfRecord(inputKind);
         }
 
         private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue)
         {
-            return IfExceptionReturnDefault<T>(() => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind)), defaultValue);
+            return IfExceptionReturnDefault<T>(
+                () => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind), fakeInputKind), 
+                defaultValue
+            );
         }
 
         public static bool anyKeyDown
@@ -151,7 +160,6 @@ namespace ATF {
         {
             return Intercept(Input.GetMouseButtonUp(button), FakeInput.GET_MOUSE_BUTTON_UP, false);
         }
-
   
     }
 }

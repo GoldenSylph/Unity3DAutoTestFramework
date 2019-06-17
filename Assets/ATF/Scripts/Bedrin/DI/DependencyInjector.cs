@@ -44,7 +44,7 @@ namespace Bedrin.DI
     public class DependencyInjector : MonoSingleton<DependencyInjector>
     {
 
-        public static bool DebugOn = true;
+        public static bool DebugOn = false;
 
         private class PathValidationResult
         {

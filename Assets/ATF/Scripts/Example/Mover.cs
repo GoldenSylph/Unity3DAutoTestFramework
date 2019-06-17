@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ATF.InputTest
+namespace ATF.Example
 {
     public class Mover : MonoBehaviour
     {

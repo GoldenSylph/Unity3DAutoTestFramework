@@ -14,5 +14,8 @@ namespace ATF.Storage
         Action Peek(string recordName, FakeInput kind);
         bool PrepareToPlayRecord(string recordName);
         void ClearPlayStorage();
+        void SaveStorage(string recordName);
+        void LoadStorage(string recordName);
+        void ScrapSavedStorage(string recordName);
     }
 }

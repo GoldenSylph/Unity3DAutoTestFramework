@@ -21,7 +21,6 @@ namespace ATF.Editor
         private void OnGUI()
         {
             bool storageLoaded = Storage != null;
-
             if (EditorApplication.isPlaying)
             {
                 GUILayout.Label("Storage Settings", EditorStyles.boldLabel);
@@ -33,6 +32,11 @@ namespace ATF.Editor
                 {
                     GUILayout.Label("Storage current realisation: Waiting to focus...", EditorStyles.label);
                 }
+
+                //Save/Load Control
+
+                //Tree view
+
             }
             else
             {

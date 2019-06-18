@@ -65,7 +65,7 @@ namespace Bedrin.DI
 
         private static bool ContainsAnyAttributeOfType(object[] attributes, Type attributeType)
         {
-            return attributes.Where(t => t.GetType() == attributeType).Any();
+            return attributes != null && attributeType != null && attributes.Where(t => t.GetType() == attributeType).Any();
         }
 
         private static PathValidationResult GetHierarchyPathAndComponentName(string fullPath)
@@ -103,9 +103,16 @@ namespace Bedrin.DI
         protected Type[] GetInjectableTypesInNamespace(string _namespace)
         {
             return
-                Assembly.GetExecutingAssembly().GetTypes()
-                        .Where(t => t.Namespace.StartsWith(_namespace) && ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute)))
-                        .ToArray();
+                Assembly
+                    .GetExecutingAssembly()
+                    .GetTypes()
+                    .Where(
+                        t => t != null 
+                            && t.Namespace != null 
+                            && t.Namespace.StartsWith(_namespace) 
+                            && ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute))
+                     )
+                    .ToArray();
         }
 
         public void InjectType(Type t)

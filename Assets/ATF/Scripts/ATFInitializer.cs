@@ -12,11 +12,11 @@ namespace ATF
     {
         private void Awake()
         {
-
             IATFInitializable[] ALL_SYSTEMS = {
                 ATFQueueBasedRecorder.Instance,
                 ATFDictionaryBasedActionStorage.Instance,
-                ATFFileSystemBasedIntegrator.Instance
+                ATFFileSystemBasedIntegrator.Instance,
+                ATFPlayerPrefsBasedActionStorageSaver.Instance
             };
 
             #region INITALIZATION OF ATF

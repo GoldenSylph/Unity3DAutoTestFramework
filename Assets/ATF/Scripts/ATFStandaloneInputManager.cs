@@ -8,18 +8,6 @@ namespace ATF
 {
     public class ATFStandaloneInputManager : StandaloneInputModule
     {
-
-        /*
-         * emit the input
-         * struct for test scenario
-         * 
-         * */
-
-        /*
-         *Interceptors for Input and All events
-         *
-         * */
-
         protected override void Start()
         {
             base.Start();

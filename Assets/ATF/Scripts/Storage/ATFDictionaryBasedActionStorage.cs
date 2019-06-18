@@ -15,6 +15,9 @@ namespace ATF.Storage
         [Inject(typeof(ATFQueueBasedRecorder))]
         public static readonly IATFRecorder RECORDER;
 
+        [Inject(typeof(ATFPlayerPrefsBasedActionStorageSaver))]
+        public static readonly IATFActionStorageSaver SAVER;
+
         private Dictionary<string, Dictionary<FakeInput, Queue<Action>>> ActionStorage;
         private Dictionary<FakeInput, Queue<Action>> PlayStorage;
 
@@ -78,14 +81,7 @@ namespace ATF.Storage
         {
             if (ActionStorage.ContainsKey(recordName))
             {
-                PlayStorage = new Dictionary<FakeInput, Queue<Action>>();
-                foreach (FakeInput fi in ActionStorage[recordName].Keys)
-                {
-                    foreach (Queue<Action> q in ActionStorage[recordName].Values)
-                    {
-                        PlayStorage[fi] = new Queue<Action>(q);
-                    }
-                }
+                PlayStorage = ReturnNewCopyOf(ActionStorage[recordName]);
                 return true;
             } else
             {
@@ -96,6 +92,56 @@ namespace ATF.Storage
         public void ClearPlayStorage()
         {
             PlayStorage = null;
+        }
+
+        public void LoadStorage(string recordName)
+        {
+            SAVER.SetRecordName(recordName);
+            IEnumerable loadedData = SAVER.GetActions();
+            if (loadedData is Dictionary<string, Dictionary<FakeInput, Queue<Action>>>) {
+                ActionStorage = ReturnNewCopyOf(loadedData as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>);
+            }
+            else if (loadedData is Dictionary<FakeInput, Queue<Action>>)
+            {
+                ActionStorage[recordName] = ReturnNewCopyOf(loadedData as Dictionary<FakeInput, Queue<Action>>);
+            }
+        }
+
+        public void SaveStorage(string recordName)
+        {
+            SAVER.SetRecordName(recordName);
+            SAVER.SetActions(ActionStorage);
+        }
+
+        public void ScrapSavedStorage(string recordName)
+        {
+            SAVER.SetRecordName(recordName);
+            SAVER.ScrapSavedActions();
+        }
+
+        public static Dictionary<FakeInput, Queue<Action>> ReturnNewCopyOf(Dictionary<FakeInput, Queue<Action>> etalon)
+        {
+            Dictionary<FakeInput, Queue<Action>> result = new Dictionary<FakeInput, Queue<Action>>();
+            foreach (FakeInput fi in etalon.Keys)
+            {
+                foreach (Queue<Action> q in etalon.Values)
+                {
+                    result[fi] = new Queue<Action>(q);
+                }
+            }
+            return result;
+        }
+
+        public static Dictionary<string, Dictionary<FakeInput, Queue<Action>>> ReturnNewCopyOf(Dictionary<string,
+            Dictionary<FakeInput, Queue<Action>>> etalon)
+        {
+            Dictionary<string, Dictionary<FakeInput, Queue<Action>>> result =
+                new Dictionary<string, Dictionary<FakeInput, Queue<Action>>>();
+            foreach (string recordName in etalon.Keys)
+            {
+                result[recordName] = ReturnNewCopyOf(etalon[recordName]);
+            }
+            return result;
         }
 
         private void BeforeIfNameAndKindAreNotExistInStorage(string recordName, FakeInput kind,

@@ -27,13 +27,22 @@ namespace ATF.Editor
                 GUILayout.Label("Recorder Settings", EditorStyles.boldLabel);
                 if (recorderLoaded)
                 {
-                    GUILayout.Label(string.Format("Recorder current realisation: {0}", Recorder.GetType()), EditorStyles.label);
+                    GUILayout.Label(string.Format("Recorder current realisation: {0}", Recorder.GetType().Name), EditorStyles.label);
                     GUILayout.Label("Recorder state", EditorStyles.boldLabel);
 
+                    EditorGUILayout.BeginHorizontal();
+
+                    EditorGUILayout.BeginVertical();
                     EditorGUILayout.Toggle("Is Playing", Recorder.IsPlaying());
                     EditorGUILayout.Toggle("Is Recording", Recorder.IsRecording());
+                    EditorGUILayout.EndVertical();
+
+                    EditorGUILayout.BeginVertical();
                     EditorGUILayout.Toggle("Is Recording Paused", Recorder.IsRecordingPaused());
                     EditorGUILayout.Toggle("Is Playing Paused", Recorder.IsPlayPaused());
+                    EditorGUILayout.EndVertical();
+
+                    EditorGUILayout.EndHorizontal();
 
                     GUILayout.Label("Recording control", EditorStyles.boldLabel);
                     Recorder.SetCurrentRecordingName(EditorGUILayout.TextField("Name of the recording", Recorder.GetCurrentRecordingName()));

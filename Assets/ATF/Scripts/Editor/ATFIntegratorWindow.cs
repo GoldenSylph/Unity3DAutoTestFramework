@@ -26,7 +26,7 @@ namespace ATF.Editor
                 GUILayout.Label("Integrator Control Panel", EditorStyles.boldLabel);
                 if (integratorLoaded)
                 {
-                    GUILayout.Label(string.Format("Integrator current realisation: {0}", Integrator.GetType()), EditorStyles.label);
+                    GUILayout.Label(string.Format("Integrator current realisation: {0}", Integrator.GetType().Name), EditorStyles.label);
                 } else
                 {
                     GUILayout.Label("Integrator current realisation: Waiting to focus...", EditorStyles.label);

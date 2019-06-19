@@ -26,7 +26,7 @@ namespace ATF.Editor
                 GUILayout.Label("Storage Settings", EditorStyles.boldLabel);
                 if (storageLoaded)
                 {
-                    GUILayout.Label(string.Format("Storage current realisation: {0}", Storage.GetType()), EditorStyles.label);
+                    GUILayout.Label(string.Format("Storage current realisation: {0}", Storage.GetType().Name), EditorStyles.label);
                 }
                 else
                 {
@@ -34,6 +34,8 @@ namespace ATF.Editor
                 }
 
                 //Save/Load Control
+                //search view if searching not all if all then searchview is disabled and no filters acqiuired
+                //get saved searched record names
 
                 //Tree view
 

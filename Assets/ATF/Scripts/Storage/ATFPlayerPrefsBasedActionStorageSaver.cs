@@ -33,7 +33,7 @@ namespace ATF.Storage
         private FirstSlotDTO FirstSlotDTOToSerialize;
         private SecondSlotDTO SecondSlotDTOToSerialize;
         
-        private T IfCurrentRecordNameEqualsToCodeAndNotNull<T>(Func<T> thenDo, Func<T> elseDo, Func<T> ifNotValidDo)
+        private T IfCurrentRecordNameEqualsToCodeAndNotNull<T>(Func<T> thenDo, Func<T> elseDo, Func<T> ifNullDo)
         {
             if (GetRecordName() != null)
             {
@@ -48,7 +48,7 @@ namespace ATF.Storage
             }
             else
             {
-                return ifNotValidDo();
+                return ifNullDo();
             }
         }
 
@@ -99,24 +99,28 @@ namespace ATF.Storage
 
         public void SetActions(IEnumerable actionEnumerable)
         {
-            if (actionEnumerable is Dictionary<FakeInput, Queue<Action>>)
-            {
-                SecondSlotDTOToSerialize = new SecondSlotDTO()
-                {
-                    SecondSlot = ATFDictionaryBasedActionStorage
-                        .ReturnNewCopyOf(actionEnumerable as Dictionary<FakeInput, Queue<Action>>),
-                    RecordName = GetRecordName()
-                };
-                SaveRecord();
-            }
-            else if (actionEnumerable is Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)
-            {
-                FirstSlotDTOToSerialize = new FirstSlotDTO() {
-                    FirstSlot = ATFDictionaryBasedActionStorage
-                        .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)
-                };
-                SaveAll();
-            }
+            IfCurrentRecordNameEqualsToCodeAndNotNull<object>(
+                () => {
+                    FirstSlotDTOToSerialize = new FirstSlotDTO()
+                    {
+                        FirstSlot = ATFDictionaryBasedActionStorage
+                                .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)
+                    };
+                    SaveAll();
+                    return null;
+                },
+                () => {
+                    SecondSlotDTOToSerialize = new SecondSlotDTO()
+                    {
+                        SecondSlot = ATFDictionaryBasedActionStorage
+                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)[GetRecordName()]),
+                        RecordName = GetRecordName()
+                    };
+                    SaveRecord();
+                    return null;
+                },
+                () => null
+            );
         }
 
         public void SetRecordName(string recordName)

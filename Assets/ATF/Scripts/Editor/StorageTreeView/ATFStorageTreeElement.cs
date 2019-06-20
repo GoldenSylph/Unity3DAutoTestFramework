@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.IMGUI.Controls;
+using System;
+using UnityEngine.Serialization;
 
-public class ATFStorageTreeElement : MonoBehaviour
+namespace ATF.Storage
 {
-    // Start is called before the first frame update
-    void Start()
+    [Serializable]
+    public class ATFStorageTreeElement : TreeElement
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public string recordName;
+        public object inputContent;
+        public FakeInput kindOfInput;
+        public bool enabled = true;
     }
 }

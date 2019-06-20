@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Bedrin.Helper;
-using Bedrin.DI;
 
 namespace ATF.Storage
 {
@@ -17,5 +15,6 @@ namespace ATF.Storage
         void SaveStorage(string recordName);
         void LoadStorage(string recordName);
         void ScrapSavedStorage(string recordName);
+        List<ATFStorageTreeElement> PrepareToDrawOnEditor();
     }
 }

@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6032545e-9df2-4137-bf30-7d6d917c952b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeAsset.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeAsset.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="128" column="9" lean-forward="true" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
+              <folding>
+                <marker date="1561041695654" expanded="false" signature="6:226" ph="..." />
+                <marker date="1561041695654" expanded="true" signature="248:9745" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="299:7578" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="833:1005" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="888:995" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="1035:2006" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="1139:1866" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="1515:1742" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="1747:1851" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="1883:1996" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="2094:2427" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="2501:2595" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="2934:4126" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="4182:4700" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="4306:4384" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="4401:4690" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="4742:5112" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5155:5260" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5304:5358" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5405:7572" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5526:7528" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5638:5716" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="5778:5858" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="6121:6435" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="6549:6757" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="6813:7023" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7079:7303" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7410:7514" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7639:9743" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7699:7811" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7904:7963" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="7989:8865" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="8023:8081" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="8097:8855" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="8173:8841" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="8986:9737" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="9199:9727" ph="{...}" />
+                <marker date="1561041695654" expanded="true" signature="9319:9713" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4905">
+              <caret line="334" column="19" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
+              <folding>
+                <marker date="1561042077361" expanded="false" signature="6:187" ph="..." />
+                <marker date="1561042077361" expanded="true" signature="210:13336" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="295:12786" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="491:586" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="618:712" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="810:928" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="1015:1857" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="1496:1847" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="1744:1833" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="2030:2724" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="2735:2886" ph="/* Note we We only build the visible rows, only the backend has the full tree information. ... */" />
+                <marker date="1561042077361" expanded="true" signature="2962:3090" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="3166:3233" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="3313:3718" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="3440:3554" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="3764:5093" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="4131:5006" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="4334:4992" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="5244:6025" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="5418:5928" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="6082:6360" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="6230:6350" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="6486:9755" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="6687:9745" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="7510:8615" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="7679:8589" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="8644:9568" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="8765:9437" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="9765:9793" ph="/* Rename ... */" />
+                <marker date="1561042077361" expanded="true" signature="9855:10114" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="10181:10446" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="10535:10739" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="10749:10775" ph="/* Misc ... */" />
+                <marker date="1561042077361" expanded="true" signature="10842:10887" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="10990:12780" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="11045:12493" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="11113:11522" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="11590:11999" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="12067:12479" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="12833:13334" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="12966:13080" ph="{...}" />
+                <marker date="1561042077361" expanded="true" signature="13216:13328" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="8" column="42" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="42" />
+              <folding>
+                <marker date="1561040278008" expanded="false" signature="6:111" ph="..." />
+                <marker date="1561040278008" expanded="true" signature="134:429" ph="{...}" />
+                <marker date="1561040278008" expanded="true" signature="308:427" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+              <folding>
+                <marker date="1561041125870" expanded="true" signature="6:125" ph="..." />
+                <marker date="1561041125870" expanded="true" signature="148:380" ph="{...}" />
+                <marker date="1561041125870" expanded="true" signature="222:378" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+              <folding>
+                <marker date="1561041910882" expanded="false" signature="6:99" ph="..." />
+                <marker date="1561041910882" expanded="true" signature="123:998" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="168:995" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="412:464" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="493:547" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="584:642" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="734:784" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="801:847" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="872:880" ph="{...}" />
+                <marker date="1561041910882" expanded="true" signature="935:992" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2460">
+              <caret line="168" selection-start-line="168" selection-end-line="168" />
+              <folding>
+                <marker date="1561042129681" expanded="false" signature="6:108" ph="..." />
+                <marker date="1561042129681" expanded="true" signature="131:4875" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="136:289" ph="/* TreeElementUtility and TreeElement are useful helper classes for backend tree data structures. ... */" />
+                <marker date="1561042129681" expanded="true" signature="330:4873" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="415:881" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="624:877" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="819:872" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="885:1094" ph="/* Returns the root of the tree parsed from the list (always the first element). ... */" />
+                <marker date="1561042129681" expanded="true" signature="1163:2493" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="1276:1342" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="1468:2469" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="1842:1969" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="2059:2430" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="2211:2424" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="2262:2362" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="2606:3707" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="2999:3342" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="3867:4293" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="4086:4289" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="4210:4284" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="4451:4592" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="4480:4571" ph="{...}" />
+                <marker date="1561042129681" expanded="true" signature="4692:4870" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1894">
+              <caret line="128" column="64" selection-start-line="128" selection-start-column="64" selection-end-line="128" selection-end-column="64" />
+              <folding>
+                <marker date="1561042310464" expanded="true" signature="6:66" ph="..." />
+                <marker date="1561042310464" expanded="true" signature="89:6054" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="93:731" ph="/* The TreeModel is a utility class working on a list of serializable TreeElements where the order and the depth  ... */" />
+                <marker date="1561042310464" expanded="true" signature="781:6052" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="968:995" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1021:1091" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1131:1155" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1192:1438" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1472:1500" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1543:1753" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1672:1730" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="1814:1952" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2035:2394" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2178:2365" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2328:2360" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2448:2579" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2629:3057" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2682:2773" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="2907:2990" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="3144:3835" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="3640:3768" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="3867:4253" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="4331:4808" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="4911:5986" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="5513:5664" ph="{...}" />
+                <marker date="1561042310464" expanded="true" signature="6013:6049" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="71" lean-forward="true" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+              <folding>
+                <marker date="1561041268500" expanded="true" signature="6:78" ph="..." />
+                <marker date="1561041268500" expanded="true" signature="101:699" ph="{...}" />
+                <marker date="1561041268500" expanded="true" signature="162:697" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Bedrin/DI/DependencyInjector.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
+              <folding>
+                <marker date="1560932628587" expanded="false" signature="6:195" ph="..." />
+                <marker date="1560932628587" expanded="true" signature="216:9134" ph="{...}" />
+                <marker date="1560932628587" expanded="false" signature="223:1201" ph="Attributes definition" />
+                <marker date="1560932628587" expanded="true" signature="383:1046" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="632:691" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="769:871" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="946:1040" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="1274:9132" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="1369:1492" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="1592:1693" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="1627:1683" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="1790:1935" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="2030:2715" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="2122:2243" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="2314:2380" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="2780:3080" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="2916:3045" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="3155:3654" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="3694:8491" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="3807:8481" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="3877:8467" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="4060:8449" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="4343:4458" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="4974:6028" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="5185:5461" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="5645:5875" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="6057:7139" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="6214:6381" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="6471:7113" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="6671:6946" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="7487:7701" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="7997:8225" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="8521:8584" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="8678:8827" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="8762:8817" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="8882:9012" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="8954:9000" ph="{...}" />
+                <marker date="1560932628587" expanded="true" signature="9063:9126" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="121" column="37" lean-forward="true" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+              <folding>
+                <marker date="1561041214686" expanded="false" signature="6:150" ph="..." />
+                <marker date="1561041214686" expanded="true" signature="173:5858" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="309:5856" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="754:1589" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="890:1357" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="952:1071" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1141:1241" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1246:1343" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1375:1554" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1668:2084" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1776:1852" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="1880:2072" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2147:2319" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2385:2560" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2594:2706" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2766:3035" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2831:2962" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="2967:3025" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="3075:3127" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="3179:3685" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="3315:3675" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="3737:3847" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="3905:4009" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4077:4146" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4267:4595" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4390:4558" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4453:4544" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4768:5074" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="4935:5037" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="5255:5492" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="5369:5446" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="5629:5850" ph="{...}" />
+                <marker date="1561041214686" expanded="true" signature="5743:5808" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Bedrin/DI/DependencyInjector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.Unity3DAutoTestFramework/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="240" />
+    <option name="y" value="130" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="UnityExplorer">
+        <option name="show-hidden-items" value="false" />
+        <option name="show-project-names" value="true" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6032545e-9df2-4137-bf30-7d6d917c952b" name="Default Changelist" comment="" />
+      <created>1561038302749</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561038302749</updated>
+      <workItem from="1561038308729" duration="81000" />
+      <workItem from="1561038436432" duration="2206000" />
+      <workItem from="1561040809005" duration="1594000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3881000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06979222" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" weight="0.32977587" />
+      <window_info anchor="bottom" id="Unity" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+          <folding>
+            <marker date="1561041125870" expanded="true" signature="6:125" ph="..." />
+            <marker date="1561041125870" expanded="true" signature="148:380" ph="{...}" />
+            <marker date="1561041125870" expanded="true" signature="222:378" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="128" column="9" lean-forward="true" selection-start-line="128" selection-start-column="9" selection-end-line="128" selection-end-column="9" />
+          <folding>
+            <marker date="1561041695654" expanded="false" signature="6:226" ph="..." />
+            <marker date="1561041695654" expanded="true" signature="248:9745" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="299:7578" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="833:1005" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="888:995" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="1035:2006" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="1139:1866" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="1515:1742" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="1747:1851" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="1883:1996" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="2094:2427" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="2501:2595" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="2934:4126" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="4182:4700" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="4306:4384" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="4401:4690" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="4742:5112" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5155:5260" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5304:5358" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5405:7572" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5526:7528" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5638:5716" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="5778:5858" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="6121:6435" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="6549:6757" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="6813:7023" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7079:7303" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7410:7514" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7639:9743" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7699:7811" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7904:7963" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="7989:8865" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="8023:8081" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="8097:8855" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="8173:8841" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="8986:9737" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="9199:9727" ph="{...}" />
+            <marker date="1561041695654" expanded="true" signature="9319:9713" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4905">
+          <caret line="334" column="19" selection-start-line="334" selection-start-column="19" selection-end-line="334" selection-end-column="19" />
+          <folding>
+            <marker date="1561042077361" expanded="false" signature="6:187" ph="..." />
+            <marker date="1561042077361" expanded="true" signature="210:13336" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="295:12786" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="491:586" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="618:712" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="810:928" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="1015:1857" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="1496:1847" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="1744:1833" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="2030:2724" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="2735:2886" ph="/* Note we We only build the visible rows, only the backend has the full tree information. ... */" />
+            <marker date="1561042077361" expanded="true" signature="2962:3090" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="3166:3233" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="3313:3718" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="3440:3554" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="3764:5093" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="4131:5006" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="4334:4992" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="5244:6025" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="5418:5928" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="6082:6360" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="6230:6350" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="6486:9755" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="6687:9745" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="7510:8615" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="7679:8589" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="8644:9568" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="8765:9437" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="9765:9793" ph="/* Rename ... */" />
+            <marker date="1561042077361" expanded="true" signature="9855:10114" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="10181:10446" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="10535:10739" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="10749:10775" ph="/* Misc ... */" />
+            <marker date="1561042077361" expanded="true" signature="10842:10887" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="10990:12780" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="11045:12493" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="11113:11522" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="11590:11999" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="12067:12479" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="12833:13334" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="12966:13080" ph="{...}" />
+            <marker date="1561042077361" expanded="true" signature="13216:13328" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="42" />
+          <folding>
+            <marker date="1561040278008" expanded="false" signature="6:111" ph="..." />
+            <marker date="1561040278008" expanded="true" signature="134:429" ph="{...}" />
+            <marker date="1561040278008" expanded="true" signature="308:427" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2460">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+          <folding>
+            <marker date="1561042129681" expanded="false" signature="6:108" ph="..." />
+            <marker date="1561042129681" expanded="true" signature="131:4875" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="136:289" ph="/* TreeElementUtility and TreeElement are useful helper classes for backend tree data structures. ... */" />
+            <marker date="1561042129681" expanded="true" signature="330:4873" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="415:881" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="624:877" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="819:872" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="885:1094" ph="/* Returns the root of the tree parsed from the list (always the first element). ... */" />
+            <marker date="1561042129681" expanded="true" signature="1163:2493" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="1276:1342" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="1468:2469" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="1842:1969" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="2059:2430" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="2211:2424" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="2262:2362" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="2606:3707" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="2999:3342" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="3867:4293" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="4086:4289" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="4210:4284" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="4451:4592" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="4480:4571" ph="{...}" />
+            <marker date="1561042129681" expanded="true" signature="4692:4870" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+          <folding>
+            <marker date="1561041910882" expanded="false" signature="6:99" ph="..." />
+            <marker date="1561041910882" expanded="true" signature="123:998" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="168:995" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="412:464" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="493:547" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="584:642" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="734:784" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="801:847" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="872:880" ph="{...}" />
+            <marker date="1561041910882" expanded="true" signature="935:992" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1894">
+          <caret line="128" column="64" selection-start-line="128" selection-start-column="64" selection-end-line="128" selection-end-column="64" />
+          <folding>
+            <marker date="1561042310464" expanded="true" signature="6:66" ph="..." />
+            <marker date="1561042310464" expanded="true" signature="89:6054" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="93:731" ph="/* The TreeModel is a utility class working on a list of serializable TreeElements where the order and the depth  ... */" />
+            <marker date="1561042310464" expanded="true" signature="781:6052" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="968:995" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1021:1091" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1131:1155" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1192:1438" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1472:1500" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1543:1753" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1672:1730" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="1814:1952" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2035:2394" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2178:2365" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2328:2360" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2448:2579" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2629:3057" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2682:2773" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="2907:2990" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="3144:3835" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="3640:3768" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="3867:4253" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="4331:4808" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="4911:5986" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="5513:5664" ph="{...}" />
+            <marker date="1561042310464" expanded="true" signature="6013:6049" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="121" column="37" lean-forward="true" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+          <folding>
+            <marker date="1561041214686" expanded="false" signature="6:150" ph="..." />
+            <marker date="1561041214686" expanded="true" signature="173:5858" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="309:5856" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="754:1589" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="890:1357" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="952:1071" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1141:1241" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1246:1343" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1375:1554" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1668:2084" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1776:1852" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="1880:2072" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2147:2319" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2385:2560" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2594:2706" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2766:3035" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2831:2962" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="2967:3025" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="3075:3127" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="3179:3685" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="3315:3675" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="3737:3847" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="3905:4009" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4077:4146" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4267:4595" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4390:4558" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4453:4544" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4768:5074" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="4935:5037" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="5255:5492" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="5369:5446" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="5629:5850" ph="{...}" />
+            <marker date="1561041214686" expanded="true" signature="5743:5808" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="71" lean-forward="true" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding>
+            <marker date="1561041268500" expanded="true" signature="6:78" ph="..." />
+            <marker date="1561041268500" expanded="true" signature="101:699" ph="{...}" />
+            <marker date="1561041268500" expanded="true" signature="162:697" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Bedrin/DI/DependencyInjector.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
+          <folding>
+            <marker date="1560932628587" expanded="false" signature="6:195" ph="..." />
+            <marker date="1560932628587" expanded="true" signature="216:9134" ph="{...}" />
+            <marker date="1560932628587" expanded="false" signature="223:1201" ph="Attributes definition" />
+            <marker date="1560932628587" expanded="true" signature="383:1046" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="632:691" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="769:871" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="946:1040" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="1274:9132" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="1369:1492" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="1592:1693" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="1627:1683" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="1790:1935" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="2030:2715" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="2122:2243" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="2314:2380" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="2780:3080" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="2916:3045" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="3155:3654" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="3694:8491" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="3807:8481" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="3877:8467" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="4060:8449" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="4343:4458" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="4974:6028" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="5185:5461" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="5645:5875" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="6057:7139" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="6214:6381" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="6471:7113" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="6671:6946" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="7487:7701" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="7997:8225" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="8521:8584" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="8678:8827" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="8762:8817" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="8882:9012" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="8954:9000" ph="{...}" />
+            <marker date="1560932628587" expanded="true" signature="9063:9126" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

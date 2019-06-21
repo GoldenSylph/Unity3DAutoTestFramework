@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using ATF.Storage;
-using ATF.Recorder;
 using Bedrin.DI;
 using System;
+using ATF.Scripts.Recorder;
+using ATF.Scripts.Storage;
+using ATF.Scripts.Storage.Interfaces;
 
 namespace ATF {
 

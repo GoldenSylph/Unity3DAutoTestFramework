@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using ATF.Scripts.Storage;
+using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
 using Bedrin.Helper;
-using ATF.Storage;
+using UnityEngine;
+using Action = ATF.Scripts.Storage.Action;
 
-namespace ATF.Recorder
+namespace ATF.Scripts.Recorder
 {
     [Injectable]
     public class ATFQueueBasedRecorder : MonoSingleton<ATFQueueBasedRecorder>, IATFRecorder
@@ -101,7 +100,7 @@ namespace ATF.Recorder
 
         public void Record(FakeInput kind, object input)
         {
-            STORAGE.Enqueue(GetCurrentRecordingName(), kind, new Storage.Action() { content = input });
+            STORAGE.Enqueue(GetCurrentRecordingName(), kind, new Action() { content = input });
         }
 
         public void StopRecord()

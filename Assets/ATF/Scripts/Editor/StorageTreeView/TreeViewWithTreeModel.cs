@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ATF.Scripts.Editor.StorageTreeView.TreeDataModel;
+using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-using ATF.Storage;
-using UnityEditor;
 
-namespace ATF.Storage
+namespace ATF.Scripts.Editor.StorageTreeView
 {
 
 	public class TreeViewItem<T> : TreeViewItem where T : TreeElement

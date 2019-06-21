@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-using UnityEngine.Serialization;
+﻿using System;
+using ATF.Scripts.Editor.StorageTreeView.TreeDataModel;
 
-namespace ATF.Storage
+namespace ATF.Scripts.Editor.StorageTreeView
 {
     [Serializable]
     public class ATFStorageTreeElement : TreeElement

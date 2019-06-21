@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ATF.Example
+namespace ATF.Scripts.Example
 {
     public class Mover : MonoBehaviour
     {
+        private const float Speed = 100f;
 
-        private readonly float Speed = 100f;
-
-        void Update()
+        private void Update()
         {
             if (ATFInput.GetKey(KeyCode.Space))
             {

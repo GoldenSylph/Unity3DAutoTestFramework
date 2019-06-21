@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ATF.Integrator
+﻿namespace ATF.Scripts.Integration
 {
     public interface IATFIntegrator : IATFInitializable
     {

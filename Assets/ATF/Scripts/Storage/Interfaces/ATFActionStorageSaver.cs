@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
 
-namespace ATF.Storage
+namespace ATF.Scripts.Storage.Interfaces
 {
     public interface IATFActionStorageSaver : IATFInitializable
     {

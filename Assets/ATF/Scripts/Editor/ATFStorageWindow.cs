@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
+using ATF.Scripts.Editor.StorageTreeView;
+using ATF.Scripts.Editor.StorageTreeView.TreeDataModel;
+using ATF.Scripts.Editor.StorageTreeView.TreeDataModel.Asset;
+using ATF.Scripts.Storage;
+using ATF.Scripts.Storage.Interfaces;
 using UnityEditor;
-using ATF.Storage;
-using System;
-using UnityEditor.IMGUI.Controls;
 using UnityEditor.Callbacks;
-using UnityEngine.Serialization;
+using UnityEditor.IMGUI.Controls;
+using UnityEngine;
 
-namespace ATF.Editor
+namespace ATF.Scripts.Editor
 {
     public class ATFStorageWindow : EditorWindow
     {

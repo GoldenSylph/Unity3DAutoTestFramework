@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using Bedrin.DI;
+using ATF.Scripts.Storage.Interfaces;
 using Bedrin.Helper;
-using System;
+using UnityEngine;
+using Action = ATF.Scripts.Storage.Action;
 
-namespace ATF.Storage
+namespace ATF.Scripts.Storage
 {
     public class ATFPlayerPrefsBasedActionStorageSaver : MonoSingleton<ATFPlayerPrefsBasedActionStorageSaver>, IATFActionStorageSaver
     {

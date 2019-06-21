@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Bedrin.Helper;
+﻿using Bedrin.Helper;
 
-namespace ATF.Integrator
+namespace ATF.Scripts.Integration
 {
     public class ATFFileSystemBasedIntegrator : MonoSingleton<ATFFileSystemBasedIntegrator>,  IATFIntegrator
     {

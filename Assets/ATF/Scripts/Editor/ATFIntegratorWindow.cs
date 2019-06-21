@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using ATF.Scripts.Integration;
 using UnityEditor;
-using ATF.Integrator;
+using UnityEngine;
 
-namespace ATF.Editor
+namespace ATF.Scripts.Editor
 {
     public class ATFIntegratorWindow : EditorWindow
     {

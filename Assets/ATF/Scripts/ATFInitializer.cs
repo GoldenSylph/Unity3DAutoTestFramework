@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ATF.Scripts.Integration;
 using UnityEngine;
 using Bedrin.DI;
-using ATF.Recorder;
-using ATF.Storage;
-using ATF.Integrator;
+using ATF.Scripts.Recorder;
+using ATF.Scripts.Storage;
 
 namespace ATF
 {

@@ -65,7 +65,7 @@ namespace Bedrin.DI
 
         private static bool ContainsAnyAttributeOfType(object[] attributes, Type attributeType)
         {
-            return attributes != null && attributeType != null && attributes.Where(t => t.GetType() == attributeType).Any();
+            return attributes != null && attributeType != null && attributes.Any(t => t.GetType() == attributeType);
         }
 
         private static PathValidationResult GetHierarchyPathAndComponentName(string fullPath)

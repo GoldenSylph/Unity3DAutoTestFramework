@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ATF.Example
+namespace ATF.Scripts.Example.IntegrationExample
 {
     public class NotIntegratedScript : MonoBehaviour
     {

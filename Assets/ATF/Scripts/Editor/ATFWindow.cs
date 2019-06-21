@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 
-namespace ATF.Editor
+namespace ATF.Scripts.Editor
 {
     public class ATFWindow : EditorWindow
     {

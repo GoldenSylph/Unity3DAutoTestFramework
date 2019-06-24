@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ATF.Scripts.Editor2.StorageTreeView;
+using UnityEditor.IMGUI.Controls;
 
 namespace ATF.Scripts.Storage.Interfaces
 {
@@ -14,6 +14,6 @@ namespace ATF.Scripts.Storage.Interfaces
         void SaveStorage(string recordName);
         void LoadStorage(string recordName);
         void ScrapSavedStorage(string recordName);
-        List<ATFStorageTreeElement> PrepareToDrawOnEditor();
+        List<TreeViewItem> GetElementsToDraw(string defaultValue);
     }
 }

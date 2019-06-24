@@ -4,7 +4,8 @@ using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
 using Bedrin.Helper;
-using Action = ATF.Scripts.Storage.Action;
+using UnityEditor.IMGUI.Controls;
+
 
 namespace ATF.Scripts.Storage
 {
@@ -119,11 +120,6 @@ namespace ATF.Scripts.Storage
             Saver.ScrapSavedActions();
         }
 
-        public List<ATFStorageTreeElement> PrepareToDrawOnEditor()
-        {
-            throw new NotImplementedException();
-        }
-
         public static Dictionary<FakeInput, Queue<Action>> ReturnNewCopyOf(Dictionary<FakeInput, Queue<Action>> etalon)
         {
             var result = new Dictionary<FakeInput, Queue<Action>>();
@@ -168,6 +164,16 @@ namespace ATF.Scripts.Storage
             }
 
             return toReturn();
+        }
+
+        public List<TreeViewItem> GetElementsToDraw(string defaultValue)
+        {
+            return new List<TreeViewItem>() {
+                new TreeViewItem() {
+                    depth = 0,
+                    displayName = defaultValue
+                }
+            };
         }
     }
 }

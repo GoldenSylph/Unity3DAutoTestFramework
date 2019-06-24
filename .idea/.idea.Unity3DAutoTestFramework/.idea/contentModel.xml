@@ -23,21 +23,9 @@
             <e p="Editor" t="Include">
               <e p="ATFIntegratorWindow.cs" t="Include" />
               <e p="ATFRecorderWindow.cs" t="Include" />
+              <e p="ATFStorageTreeView.cs" t="Include" />
               <e p="ATFStorageWindow.cs" t="Include" />
               <e p="ATFWindow.cs" t="Include" />
-              <e p="StorageTreeView" t="Include">
-                <e p="ATFStorageTreeElement.cs" t="Include" />
-                <e p="ATFStorageTreeView.cs" t="Include" />
-                <e p="TreeDataModel" t="Include">
-                  <e p="Asset" t="Include">
-                    <e p="ATFStorageActionTreeAsset.cs" t="Include" />
-                  </e>
-                  <e p="TreeElement.cs" t="Include" />
-                  <e p="TreeElementUtility.cs" t="Include" />
-                  <e p="TreeModel.cs" t="Include" />
-                </e>
-                <e p="TreeViewWithTreeModel.cs" t="Include" />
-              </e>
             </e>
             <e p="Example" t="Include">
               <e p="IntegrationExample" t="Include">
@@ -64,28 +52,6 @@
               <e p="Interfaces" t="Include">
                 <e p="ATFActionStorage.cs" t="Include" />
                 <e p="ATFActionStorageSaver.cs" t="Include" />
-              </e>
-            </e>
-          </e>
-        </e>
-        <e p="TreeViewExamples" t="Include">
-          <e p="Assets" t="Include">
-            <e p="Editor" t="Include">
-              <e p="TreeViewExamples" t="Include">
-                <e p="BackendData" t="Include">
-                  <e p="MyTreeAsset.cs" t="Include" />
-                  <e p="MyTreeAssetEditor.cs" t="Include" />
-                  <e p="MyTreeElement.cs" t="Include" />
-                  <e p="MyTreeElementGenerator.cs" t="Include" />
-                </e>
-                <e p="CustomHeightTreeView.cs" t="Include" />
-                <e p="CustomHeightWindow.cs" t="Include" />
-                <e p="MultiColumnTreeView.cs" t="Include" />
-                <e p="MultiColumnWindow.cs" t="Include" />
-                <e p="SimpleTreeView.cs" t="Include" />
-                <e p="SimpleTreeViewWindow.cs" t="Include" />
-                <e p="TransformsTreeView.cs" t="Include" />
-                <e p="TransformsTreeViewWindow.cs" t="Include" />
               </e>
             </e>
           </e>

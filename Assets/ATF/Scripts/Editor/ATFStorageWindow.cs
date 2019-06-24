@@ -6,56 +6,61 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Editor
 {
     public class ATFStorageWindow : EditorWindow
     {
         [SerializeField]
-        private TreeViewState TreeViewState;
+        private TreeViewState treeViewStateForCurrent;
+        
+        [SerializeField]
+        private TreeViewState treeViewStateForSaved;
 
-        // The TreeView is not serializable it should be reconstructed from the tree data.
-        private ATFStorageTreeView TreeView;
-        private SearchField SearchField;
+        private ATFStorageTreeView TreeViewForCurrent;
+        private SearchField SearchFieldForCurrent;
 
+        private ATFStorageTreeView TreeViewForSaved;
+        private SearchField SearchFieldForSaved;
+
+        
         public IATFActionStorage storage;
 
         private void OnFocus()
         {
-            if (EditorApplication.isPlaying)
-            {
-                storage = FindObjectOfType<ATFDictionaryBasedActionStorage>();
-            }
+            if (!EditorApplication.isPlaying) return;
+            storage = FindObjectOfType<ATFDictionaryBasedActionStorage>();
+            InitTreeViewOf(ref TreeViewForCurrent, ref SearchFieldForCurrent, ref treeViewStateForCurrent, TreePurpose.TO_DRAW_CURRENT);
+            InitTreeViewOf(ref TreeViewForSaved, ref SearchFieldForSaved, ref treeViewStateForSaved, TreePurpose.TO_DRAW_SAVED);
         }
 
-        private void DoToolbar()
+        private static void InitTreeViewOf(ref ATFStorageTreeView view, ref SearchField field, ref TreeViewState state, TreePurpose purpose)
+        {
+            if (view != null && field != null) return;
+            if (state == null)
+            {
+                state = new TreeViewState();
+            }
+            view = new ATFStorageTreeView(purpose, state);
+            field = new SearchField();
+            field.downOrUpArrowKeyPressed += view.SetFocusAndEnsureSelectedItem;
+        }
+
+        private static void DoToolbarFor(TreeView view, SearchField field)
         {
             GUILayout.BeginHorizontal(EditorStyles.toolbar);
             GUILayout.Space(100);
             GUILayout.FlexibleSpace();
-            TreeView.searchString = SearchField.OnToolbarGUI(TreeView.searchString);
+            view.searchString = field.OnToolbarGUI(view.searchString);
             GUILayout.EndHorizontal();
         }
-
-        private void DoTreeView()
+        
+        private static void DoTreeViewFor(TreeView view)
         {
-            Rect rect = GUILayoutUtility.GetRect(0, 100000, 0, 100000);
-            TreeView.OnGUI(rect);
+            var rect = GUILayoutUtility.GetRect(0, 100000, 0, 100000);
+            view.OnGUI(rect);
         }
-
-        private void InitTreeIfNeeded()
-        {
-            if (TreeView == null || SearchField == null)
-            {
-                if (TreeViewState == null)
-                {
-                    TreeViewState = new TreeViewState();
-                }
-                TreeView = new ATFStorageTreeView(storage, TreePurpose.TO_DRAW_CURRENT, TreeViewState);
-                SearchField = new SearchField();
-                SearchField.downOrUpArrowKeyPressed += TreeView.SetFocusAndEnsureSelectedItem;
-            }
-        } 
 
         private void OnGUI()
         {
@@ -65,15 +70,17 @@ namespace ATF.Scripts.Editor
                 GUILayout.Label("Storage Settings", EditorStyles.boldLabel);
                 GUILayout.Label(
                     stateLoaded
-                        ? $"Storage current realisation: {storage.GetType().Name}"
-                        : "Storage current realisation: Waiting to focus...", EditorStyles.label);
+                        ? $"Storage realisation: {storage.GetType().Name}"
+                        : "Storage realisation: Waiting to focus...", EditorStyles.label);
 
-                if (stateLoaded)
-                {
-                    InitTreeIfNeeded();
-                    DoToolbar();
-                    DoTreeView();
-                }
+                if (!stateLoaded) return;
+                DoToolbarFor(TreeViewForCurrent, SearchFieldForCurrent);
+                DoTreeViewFor(TreeViewForCurrent);
+                
+                
+                
+                DoToolbarFor(TreeViewForSaved, SearchFieldForSaved);
+                DoTreeViewFor(TreeViewForSaved);
             }
             else
             {

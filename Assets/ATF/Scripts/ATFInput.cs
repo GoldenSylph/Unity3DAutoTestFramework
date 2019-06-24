@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using Bedrin.DI;
-using System;
+﻿using System;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
+using Bedrin.DI;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ATF {
 
@@ -32,20 +30,20 @@ namespace ATF {
             {
                 return fakeInput;
             }
-            else if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
+
+            if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
             {
                 RECORDER.Record(kind, realInput);
                 return realInput;
             }
-            else if ((!RECORDER.IsPlaying() && !RECORDER.IsRecording()) || 
-                (RECORDER.IsRecording() && RECORDER.IsRecordingPaused()) ||
-                (RECORDER.IsPlaying() || RECORDER.IsPlayPaused()))
+
+            if (!RECORDER.IsPlaying() && !RECORDER.IsRecording() || 
+                RECORDER.IsRecording() && RECORDER.IsRecordingPaused() || RECORDER.IsPlaying() && RECORDER.IsPlayPaused())
             {
                 return realInput;
-            } else
-            {
-                return null;
             }
+
+            return null;
         }
 
         private static T IfExceptionReturnDefault<T>(Func<T> function, T defaultValue)
@@ -70,27 +68,15 @@ namespace ATF {
 
         private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue)
         {
-            return IfExceptionReturnDefault<T>(
+            return IfExceptionReturnDefault(
                 () => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind), fakeInputKind), 
                 defaultValue
             );
         }
 
-        public static bool anyKeyDown
-        {
-            get
-            {
-                return Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
-            }
-        }
+        public static bool anyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
 
-        public static bool anyKey
-        {
-            get
-            {
-                return Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
-            }
-        }
+        public static bool anyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
 
         public static float GetAxis(string axisName)
         {

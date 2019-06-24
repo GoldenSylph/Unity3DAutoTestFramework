@@ -1,34 +1,32 @@
 ﻿using ATF.Scripts.Integration;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Editor
 {
     public class ATFIntegratorWindow : EditorWindow
     {
-        public IATFIntegrator Integrator;
+        public IATFIntegrator integrator;
 
         private void OnFocus()
         {
             if (EditorApplication.isPlaying)
             {
-                Integrator = FindObjectOfType<ATFFileSystemBasedIntegrator>();
+                integrator = FindObjectOfType<ATFFileSystemBasedIntegrator>();
             }
         }
 
         private void OnGUI()
         {
-            bool integratorLoaded = Integrator != null;
+            var integratorLoaded = integrator != null;
             if (EditorApplication.isPlaying)
             {
                 GUILayout.Label("Integrator Control Panel", EditorStyles.boldLabel);
-                if (integratorLoaded)
-                {
-                    GUILayout.Label(string.Format("Integrator current realisation: {0}", Integrator.GetType().Name), EditorStyles.label);
-                } else
-                {
-                    GUILayout.Label("Integrator current realisation: Waiting to focus...", EditorStyles.label);
-                }
+                GUILayout.Label(
+                    integratorLoaded
+                        ? $"Integrator current realisation: {integrator.GetType().Name}"
+                        : "Integrator current realisation: Waiting to focus...", EditorStyles.label);
             }
             else
             {

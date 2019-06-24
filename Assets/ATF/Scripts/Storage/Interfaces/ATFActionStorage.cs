@@ -14,6 +14,9 @@ namespace ATF.Scripts.Storage.Interfaces
         void SaveStorage(string recordName);
         void LoadStorage(string recordName);
         void ScrapSavedStorage(string recordName);
-        List<TreeViewItem> GetElementsToDraw(string defaultValue);
+        List<TreeViewItem> GetSavedRecordNames();
+        List<TreeViewItem> GetCurrentRecordNames();
+        List<TreeViewItem> GetCurrentActions(string recordName);
+        List<TreeViewItem> GetSavedActions(string recordName);
     }
 }

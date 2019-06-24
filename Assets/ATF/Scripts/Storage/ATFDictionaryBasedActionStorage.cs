@@ -120,6 +120,26 @@ namespace ATF.Scripts.Storage
             Saver.ScrapSavedActions();
         }
 
+        public List<TreeViewItem> GetSavedRecordNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TreeViewItem> GetCurrentRecordNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TreeViewItem> GetCurrentActions(string recordName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TreeViewItem> GetSavedActions(string recordName)
+        {
+            throw new NotImplementedException();
+        }
+
         public static Dictionary<FakeInput, Queue<Action>> ReturnNewCopyOf(Dictionary<FakeInput, Queue<Action>> etalon)
         {
             var result = new Dictionary<FakeInput, Queue<Action>>();
@@ -166,14 +186,6 @@ namespace ATF.Scripts.Storage
             return toReturn();
         }
 
-        public List<TreeViewItem> GetElementsToDraw(string defaultValue)
-        {
-            return new List<TreeViewItem>() {
-                new TreeViewItem() {
-                    depth = 0,
-                    displayName = defaultValue
-                }
-            };
-        }
+        
     }
 }

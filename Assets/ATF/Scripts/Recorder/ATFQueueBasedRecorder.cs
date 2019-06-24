@@ -3,6 +3,7 @@ using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
 using Bedrin.Helper;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Action = ATF.Scripts.Storage.Action;
 
 namespace ATF.Scripts.Recorder
@@ -13,36 +14,31 @@ namespace ATF.Scripts.Recorder
         [Inject(typeof(ATFDictionaryBasedActionStorage))]
         public readonly static IATFActionStorage STORAGE;
 
-        [Header("Debug Setttings:")]
+        [Header("Debug Settings:")]
+        
+        [SerializeField]
+        private bool recording;
 
         [SerializeField]
-        private bool Recording;
+        private bool playing;
 
         [SerializeField]
-        private bool Playing;
+        private bool recordingPaused;
 
         [SerializeField]
-        private bool RecordingPaused;
+        private bool playPaused;
 
         [SerializeField]
-        private bool PlayPaused;
-
-
-        [SerializeField]
-        private string CurrentRecordingName;
+        private string currentRecordingName;
 
         public string GetCurrentRecordingName()
         {
-            if (CurrentRecordingName == null)
-            {
-                CurrentRecordingName = "DefaultRecord";
-            }
-            return CurrentRecordingName;
+            return currentRecordingName ?? (currentRecordingName = "DefaultRecord");
         }
 
         public void SetCurrentRecordingName(string value)
         {
-            CurrentRecordingName = value;
+            currentRecordingName = value;
         }
 
         public void Initialize()
@@ -55,22 +51,22 @@ namespace ATF.Scripts.Recorder
 
         public bool IsPlaying()
         {
-            return Playing;
+            return playing;
         }
 
         public bool IsRecording()
         {
-            return Recording;
+            return recording;
         }
 
         public void SetRecording(bool value)
         {
-            Recording = value;
+            recording = value;
         }
 
         public void SetPlaying(bool value)
         {
-            Playing = value;
+            playing = value;
         }
 
         public void PauseRecord()
@@ -85,11 +81,9 @@ namespace ATF.Scripts.Recorder
 
         public void PlayRecord()
         {
-            if (STORAGE.PrepareToPlayRecord(GetCurrentRecordingName()))
-            {
-                SetRecording(false);
-                SetPlaying(true);
-            }
+            if (!STORAGE.PrepareToPlayRecord(GetCurrentRecordingName())) return;
+            SetRecording(false);
+            SetPlaying(true);
         }
 
         public void StartRecord()
@@ -130,22 +124,22 @@ namespace ATF.Scripts.Recorder
 
         public bool IsRecordingPaused()
         {
-            return RecordingPaused;
+            return recordingPaused;
         }
 
         public bool IsPlayPaused()
         {
-            return PlayPaused;
+            return playPaused;
         }
 
         public void SetRecordingPaused(bool value)
         {
-            RecordingPaused = value;
+            recordingPaused = value;
         }
 
         public void SetPlayPaused(bool value)
         {
-            PlayPaused = value;
+            playPaused = value;
         }
     }
 }

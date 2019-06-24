@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEditor.IMGUI.Controls;
 using ATF.Scripts.Storage.Interfaces;
@@ -8,7 +9,7 @@ namespace ATF.Scripts.Editor
 {
     public enum TreePurpose
     {
-        TO_DRAW_SAVED, TO_DRAW_CURRENT
+        NONE, TO_DRAW_SAVED, TO_DRAW_CURRENT
     }
 
     public class ATFStorageTreeView : TreeView
@@ -17,46 +18,52 @@ namespace ATF.Scripts.Editor
 
         private List<TreeViewItem> AllItems;
 
-        public ATFStorageTreeView(IATFActionStorage storage, TreePurpose treePurpose, TreeViewState treeViewState)
+        private TreeViewItem Root;
+
+        public ATFStorageTreeView(TreePurpose treePurpose, TreeViewState treeViewState)
             : base(treeViewState)
         {
-            Reload();
             TreePurpose = treePurpose;
+            Root = new TreeViewItem { id = 0, depth = -1, displayName = "Root" };
+            Reload();
         }
 
         protected override TreeViewItem BuildRoot()
         {
-            // BuildRoot is called every time Reload is called to ensure that TreeViewItems 
-            // are created from data. Here we just create a fixed set of items, in a real world example
-            // a data model should be passed into the TreeView and the items created from the model.
-
-            // This section illustrates that IDs should be unique and that the root item is required to 
-            // have a depth of -1 and the rest of the items increment from that.
-            var root = new TreeViewItem { id = 0, depth = -1, displayName = "Root" };
-            List<TreeViewItem> allItems = null;
-            switch (TreePurpose)
+            if (AllItems == null)
             {
-                case TreePurpose.TO_DRAW_CURRENT:
-                    allItems = Storage.GetElementsToDraw("There is no actions stored at now.");
-                    break;
+                AllItems = new List<TreeViewItem>();
+                switch (TreePurpose)
+                {
+                    case TreePurpose.TO_DRAW_CURRENT:
+                        AllItems.Add(new TreeViewItem() {
+                            depth = 0,
+                            displayName = "There is no current actions."
+                        });
+                        break;
 
-                case TreePurpose.TO_DRAW_SAVED:
-                    allItems = Storage.GetElementsToDraw("There is no actions saved at now.");
-                    break;
+                    case TreePurpose.TO_DRAW_SAVED:
+                        AllItems.Add(new TreeViewItem() {
+                            depth = 0,
+                            displayName = "There is no saved actions."
+                        });
+                        break;
 
-                default:
-                    throw new System.ArgumentOutOfRangeException();
+                    case TreePurpose.NONE:
+                        throw new System.ArgumentOutOfRangeException();
+                    
+                    default:
+                        throw new System.ArgumentOutOfRangeException();
+                }
             }
-            // Utility method that initializes the TreeViewItem.children and -parent for all items.
-            SetupParentsAndChildrenFromDepths(root, allItems);
-            
-            // Return root of the tree
-            return root;
+            SetupParentsAndChildrenFromDepths(Root, AllItems);
+            return Root;
         }
 
         public void SetItems(List<TreeViewItem> items)
         {
             AllItems = items;
+            SetupParentsAndChildrenFromDepths(Root, AllItems);
         }
     }
 }

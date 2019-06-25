@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6032545e-9df2-4137-bf30-7d6d917c952b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity3DAutoTestFramework/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity3DAutoTestFramework/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/ATFInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/ATFInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFIntegratorWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFIntegratorWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,62 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1009">
-              <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
-              <folding>
-                <marker date="1561384176961" expanded="true" signature="6:98" ph="..." />
-                <marker date="1561384176961" expanded="true" signature="128:4238" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="180:4236" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="257:420" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="312:410" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="450:4230" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="556:4090" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="684:3917" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="1956:2930" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="2119:2223" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="2338:2442" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="2559:2666" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="2747:2850" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="3198:3289" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="3393:3483" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="3589:3682" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="3757:3846" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="3938:4076" ph="{...}" />
-                <marker date="1561384176961" expanded="true" signature="4107:4220" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-              <folding>
-                <marker date="1561387627657" expanded="false" signature="6:246" ph="..." />
-                <marker date="1561387627657" expanded="true" signature="276:3188" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="327:3186" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="794:1209" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="1351:1709" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="1447:1520" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="1785:2049" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="2115:2236" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="2266:3180" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="2368:3040" ph="{...}" />
-                <marker date="1561387627657" expanded="true" signature="3057:3170" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1436">
-              <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+            <state>
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding>
                 <marker date="1561384360730" expanded="true" signature="6:197" ph="..." />
                 <marker date="1561384360730" expanded="true" signature="229:3240" ph="{...}" />
@@ -106,11 +47,46 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="54" selection-start-line="54" selection-end-line="54" />
+              <folding>
+                <marker date="1561464970916" expanded="false" signature="6:246" ph="..." />
+                <marker date="1561464970916" expanded="true" signature="276:3183" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="327:3181" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="794:1209" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="1351:1709" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="1447:1520" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="1785:2049" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="2115:2249" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="2279:3175" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="2381:3035" ph="{...}" />
+                <marker date="1561464970916" expanded="true" signature="3052:3165" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorageSaver.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <folding>
+                <marker date="1561119224473" expanded="true" signature="67:506" ph="{...}" />
+                <marker date="1561119224473" expanded="true" signature="133:504" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+            <state relative-caret-position="1530">
+              <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
               <folding>
                 <marker date="1561388135426" expanded="false" signature="6:185" ph="..." />
                 <marker date="1561388135426" expanded="true" signature="217:6309" ph="{...}" />
@@ -153,23 +129,400 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+            <state relative-caret-position="79">
+              <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
               <folding>
-                <marker date="1561388056378" expanded="false" signature="6:188" ph="..." />
-                <marker date="1561388056378" expanded="true" signature="218:2104" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="248:305" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="353:2102" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="614:777" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="830:1927" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="874:1829" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="978:1815" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="1107:1246" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="1389:1526" ph="{...}" />
-                <marker date="1561388056378" expanded="true" signature="1983:2096" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="6:207" ph="..." />
+                <marker date="1561474702189" expanded="true" signature="237:2838" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="267:324" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="372:2836" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="648:811" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="878:924" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="977:1022" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1059:1110" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1197:2517" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1241:2192" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1345:2178" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1472:1611" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="1752:1889" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="2209:2478" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="2594:2658" ph="{...}" />
+                <marker date="1561474702189" expanded="true" signature="2717:2829" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/72B96408-F5F4-4500-A7D2-0BA120CB7F51/a3/e9680215/TreeView.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="871" column="40" selection-start-line="871" selection-start-column="40" selection-end-line="871" selection-end-column="40" />
+              <folding>
+                <marker date="1561465372800" expanded="true" signature="0:305" ph="/* Decompiled with JetBrains decompiler ... */" />
+                <marker date="1561465372800" expanded="false" signature="313:417" ph="..." />
+                <marker date="1561465372800" expanded="true" signature="455:72644" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="460:630" ph="///   &lt;para&gt;The TreeView is an IMGUI control that lets you create tree views, list views and multi-column tables  ... " />
+                <marker date="1561465372800" expanded="true" signature="663:72642" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="1109:1456" ph="///   &lt;para&gt;The TreeView is always constructed with a state object and optionally a multi-column header object if ... " />
+                <marker date="1561465372800" expanded="true" signature="1497:1533" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="1539:1886" ph="///   &lt;para&gt;The TreeView is always constructed with a state object and optionally a multi-column header object if ... " />
+                <marker date="1561465372800" expanded="true" signature="1964:2052" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="2058:2240" ph="///   &lt;para&gt;Register a callback to this field to override how the TreeView handles selection changes in response  ... " />
+                <marker date="1561465372800" expanded="true" signature="2311:2474" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="2327:2468" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="2480:2620" ph="///   &lt;para&gt;Register a callback to this property to override the Foldout button in the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="2735:4105" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="4111:4436" ph="///   &lt;para&gt;Abstract method that is required to be implemented. By default this method should create the full tre ... " />
+                <marker date="1561465372800" expanded="true" signature="4491:4837" ph="///   &lt;para&gt;Override this method to take control of how the rows are generated.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="4908:5301" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="5307:5472" ph="///   &lt;para&gt;Call this to force the TreeView to reload its data. This in turn causes BuildRoot and BuildRows to be ... " />
+                <marker date="1561465372800" expanded="true" signature="5497:5662" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="5668:5789" ph="///   &lt;para&gt;Request a repaint of the window that the TreeView is rendered in.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="5815:5860" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="5866:5988" ph="///   &lt;para&gt;The state of the TreeView (expanded state, selection, scroll etc.)&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="6019:6095" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6035:6089" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6101:6268" ph="///   &lt;para&gt;Get the MultiColumnHeader of the TreeView. Can be null if the TreeView was created without a MultiCol ... " />
+                <marker date="1561465372800" expanded="true" signature="6315:6462" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6331:6388" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6398:6456" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6468:6584" ph="///   &lt;para&gt;The hidden root item of the TreeView (it is never rendered).&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="6620:6700" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6636:6694" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6706:6875" ph="///   &lt;para&gt;The TreeView is initialized by calling Reload(). Therefore returns false until Reload() is called the ... " />
+                <marker date="1561465372800" expanded="true" signature="6908:6994" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="6924:6988" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7000:7099" ph="///   &lt;para&gt;The Rect the TreeView is being rendered to.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="7131:7287" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7147:7210" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7220:7281" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7293:7417" ph="///   &lt;para&gt;Indent used for all rows before the tree foldout arrows and content.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="7448:7593" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7464:7520" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7530:7587" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7599:7691" ph="///   &lt;para&gt;Width of the built-in foldout arrow.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="7724:7802" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7740:7796" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="7808:7999" ph="///   &lt;para&gt;Value to control the spacing before the default icon and label. Can be used e.g for placing a toggle  ... " />
+                <marker date="1561465372800" expanded="true" signature="8048:8225" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8064:8136" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8146:8219" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8231:8331" ph="///   &lt;para&gt;Custom vertical offset of the foldout arrow.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="8372:8533" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8388:8452" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8462:8527" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8539:8713" ph="///   &lt;para&gt;When using a MultiColumnHeader this value should be set to the column index in which the foldout arro ... " />
+                <marker date="1561465372800" expanded="true" signature="8758:9437" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8774:8844" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="8854:9431" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="9443:9575" ph="///   &lt;para&gt;When drawing the TreeView contents, will it be enclosed within a ScrollView?&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="9608:9765" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="9624:9686" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="9696:9759" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="9771:10168" ph="///   &lt;para&gt;Utility for multi column setups. This method will clip the input rowRect against the column rect defi ... " />
+                <marker date="1561465372800" expanded="true" signature="10228:10536" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="10542:10683" ph="///   &lt;para&gt;Value that returns how far the foldouts are indented for each increasing depth value.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="10720:10867" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="10736:10793" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="10803:10861" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="10873:10983" ph="///   &lt;para&gt;Enable this to show alternating row background colors.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="11052:11157" ph="///   &lt;para&gt;Enable this to show a border around the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="11207:11333" ph="///   &lt;para&gt;Returns true if the horizontal scroll bar is showing, otherwise false.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="11379:11476" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="11395:11470" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="11482:11606" ph="///   &lt;para&gt;Returns true if the vertical scroll bar is showing, otherwise false.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="11650:11745" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="11666:11739" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="11751:11928" ph="///   &lt;para&gt;When using a MultiColumnHeader this value adjusts the cell rects provided for all columns except the  ... " />
+                <marker date="1561465372800" expanded="true" signature="11959:12100" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="11975:12029" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12039:12094" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12106:12271" ph="///   &lt;para&gt;Returns the sum of the TreeView row heights, the MultiColumnHeader height (if used) and the border (i ... " />
+                <marker date="1561465372800" expanded="true" signature="12300:12435" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12316:12429" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12441:12595" ph="///   &lt;para&gt;The fixed height used for each row in the TreeView if GetCustomRowHeight have not been overridden.&lt;/p ... " />
+                <marker date="1561465372800" expanded="true" signature="12625:12816" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12641:12697" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12707:12810" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12822:12946" ph="///   &lt;para&gt;The controlID used by the TreeView to obtain keyboard control focus.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="12979:13132" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="12995:13055" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="13065:13126" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="13138:13288" ph="///   &lt;para&gt;True if the user is currently dragging one or more items in the TreeView, and false otherwise.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="13318:13399" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="13334:13393" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="13405:13599" ph="///   &lt;para&gt;Get the rect for a row.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="13638:13727" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="13733:13923" ph="///   &lt;para&gt;This is the list of TreeViewItems that have been built in BuildRows.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="13972:14103" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="14163:14329" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="14335:14761" ph="///   &lt;para&gt;Finds a TreeViewItem by an ID.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="14838:14913" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="15009:15106" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="15112:15211" ph="///   &lt;para&gt;Expand all collapsed items in the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="15239:15308" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="15314:15414" ph="///   &lt;para&gt;Collapse all expanded items in the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="15444:15505" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="15511:15751" ph="///   &lt;para&gt;Expand or collapse all items under item with id.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="15811:15886" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="15892:16275" ph="///   &lt;para&gt;Set a single TreeViewItem to be expanded or collapsed.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="16326:16396" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="16441:16513" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="16519:16732" ph="///   &lt;para&gt;Returns a list of TreeViewItem IDs that are currently expanded in the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="16768:16842" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="16848:17020" ph="///   &lt;para&gt;Returns true if the TreeViewItem with ID id is currently expanded.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="17055:17114" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17120:17217" ph="///   &lt;para&gt;The current search state of the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="17243:17338" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17259:17332" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17344:17438" ph="///   &lt;para&gt;Current search string of the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="17469:17624" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17485:17546" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17556:17618" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17630:17751" ph="///   &lt;para&gt;Returns the list of TreeViewItem IDs that are currently selected.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="17788:17858" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="17912:17993" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="18081:18586" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="18592:18764" ph="///   &lt;para&gt;Returns true if the TreeViewItem with ID id is currently selected.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="18799:18856" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="18862:18963" ph="///   &lt;para&gt;Returns true if the TreeView has a selection.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="18994:19051" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="19057:19183" ph="///   &lt;para&gt;Returns true if the TreeView and its EditorWindow have keyboard focus.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="19210:19263" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="19269:19390" ph="///   &lt;para&gt;Calling this function changes the keyboard focus to the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="19417:19542" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="19548:19761" ph="///   &lt;para&gt;Calling this function changes the keyboard focus to the TreeView and ensures an item is selected. Use ... " />
+                <marker date="1561465372800" expanded="true" signature="19809:20203" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="20064:20106" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="20209:20741" ph="///   &lt;para&gt;Use this method in RowGUI to peform the logic of a mouse click.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="20819:20895" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="20901:21281" ph="///   &lt;para&gt;Shows the rename overlay for a TreeViewItem.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="21328:21383" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="21389:21769" ph="///   &lt;para&gt;Shows the rename overlay for a TreeViewItem.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="21829:21891" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="21897:22079" ph="///   &lt;para&gt;Ends renaming if the rename overlay is shown. If called while the rename overlay is not being shown,  ... " />
+                <marker date="1561465372800" expanded="true" signature="22107:22149" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="22155:22391" ph="///   &lt;para&gt;This will reveal the item with ID id (by expanding the ancestors of that item) and will make sure it  ... " />
+                <marker date="1561465372800" expanded="true" signature="22425:22522" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="22556:22854" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="22643:22828" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="22860:23081" ph="///   &lt;para&gt;This is the main GUI method of the TreeView, where the TreeViewItems are processed and drawn.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="23122:23491" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="23497:23586" ph="///   &lt;para&gt;Selects all rows in the TreeView.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="23618:23932" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="23991:24566" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="24572:24883" ph="///   &lt;para&gt;Returns the horizontal foldout offset for an item. This is where the foldout arrow is rendered.&lt;/para ... " />
+                <marker date="1561465372800" expanded="true" signature="24939:24999" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="25005:25315" ph="///   &lt;para&gt;Returns the horizontal content offset for an item. This is where the content should begin (after the  ... " />
+                <marker date="1561465372800" expanded="true" signature="25371:25431" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="25495:25579" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="25646:25923" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="26004:26357" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="26453:26894" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="26963:26975" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="26981:27176" ph="///   &lt;para&gt;Override this method to handle single click events on an item.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="27229:27241" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="27247:27442" ph="///   &lt;para&gt;Override this method to handle double click events on an item.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="27495:27507" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="27513:27701" ph="///   &lt;para&gt;Override this method to handle a context click on an item with ID TreeViewItem.id.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="27755:27767" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="27773:27926" ph="///   &lt;para&gt;Override this method to handle context clicks outside any items (but still in the TreeView rect).&lt;/pa ... " />
+                <marker date="1561465372800" expanded="true" signature="27970:27982" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="27988:28174" ph="///   &lt;para&gt;Override to get notified when items are expanded or collapsed. This is a general notification that th ... " />
+                <marker date="1561465372800" expanded="true" signature="28224:28236" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="28242:28400" ph="///   &lt;para&gt;Override the method to get notified of search string changes.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="28459:28471" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="28477:28608" ph="///   &lt;para&gt;Override this method to handle events when the TreeView has keyboard focus.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="28646:28658" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="28664:28971" ph="///   &lt;para&gt;This method is e.g. used for revealing items that are currently under a collapsed item.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="29025:29204" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="29210:29475" ph="///   &lt;para&gt;Returns all descendants for the item with ID id that have children.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="29547:29726" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="29769:30333" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="30339:30554" ph="///   &lt;para&gt;Override this method to control whether the item can be part of a multiselection.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="30615:30646" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="30652:30901" ph="///   &lt;para&gt;Override this method to control whether the item can be renamed using a keyboard shortcut or when cli ... " />
+                <marker date="1561465372800" expanded="true" signature="30957:30989" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31060:31072" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31145:31177" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31258:31270" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31371:31424" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31430:31618" ph="///   &lt;para&gt;Override this method to control which items are allowed to be parents.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="31676:31707" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="31713:31934" ph="///   &lt;para&gt;Override this method to control whether an item can be expanded or collapsed by key or mouse.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="32003:32107" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="32113:32502" ph="///   &lt;para&gt;Override this function to extend or change the search behavior.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="32583:32683" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="32744:32794" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="32800:32912" ph="///   &lt;para&gt;This is called before any rows have their RowGUI called.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="32955:33080" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="33086:33197" ph="///   &lt;para&gt;This is called after all rows have their RowGUI called.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="33239:33251" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="33257:33405" ph="///   &lt;para&gt;Refreshes the cache of custom row rects based on the heights returned by GetCustomRowHeight.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="33458:33740" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="33746:34020" ph="///   &lt;para&gt;Override to control individual row heights.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="34095:34136" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="34142:34678" ph="///   &lt;para&gt;Override this method if custom GUI handling are used in RowGUI. This method for controls where the re ... " />
+                <marker date="1561465372800" expanded="true" signature="34761:34836" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="34842:35069" ph="///   &lt;para&gt;This function is called automatically and handles the ExecuteCommand events for “SelectAll” and “Fram ... " />
+                <marker date="1561465372800" expanded="true" signature="35119:35830" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="35400:35519" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="35604:35775" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="35949:36021" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="36027:36313" ph="///   &lt;para&gt;Utility method using the depth of the input TreeViewItem to set the correct depths for all its descen ... " />
+                <marker date="1561465372800" expanded="true" signature="36392:36456" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="36462:36627" ph="///   &lt;para&gt;Creates a dummy TreeViewItem list. Useful when overriding BuildRows to prevent building a full tree o ... " />
+                <marker date="1561465372800" expanded="true" signature="36703:36788" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="36877:36968" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="36974:37430" ph="///   &lt;para&gt;Callback signature used to override the TreeView foldout. See foldoutOverride.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="37531:38153" ph="///   &lt;para&gt;A callback which determines how TreeView handles selection changes in response to keys and mouse clic ... " />
+                <marker date="1561465372800" expanded="true" signature="38341:40923" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="38621:39210" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="39287:39678" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="39743:40917" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="39990:40349" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="40929:41032" ph="///   &lt;para&gt;Method arguments for the virtual method RowGUI.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="41064:44913" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="41077:41195" ph="///   &lt;para&gt;Item for the current row being handled in TreeView.RowGUI.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="41234:41402" ph="///   &lt;para&gt;Label used for text rendering of the item displayName. Note this is an empty string when isRenaming = ... " />
+                <marker date="1561465372800" expanded="true" signature="41436:41539" ph="///   &lt;para&gt;Row rect for the current row being handled.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="41573:41673" ph="///   &lt;para&gt;Row index into the list of current rows.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="41702:41842" ph="///   &lt;para&gt;This value is true when the current row's item is part of the current selection.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="41877:42034" ph="///   &lt;para&gt;This value is true only when the TreeView has keyboard focus and the TreeView's window has focus.&lt;/pa ... " />
+                <marker date="1561465372800" expanded="true" signature="42068:42190" ph="///   &lt;para&gt;This value is true when the ::item is currently being renamed.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="42305:42511" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView use this method to get the number of visible columns cu ... " />
+                <marker date="1561465372800" expanded="true" signature="42551:42808" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="42816:43299" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView this method can be used to convert an index from the vi ... " />
+                <marker date="1561465372800" expanded="true" signature="43350:43620" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="43628:44119" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView this method can be used to get the cell rects of a row  ... " />
+                <marker date="1561465372800" expanded="true" signature="44173:44415" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="44457:44536" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="44575:44907" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="44777:44899" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="44919:45033" ph="///   &lt;para&gt;Method arguments for the HandleDragAndDrop virtual method.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="45070:45958" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="45083:45287" ph="///   &lt;para&gt;When dragging items the current drag can have the following 3 positions relative to the items: Upon a ... " />
+                <marker date="1561465372800" expanded="true" signature="45357:45508" ph="///   &lt;para&gt;The parent item is set if the drag is either upon this item or between two of its children.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="45553:45720" ph="///   &lt;para&gt;This index refers to the index in the children list of the parentItem where the current drag is posit ... " />
+                <marker date="1561465372800" expanded="true" signature="45759:45921" ph="///   &lt;para&gt;This value is false as long as the mouse button is down, when the mouse button is released it is true ... " />
+                <marker date="1561465372800" expanded="true" signature="45964:46076" ph="///   &lt;para&gt;Method arguments to the virtual method SetupDragAndDrop.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46118:46268" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="46131:46222" ph="///   &lt;para&gt;TreeViewItem IDs being dragged.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46274:46383" ph="///   &lt;para&gt;Method arguments for the CanStartDrag virtual method.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46421:46711" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="46434:46519" ph="///   &lt;para&gt;Item about to be dragged.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46565:46665" ph="///   &lt;para&gt;The multi-selection about to be dragged.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46717:46825" ph="///   &lt;para&gt;Method arguments for the virtual method RenameEnded.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="46862:47412" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="46875:46969" ph="///   &lt;para&gt;Is true if the rename is accepted.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47010:47106" ph="///   &lt;para&gt;Item with ID that are being renamed.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47138:47241" ph="///   &lt;para&gt;The original name when starting the rename.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47282:47377" ph="///   &lt;para&gt;Name entered in the rename overlay.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47418:47600" ph="///   &lt;para&gt;Enum describing the possible positions a drag can have relative to the items: upon a item, between tw ... " />
+                <marker date="1561465372800" expanded="true" signature="47639:48058" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="47652:47760" ph="///   &lt;para&gt;This value is used when the drag is upon a item.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47783:47894" ph="///   &lt;para&gt;This value is used when dragging between two items.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="47921:48032" ph="///   &lt;para&gt;This value is used when dragging outside all items.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="48129:51951" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="48286:48367" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="48408:48498" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="48537:49280" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="48710:48902" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="49320:49852" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="49405:49514" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="49928:50953" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="50361:50825" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="50479:50815" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="50557:50803" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="50604:50789" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51032:51166" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51244:51427" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51487:51561" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51627:51693" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51752:51815" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51884:51945" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="51957:52071" ph="///   &lt;para&gt;Default GUI methods and properties for the TreeView class.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="52106:56013" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="52119:52555" ph="///   &lt;para&gt;Draws a foldout label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="52647:52847" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="52855:53283" ph="///   &lt;para&gt;Draws a label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="53368:53561" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="53569:54011" ph="///   &lt;para&gt;Draws a right aligned label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="54108:54313" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="54321:54754" ph="///   &lt;para&gt;Draws a bold label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="54843:55040" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="55048:55495" ph="///   &lt;para&gt;Draws a bold right aligned label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="55629:55838" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="55885:56007" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="55905:55999" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="56019:56117" ph="///   &lt;para&gt;Default styles used by the TreeView class.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="56155:58609" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="56168:56341" ph="///   &lt;para&gt;Background style used for alternating row background colors when enabling TreeView.showAlternatingRow ... " />
+                <marker date="1561465372800" expanded="true" signature="56425:56598" ph="///   &lt;para&gt;Background style used for alternating row background colors when enabling TreeView.showAlternatingRow ... " />
+                <marker date="1561465372800" expanded="true" signature="56680:56838" ph="///   &lt;para&gt;The label that is used for foldout label with alternative text color when selected and/or focused.&lt;/p ... " />
+                <marker date="1561465372800" expanded="true" signature="56933:57069" ph="///   &lt;para&gt;Left aligned label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="57112:57249" ph="///   &lt;para&gt;Right aligend label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="57304:57432" ph="///   &lt;para&gt;Bold label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="57479:57621" ph="///   &lt;para&gt;Right aligned bold label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+                <marker date="1561465372800" expanded="true" signature="57703:58603" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="58671:60512" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="58817:58863" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59007:59209" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59097:59199" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59299:59466" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59390:59456" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59659:60139" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="59866:60129" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="60273:60506" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="60564:72638" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="60877:60999" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61060:61634" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61396:61626" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61712:61801" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61732:61793" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61892:62163" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="61912:62155" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="62209:62518" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="62556:62646" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="62576:62638" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="62689:63007" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="62709:62999" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="63232:65061" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="63432:64948" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="63516:63746" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="63801:64901" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="64274:64762" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="64542:64707" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="65122:65255" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="65338:65521" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="65604:66355" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="66439:66638" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="66717:66788" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="66830:67209" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="67249:67328" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="67373:67746" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="67529:67736" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="67810:68322" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="68377:68434" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="68554:70278" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="68735:68804" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="68817:70270" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="68932:69375" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="69614:70010" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="69882:69998" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="70050:70145" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="70160:70260" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="70437:70739" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="70790:71963" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="71186:71402" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="71570:71955" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="71608:71928" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="72096:72330" ph="{...}" />
+                <marker date="1561465372800" expanded="true" signature="72369:72632" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -178,8 +531,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+            <state relative-caret-position="336">
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
               <folding>
                 <marker date="1561387936003" expanded="true" signature="6:67" ph="..." />
                 <marker date="1561387936003" expanded="true" signature="109:876" ph="{...}" />
@@ -196,22 +549,25 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/IntegrationExample/NotIntegratedScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFIntegratorWindow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/IntegrationExample/Integrated/Etalon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/Mover.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/IntegrationExample/NotIntegratedScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/IntegrationExample/Integrated/Etalon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFPlayerPrefsBasedActionStorageSaver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/72B96408-F5F4-4500-A7D2-0BA120CB7F51/cc/4329fbaa/TreeViewController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/ATFInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorageSaver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/659CD5F0-C4CE-410C-B23A-6CADD71BB76F/b1/a1d3def5/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFRecorder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Integration/IATFIntegrator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Integration/ATFFileSystemBasedIntegrator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/72B96408-F5F4-4500-A7D2-0BA120CB7F51/a3/e9680215/TreeView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Example/Mover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Bedrin/DI/DependencyInjector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -240,10 +596,10 @@
         <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs" />
         <option value="$PROJECT_DIR$/Assets/ATF/Scripts/ATFInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" />
         <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs" />
-        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs" />
         <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs" />
+        <option value="$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs" />
       </list>
     </option>
   </component>
@@ -265,11 +621,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="UnityExplorer">
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
@@ -330,11 +686,12 @@
       <workItem from="1561105453759" duration="322000" />
       <workItem from="1561118834053" duration="3146000" />
       <workItem from="1561364935434" duration="11770000" />
+      <workItem from="1561460965307" duration="13089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19119000" />
+    <option name="totallyTimeSpent" value="32208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,7 +705,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07139052" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07192328" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,7 +718,7 @@
       <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Performance Profiler" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32977587" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Unit Tests" order="12" />
       <window_info anchor="bottom" id="Terminal" order="13" />
@@ -438,17 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorageSaver.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding>
-            <marker date="1561119224473" expanded="true" signature="67:506" ph="{...}" />
-            <marker date="1561119224473" expanded="true" signature="133:504" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFPlayerPrefsBasedActionStorageSaver.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -495,17 +841,6 @@
           <folding>
             <marker date="1561119217717" expanded="true" signature="29:100" ph="{...}" />
             <marker date="1561119217717" expanded="true" signature="55:98" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFRecorder.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
-          <folding>
-            <marker date="1561119259261" expanded="true" signature="30:750" ph="{...}" />
-            <marker date="1561119259261" expanded="true" signature="86:748" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -585,66 +920,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#217#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeViewWithTreeModel.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#194#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeView.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/Asset/ATFStorageActionTreeAsset.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/ATFStorageTreeElement.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElement.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeElementUtility.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeViewWithTreeModel.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/StorageTreeView/TreeDataModel/TreeModel.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFIntegratorWindow.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -699,122 +981,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1009">
-          <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
-          <folding>
-            <marker date="1561384176961" expanded="true" signature="6:98" ph="..." />
-            <marker date="1561384176961" expanded="true" signature="128:4238" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="180:4236" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="257:420" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="312:410" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="450:4230" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="556:4090" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="684:3917" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="1956:2930" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="2119:2223" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="2338:2442" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="2559:2666" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="2747:2850" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="3198:3289" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="3393:3483" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="3589:3682" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="3757:3846" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="3938:4076" ph="{...}" />
-            <marker date="1561384176961" expanded="true" signature="4107:4220" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1436">
-          <caret line="14" column="12" lean-forward="true" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <marker date="1561384360730" expanded="true" signature="6:197" ph="..." />
-            <marker date="1561384360730" expanded="true" signature="229:3240" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="340:3238" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="864:969" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1028:1090" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1124:1281" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1314:1362" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1397:1447" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1493:1544" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1588:1637" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1672:1730" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1768:1827" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="1861:2025" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2060:2143" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2201:2317" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2351:2474" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2507:2560" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2596:2650" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2682:2840" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2881:2937" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="2973:3024" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="3076:3133" ph="{...}" />
-            <marker date="1561384360730" expanded="true" signature="3180:3232" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
-          <folding>
-            <marker date="1561387627657" expanded="false" signature="6:246" ph="..." />
-            <marker date="1561387627657" expanded="true" signature="276:3188" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="327:3186" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="794:1209" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="1351:1709" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="1447:1520" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="1785:2049" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="2115:2236" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="2266:3180" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="2368:3040" ph="{...}" />
-            <marker date="1561387627657" expanded="true" signature="3057:3170" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="679">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding>
-            <marker date="1561388056378" expanded="false" signature="6:188" ph="..." />
-            <marker date="1561388056378" expanded="true" signature="218:2104" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="248:305" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="353:2102" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="614:777" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="830:1927" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="874:1829" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="978:1815" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="1107:1246" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="1389:1526" ph="{...}" />
-            <marker date="1561388056378" expanded="true" signature="1983:2096" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-          <folding>
-            <marker date="1561387936003" expanded="true" signature="6:67" ph="..." />
-            <marker date="1561387936003" expanded="true" signature="109:876" ph="{...}" />
-            <marker date="1561387936003" expanded="true" signature="170:874" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/ATFDictionaryBasedActionStorage.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="119" column="38" lean-forward="true" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
+        <state relative-caret-position="1530">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
           <folding>
             <marker date="1561388135426" expanded="false" signature="6:185" ph="..." />
             <marker date="1561388135426" expanded="true" signature="217:6309" ph="{...}" />
@@ -852,6 +1022,688 @@
             <marker date="1561388135426" expanded="true" signature="5810:5887" ph="{...}" />
             <marker date="1561388135426" expanded="true" signature="6070:6291" ph="{...}" />
             <marker date="1561388135426" expanded="true" signature="6184:6249" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFRecorderWindow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="102" column="45" selection-start-line="102" selection-start-column="45" selection-end-line="102" selection-end-column="45" />
+          <folding>
+            <marker date="1561384176961" expanded="true" signature="6:98" ph="..." />
+            <marker date="1561384176961" expanded="true" signature="128:4238" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="180:4236" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="257:420" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="312:410" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="450:4230" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="556:4090" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="684:3917" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="1956:2930" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="2119:2223" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="2338:2442" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="2559:2666" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="2747:2850" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="3198:3289" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="3393:3483" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="3589:3682" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="3757:3846" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="3938:4076" ph="{...}" />
+            <marker date="1561384176961" expanded="true" signature="4107:4220" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFRecorder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding>
+            <marker date="1561119259261" expanded="true" signature="30:750" ph="{...}" />
+            <marker date="1561119259261" expanded="true" signature="86:748" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/659CD5F0-C4CE-410C-B23A-6CADD71BB76F/b1/a1d3def5/List`1.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="227" column="16" selection-start-line="227" selection-start-column="16" selection-end-line="227" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding>
+            <marker date="1561387936003" expanded="true" signature="6:67" ph="..." />
+            <marker date="1561387936003" expanded="true" signature="109:876" ph="{...}" />
+            <marker date="1561387936003" expanded="true" signature="170:874" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Recorder/ATFQueueBasedRecorder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <marker date="1561384360730" expanded="true" signature="6:197" ph="..." />
+            <marker date="1561384360730" expanded="true" signature="229:3240" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="340:3238" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="864:969" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1028:1090" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1124:1281" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1314:1362" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1397:1447" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1493:1544" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1588:1637" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1672:1730" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1768:1827" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="1861:2025" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2060:2143" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2201:2317" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2351:2474" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2507:2560" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2596:2650" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2682:2840" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2881:2937" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="2973:3024" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="3076:3133" ph="{...}" />
+            <marker date="1561384360730" expanded="true" signature="3180:3232" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/72B96408-F5F4-4500-A7D2-0BA120CB7F51/cc/4329fbaa/TreeViewController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="988" column="76" selection-start-line="988" selection-start-column="53" selection-end-line="988" selection-end-column="76" />
+          <folding>
+            <marker date="1561470238710" expanded="true" signature="0:315" ph="/* Decompiled with JetBrains decompiler ... */" />
+            <marker date="1561470238710" expanded="false" signature="323:489" ph="..." />
+            <marker date="1561470238710" expanded="true" signature="527:37298" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="565:37296" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="1514:1680" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="2831:2910" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="2847:2904" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3059:3214" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3075:3136" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3146:3208" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3395:3815" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3859:3911" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3940:4041" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="3956:4035" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4069:4186" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4085:4180" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4228:4398" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4244:4392" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4442:4609" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4458:4603" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4641:5074" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4657:4713" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="4723:5068" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5105:5244" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5121:5174" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5184:5238" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5273:5346" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5289:5340" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5382:5444" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5476:5542" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5575:5634" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5664:5796" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="5887:5981" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="6113:6986" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="6153:6875" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="6438:6714" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="6555:6647" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="6886:6980" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7028:7077" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7223:7279" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7334:7391" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7418:7557" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7587:7691" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="7719:7945" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8006:8072" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8159:12177" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8376:12171" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8537:9875" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8691:8834" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="8851:9836" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="9092:9331" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="9350:9769" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="9921:10048" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="10378:11021" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="10818:11009" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="11465:11593" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="11750:12006" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12214:12265" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12320:12468" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12566:12707" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12744:12794" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12826:12869" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="12910:12953" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13018:13160" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13196:13319" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13212:13313" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13406:14447" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13460:13593" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="13604:14441" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="14036:14280" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="14504:17790" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="14933:15078" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="16064:16780" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="16106:16193" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="16206:16772" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="16319:16696" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="16977:17243" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="17860:18159" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="18287:19495" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="18467:19450" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="18548:18864" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="18677:18752" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="19120:19386" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="19542:20115" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="19887:20000" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="20187:20316" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="20370:20484" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="20572:21627" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="20652:21557" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="21117:21547" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="21719:21871" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="21918:22193" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="22074:22158" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="22278:22502" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="22541:24218" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="22581:24212" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="22721:22840" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="24245:24299" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="24346:25057" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="24586:24889" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25109:25272" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25338:25478" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25543:26103" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25576:25804" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25636:25796" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25697:25786" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25815:26097" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25922:26089" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="25990:26079" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26166:26421" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26269:26415" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26326:26407" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26477:26720" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26510:26583" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26594:26714" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="26786:27351" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27035:27125" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27136:27345" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27423:28240" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27507:27774" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27803:27911" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="27922:28234" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="28272:30793" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="28629:30787" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="28767:28843" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="29797:29950" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="30143:30295" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="30433:30509" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="30584:30738" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="30866:31026" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="30928:31003" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="31069:31267" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="31312:31697" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="31823:32177" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="31930:32121" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="32000:32113" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="32412:33140" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="33200:33322" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="33405:33565" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="33651:33923" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="33958:34119" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="34164:34221" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="34282:34856" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="34898:34994" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35068:35375" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35126:35308" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35429:35483" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35552:36385" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35608:35844" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="35712:35836" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36107:36379" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36412:36454" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36516:37292" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36737:36971" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36838:36963" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="36881:36953" ph="{...}" />
+            <marker date="1561470238710" expanded="true" signature="37009:37264" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageWindow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <marker date="1561464970916" expanded="false" signature="6:246" ph="..." />
+            <marker date="1561464970916" expanded="true" signature="276:3183" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="327:3181" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="794:1209" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="1351:1709" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="1447:1520" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="1785:2049" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="2115:2249" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="2279:3175" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="2381:3035" ph="{...}" />
+            <marker date="1561464970916" expanded="true" signature="3052:3165" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Storage/Interfaces/ATFActionStorageSaver.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding>
+            <marker date="1561119224473" expanded="true" signature="67:506" ph="{...}" />
+            <marker date="1561119224473" expanded="true" signature="133:504" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/72B96408-F5F4-4500-A7D2-0BA120CB7F51/a3/e9680215/TreeView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="871" column="40" selection-start-line="871" selection-start-column="40" selection-end-line="871" selection-end-column="40" />
+          <folding>
+            <marker date="1561465372800" expanded="true" signature="0:305" ph="/* Decompiled with JetBrains decompiler ... */" />
+            <marker date="1561465372800" expanded="false" signature="313:417" ph="..." />
+            <marker date="1561465372800" expanded="true" signature="455:72644" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="460:630" ph="///   &lt;para&gt;The TreeView is an IMGUI control that lets you create tree views, list views and multi-column tables  ... " />
+            <marker date="1561465372800" expanded="true" signature="663:72642" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="1109:1456" ph="///   &lt;para&gt;The TreeView is always constructed with a state object and optionally a multi-column header object if ... " />
+            <marker date="1561465372800" expanded="true" signature="1497:1533" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="1539:1886" ph="///   &lt;para&gt;The TreeView is always constructed with a state object and optionally a multi-column header object if ... " />
+            <marker date="1561465372800" expanded="true" signature="1964:2052" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="2058:2240" ph="///   &lt;para&gt;Register a callback to this field to override how the TreeView handles selection changes in response  ... " />
+            <marker date="1561465372800" expanded="true" signature="2311:2474" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="2327:2468" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="2480:2620" ph="///   &lt;para&gt;Register a callback to this property to override the Foldout button in the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="2735:4105" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="4111:4436" ph="///   &lt;para&gt;Abstract method that is required to be implemented. By default this method should create the full tre ... " />
+            <marker date="1561465372800" expanded="true" signature="4491:4837" ph="///   &lt;para&gt;Override this method to take control of how the rows are generated.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="4908:5301" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="5307:5472" ph="///   &lt;para&gt;Call this to force the TreeView to reload its data. This in turn causes BuildRoot and BuildRows to be ... " />
+            <marker date="1561465372800" expanded="true" signature="5497:5662" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="5668:5789" ph="///   &lt;para&gt;Request a repaint of the window that the TreeView is rendered in.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="5815:5860" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="5866:5988" ph="///   &lt;para&gt;The state of the TreeView (expanded state, selection, scroll etc.)&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="6019:6095" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6035:6089" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6101:6268" ph="///   &lt;para&gt;Get the MultiColumnHeader of the TreeView. Can be null if the TreeView was created without a MultiCol ... " />
+            <marker date="1561465372800" expanded="true" signature="6315:6462" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6331:6388" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6398:6456" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6468:6584" ph="///   &lt;para&gt;The hidden root item of the TreeView (it is never rendered).&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="6620:6700" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6636:6694" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6706:6875" ph="///   &lt;para&gt;The TreeView is initialized by calling Reload(). Therefore returns false until Reload() is called the ... " />
+            <marker date="1561465372800" expanded="true" signature="6908:6994" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="6924:6988" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7000:7099" ph="///   &lt;para&gt;The Rect the TreeView is being rendered to.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="7131:7287" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7147:7210" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7220:7281" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7293:7417" ph="///   &lt;para&gt;Indent used for all rows before the tree foldout arrows and content.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="7448:7593" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7464:7520" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7530:7587" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7599:7691" ph="///   &lt;para&gt;Width of the built-in foldout arrow.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="7724:7802" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7740:7796" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="7808:7999" ph="///   &lt;para&gt;Value to control the spacing before the default icon and label. Can be used e.g for placing a toggle  ... " />
+            <marker date="1561465372800" expanded="true" signature="8048:8225" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8064:8136" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8146:8219" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8231:8331" ph="///   &lt;para&gt;Custom vertical offset of the foldout arrow.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="8372:8533" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8388:8452" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8462:8527" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8539:8713" ph="///   &lt;para&gt;When using a MultiColumnHeader this value should be set to the column index in which the foldout arro ... " />
+            <marker date="1561465372800" expanded="true" signature="8758:9437" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8774:8844" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="8854:9431" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="9443:9575" ph="///   &lt;para&gt;When drawing the TreeView contents, will it be enclosed within a ScrollView?&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="9608:9765" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="9624:9686" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="9696:9759" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="9771:10168" ph="///   &lt;para&gt;Utility for multi column setups. This method will clip the input rowRect against the column rect defi ... " />
+            <marker date="1561465372800" expanded="true" signature="10228:10536" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="10542:10683" ph="///   &lt;para&gt;Value that returns how far the foldouts are indented for each increasing depth value.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="10720:10867" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="10736:10793" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="10803:10861" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="10873:10983" ph="///   &lt;para&gt;Enable this to show alternating row background colors.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="11052:11157" ph="///   &lt;para&gt;Enable this to show a border around the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="11207:11333" ph="///   &lt;para&gt;Returns true if the horizontal scroll bar is showing, otherwise false.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="11379:11476" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="11395:11470" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="11482:11606" ph="///   &lt;para&gt;Returns true if the vertical scroll bar is showing, otherwise false.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="11650:11745" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="11666:11739" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="11751:11928" ph="///   &lt;para&gt;When using a MultiColumnHeader this value adjusts the cell rects provided for all columns except the  ... " />
+            <marker date="1561465372800" expanded="true" signature="11959:12100" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="11975:12029" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12039:12094" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12106:12271" ph="///   &lt;para&gt;Returns the sum of the TreeView row heights, the MultiColumnHeader height (if used) and the border (i ... " />
+            <marker date="1561465372800" expanded="true" signature="12300:12435" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12316:12429" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12441:12595" ph="///   &lt;para&gt;The fixed height used for each row in the TreeView if GetCustomRowHeight have not been overridden.&lt;/p ... " />
+            <marker date="1561465372800" expanded="true" signature="12625:12816" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12641:12697" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12707:12810" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12822:12946" ph="///   &lt;para&gt;The controlID used by the TreeView to obtain keyboard control focus.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="12979:13132" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="12995:13055" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="13065:13126" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="13138:13288" ph="///   &lt;para&gt;True if the user is currently dragging one or more items in the TreeView, and false otherwise.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="13318:13399" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="13334:13393" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="13405:13599" ph="///   &lt;para&gt;Get the rect for a row.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="13638:13727" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="13733:13923" ph="///   &lt;para&gt;This is the list of TreeViewItems that have been built in BuildRows.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="13972:14103" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="14163:14329" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="14335:14761" ph="///   &lt;para&gt;Finds a TreeViewItem by an ID.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="14838:14913" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="15009:15106" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="15112:15211" ph="///   &lt;para&gt;Expand all collapsed items in the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="15239:15308" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="15314:15414" ph="///   &lt;para&gt;Collapse all expanded items in the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="15444:15505" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="15511:15751" ph="///   &lt;para&gt;Expand or collapse all items under item with id.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="15811:15886" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="15892:16275" ph="///   &lt;para&gt;Set a single TreeViewItem to be expanded or collapsed.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="16326:16396" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="16441:16513" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="16519:16732" ph="///   &lt;para&gt;Returns a list of TreeViewItem IDs that are currently expanded in the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="16768:16842" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="16848:17020" ph="///   &lt;para&gt;Returns true if the TreeViewItem with ID id is currently expanded.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="17055:17114" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17120:17217" ph="///   &lt;para&gt;The current search state of the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="17243:17338" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17259:17332" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17344:17438" ph="///   &lt;para&gt;Current search string of the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="17469:17624" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17485:17546" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17556:17618" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17630:17751" ph="///   &lt;para&gt;Returns the list of TreeViewItem IDs that are currently selected.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="17788:17858" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="17912:17993" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="18081:18586" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="18592:18764" ph="///   &lt;para&gt;Returns true if the TreeViewItem with ID id is currently selected.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="18799:18856" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="18862:18963" ph="///   &lt;para&gt;Returns true if the TreeView has a selection.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="18994:19051" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="19057:19183" ph="///   &lt;para&gt;Returns true if the TreeView and its EditorWindow have keyboard focus.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="19210:19263" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="19269:19390" ph="///   &lt;para&gt;Calling this function changes the keyboard focus to the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="19417:19542" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="19548:19761" ph="///   &lt;para&gt;Calling this function changes the keyboard focus to the TreeView and ensures an item is selected. Use ... " />
+            <marker date="1561465372800" expanded="true" signature="19809:20203" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="20064:20106" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="20209:20741" ph="///   &lt;para&gt;Use this method in RowGUI to peform the logic of a mouse click.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="20819:20895" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="20901:21281" ph="///   &lt;para&gt;Shows the rename overlay for a TreeViewItem.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="21328:21383" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="21389:21769" ph="///   &lt;para&gt;Shows the rename overlay for a TreeViewItem.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="21829:21891" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="21897:22079" ph="///   &lt;para&gt;Ends renaming if the rename overlay is shown. If called while the rename overlay is not being shown,  ... " />
+            <marker date="1561465372800" expanded="true" signature="22107:22149" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="22155:22391" ph="///   &lt;para&gt;This will reveal the item with ID id (by expanding the ancestors of that item) and will make sure it  ... " />
+            <marker date="1561465372800" expanded="true" signature="22425:22522" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="22556:22854" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="22643:22828" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="22860:23081" ph="///   &lt;para&gt;This is the main GUI method of the TreeView, where the TreeViewItems are processed and drawn.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="23122:23491" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="23497:23586" ph="///   &lt;para&gt;Selects all rows in the TreeView.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="23618:23932" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="23991:24566" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="24572:24883" ph="///   &lt;para&gt;Returns the horizontal foldout offset for an item. This is where the foldout arrow is rendered.&lt;/para ... " />
+            <marker date="1561465372800" expanded="true" signature="24939:24999" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="25005:25315" ph="///   &lt;para&gt;Returns the horizontal content offset for an item. This is where the content should begin (after the  ... " />
+            <marker date="1561465372800" expanded="true" signature="25371:25431" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="25495:25579" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="25646:25923" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="26004:26357" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="26453:26894" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="26963:26975" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="26981:27176" ph="///   &lt;para&gt;Override this method to handle single click events on an item.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="27229:27241" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="27247:27442" ph="///   &lt;para&gt;Override this method to handle double click events on an item.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="27495:27507" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="27513:27701" ph="///   &lt;para&gt;Override this method to handle a context click on an item with ID TreeViewItem.id.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="27755:27767" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="27773:27926" ph="///   &lt;para&gt;Override this method to handle context clicks outside any items (but still in the TreeView rect).&lt;/pa ... " />
+            <marker date="1561465372800" expanded="true" signature="27970:27982" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="27988:28174" ph="///   &lt;para&gt;Override to get notified when items are expanded or collapsed. This is a general notification that th ... " />
+            <marker date="1561465372800" expanded="true" signature="28224:28236" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="28242:28400" ph="///   &lt;para&gt;Override the method to get notified of search string changes.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="28459:28471" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="28477:28608" ph="///   &lt;para&gt;Override this method to handle events when the TreeView has keyboard focus.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="28646:28658" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="28664:28971" ph="///   &lt;para&gt;This method is e.g. used for revealing items that are currently under a collapsed item.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="29025:29204" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="29210:29475" ph="///   &lt;para&gt;Returns all descendants for the item with ID id that have children.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="29547:29726" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="29769:30333" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="30339:30554" ph="///   &lt;para&gt;Override this method to control whether the item can be part of a multiselection.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="30615:30646" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="30652:30901" ph="///   &lt;para&gt;Override this method to control whether the item can be renamed using a keyboard shortcut or when cli ... " />
+            <marker date="1561465372800" expanded="true" signature="30957:30989" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31060:31072" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31145:31177" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31258:31270" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31371:31424" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31430:31618" ph="///   &lt;para&gt;Override this method to control which items are allowed to be parents.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="31676:31707" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="31713:31934" ph="///   &lt;para&gt;Override this method to control whether an item can be expanded or collapsed by key or mouse.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="32003:32107" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="32113:32502" ph="///   &lt;para&gt;Override this function to extend or change the search behavior.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="32583:32683" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="32744:32794" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="32800:32912" ph="///   &lt;para&gt;This is called before any rows have their RowGUI called.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="32955:33080" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="33086:33197" ph="///   &lt;para&gt;This is called after all rows have their RowGUI called.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="33239:33251" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="33257:33405" ph="///   &lt;para&gt;Refreshes the cache of custom row rects based on the heights returned by GetCustomRowHeight.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="33458:33740" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="33746:34020" ph="///   &lt;para&gt;Override to control individual row heights.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="34095:34136" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="34142:34678" ph="///   &lt;para&gt;Override this method if custom GUI handling are used in RowGUI. This method for controls where the re ... " />
+            <marker date="1561465372800" expanded="true" signature="34761:34836" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="34842:35069" ph="///   &lt;para&gt;This function is called automatically and handles the ExecuteCommand events for “SelectAll” and “Fram ... " />
+            <marker date="1561465372800" expanded="true" signature="35119:35830" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="35400:35519" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="35604:35775" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="35949:36021" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="36027:36313" ph="///   &lt;para&gt;Utility method using the depth of the input TreeViewItem to set the correct depths for all its descen ... " />
+            <marker date="1561465372800" expanded="true" signature="36392:36456" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="36462:36627" ph="///   &lt;para&gt;Creates a dummy TreeViewItem list. Useful when overriding BuildRows to prevent building a full tree o ... " />
+            <marker date="1561465372800" expanded="true" signature="36703:36788" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="36877:36968" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="36974:37430" ph="///   &lt;para&gt;Callback signature used to override the TreeView foldout. See foldoutOverride.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="37531:38153" ph="///   &lt;para&gt;A callback which determines how TreeView handles selection changes in response to keys and mouse clic ... " />
+            <marker date="1561465372800" expanded="true" signature="38341:40923" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="38621:39210" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="39287:39678" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="39743:40917" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="39990:40349" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="40929:41032" ph="///   &lt;para&gt;Method arguments for the virtual method RowGUI.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="41064:44913" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="41077:41195" ph="///   &lt;para&gt;Item for the current row being handled in TreeView.RowGUI.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="41234:41402" ph="///   &lt;para&gt;Label used for text rendering of the item displayName. Note this is an empty string when isRenaming = ... " />
+            <marker date="1561465372800" expanded="true" signature="41436:41539" ph="///   &lt;para&gt;Row rect for the current row being handled.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="41573:41673" ph="///   &lt;para&gt;Row index into the list of current rows.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="41702:41842" ph="///   &lt;para&gt;This value is true when the current row's item is part of the current selection.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="41877:42034" ph="///   &lt;para&gt;This value is true only when the TreeView has keyboard focus and the TreeView's window has focus.&lt;/pa ... " />
+            <marker date="1561465372800" expanded="true" signature="42068:42190" ph="///   &lt;para&gt;This value is true when the ::item is currently being renamed.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="42305:42511" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView use this method to get the number of visible columns cu ... " />
+            <marker date="1561465372800" expanded="true" signature="42551:42808" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="42816:43299" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView this method can be used to convert an index from the vi ... " />
+            <marker date="1561465372800" expanded="true" signature="43350:43620" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="43628:44119" ph="///   &lt;para&gt;If using a MultiColumnHeader for the TreeView this method can be used to get the cell rects of a row  ... " />
+            <marker date="1561465372800" expanded="true" signature="44173:44415" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="44457:44536" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="44575:44907" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="44777:44899" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="44919:45033" ph="///   &lt;para&gt;Method arguments for the HandleDragAndDrop virtual method.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="45070:45958" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="45083:45287" ph="///   &lt;para&gt;When dragging items the current drag can have the following 3 positions relative to the items: Upon a ... " />
+            <marker date="1561465372800" expanded="true" signature="45357:45508" ph="///   &lt;para&gt;The parent item is set if the drag is either upon this item or between two of its children.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="45553:45720" ph="///   &lt;para&gt;This index refers to the index in the children list of the parentItem where the current drag is posit ... " />
+            <marker date="1561465372800" expanded="true" signature="45759:45921" ph="///   &lt;para&gt;This value is false as long as the mouse button is down, when the mouse button is released it is true ... " />
+            <marker date="1561465372800" expanded="true" signature="45964:46076" ph="///   &lt;para&gt;Method arguments to the virtual method SetupDragAndDrop.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46118:46268" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="46131:46222" ph="///   &lt;para&gt;TreeViewItem IDs being dragged.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46274:46383" ph="///   &lt;para&gt;Method arguments for the CanStartDrag virtual method.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46421:46711" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="46434:46519" ph="///   &lt;para&gt;Item about to be dragged.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46565:46665" ph="///   &lt;para&gt;The multi-selection about to be dragged.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46717:46825" ph="///   &lt;para&gt;Method arguments for the virtual method RenameEnded.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="46862:47412" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="46875:46969" ph="///   &lt;para&gt;Is true if the rename is accepted.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47010:47106" ph="///   &lt;para&gt;Item with ID that are being renamed.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47138:47241" ph="///   &lt;para&gt;The original name when starting the rename.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47282:47377" ph="///   &lt;para&gt;Name entered in the rename overlay.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47418:47600" ph="///   &lt;para&gt;Enum describing the possible positions a drag can have relative to the items: upon a item, between tw ... " />
+            <marker date="1561465372800" expanded="true" signature="47639:48058" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="47652:47760" ph="///   &lt;para&gt;This value is used when the drag is upon a item.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47783:47894" ph="///   &lt;para&gt;This value is used when dragging between two items.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="47921:48032" ph="///   &lt;para&gt;This value is used when dragging outside all items.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="48129:51951" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="48286:48367" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="48408:48498" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="48537:49280" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="48710:48902" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="49320:49852" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="49405:49514" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="49928:50953" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="50361:50825" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="50479:50815" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="50557:50803" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="50604:50789" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51032:51166" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51244:51427" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51487:51561" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51627:51693" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51752:51815" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51884:51945" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="51957:52071" ph="///   &lt;para&gt;Default GUI methods and properties for the TreeView class.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="52106:56013" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="52119:52555" ph="///   &lt;para&gt;Draws a foldout label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="52647:52847" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="52855:53283" ph="///   &lt;para&gt;Draws a label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="53368:53561" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="53569:54011" ph="///   &lt;para&gt;Draws a right aligned label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="54108:54313" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="54321:54754" ph="///   &lt;para&gt;Draws a bold label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="54843:55040" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="55048:55495" ph="///   &lt;para&gt;Draws a bold right aligned label that have correct text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="55629:55838" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="55885:56007" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="55905:55999" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="56019:56117" ph="///   &lt;para&gt;Default styles used by the TreeView class.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="56155:58609" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="56168:56341" ph="///   &lt;para&gt;Background style used for alternating row background colors when enabling TreeView.showAlternatingRow ... " />
+            <marker date="1561465372800" expanded="true" signature="56425:56598" ph="///   &lt;para&gt;Background style used for alternating row background colors when enabling TreeView.showAlternatingRow ... " />
+            <marker date="1561465372800" expanded="true" signature="56680:56838" ph="///   &lt;para&gt;The label that is used for foldout label with alternative text color when selected and/or focused.&lt;/p ... " />
+            <marker date="1561465372800" expanded="true" signature="56933:57069" ph="///   &lt;para&gt;Left aligned label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="57112:57249" ph="///   &lt;para&gt;Right aligend label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="57304:57432" ph="///   &lt;para&gt;Bold label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="57479:57621" ph="///   &lt;para&gt;Right aligned bold label with alternative text color when selected and/or focused.&lt;/para&gt; ... " />
+            <marker date="1561465372800" expanded="true" signature="57703:58603" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="58671:60512" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="58817:58863" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59007:59209" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59097:59199" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59299:59466" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59390:59456" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59659:60139" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="59866:60129" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="60273:60506" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="60564:72638" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="60877:60999" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61060:61634" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61396:61626" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61712:61801" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61732:61793" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61892:62163" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="61912:62155" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="62209:62518" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="62556:62646" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="62576:62638" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="62689:63007" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="62709:62999" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="63232:65061" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="63432:64948" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="63516:63746" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="63801:64901" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="64274:64762" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="64542:64707" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="65122:65255" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="65338:65521" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="65604:66355" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="66439:66638" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="66717:66788" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="66830:67209" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="67249:67328" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="67373:67746" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="67529:67736" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="67810:68322" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="68377:68434" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="68554:70278" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="68735:68804" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="68817:70270" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="68932:69375" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="69614:70010" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="69882:69998" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="70050:70145" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="70160:70260" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="70437:70739" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="70790:71963" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="71186:71402" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="71570:71955" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="71608:71928" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="72096:72330" ph="{...}" />
+            <marker date="1561465372800" expanded="true" signature="72369:72632" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ATF/Scripts/Editor/ATFStorageTreeView.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <folding>
+            <marker date="1561474702189" expanded="true" signature="6:207" ph="..." />
+            <marker date="1561474702189" expanded="true" signature="237:2838" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="267:324" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="372:2836" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="648:811" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="878:924" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="977:1022" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1059:1110" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1197:2517" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1241:2192" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1345:2178" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1472:1611" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="1752:1889" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="2209:2478" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="2594:2658" ph="{...}" />
+            <marker date="1561474702189" expanded="true" signature="2717:2829" ph="{...}" />
           </folding>
         </state>
       </provider>

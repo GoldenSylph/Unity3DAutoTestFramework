@@ -60,6 +60,7 @@ namespace ATF.Scripts.Editor
         {
             var rect = GUILayoutUtility.GetRect(0, 100000, 0, 100000);
             view.OnGUI(rect);
+            
         }
 
         private void OnGUI()
@@ -72,15 +73,13 @@ namespace ATF.Scripts.Editor
                     stateLoaded
                         ? $"Storage realisation: {storage.GetType().Name}"
                         : "Storage realisation: Waiting to focus...", EditorStyles.label);
-
                 if (!stateLoaded) return;
+                
                 DoToolbarFor(TreeViewForCurrent, SearchFieldForCurrent);
                 DoTreeViewFor(TreeViewForCurrent);
-                
-                
-                
                 DoToolbarFor(TreeViewForSaved, SearchFieldForSaved);
                 DoTreeViewFor(TreeViewForSaved);
+                
             }
             else
             {

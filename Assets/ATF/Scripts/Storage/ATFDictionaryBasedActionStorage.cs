@@ -6,9 +6,18 @@ using Bedrin.DI;
 using Bedrin.Helper;
 using UnityEditor.IMGUI.Controls;
 
-
 namespace ATF.Scripts.Storage
 {
+    public class ATFIdHelper
+    {
+        private static int _idCounter;
+        
+        public static int GetNewId()
+        {
+            return ++_idCounter;
+        }
+    }
+    
     [Injectable]
     public class ATFDictionaryBasedActionStorage : MonoSingleton<ATFDictionaryBasedActionStorage>, IATFActionStorage
     {
@@ -34,10 +43,9 @@ namespace ATF.Scripts.Storage
                 if (Recorder.IsPlaying() && !Recorder.IsPlayPaused())
                 {
                     return PlayStorage[kind].Dequeue().content;
-                } else
-                {
-                    return PlayStorage[kind].Peek().content;
                 }
+
+                return PlayStorage[kind].Peek().content;
             } catch (Exception)
             {
                 if (DependencyInjector.DebugOn) print("Clearing play cache");
@@ -78,14 +86,9 @@ namespace ATF.Scripts.Storage
 
         public bool PrepareToPlayRecord(string recordName)
         {
-            if (ActionStorage.ContainsKey(recordName))
-            {
-                PlayStorage = ReturnNewCopyOf(ActionStorage[recordName]);
-                return true;
-            } else
-            {
-                return false;
-            }
+            if (!ActionStorage.ContainsKey(recordName)) return false;
+            PlayStorage = ReturnNewCopyOf(ActionStorage[recordName]);
+            return true;
         }
 
         public void ClearPlayStorage()
@@ -127,12 +130,32 @@ namespace ATF.Scripts.Storage
 
         public List<TreeViewItem> GetCurrentRecordNames()
         {
-            throw new NotImplementedException();
+            var result = new List<TreeViewItem>();
+            foreach (var key in ActionStorage.Keys)
+            {
+                result.Add(new TreeViewItem
+                {
+                    id = ATFIdHelper.GetNewId(),
+                    depth = 0,
+                    displayName = key
+                });
+            }
+            return result;
         }
 
         public List<TreeViewItem> GetCurrentActions(string recordName)
         {
-            throw new NotImplementedException();
+            var result = new List<TreeViewItem>();
+            foreach (var pair in ActionStorage[recordName])
+            {
+                result.Add(new TreeViewItem
+                {
+                    id = ATFIdHelper.GetNewId(),
+                    depth = 0,
+                    displayName = pair.
+                });
+            }
+            return result;
         }
 
         public List<TreeViewItem> GetSavedActions(string recordName)

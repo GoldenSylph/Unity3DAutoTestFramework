@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEditor.IMGUI.Controls;
 using ATF.Scripts.Storage.Interfaces;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using ATF.Scripts.Storage;
 
 namespace ATF.Scripts.Editor
 {
@@ -19,29 +21,25 @@ namespace ATF.Scripts.Editor
         private List<TreeViewItem> AllItems;
         private readonly TreeViewItem Root;
         
+        private const string DoubleClickToLoad = "Double click to load...";
+        private const string NoSavedActions = "There is no saved actions.";
+        private const string NoCurrentActions = "There is no current actions.";
+
         public ATFStorageTreeView(TreePurpose treePurpose, TreeViewState treeViewState)
             : base(treeViewState)
         {
             TreePurpose = treePurpose;
-            Root = new TreeViewItem { id = 0, depth = -1, displayName = "Root" };
+            Root = new TreeViewItem {id = 0, depth = -1, displayName = "Root"};
             Reload();
-        }
-
-        protected override bool CanMultiSelect(TreeViewItem item)
-        {
-            return false;
         }
 
         protected override TreeViewItem BuildRoot()
         {
+            var rootChildren = UpdateParentItems(null);
+            SetupParentsAndChildrenFromDepths(Root, rootChildren);
             return Root;
         }
 
-        public void ClearAllItems()
-        {
-            AllItems?.Clear();
-        }
-        
         public List<TreeViewItem> UpdateParentItems(List<TreeViewItem> items)
         {
             if (AllItems == null)
@@ -51,15 +49,17 @@ namespace ATF.Scripts.Editor
                 {
                     case TreePurpose.TO_DRAW_CURRENT:
                         AllItems.Add(new TreeViewItem {
+                            id = ATFIdHelper.GetNewId(),
                             depth = 0,
-                            displayName = "There is no current actions."
+                            displayName = NoCurrentActions
                         });
                         break;
 
                     case TreePurpose.TO_DRAW_SAVED:
                         AllItems.Add(new TreeViewItem {
+                            id = ATFIdHelper.GetNewId(),
                             depth = 0,
-                            displayName = "There is no saved actions."
+                            displayName = NoSavedActions
                         });
                         break;
 
@@ -73,22 +73,58 @@ namespace ATF.Scripts.Editor
             else
             {
                 if (items == null || AllItems.Intersect(items).Count() == AllItems.Count) return AllItems;
-                items.ForEach(item => item.children = CreateChildListForCollapsedParent());
+                items.ForEach(item => item.children = new List<TreeViewItem>
+                {
+                    new TreeViewItem
+                    {
+                        id = ATFIdHelper.GetNewId(),
+                        displayName = DoubleClickToLoad
+                    }
+                });
                 AllItems.AddRange(items);
             }
-            return AllItems;
-        }
 
-        protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
-        {
-            return UpdateParentItems(null);
+            return AllItems;
         }
 
         protected override void DoubleClickedItem(int id)
         {
-            Debug.Log($"double clicked item {id}");
-            base.DoubleClickedItem(id);
+            Debug.Log($"Double clicked {id}");
+            var clickedItem = FindItem(id, Root);
+            if (clickedItem == null || !clickedItem.displayName.Equals(DoubleClickToLoad) 
+                                    || clickedItem.displayName.Equals(NoSavedActions) 
+                                    || clickedItem.displayName.Equals(NoCurrentActions)
+                                    || clickedItem.depth == 0) return;
+            var clickedItemParent = clickedItem.parent;
+            clickedItemParent.children.Clear();
+            Debug.Log($"Loading for parent ({clickedItemParent})");
         }
 
+        protected override void ContextClickedItem(int id)
+        {
+            Debug.Log($"Clicked {id}");
+            var clickedItem = FindItem(id, Root);
+            if (clickedItem == null || clickedItem.depth > 0
+                                    || clickedItem.displayName.Equals(DoubleClickToLoad) 
+                                    || clickedItem.displayName.Equals(NoSavedActions) 
+                                    || clickedItem.displayName.Equals(NoCurrentActions)) return;
+            switch (TreePurpose)
+            {
+                case TreePurpose.TO_DRAW_SAVED:
+                    //Load to current
+                    Debug.Log($"Loading to current tree view {id}");
+                    break;
+                    
+                case TreePurpose.TO_DRAW_CURRENT:
+                    Debug.Log($"Loading to recorder {id}");
+                    break;
+                
+                case TreePurpose.NONE:
+                    throw new System.ArgumentOutOfRangeException();
+                default:
+                    throw new System.ArgumentOutOfRangeException();
+                    
+            }
+        }
     }
 }

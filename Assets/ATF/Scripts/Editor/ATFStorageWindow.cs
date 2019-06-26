@@ -24,6 +24,8 @@ namespace ATF.Scripts.Editor
         private ATFStorageTreeView TreeViewForSaved;
         private SearchField SearchFieldForSaved;
 
+        private string NameOfTheCurrentRecord;
+
         
         public IATFActionStorage storage;
 
@@ -31,6 +33,7 @@ namespace ATF.Scripts.Editor
         {
             if (!EditorApplication.isPlaying) return;
             storage = FindObjectOfType<ATFDictionaryBasedActionStorage>();
+            NameOfTheCurrentRecord = "DefaultRecord";
             InitTreeViewOf(ref TreeViewForCurrent, ref SearchFieldForCurrent, ref treeViewStateForCurrent, TreePurpose.TO_DRAW_CURRENT);
             InitTreeViewOf(ref TreeViewForSaved, ref SearchFieldForSaved, ref treeViewStateForSaved, TreePurpose.TO_DRAW_SAVED);
         }
@@ -74,6 +77,25 @@ namespace ATF.Scripts.Editor
                         ? $"Storage realisation: {storage.GetType().Name}"
                         : "Storage realisation: Waiting to focus...", EditorStyles.label);
                 if (!stateLoaded) return;
+                
+                GUILayout.Label("Save/Load control", EditorStyles.boldLabel);
+                NameOfTheCurrentRecord = EditorGUILayout.TextField("Record to load:", NameOfTheCurrentRecord);
+                GUILayout.Label($"Current recording name: {NameOfTheCurrentRecord}", EditorStyles.label);
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Save"))
+                {
+                    storage.SaveStorage(NameOfTheCurrentRecord);
+                }
+                if (GUILayout.Button("Load"))
+                {
+                    storage.LoadStorage(NameOfTheCurrentRecord);
+                }
+                if (GUILayout.Button("Scrap"))
+                {
+                    storage.ScrapSavedStorage(NameOfTheCurrentRecord);
+                }
+                EditorGUILayout.EndHorizontal();
+                
                 
                 DoToolbarFor(TreeViewForCurrent, SearchFieldForCurrent);
                 DoTreeViewFor(TreeViewForCurrent);

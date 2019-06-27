@@ -59,10 +59,24 @@ namespace ATF.Scripts.Editor
             GUILayout.EndHorizontal();
         }
         
-        private static void DoTreeViewFor(TreeView view)
+        private static void DoTreeViewFor(ATFStorageTreeView view, IATFActionStorage storage)
         {
             var rect = GUILayoutUtility.GetRect(0, 100000, 0, 100000);
             view.OnGUI(rect);
+            switch (view.TreePurpose)
+            {
+                case TreePurpose.TO_DRAW_CURRENT:
+                    view.UpdateItems(storage.GetCurrentRecordNames());
+                    break;
+                case TreePurpose.TO_DRAW_SAVED:
+                    view.UpdateItems(storage.GetSavedRecordNames());
+                    break;
+                case TreePurpose.NONE:
+                    throw new ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            view.Reload();
             
         }
 
@@ -96,11 +110,10 @@ namespace ATF.Scripts.Editor
                 }
                 EditorGUILayout.EndHorizontal();
                 
-                
                 DoToolbarFor(TreeViewForCurrent, SearchFieldForCurrent);
-                DoTreeViewFor(TreeViewForCurrent);
+                DoTreeViewFor(TreeViewForCurrent, storage);
                 DoToolbarFor(TreeViewForSaved, SearchFieldForSaved);
-                DoTreeViewFor(TreeViewForSaved);
+                DoTreeViewFor(TreeViewForSaved, storage);
                 
             }
             else

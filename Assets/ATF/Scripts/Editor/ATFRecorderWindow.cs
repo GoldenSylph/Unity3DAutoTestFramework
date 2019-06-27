@@ -44,7 +44,10 @@ namespace ATF.Scripts.Editor
                     EditorGUILayout.EndHorizontal();
 
                     GUILayout.Label("Recording control", EditorStyles.boldLabel);
-                    recorder.SetCurrentRecordingName(EditorGUILayout.TextField("Name of the recording", recorder.GetCurrentRecordingName()));
+                    if (!recorder.IsPlaying() && !recorder.IsRecording())
+                    {
+                        recorder.SetCurrentRecordingName(EditorGUILayout.TextField("Name of the recording", recorder.GetCurrentRecordingName()));
+                    }
                     GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordingName()}", EditorStyles.label);
 
                     if (!recorder.IsPlaying())

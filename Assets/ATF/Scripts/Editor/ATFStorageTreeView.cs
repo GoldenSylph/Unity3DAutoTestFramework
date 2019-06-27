@@ -17,7 +17,8 @@ namespace ATF.Scripts.Editor
 
     public class ATFStorageTreeView : TreeView
     {
-        private readonly TreePurpose TreePurpose;
+        public readonly TreePurpose TreePurpose;
+        
         private List<TreeViewItem> AllItems;
         private readonly TreeViewItem Root;
         
@@ -30,65 +31,74 @@ namespace ATF.Scripts.Editor
         {
             TreePurpose = treePurpose;
             Root = new TreeViewItem {id = 0, depth = -1, displayName = "Root"};
+            InitializeAllItems();
             Reload();
         }
 
         protected override TreeViewItem BuildRoot()
         {
-            var rootChildren = UpdateParentItems(null);
-            SetupParentsAndChildrenFromDepths(Root, rootChildren);
+            SetupParentsAndChildrenFromDepths(Root, AllItems);
             return Root;
         }
 
-        public List<TreeViewItem> UpdateParentItems(List<TreeViewItem> items)
+        private void InitializeAllItems()
         {
-            if (AllItems == null)
+            AllItems = new List<TreeViewItem>();
+            switch (TreePurpose)
             {
-                AllItems = new List<TreeViewItem>();
-                switch (TreePurpose)
-                {
-                    case TreePurpose.TO_DRAW_CURRENT:
-                        AllItems.Add(new TreeViewItem {
-                            id = ATFIdHelper.GetNewId(),
-                            depth = 0,
-                            displayName = NoCurrentActions
-                        });
-                        break;
+                case TreePurpose.TO_DRAW_CURRENT:
+                    AllItems.Add(new TreeViewItem {
+                        id = ATFIdHelper.GetNewId(NoCurrentActions),
+                        depth = 0,
+                        displayName = NoCurrentActions
+                    });
+                    break;
 
-                    case TreePurpose.TO_DRAW_SAVED:
-                        AllItems.Add(new TreeViewItem {
-                            id = ATFIdHelper.GetNewId(),
-                            depth = 0,
-                            displayName = NoSavedActions
-                        });
-                        break;
+                case TreePurpose.TO_DRAW_SAVED:
+                    AllItems.Add(new TreeViewItem {
+                        id = ATFIdHelper.GetNewId(NoSavedActions),
+                        depth = 0,
+                        displayName = NoSavedActions
+                    });
+                    break;
 
-                    case TreePurpose.NONE:
-                        throw new System.ArgumentOutOfRangeException();
-                    
-                    default:
-                        throw new System.ArgumentOutOfRangeException();
-                }
+                case TreePurpose.NONE:
+                    throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
+                
+                default:
+                    throw new System.ArgumentOutOfRangeException();
             }
-            else
+        }
+        
+        public void UpdateItems(List<TreeViewItem> items)
+        {
+            if (items == null) return;
+            AllItems.RemoveAll(item => item.displayName.Equals(NoCurrentActions) || item.displayName.Equals(NoSavedActions));
+            if (!AllItems.Except(items).Any() && items.TrueForAll(item => item.depth == 0))
             {
-                if (items == null || AllItems.Intersect(items).Count() == AllItems.Count) return AllItems;
+                Debug.Log("in first");
                 items.ForEach(item => item.children = new List<TreeViewItem>
                 {
                     new TreeViewItem
                     {
-                        id = ATFIdHelper.GetNewId(),
+                        id = ATFIdHelper.GetNewId(null),
                         displayName = DoubleClickToLoad
                     }
                 });
-                AllItems.AddRange(items);
+                AllItems = items;
             }
-
-            return AllItems;
+            if (items[0].id == -2 && items.Skip(1).All(item => item.depth > 0))
+            {
+                var parentIdx = AllItems.FindIndex(item => item.displayName.Equals(items[0].displayName));
+                AllItems[parentIdx].children = items.Skip(1) as List<TreeViewItem>;
+                SetupParentsAndChildrenFromDepths(AllItems[parentIdx], AllItems[parentIdx].children);
+            }
+            Reload();
         }
 
         protected override void DoubleClickedItem(int id)
         {
+            if (TreePurpose != TreePurpose.TO_DRAW_SAVED) return;
             Debug.Log($"Double clicked {id}");
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || !clickedItem.displayName.Equals(DoubleClickToLoad) 
@@ -98,6 +108,7 @@ namespace ATF.Scripts.Editor
             var clickedItemParent = clickedItem.parent;
             clickedItemParent.children.Clear();
             Debug.Log($"Loading for parent ({clickedItemParent})");
+            Reload();
         }
 
         protected override void ContextClickedItem(int id)
@@ -120,7 +131,7 @@ namespace ATF.Scripts.Editor
                     break;
                 
                 case TreePurpose.NONE:
-                    throw new System.ArgumentOutOfRangeException();
+                    throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
                 default:
                     throw new System.ArgumentOutOfRangeException();
                     

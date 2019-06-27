@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ATF.Scripts.Storage.Interfaces;
 using Bedrin.Helper;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Action = ATF.Scripts.Storage.Action;
 
 namespace ATF.Scripts.Storage
@@ -12,40 +13,33 @@ namespace ATF.Scripts.Storage
     {
 
         [Serializable]
-        private class FirstSlotDTO
+        private class FirstSlotDto
         {
-            public Dictionary<string, Dictionary<FakeInput, Queue<Action>>> FirstSlot;
+            public Dictionary<string, Dictionary<FakeInput, Queue<Action>>> firstSlot;
         }
 
         [Serializable]
-        private class SecondSlotDTO
+        private class SecondSlotDto
         {
-            public string RecordName;
-            public Dictionary<FakeInput, Queue<Action>> SecondSlot;
+            public string recordName;
+            public Dictionary<FakeInput, Queue<Action>> secondSlot;
         }
 
         [Header("Debug Settings")]
         [SerializeField]
-        private string AllRecordsCodeName;
+        private string allRecordsCodeName;
 
         [SerializeField]
-        private string CurrentRecordName;
+        private string currentRecordName;
 
-        private FirstSlotDTO FirstSlotDTOToSerialize;
-        private SecondSlotDTO SecondSlotDTOToSerialize;
+        private FirstSlotDto FirstSlotDtoToSerialize;
+        private SecondSlotDto SecondSlotDtoToSerialize;
         
         private T IfCurrentRecordNameEqualsToCodeAndNotNull<T>(Func<T> thenDo, Func<T> elseDo, Func<T> ifNullDo)
         {
             if (GetRecordName() != null)
             {
-                if (GetRecordName().Equals(AllRecordsCodeName))
-                {
-                    return thenDo();
-                }
-                else
-                {
-                    return elseDo();
-                }
+                return GetRecordName().Equals(allRecordsCodeName) ? thenDo() : elseDo();
             }
             else
             {
@@ -58,11 +52,11 @@ namespace ATF.Scripts.Storage
             return IfCurrentRecordNameEqualsToCodeAndNotNull<IEnumerable>(
                 () => {
                     LoadAll();
-                    return FirstSlotDTOToSerialize.FirstSlot;
+                    return FirstSlotDtoToSerialize?.firstSlot;
                 },
                 () => {
                     LoadRecord();
-                    return SecondSlotDTOToSerialize.SecondSlot;
+                    return SecondSlotDtoToSerialize?.secondSlot;
                 },
                 () => null
             );
@@ -70,52 +64,52 @@ namespace ATF.Scripts.Storage
 
         public string GetRecordName()
         {
-            return CurrentRecordName;
+            return currentRecordName;
         }
 
         public void Initialize()
         {
-            AllRecordsCodeName = "__ALL__";
+            allRecordsCodeName = "__ALL__";
         }
 
         public void LoadAll()
         {
-            FirstSlotDTOToSerialize = JsonUtility.FromJson<FirstSlotDTO>(PlayerPrefs.GetString(AllRecordsCodeName));
+            FirstSlotDtoToSerialize = JsonUtility.FromJson<FirstSlotDto>(PlayerPrefs.GetString(allRecordsCodeName));
         }
 
         public void LoadRecord()
         {
-            SecondSlotDTOToSerialize = JsonUtility.FromJson<SecondSlotDTO>(PlayerPrefs.GetString(GetRecordName()));
+            SecondSlotDtoToSerialize = JsonUtility.FromJson<SecondSlotDto>(PlayerPrefs.GetString(GetRecordName()));
         }
 
         public void SaveAll()
         {
-            PlayerPrefs.SetString(AllRecordsCodeName, JsonUtility.ToJson(FirstSlotDTOToSerialize));
+            PlayerPrefs.SetString(allRecordsCodeName, JsonUtility.ToJson(FirstSlotDtoToSerialize));
         }
 
         public void SaveRecord()
         {
-            PlayerPrefs.SetString(GetRecordName(), JsonUtility.ToJson(SecondSlotDTOToSerialize));
+            PlayerPrefs.SetString(GetRecordName(), JsonUtility.ToJson(SecondSlotDtoToSerialize));
         }
 
         public void SetActions(IEnumerable actionEnumerable)
         {
             IfCurrentRecordNameEqualsToCodeAndNotNull<object>(
                 () => {
-                    FirstSlotDTOToSerialize = new FirstSlotDTO()
+                    FirstSlotDtoToSerialize = new FirstSlotDto()
                     {
-                        FirstSlot = ATFDictionaryBasedActionStorage
+                        firstSlot = ATFDictionaryBasedActionStorage
                                 .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)
                     };
                     SaveAll();
                     return null;
                 },
                 () => {
-                    SecondSlotDTOToSerialize = new SecondSlotDTO()
+                    SecondSlotDtoToSerialize = new SecondSlotDto()
                     {
-                        SecondSlot = ATFDictionaryBasedActionStorage
-                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)[GetRecordName()]),
-                        RecordName = GetRecordName()
+                        secondSlot = ATFDictionaryBasedActionStorage
+                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)?[GetRecordName()]),
+                        recordName = GetRecordName()
                     };
                     SaveRecord();
                     return null;
@@ -126,7 +120,7 @@ namespace ATF.Scripts.Storage
 
         public void SetRecordName(string recordName)
         {
-            CurrentRecordName = recordName;
+            currentRecordName = recordName;
         }
 
         public void ScrapRecord()
@@ -136,7 +130,7 @@ namespace ATF.Scripts.Storage
 
         public void ScrapAll()
         {
-            PlayerPrefs.DeleteKey(AllRecordsCodeName);
+            PlayerPrefs.DeleteKey(allRecordsCodeName);
         }
 
         public void ScrapSavedActions()

@@ -1,20 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
 using Bedrin.Helper;
 using UnityEditor.IMGUI.Controls;
+using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Storage
 {
-    public class ATFIdHelper
+    public static class ATFIdHelper
     {
         private static int _idCounter;
+        private static Dictionary<string, int> _ids;        
         
-        public static int GetNewId()
+        public static int GetNewId(string displayName)
         {
-            return ++_idCounter;
+            if (_ids == null)
+            {
+                _ids = new Dictionary<string, int>();
+            }
+
+            if (displayName == null)
+            {
+                return ++_idCounter;
+            }
+            
+            if (_ids.ContainsKey(displayName))
+            {
+                return _ids[displayName];
+            }
+
+            _ids[displayName] = ++_idCounter;
+            return _ids[displayName];
         }
     }
     
@@ -23,10 +42,10 @@ namespace ATF.Scripts.Storage
     {
 
         [Inject(typeof(ATFQueueBasedRecorder))]
-        public static readonly IATFRecorder Recorder;
+        public IATFRecorder recorder;
 
         [Inject(typeof(ATFPlayerPrefsBasedActionStorageSaver))]
-        public static readonly IATFActionStorageSaver Saver;
+        public IATFActionStorageSaver saver;
 
         private Dictionary<string, Dictionary<FakeInput, Queue<Action>>> ActionStorage;
         private Dictionary<FakeInput, Queue<Action>> PlayStorage;
@@ -40,7 +59,7 @@ namespace ATF.Scripts.Storage
                 {
                     print($"Action to deliver remain: {PlayStorage[kind].Count}");
                 }
-                if (Recorder.IsPlaying() && !Recorder.IsPlayPaused())
+                if (recorder.IsPlaying() && !recorder.IsPlayPaused())
                 {
                     return PlayStorage[kind].Dequeue().content;
                 }
@@ -49,7 +68,7 @@ namespace ATF.Scripts.Storage
             } catch (Exception)
             {
                 if (DependencyInjector.DebugOn) print("Clearing play cache");
-                Recorder.StopPlay();
+                recorder.StopPlay();
                 ClearPlayStorage();
             }
             return null;
@@ -98,8 +117,8 @@ namespace ATF.Scripts.Storage
 
         public void LoadStorage(string recordName)
         {
-            Saver.SetRecordName(recordName);
-            var loadedData = Saver.GetActions();
+            saver.SetRecordName(recordName);
+            var loadedData = saver.GetActions();
             switch (loadedData)
             {
                 case Dictionary<string, Dictionary<FakeInput, Queue<Action>>> data:
@@ -113,19 +132,19 @@ namespace ATF.Scripts.Storage
 
         public void SaveStorage(string recordName)
         {
-            Saver.SetRecordName(recordName);
-            Saver.SetActions(ActionStorage);
+            saver.SetRecordName(recordName);
+            saver.SetActions(ActionStorage);
         }
 
         public void ScrapSavedStorage(string recordName)
         {
-            Saver.SetRecordName(recordName);
-            Saver.ScrapSavedActions();
+            saver.SetRecordName(recordName);
+            saver.ScrapSavedActions();
         }
 
         public List<TreeViewItem> GetSavedRecordNames()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public List<TreeViewItem> GetCurrentRecordNames()
@@ -135,37 +154,59 @@ namespace ATF.Scripts.Storage
             {
                 result.Add(new TreeViewItem
                 {
-                    id = ATFIdHelper.GetNewId(),
+                    id = ATFIdHelper.GetNewId(key),
                     depth = 0,
                     displayName = key
                 });
             }
-            return result;
+            return result.Count == 0 ? null : result;
         }
 
         public List<TreeViewItem> GetCurrentActions(string recordName)
         {
             var result = new List<TreeViewItem>();
+            if (!ActionStorage.ContainsKey(recordName)) return null;
+            result.Add(new TreeViewItem
+            {
+                id = -2,
+                depth = 0,
+                displayName = recordName
+            });
             foreach (var pair in ActionStorage[recordName])
             {
-                result.Add(new TreeViewItem
+                var rootFakeInput = new TreeViewItem
                 {
-                    id = ATFIdHelper.GetNewId(),
-                    depth = 0,
-                    displayName = pair.
-                });
+                    id = ATFIdHelper.GetNewId(pair.Key.ToString()),
+                    depth = 1,
+                    displayName = pair.Key.ToString()
+                };
+                var childrenActions = new List<TreeViewItem>();
+                foreach (var action in pair.Value)
+                {
+                    var actionTreeViewItem = new TreeViewItem
+                    {
+                        id = ATFIdHelper.GetNewId(action.content.ToString()),
+                        depth = 2,
+                        displayName = action.content.ToString()
+                    };
+                    rootFakeInput.AddChild(actionTreeViewItem);
+                    childrenActions.Add(actionTreeViewItem);
+                }
+                result.Add(rootFakeInput);
+                result.AddRange(childrenActions);
             }
             return result;
         }
 
         public List<TreeViewItem> GetSavedActions(string recordName)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public static Dictionary<FakeInput, Queue<Action>> ReturnNewCopyOf(Dictionary<FakeInput, Queue<Action>> etalon)
         {
             var result = new Dictionary<FakeInput, Queue<Action>>();
+            if (etalon == null) return result;
             foreach (var fi in etalon.Keys)
             {
                 foreach (var q in etalon.Values)

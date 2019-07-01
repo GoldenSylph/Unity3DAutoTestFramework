@@ -55,7 +55,7 @@ namespace ATF.Scripts.Storage
             if (kind == FakeInput.NONE || PlayStorage == null || !PlayStorage.ContainsKey(kind)) return null;
             try
             {
-                if (DependencyInjector.DebugOn)
+                if (DependencyInjector.DEBUG_ON)
                 {
                     print($"Action to deliver remain: {PlayStorage[kind].Count}");
                 }
@@ -67,7 +67,7 @@ namespace ATF.Scripts.Storage
                 return PlayStorage[kind].Peek().content;
             } catch (Exception)
             {
-                if (DependencyInjector.DebugOn) print("Clearing play cache");
+                if (DependencyInjector.DEBUG_ON) print("Clearing play cache");
                 recorder.StopPlay();
                 ClearPlayStorage();
             }

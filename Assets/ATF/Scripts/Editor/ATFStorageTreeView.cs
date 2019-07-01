@@ -69,12 +69,17 @@ namespace ATF.Scripts.Editor
                     throw new System.ArgumentOutOfRangeException();
             }
         }
+
+        private static bool ContainsAll<T>(IEnumerable<T> a, IEnumerable<T> b)
+        {
+            return b.Aggregate(true, (current, elB) => current && a.Contains(elB));
+        }
         
         public void UpdateItems(List<TreeViewItem> items)
         {
             if (items == null) return;
             AllItems.RemoveAll(item => item.displayName.Equals(NoCurrentActions) || item.displayName.Equals(NoSavedActions));
-            if (!AllItems.Except(items).Any() && items.TrueForAll(item => item.depth == 0))
+            if (items.TrueForAll(item => item.depth == 0 && item.children == null))
             {
                 Debug.Log("in first");
                 items.ForEach(item => item.children = new List<TreeViewItem>

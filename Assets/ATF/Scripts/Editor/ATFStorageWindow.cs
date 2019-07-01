@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
 using UnityEditor;
@@ -26,13 +27,14 @@ namespace ATF.Scripts.Editor
 
         private string NameOfTheCurrentRecord;
 
-        
         public IATFActionStorage storage;
+        public IATFRecorder recorder;
 
         private void OnFocus()
         {
             if (!EditorApplication.isPlaying) return;
             storage = FindObjectOfType<ATFDictionaryBasedActionStorage>();
+            recorder = FindObjectOfType<ATFQueueBasedRecorder>();
             NameOfTheCurrentRecord = "DefaultRecord";
             InitTreeViewOf(ref TreeViewForCurrent, ref SearchFieldForCurrent, ref treeViewStateForCurrent, TreePurpose.TO_DRAW_CURRENT);
             InitTreeViewOf(ref TreeViewForSaved, ref SearchFieldForSaved, ref treeViewStateForSaved, TreePurpose.TO_DRAW_SAVED);
@@ -93,7 +95,10 @@ namespace ATF.Scripts.Editor
                 if (!stateLoaded) return;
                 
                 GUILayout.Label("Save/Load control", EditorStyles.boldLabel);
-                NameOfTheCurrentRecord = EditorGUILayout.TextField("Record to load:", NameOfTheCurrentRecord);
+                if (!recorder.IsPlaying() && !recorder.IsRecording())
+                {
+                    NameOfTheCurrentRecord = EditorGUILayout.TextField("Record to load:", NameOfTheCurrentRecord);
+                }
                 GUILayout.Label($"Current recording name: {NameOfTheCurrentRecord}", EditorStyles.label);
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Save"))

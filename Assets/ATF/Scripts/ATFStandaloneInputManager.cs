@@ -12,7 +12,7 @@ namespace ATF
         {
             base.Start();
             m_InputOverride = gameObject.AddComponent<ATFInput>();
-            DependencyInjector.Instance.InjectType(m_InputOverride.GetType());
+            DependencyInjector.InjectType(m_InputOverride.GetType());
         }
     }
 }

@@ -53,7 +53,7 @@ namespace ATF {
                 return function();
             } catch (Exception e)
             {
-                if (DependencyInjector.DebugOn)
+                if (DependencyInjector.DEBUG_ON)
                 {
                     print(e);
                 }

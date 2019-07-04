@@ -43,8 +43,7 @@ namespace Bedrin.DI
 
     public class DependencyInjector : MonoSingleton<DependencyInjector>
     {
-
-        public static bool DebugOn = false;
+        public const bool DEBUG_ON = false;
 
         private class PathValidationResult
         {
@@ -53,11 +52,12 @@ namespace Bedrin.DI
             public bool Valid;
         }
 
-        public string CurrentNamespace { get; set; }
+        private string CurrentNamespace { get; set; }
 
-        public static void Print(object obj)
+        private static void Print(object obj)
         {
-            if (DebugOn)
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (DEBUG_ON)
             {
                 print(obj);
             }
@@ -70,7 +70,7 @@ namespace Bedrin.DI
 
         private static PathValidationResult GetHierarchyPathAndComponentName(string fullPath)
         {
-            PathValidationResult result = new PathValidationResult()
+            var result = new PathValidationResult()
             {
                 Result = new string[2],
                 FullPath = fullPath,
@@ -80,9 +80,9 @@ namespace Bedrin.DI
             {
                 result.Valid = false;
             }
-            string[] splitted = fullPath.Split('/');
+            var splitted = fullPath.Split('/');
             result.Result[1] = splitted[splitted.Length - 1];
-            string[] path = new string[splitted.Length - 1];
+            var path = new string[splitted.Length - 1];
             Array.Copy(splitted, 0, path, 0, splitted.Length - 1);
             result.Result[0] = string.Join("/", path);
             return result;
@@ -91,7 +91,7 @@ namespace Bedrin.DI
         private static string GetGameObjectPath(GameObject obj)
         {
             if (!obj) return null;
-            string path = "/" + obj.name;
+            var path = "/" + obj.name;
             while (obj.transform.parent != null)
             {
                 obj = obj.transform.parent.gameObject;
@@ -100,97 +100,97 @@ namespace Bedrin.DI
             return path;
         }
 
-        protected Type[] GetInjectableTypesInNamespace(string _namespace)
+        private static IEnumerable<Type> GetInjectableTypesInNamespace(string _namespace)
         {
             return
                 Assembly
                     .GetExecutingAssembly()
                     .GetTypes()
                     .Where(
-                        t => t != null 
-                            && t.Namespace != null 
+                        t => t.Namespace != null 
                             && t.Namespace.StartsWith(_namespace) 
                             && ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute))
                      )
                     .ToArray();
         }
 
-        public void InjectType(Type t)
+        public static void InjectType(Type t)
         {
-            if (ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute)))
+            if (!ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute))) return;
+            foreach (var fi in t.GetFields())
             {
-                foreach (FieldInfo fi in t.GetFields())
+                var fiAttributes = fi.GetCustomAttributes(true);
+                if (!ContainsAnyAttributeOfType(fiAttributes, typeof(InjectAttribute))) continue;
+                if (!(fiAttributes[0] is InjectAttribute temp)) continue;
+                var isScenePathEmpty = string.IsNullOrEmpty(temp.ScenePath);
+                if (temp.ComponentType == null && isScenePathEmpty)
                 {
-                    object[] fiAttributes = fi.GetCustomAttributes(true);
-                    if (ContainsAnyAttributeOfType(fiAttributes, typeof(InjectAttribute)))
+                    temp.ComponentType = fi.FieldType;
+                }
+
+                Print(
+                    $"Injectable {t}: contains field ({fi}), with custom attribute ({temp}) of" +
+                    $" inject type ({((temp.ComponentType != null) ? temp.ComponentType.ToString() : "None")}) " +
+                    $"and path ({(isScenePathEmpty ? "None" : temp.ScenePath)}). Searching on scene..."
+                    );
+
+                UnityEngine.Object objectToInject;
+                GameObject gameObjectContainingObjectToInject = null;
+                if (!isScenePathEmpty)
+                {
+                    var hierarchyAndComponent = GetHierarchyPathAndComponentName(temp.ScenePath);
+                    if (!hierarchyAndComponent.Valid)
                     {
-                        InjectAttribute temp = fiAttributes[0] as InjectAttribute;
-                        bool isScenePathEmpty = temp.ScenePath == null || temp.ScenePath.Length == 0;
-                        if (temp.ComponentType == null && isScenePathEmpty)
+                        Print(
+                            $"Injectable ({t}): The path is not valid: {hierarchyAndComponent.FullPath} in injection ({fi}). Moving on...");
+                        continue;
+                    }
+                    gameObjectContainingObjectToInject = GameObject.Find(hierarchyAndComponent.Result[0]);
+                    if (!gameObjectContainingObjectToInject)
+                    {
+                        Print($"Injectable {t}: cannot find object to inject on scene. Moving on...");
+                        continue;
+                    }
+                    objectToInject = gameObjectContainingObjectToInject.GetComponent(hierarchyAndComponent.Result[1]);
+                }
+                else
+                {
+                    objectToInject = FindObjectOfType(temp.ComponentType);
+                    if (objectToInject)
+                    {
+                        gameObjectContainingObjectToInject = GameObject.Find(objectToInject.name);
+                    }
+                    if (!gameObjectContainingObjectToInject && !temp.LookInScene)
+                    {
+                        objectToInject = Activator.CreateInstance(temp.ComponentType) as UnityEngine.Object;
+                        if (!objectToInject)
                         {
-                            temp.ComponentType = fi.FieldType;
-                        }
-
-                        Print(string.Format("Injectable {0}: contains field ({1}), with custom attribute ({2}) of inject type ({3}) and path ({4}). Searching on scene...",
-                            t, fi, temp, (temp.ComponentType != null) ? temp.ComponentType.ToString() : "None", isScenePathEmpty ? "None" : temp.ScenePath));
-
-                        UnityEngine.Object objectToInject;
-                        GameObject gameObjectContainingObjectToInject = null;
-                        if (!isScenePathEmpty)
-                        {
-                            PathValidationResult hierarchyAndComponent = GetHierarchyPathAndComponentName(temp.ScenePath);
-                            if (!hierarchyAndComponent.Valid)
-                            {
-                                Print(string.Format("Injectable ({2}): The path is not valid: {0} in injection ({1}). Moving on...", hierarchyAndComponent.FullPath, fi, t));
-                                continue;
-                            }
-                            gameObjectContainingObjectToInject = GameObject.Find(hierarchyAndComponent.Result[0]);
-                            if (!gameObjectContainingObjectToInject)
-                            {
-                                Print(string.Format("Injectable {0}: cannot find object to inject on scene. Moving on...", t));
-                                continue;
-                            }
-                            objectToInject = gameObjectContainingObjectToInject.GetComponent(hierarchyAndComponent.Result[1]);
-                        }
-                        else
-                        {
-                            objectToInject = FindObjectOfType(temp.ComponentType);
-                            if (objectToInject)
-                            {
-                                gameObjectContainingObjectToInject = GameObject.Find(objectToInject.name);
-                            }
-                            if (!gameObjectContainingObjectToInject && !temp.LookInScene)
-                            {
-                                objectToInject = Activator.CreateInstance(temp.ComponentType) as UnityEngine.Object;
-                                if (!objectToInject)
-                                {
-                                    Print(string.Format("Injectable {0}: could not create the instance of injection {1}. Moving on...", t, temp.ComponentType));
-                                    continue;
-                                }
-                                Print(string.Format("Injectable {0}: injection {1} created from type {2}.", t, fi, temp.ComponentType));
-                            }
-                        }
-
-                        string pathOfGameObject = GetGameObjectPath(gameObjectContainingObjectToInject);
-                        pathOfGameObject = (pathOfGameObject != null && pathOfGameObject.Length > 0) ? pathOfGameObject : "None";
-
-                        if (!gameObjectContainingObjectToInject && objectToInject == null && temp.LookInScene)
-                        {
-                            Print(string.Format("Injectable {0}: cannot find object to inject on scene. Moving on...", t));
+                            Print(
+                                $"Injectable {t}: could not create the instance of injection {temp.ComponentType}. Moving on...");
                             continue;
                         }
-
-                        Print(string.Format("Injectable {0}: trying to inject found object {1} at path {2}.", t, objectToInject, pathOfGameObject));
-                        dynamic typeToWhichInjected = FindObjectOfType(t.GetTypeInfo());
-                        if (typeToWhichInjected == null)
-                        {
-                            Print(string.Format("Injectable {0}: cannot find injectable object in memory or on scene. Moving on...", t));
-                            continue;
-                        }
-                        fi.SetValue(typeToWhichInjected, objectToInject);
-                        Print(string.Format("Injectable {0}: injected {1} at path {2}.", t, objectToInject, pathOfGameObject));
+                        Print($"Injectable {t}: injection {fi} created from type {temp.ComponentType}.");
                     }
                 }
+
+                var pathOfGameObject = GetGameObjectPath(gameObjectContainingObjectToInject);
+                pathOfGameObject = !string.IsNullOrEmpty(pathOfGameObject) ? pathOfGameObject : "None";
+
+                if (!gameObjectContainingObjectToInject && objectToInject == null && temp.LookInScene)
+                {
+                    Print($"Injectable {t}: cannot find object to inject on scene. Moving on...");
+                    continue;
+                }
+
+                Print($"Injectable {t}: trying to inject found object {objectToInject} at path {pathOfGameObject}.");
+                dynamic typeToWhichInjected = FindObjectOfType(t.GetTypeInfo());
+                if (typeToWhichInjected == null)
+                {
+                    Print($"Injectable {t}: cannot find injectable object in memory or on scene. Moving on...");
+                    continue;
+                }
+                fi.SetValue(typeToWhichInjected, objectToInject);
+                Print($"Injectable {t}: injected {objectToInject} at path {pathOfGameObject}.");
             }
         }
 
@@ -199,19 +199,17 @@ namespace Bedrin.DI
             InjectScene(CurrentNamespace);
         }
 
-        protected void ForEachTypeInTypesOfNamespace(string _namespace, Action<Type> action)
+        private static void ForEachTypeInTypesOfNamespace(string _namespace, Action<Type> action)
         {
-            foreach (Type t in GetInjectableTypesInNamespace(_namespace))
+            foreach (var t in GetInjectableTypesInNamespace(_namespace))
             {
                 action(t);
             }
         }
 
-        protected void InjectScene(string _namespace)
+        public static void InjectScene(string _namespace)
         {
-            ForEachTypeInTypesOfNamespace(_namespace, (t) => {
-                InjectType(t);
-            });
+            ForEachTypeInTypesOfNamespace(_namespace, InjectType);
         }
 
         public void Initialize(string _namespace)

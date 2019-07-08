@@ -3,6 +3,7 @@ using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,29 +17,34 @@ namespace ATF {
 
     [Serializable]
     [Injectable]
+    // ReSharper disable once InconsistentNaming
     public class ATFInput : BaseInput
     {
         [Inject(typeof(ATFQueueBasedRecorder))]
-        public static readonly IATFRecorder RECORDER;
+        // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once UnassignedReadonlyField
+        public static readonly IATFRecorder Recorder;
 
         [Inject(typeof(ATFDictionaryBasedActionStorage))]
-        public static readonly IATFActionStorage STORAGE;
+        // ReSharper disable once UnassignedReadonlyField
+        // ReSharper disable once MemberCanBePrivate.Global
+        public static readonly IATFActionStorage Storage;
 
-        private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, FakeInput kind)
+        private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, object fakeInputParameter, FakeInput kind)
         {
-            if (RECORDER.IsPlaying() && !RECORDER.IsPlayPaused() && !RECORDER.IsRecording())
+            if (Recorder.IsPlaying() && !Recorder.IsPlayPaused() && !Recorder.IsRecording())
             {
                 return fakeInput;
             }
 
-            if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
+            if (!Recorder.IsPlaying() && Recorder.IsRecording() && !Recorder.IsRecordingPaused())
             {
-                RECORDER.Record(kind, realInput);
+                Recorder.Record(kind, realInput, fakeInputParameter);
                 return realInput;
             }
 
-            if (!RECORDER.IsPlaying() && !RECORDER.IsRecording() || 
-                RECORDER.IsRecording() && RECORDER.IsRecordingPaused() || RECORDER.IsPlaying() && RECORDER.IsPlayPaused())
+            if (!Recorder.IsPlaying() && !Recorder.IsRecording() || 
+                Recorder.IsRecording() && Recorder.IsRecordingPaused() || Recorder.IsPlaying() && Recorder.IsPlayPaused())
             {
                 return realInput;
             }
@@ -53,7 +59,7 @@ namespace ATF {
                 return function();
             } catch (Exception e)
             {
-                if (DependencyInjector.DEBUG_ON)
+                if (DependencyInjector.DebugOn)
                 {
                     print(e);
                 }
@@ -61,91 +67,92 @@ namespace ATF {
             }
         }
 
-        private static object GetCurrentFakeInput(FakeInput inputKind)
+        private static object GetCurrentFakeInput(FakeInput inputKind, object fakeInputParameter)
         {
-            return STORAGE.GetPartOfRecord(inputKind);
+            return Storage.GetPartOfRecord(inputKind, fakeInputParameter);
         }
 
-        private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue)
+        private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue, object fakeInputParameter = null)
         {
+            if (fakeInputParameter == null) fakeInputParameter = new object(); 
             return IfExceptionReturnDefault(
-                () => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind), fakeInputKind), 
+                () => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind, fakeInputParameter), fakeInputParameter, fakeInputKind), 
                 defaultValue
             );
         }
-
+        
         public static bool anyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
 
         public static bool anyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
 
         public static float GetAxis(string axisName)
         {
-            return Intercept(Input.GetAxis(axisName), FakeInput.GET_AXIS, 0f);
+            return Intercept(Input.GetAxis(axisName), FakeInput.GET_AXIS, 0f, axisName);
         }
 
         public new static float GetAxisRaw(string axisName)
         {
-            return Intercept(Input.GetAxisRaw(axisName), FakeInput.GET_AXIS_RAW, 0f);
+            return Intercept(Input.GetAxisRaw(axisName), FakeInput.GET_AXIS_RAW, 0f, axisName);
         }
 
         public static bool GetButton(string buttonName)
         {
-            return Intercept(Input.GetButton(buttonName), FakeInput.GET_BUTTON, false);
+            return Intercept(Input.GetButton(buttonName), FakeInput.GET_BUTTON, false, buttonName);
         }
 
         public new static bool GetButtonDown(string buttonName)
         {
-            return Intercept(Input.GetButtonDown(buttonName), FakeInput.GET_BUTTON_DOWN, false);
+            return Intercept(Input.GetButtonDown(buttonName), FakeInput.GET_BUTTON_DOWN, false, buttonName);
         }
 
         public static bool GetButtonUp(string buttonName)
         {
-            return Intercept(Input.GetButtonUp(buttonName), FakeInput.GET_BUTTON_UP, false);
+            return Intercept(Input.GetButtonUp(buttonName), FakeInput.GET_BUTTON_UP, false, buttonName);
         }
 
         public static bool GetKey(string name)
         {
-            return Intercept(Input.GetKey(name), FakeInput.GET_KEY, false);
+            return Intercept(Input.GetKey(name), FakeInput.GET_KEY, false, name);
         }
 
         public static bool GetKey(KeyCode key)
         {
-            return Intercept(Input.GetKey(key), FakeInput.GET_KEY, false);
+            return Intercept(Input.GetKey(key), FakeInput.GET_KEY, false, key);
         }
 
         public static bool GetKeyDown(string name)
         {
-            return Intercept(Input.GetKeyDown(name), FakeInput.GET_KEY_DOWN, false);
+            return Intercept(Input.GetKeyDown(name), FakeInput.GET_KEY_DOWN, false, name);
         }
 
         public static bool GetKeyDown(KeyCode key)
         {
-            return Intercept(Input.GetKeyDown(key), FakeInput.GET_KEY_DOWN, false);
+            return Intercept(Input.GetKeyDown(key), FakeInput.GET_KEY_DOWN, false, key);
         }
 
         public static bool GetKeyUp(KeyCode key)
         {
-            return Intercept(Input.GetKeyUp(key), FakeInput.GET_KEY_UP, false);
+            return Intercept(Input.GetKeyUp(key), FakeInput.GET_KEY_UP, false, key);
         }
 
         public static bool GetKeyUp(string name)
         {
-            return Intercept(Input.GetKeyUp(name), FakeInput.GET_KEY_UP, false);
+            return Intercept(Input.GetKeyUp(name), FakeInput.GET_KEY_UP, false, name);
         }
 
         public new static bool GetMouseButton(int button)
         {
-            return Intercept(Input.GetMouseButton(button), FakeInput.GET_MOUSE_BUTTON, false);
+            return Intercept(Input.GetMouseButton(button), FakeInput.GET_MOUSE_BUTTON, false, button);
         }
 
         public new static bool GetMouseButtonDown(int button)
         {
-            return Intercept(Input.GetMouseButtonDown(button), FakeInput.GET_MOUSE_BUTTON_DOWN, false);
+            return Intercept(Input.GetMouseButtonDown(button), FakeInput.GET_MOUSE_BUTTON_DOWN, false, button);
         }
 
         public new static bool GetMouseButtonUp(int button)
         {
-            return Intercept(Input.GetMouseButtonUp(button), FakeInput.GET_MOUSE_BUTTON_UP, false);
+            return Intercept(Input.GetMouseButtonUp(button), FakeInput.GET_MOUSE_BUTTON_UP, false, button);
         }
   
     }

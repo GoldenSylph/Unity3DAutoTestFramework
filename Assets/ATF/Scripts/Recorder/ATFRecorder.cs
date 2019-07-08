@@ -26,6 +26,6 @@
         string GetCurrentRecordingName();
         void SetCurrentRecordingName(string value);
 
-        void Record(FakeInput kind, object input);
+        void Record(FakeInput kind, object input, object fakeInputParameter);
     }
 }

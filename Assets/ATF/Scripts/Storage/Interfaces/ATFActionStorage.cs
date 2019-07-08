@@ -5,10 +5,10 @@ namespace ATF.Scripts.Storage.Interfaces
 {
     public interface IATFActionStorage : IATFInitializable
     {
-        object GetPartOfRecord(FakeInput kind);
-        void Enqueue(string recordName, FakeInput kind, Action action);
-        Action Dequeue(string recordName, FakeInput kind);
-        Action Peek(string recordName, FakeInput kind);
+        object GetPartOfRecord(FakeInput kind, object fakeInputParameter);
+        void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, Action action);
+        Action Dequeue(string recordName, FakeInput kind, object fakeInputParameter);
+        Action Peek(string recordName, FakeInput kind, object fakeInputParameter);
         bool PrepareToPlayRecord(string recordName);
         void ClearPlayStorage();
         void SaveStorage(string recordName);

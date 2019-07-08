@@ -15,14 +15,14 @@ namespace ATF.Scripts.Storage
         [Serializable]
         private class FirstSlotDto
         {
-            public Dictionary<string, Dictionary<FakeInput, Queue<Action>>> firstSlot;
+            public Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> firstSlot;
         }
 
         [Serializable]
         private class SecondSlotDto
         {
             public string recordName;
-            public Dictionary<FakeInput, Queue<Action>> secondSlot;
+            public Dictionary<FakeInput, Dictionary<object, Queue<Action>>> secondSlot;
         }
 
         [Header("Debug Settings")]
@@ -99,7 +99,7 @@ namespace ATF.Scripts.Storage
                     FirstSlotDtoToSerialize = new FirstSlotDto()
                     {
                         firstSlot = ATFDictionaryBasedActionStorage
-                                .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)
+                                .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>)
                     };
                     SaveAll();
                     return null;
@@ -108,7 +108,7 @@ namespace ATF.Scripts.Storage
                     SecondSlotDtoToSerialize = new SecondSlotDto()
                     {
                         secondSlot = ATFDictionaryBasedActionStorage
-                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Queue<Action>>>)?[GetRecordName()]),
+                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>)?[GetRecordName()]),
                         recordName = GetRecordName()
                     };
                     SaveRecord();

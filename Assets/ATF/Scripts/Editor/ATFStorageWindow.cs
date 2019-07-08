@@ -14,19 +14,23 @@ namespace ATF.Scripts.Editor
     public class ATFStorageWindow : EditorWindow
     {
         [SerializeField]
-        private TreeViewState treeViewStateForCurrent;
+        private TreeViewState treeViewStateForCurrentNames;
         
         [SerializeField]
-        private TreeViewState treeViewStateForSaved;
+        private TreeViewState treeViewStateForCurrentKindsAndActions;
+        
+        [SerializeField]
+        private TreeViewState treeViewStateForSavedNames;
+        
+        private ATFStorageTreeView TreeViewForCurrentNames;
+        private SearchField SearchFieldForCurrentNames;
 
-        private ATFStorageTreeView TreeViewForCurrent;
-        private SearchField SearchFieldForCurrent;
-
-        private ATFStorageTreeView TreeViewForSaved;
-        private SearchField SearchFieldForSaved;
-
-        private string NameOfTheCurrentRecord;
-
+        private ATFStorageTreeView TreeViewForCurrentKindsAndActions;
+        private SearchField SearchFieldForCurrentKindsAndActions;
+        
+        private ATFStorageTreeView TreeViewForSavedNames;
+        private SearchField SearchFieldForSavedNames;
+        
         public IATFActionStorage storage;
         public IATFRecorder recorder;
 
@@ -35,19 +39,20 @@ namespace ATF.Scripts.Editor
             if (!EditorApplication.isPlaying) return;
             storage = FindObjectOfType<ATFDictionaryBasedActionStorage>();
             recorder = FindObjectOfType<ATFQueueBasedRecorder>();
-            NameOfTheCurrentRecord = "DefaultRecord";
-            InitTreeViewOf(ref TreeViewForCurrent, ref SearchFieldForCurrent, ref treeViewStateForCurrent, TreePurpose.TO_DRAW_CURRENT);
-            InitTreeViewOf(ref TreeViewForSaved, ref SearchFieldForSaved, ref treeViewStateForSaved, TreePurpose.TO_DRAW_SAVED);
+            InitTreeViewOf(ref TreeViewForCurrentNames, ref SearchFieldForCurrentNames, ref treeViewStateForCurrentNames, TreePurpose.DRAW_CURRENT_NAMES, recorder, storage);
+            InitTreeViewOf(ref TreeViewForCurrentKindsAndActions, ref SearchFieldForCurrentKindsAndActions, ref treeViewStateForCurrentKindsAndActions, TreePurpose.DRAW_KINDS_AND_ACTIONS, recorder, storage);
+            InitTreeViewOf(ref TreeViewForSavedNames, ref SearchFieldForSavedNames, ref treeViewStateForSavedNames, TreePurpose.DRAW_SAVED_NAMES, recorder, storage);
+            TreeViewForCurrentNames.KindsAndActionsTreeView = TreeViewForCurrentKindsAndActions;
         }
 
-        private static void InitTreeViewOf(ref ATFStorageTreeView view, ref SearchField field, ref TreeViewState state, TreePurpose purpose)
+        private static void InitTreeViewOf(ref ATFStorageTreeView view, ref SearchField field, ref TreeViewState state, TreePurpose purpose, IATFRecorder recorder, IATFActionStorage storage)
         {
             if (view != null && field != null) return;
             if (state == null)
             {
                 state = new TreeViewState();
             }
-            view = new ATFStorageTreeView(purpose, state);
+            view = new ATFStorageTreeView(purpose, state, recorder, storage);
             field = new SearchField();
             field.downOrUpArrowKeyPressed += view.SetFocusAndEnsureSelectedItem;
         }
@@ -67,12 +72,17 @@ namespace ATF.Scripts.Editor
             view.OnGUI(rect);
             switch (view.TreePurpose)
             {
-                case TreePurpose.TO_DRAW_CURRENT:
+                case TreePurpose.DRAW_CURRENT_NAMES:
                     view.UpdateItems(storage.GetCurrentRecordNames());
                     break;
-                case TreePurpose.TO_DRAW_SAVED:
+                
+                case TreePurpose.DRAW_SAVED_NAMES:
                     view.UpdateItems(storage.GetSavedRecordNames());
                     break;
+                
+                case TreePurpose.DRAW_KINDS_AND_ACTIONS:
+                    break;
+                
                 case TreePurpose.NONE:
                     throw new ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
                 default:
@@ -95,30 +105,36 @@ namespace ATF.Scripts.Editor
                 if (!stateLoaded) return;
                 
                 GUILayout.Label("Save/Load control", EditorStyles.boldLabel);
+                GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordingName()}", EditorStyles.label);
                 if (!recorder.IsPlaying() && !recorder.IsRecording())
                 {
-                    NameOfTheCurrentRecord = EditorGUILayout.TextField("Record to load:", NameOfTheCurrentRecord);
+                    EditorGUILayout.BeginHorizontal();
+                    if (GUILayout.Button("Save"))
+                    {
+                        storage.SaveStorage(recorder.GetCurrentRecordingName());
+                    }
+                    if (GUILayout.Button("Load"))
+                    {
+                        storage.LoadStorage(recorder.GetCurrentRecordingName());
+                    }
+                    if (GUILayout.Button("Scrap"))
+                    {
+                        storage.ScrapSavedStorage(recorder.GetCurrentRecordingName());
+                    }
+                    EditorGUILayout.EndHorizontal();
                 }
-                GUILayout.Label($"Current recording name: {NameOfTheCurrentRecord}", EditorStyles.label);
-                EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("Save"))
-                {
-                    storage.SaveStorage(NameOfTheCurrentRecord);
-                }
-                if (GUILayout.Button("Load"))
-                {
-                    storage.LoadStorage(NameOfTheCurrentRecord);
-                }
-                if (GUILayout.Button("Scrap"))
-                {
-                    storage.ScrapSavedStorage(NameOfTheCurrentRecord);
-                }
-                EditorGUILayout.EndHorizontal();
+
+                GUILayout.Label("Current records", EditorStyles.boldLabel);
+                DoToolbarFor(TreeViewForCurrentNames, SearchFieldForCurrentNames);
+                DoTreeViewFor(TreeViewForCurrentNames, storage);
                 
-                DoToolbarFor(TreeViewForCurrent, SearchFieldForCurrent);
-                DoTreeViewFor(TreeViewForCurrent, storage);
-                DoToolbarFor(TreeViewForSaved, SearchFieldForSaved);
-                DoTreeViewFor(TreeViewForSaved, storage);
+                GUILayout.Label("Commands and actions queue", EditorStyles.boldLabel);
+                DoToolbarFor(TreeViewForCurrentKindsAndActions, SearchFieldForCurrentKindsAndActions);
+                DoTreeViewFor(TreeViewForCurrentKindsAndActions, storage);
+                
+                GUILayout.Label("Saved records", EditorStyles.boldLabel);
+                DoToolbarFor(TreeViewForSavedNames, SearchFieldForSavedNames);
+                DoTreeViewFor(TreeViewForSavedNames, storage);
                 
             }
             else

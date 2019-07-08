@@ -43,7 +43,7 @@ namespace Bedrin.DI
 
     public class DependencyInjector : MonoSingleton<DependencyInjector>
     {
-        public const bool DEBUG_ON = false;
+        public static bool DebugOn = false;
 
         private class PathValidationResult
         {
@@ -56,8 +56,7 @@ namespace Bedrin.DI
 
         private static void Print(object obj)
         {
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (DEBUG_ON)
+            if (DebugOn)
             {
                 print(obj);
             }

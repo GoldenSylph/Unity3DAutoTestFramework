@@ -92,9 +92,9 @@ namespace ATF.Scripts.Recorder
             SetPlaying(false);
         }
 
-        public void Record(FakeInput kind, object input)
+        public void Record(FakeInput kind, object input, object fakeInputParameter)
         {
-            STORAGE.Enqueue(GetCurrentRecordingName(), kind, new Action() { content = input });
+            STORAGE.Enqueue(GetCurrentRecordingName(), kind, fakeInputParameter, new Action { content = input });
         }
 
         public void StopRecord()

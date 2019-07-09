@@ -1,8 +1,8 @@
 ﻿namespace ATF.Scripts.Storage
 {
-    public class Action
+    public class AtfAction
     {
-        public object content;
+        public object Content;
     }
 }
 

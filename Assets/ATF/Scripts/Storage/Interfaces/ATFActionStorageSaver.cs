@@ -2,7 +2,7 @@
 
 namespace ATF.Scripts.Storage.Interfaces
 {
-    public interface IATFActionStorageSaver : IATFInitializable
+    public interface IAtfActionStorageSaver : IAtfInitializable
     {
         void SaveAll();
         void LoadAll();

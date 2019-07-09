@@ -3,11 +3,10 @@ using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
 using Bedrin.DI;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace ATF {
+namespace ATF.Scripts {
 
     public enum FakeInput {
         NONE, ANY_KEY_DOWN, ANY_KEY, GET_AXIS, GET_AXIS_RAW, GET_BUTTON,
@@ -17,18 +16,17 @@ namespace ATF {
 
     [Serializable]
     [Injectable]
-    // ReSharper disable once InconsistentNaming
-    public class ATFInput : BaseInput
+    public class AtfInput : BaseInput
     {
-        [Inject(typeof(ATFQueueBasedRecorder))]
+        [Inject(typeof(AtfQueueBasedRecorder))]
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnassignedReadonlyField
-        public static readonly IATFRecorder Recorder;
+        public static readonly IAtfRecorder Recorder;
 
-        [Inject(typeof(ATFDictionaryBasedActionStorage))]
+        [Inject(typeof(AtfDictionaryBasedActionStorage))]
         // ReSharper disable once UnassignedReadonlyField
         // ReSharper disable once MemberCanBePrivate.Global
-        public static readonly IATFActionStorage Storage;
+        public static readonly IAtfActionStorage Storage;
 
         private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, object fakeInputParameter, FakeInput kind)
         {
@@ -81,9 +79,9 @@ namespace ATF {
             );
         }
         
-        public static bool anyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
+        public static bool AnyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
 
-        public static bool anyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
+        public static bool AnyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
 
         public static float GetAxis(string axisName)
         {

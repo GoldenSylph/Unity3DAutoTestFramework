@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace ATF {
-    public interface IATFInitializable
+    public interface IAtfInitializable
     {
         void Initialize();
     }

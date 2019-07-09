@@ -1,26 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using ATF.Scripts.Integration;
-using UnityEngine;
-using Bedrin.DI;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
+using Bedrin.DI;
+using UnityEngine;
 
-namespace ATF
+namespace ATF.Scripts
 {
-    public class ATFInitializer : MonoBehaviour
+    public class AtfInitializer : MonoBehaviour
     {
+        [SerializeField]
+        private bool isDebugPrintOn = false;
+
+        private void Update()
+        {
+            DependencyInjector.DebugOn = isDebugPrintOn;
+        }
+
         private void Awake()
         {
-            IATFInitializable[] ALL_SYSTEMS = {
-                ATFQueueBasedRecorder.Instance,
-                ATFDictionaryBasedActionStorage.Instance,
-                ATFFileSystemBasedIntegrator.Instance,
-                ATFPlayerPrefsBasedActionStorageSaver.Instance
+            IAtfInitializable[] allSystems = {
+                AtfQueueBasedRecorder.Instance,
+                AtfDictionaryBasedActionStorage.Instance,
+                AtfFileSystemBasedIntegrator.Instance,
+                AtfPlayerPrefsBasedActionStorageSaver.Instance
             };
 
             #region INITALIZATION OF ATF
-            foreach (IATFInitializable i in ALL_SYSTEMS)
+            foreach (var i in allSystems)
             {
                 i.Initialize();
             }

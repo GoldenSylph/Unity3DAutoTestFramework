@@ -5,17 +5,18 @@ using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Editor
 {
-    public class ATFRecorderWindow : EditorWindow
+    public class AtfRecorderWindow : EditorWindow
     {
 
-        public IATFRecorder recorder;
+        public IAtfRecorder recorder;
 
+        private string NewNameOfRecording;
+        
         private void OnFocus()
         {
-            if (EditorApplication.isPlaying)
-            {
-                recorder = FindObjectOfType<ATFQueueBasedRecorder>();
-            }
+            if (!EditorApplication.isPlaying) return;
+            recorder = FindObjectOfType<AtfQueueBasedRecorder>();
+            NewNameOfRecording = recorder.GetCurrentRecordingName();
         }
 
         private void OnGUI()
@@ -42,11 +43,15 @@ namespace ATF.Scripts.Editor
                     EditorGUILayout.EndVertical();
 
                     EditorGUILayout.EndHorizontal();
-
+                    
                     GUILayout.Label("Recording control", EditorStyles.boldLabel);
                     if (!recorder.IsPlaying() && !recorder.IsRecording())
                     {
-                        recorder.SetCurrentRecordingName(EditorGUILayout.TextField("Name of the recording", recorder.GetCurrentRecordingName()));
+                        NewNameOfRecording = EditorGUILayout.TextField("Name of the recording", NewNameOfRecording);
+                        if (Event.current.keyCode == KeyCode.Return)
+                        {
+                            recorder.SetCurrentRecordingName(NewNameOfRecording);  
+                        }
                     }
                     GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordingName()}", EditorStyles.label);
 

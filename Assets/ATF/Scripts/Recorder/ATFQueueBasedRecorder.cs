@@ -4,15 +4,14 @@ using Bedrin.DI;
 using Bedrin.Helper;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Action = ATF.Scripts.Storage.Action;
 
 namespace ATF.Scripts.Recorder
 {
     [Injectable]
-    public class ATFQueueBasedRecorder : MonoSingleton<ATFQueueBasedRecorder>, IATFRecorder
+    public class AtfQueueBasedRecorder : MonoSingleton<AtfQueueBasedRecorder>, IAtfRecorder
     {
-        [Inject(typeof(ATFDictionaryBasedActionStorage))]
-        public readonly static IATFActionStorage STORAGE;
+        [Inject(typeof(AtfDictionaryBasedActionStorage))]
+        public readonly static IAtfActionStorage Storage;
 
         [Header("Debug Settings:")]
         
@@ -81,7 +80,7 @@ namespace ATF.Scripts.Recorder
 
         public void PlayRecord()
         {
-            if (!STORAGE.PrepareToPlayRecord(GetCurrentRecordingName())) return;
+            if (!Storage.PrepareToPlayRecord(GetCurrentRecordingName())) return;
             SetRecording(false);
             SetPlaying(true);
         }
@@ -94,7 +93,7 @@ namespace ATF.Scripts.Recorder
 
         public void Record(FakeInput kind, object input, object fakeInputParameter)
         {
-            STORAGE.Enqueue(GetCurrentRecordingName(), kind, fakeInputParameter, new Action { content = input });
+            Storage.Enqueue(GetCurrentRecordingName(), kind, fakeInputParameter, new AtfAction { Content = input });
         }
 
         public void StopRecord()
@@ -118,7 +117,7 @@ namespace ATF.Scripts.Recorder
         {
             SetPlaying(false);
             SetRecording(false);
-            STORAGE.ClearPlayStorage();
+            Storage.ClearPlayStorage();
             SetPlayPaused(false);
         }
 

@@ -2,24 +2,24 @@
 
 namespace ATF.Scripts.Editor
 {
-    public class ATFWindow : EditorWindow
+    public class AtfWindow : EditorWindow
     {
         [MenuItem("ATF/Recorder")]
         public static void ShowRecorder()
         {
-            GetWindow(typeof(ATFRecorderWindow));
+            GetWindow(typeof(AtfRecorderWindow));
         }
 
         [MenuItem("ATF/Storage")]
         public static void ShowStorage()
         {
-            GetWindow(typeof(ATFStorageWindow));
+            GetWindow(typeof(AtfStorageWindow));
         }
 
         [MenuItem("ATF/Integrator")]
         public static void ShowIntegrator()
         {
-            GetWindow(typeof(ATFIntegratorWindow));
+            GetWindow(typeof(AtfIntegratorWindow));
         }
     }
 }

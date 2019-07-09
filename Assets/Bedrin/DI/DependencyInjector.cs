@@ -79,10 +79,10 @@ namespace Bedrin.DI
             {
                 result.Valid = false;
             }
-            var splitted = fullPath.Split('/');
-            result.Result[1] = splitted[splitted.Length - 1];
-            var path = new string[splitted.Length - 1];
-            Array.Copy(splitted, 0, path, 0, splitted.Length - 1);
+            var split = fullPath.Split('/');
+            result.Result[1] = split[split.Length - 1];
+            var path = new string[split.Length - 1];
+            Array.Copy(split, 0, path, 0, split.Length - 1);
             result.Result[0] = string.Join("/", path);
             return result;
         }

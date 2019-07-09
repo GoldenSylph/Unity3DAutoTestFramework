@@ -8,30 +8,33 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
+using Bedrin.Helper;
 
 namespace ATF.Scripts.Editor
 {
     public enum TreePurpose
     {
-        NONE, DRAW_KINDS_AND_ACTIONS, DRAW_CURRENT_NAMES, DRAW_SAVED_NAMES
+        NONE, DRAW_CURRENT_KINDS_AND_ACTIONS, DRAW_CURRENT_NAMES, DRAW_SAVED_NAMES, DRAW_SAVED_KINDS_AND_ACTIONS
     }
 
-    public class ATFStorageTreeView : TreeView
+    public class AtfStorageTreeView : TreeView
     {
         public readonly TreePurpose TreePurpose;
-        public ATFStorageTreeView KindsAndActionsTreeView;
+        public AtfStorageTreeView KindsAndActionsTreeView;
         
         private List<TreeViewItem> AllItems;
         private readonly TreeViewItem Root;
         
-        private const string NoKindsAndActionsSelected = "No record selected.";
+        private const string NoCurrentKindsAndActionsSelected = "No current record selected.";
+        private const string NoSavedKindsAndActionsSelected = "No saved record selected.";
         private const string NoCurrentActionsLoaded = "No current actions loaded.";
         private const string NoRecordsSaved = "No records saved.";
 
-        private readonly IATFRecorder Recorder;
-        private readonly IATFActionStorage Storage;
+        // ReSharper disable once MemberCanBePrivate.Global
+        public readonly IAtfRecorder Recorder;
+        public readonly IAtfActionStorage Storage;
         
-        public ATFStorageTreeView(TreePurpose treePurpose, TreeViewState treeViewState, IATFRecorder recorder, IATFActionStorage storage)
+        public AtfStorageTreeView(TreePurpose treePurpose, TreeViewState treeViewState, IAtfRecorder recorder, IAtfActionStorage storage)
             : base(treeViewState)
         {
             TreePurpose = treePurpose;
@@ -55,31 +58,39 @@ namespace ATF.Scripts.Editor
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
                     AllItems.Add(new TreeViewItem {
-                        id = ATFIdHelper.GetNewId(NoCurrentActionsLoaded),
+                        id = DictionaryBasedIdGenerator.GetNewId(NoCurrentActionsLoaded),
                         depth = 0,
                         displayName = NoCurrentActionsLoaded
                     });
                     break;
 
-                case TreePurpose.DRAW_KINDS_AND_ACTIONS:
+                case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
                     AllItems.Add(new TreeViewItem {
-                        id = ATFIdHelper.GetNewId(NoKindsAndActionsSelected),
+                        id = DictionaryBasedIdGenerator.GetNewId(NoCurrentKindsAndActionsSelected),
                         depth = 0,
-                        displayName = NoKindsAndActionsSelected
+                        displayName = NoCurrentKindsAndActionsSelected
                     });
                     break;
 
                 case TreePurpose.DRAW_SAVED_NAMES:
                     AllItems.Add(new TreeViewItem {
-                        id = ATFIdHelper.GetNewId(NoRecordsSaved),
+                        id = DictionaryBasedIdGenerator.GetNewId(NoRecordsSaved),
                         depth = 0,
                         displayName = NoRecordsSaved
+                    });
+                    break;
+
+                case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
+                    AllItems.Add(new TreeViewItem {
+                        id = DictionaryBasedIdGenerator.GetNewId(NoSavedKindsAndActionsSelected),
+                        depth = 0,
+                        displayName = NoSavedKindsAndActionsSelected
                     });
                     break;
                 
                 case TreePurpose.NONE:
                     throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
-                
+
                 default:
                     throw new System.ArgumentOutOfRangeException();
             }
@@ -89,9 +100,10 @@ namespace ATF.Scripts.Editor
         {
             if (items == null) return;
             AllItems.RemoveAll(item => item.displayName.Equals(NoCurrentActionsLoaded) 
-                                       || item.displayName.Equals(NoKindsAndActionsSelected)
+                                       || item.displayName.Equals(NoCurrentKindsAndActionsSelected)
                                        || item.displayName.Equals(NoRecordsSaved));
             AllItems = items;
+            SetupDepthsFromParentsAndChildren(AllItems[0]);
             Reload();
         }
 
@@ -100,23 +112,26 @@ namespace ATF.Scripts.Editor
             base.DoubleClickedItem(id);
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || clickedItem.depth > 0
-                                    || clickedItem.displayName.Equals(NoKindsAndActionsSelected) 
+                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
                                     || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
                                     || clickedItem.displayName.Equals(NoRecordsSaved)) return;
             switch (TreePurpose)
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
                     KindsAndActionsTreeView?.UpdateItems(Storage.GetCurrentActions(clickedItem.displayName));
-                    Debug.Log($"Loading current kinds and actions {id}");
                     break;
                 
-                case TreePurpose.DRAW_KINDS_AND_ACTIONS:
                 case TreePurpose.DRAW_SAVED_NAMES:
+                    KindsAndActionsTreeView?.UpdateItems(Storage.GetSavedActions(clickedItem.displayName));
+                    break;
+                
+                case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
+                case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
                     break;
                 
                 case TreePurpose.NONE:
                     throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
-                
+
                 default:
                     throw new System.ArgumentOutOfRangeException();
                     
@@ -128,7 +143,7 @@ namespace ATF.Scripts.Editor
             base.ContextClickedItem(id);
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || clickedItem.depth > 0
-                                    || clickedItem.displayName.Equals(NoKindsAndActionsSelected) 
+                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
                                     || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
                                     || clickedItem.displayName.Equals(NoRecordsSaved)) return;
             switch (TreePurpose)
@@ -136,19 +151,19 @@ namespace ATF.Scripts.Editor
                 
                 case TreePurpose.DRAW_CURRENT_NAMES:
                     Recorder?.SetCurrentRecordingName(clickedItem.displayName);
-                    Debug.Log($"Loading to recorder {id}");
-                    break;
-
-                case TreePurpose.DRAW_KINDS_AND_ACTIONS:
                     break;
                 
                 case TreePurpose.DRAW_SAVED_NAMES:
-                    Debug.Log($"Loading saved names {id}");
+                    Storage?.LoadStorage(clickedItem.displayName);
                     break;
-                
+
+                case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
+                case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
+                    break;
+
                 case TreePurpose.NONE:
                     throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
-                
+
                 default:
                     throw new System.ArgumentOutOfRangeException();
                     

@@ -5,15 +5,15 @@ using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Editor
 {
-    public class ATFIntegratorWindow : EditorWindow
+    public class AtfIntegratorWindow : EditorWindow
     {
-        public IATFIntegrator integrator;
+        public IAtfIntegrator integrator;
 
         private void OnFocus()
         {
             if (EditorApplication.isPlaying)
             {
-                integrator = FindObjectOfType<ATFFileSystemBasedIntegrator>();
+                integrator = FindObjectOfType<AtfFileSystemBasedIntegrator>();
             }
         }
 

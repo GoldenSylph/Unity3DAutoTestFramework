@@ -1,6 +1,6 @@
 ﻿namespace ATF.Scripts.Recorder
 {
-    public interface IATFRecorder : IATFInitializable
+    public interface IAtfRecorder : IAtfInitializable
     {
         bool IsRecording();
         bool IsPlaying();

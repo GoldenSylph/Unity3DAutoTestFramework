@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Bedrin.DI;
 using UnityEngine.EventSystems;
-using Bedrin.DI;
 
-namespace ATF
+namespace ATF.Scripts
 {
-    public class ATFStandaloneInputManager : StandaloneInputModule
+    public class AtfStandaloneInputManager : StandaloneInputModule
     {
         protected override void Start()
         {
             base.Start();
-            m_InputOverride = gameObject.AddComponent<ATFInput>();
+            m_InputOverride = gameObject.AddComponent<AtfInput>();
             DependencyInjector.InjectType(m_InputOverride.GetType());
         }
     }

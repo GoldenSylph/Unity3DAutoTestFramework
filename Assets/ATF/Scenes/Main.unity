@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b743128321f3d244beebdddc808f262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDebugPrintOn: 0
 --- !u!1 &384060631
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +482,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

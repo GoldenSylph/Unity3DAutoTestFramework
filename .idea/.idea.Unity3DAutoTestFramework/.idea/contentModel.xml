@@ -12,14 +12,6 @@
             <e p="ATFInitializer.cs" t="Include" />
             <e p="ATFInput.cs" t="Include" />
             <e p="ATFStandaloneInputManager.cs" t="Include" />
-            <e p="Bedrin" t="Include">
-              <e p="DI" t="Include">
-                <e p="DependencyInjector.cs" t="Include" />
-              </e>
-              <e p="Helper" t="Include">
-                <e p="MonoSingleton.cs" t="Include" />
-              </e>
-            </e>
             <e p="Editor" t="Include">
               <e p="ATFIntegratorWindow.cs" t="Include" />
               <e p="ATFRecorderWindow.cs" t="Include" />
@@ -54,6 +46,15 @@
                 <e p="ATFActionStorageSaver.cs" t="Include" />
               </e>
             </e>
+          </e>
+        </e>
+        <e p="Bedrin" t="Include">
+          <e p="DI" t="Include">
+            <e p="DependencyInjector.cs" t="Include" />
+          </e>
+          <e p="Helper" t="Include">
+            <e p="DictionaryBasedIdGenerator.cs" t="Include" />
+            <e p="MonoSingleton.cs" t="Include" />
           </e>
         </e>
       </e>

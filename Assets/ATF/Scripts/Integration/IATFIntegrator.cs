@@ -1,6 +1,6 @@
 ﻿namespace ATF.Scripts.Integration
 {
-    public interface IATFIntegrator : IATFInitializable
+    public interface IAtfIntegrator : IAtfInitializable
     {
         
     }

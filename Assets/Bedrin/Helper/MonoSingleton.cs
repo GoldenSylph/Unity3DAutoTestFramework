@@ -5,45 +5,45 @@ namespace Bedrin.Helper
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
 
-        private static T s_Instance;
-        private static bool s_IsDestroyed;
+        private static T _sInstance;
+        private static bool _sIsDestroyed;
 
         public static T Instance
         {
             get
             {
-                if (s_IsDestroyed)
+                if (_sIsDestroyed)
                     return null;
 
-                if (s_Instance == null)
+                if (_sInstance == null)
                 {
-                    s_Instance = FindObjectOfType(typeof(T)) as T;
+                    _sInstance = FindObjectOfType(typeof(T)) as T;
 
-                    if (s_Instance == null)
+                    if (_sInstance == null)
                     {
                         var gameObject = new GameObject(typeof(T).Name);
                         DontDestroyOnLoad(gameObject);
 
-                        s_Instance = gameObject.AddComponent(typeof(T)) as T;
+                        _sInstance = gameObject.AddComponent(typeof(T)) as T;
                     }
                 }
 
-                return s_Instance;
+                return _sInstance;
             }
         }
 
         protected virtual void OnDestroy()
         {
-            if (s_Instance)
-                Destroy(s_Instance);
+            if (_sInstance)
+                Destroy(_sInstance);
 
-            s_Instance = null;
-            s_IsDestroyed = true;
+            _sInstance = null;
+            _sIsDestroyed = true;
         }
 
         public bool IsLive()
         {
-            return s_IsDestroyed;
+            return _sIsDestroyed;
         }
     }
 }

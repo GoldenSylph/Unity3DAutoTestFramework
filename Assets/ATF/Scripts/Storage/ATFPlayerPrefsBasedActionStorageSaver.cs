@@ -5,24 +5,23 @@ using ATF.Scripts.Storage.Interfaces;
 using Bedrin.Helper;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Action = ATF.Scripts.Storage.Action;
 
 namespace ATF.Scripts.Storage
 {
-    public class ATFPlayerPrefsBasedActionStorageSaver : MonoSingleton<ATFPlayerPrefsBasedActionStorageSaver>, IATFActionStorageSaver
+    public class AtfPlayerPrefsBasedActionStorageSaver : MonoSingleton<AtfPlayerPrefsBasedActionStorageSaver>, IAtfActionStorageSaver
     {
 
         [Serializable]
         private class FirstSlotDto
         {
-            public Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> firstSlot;
+            public Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> firstSlot;
         }
 
         [Serializable]
         private class SecondSlotDto
         {
             public string recordName;
-            public Dictionary<FakeInput, Dictionary<object, Queue<Action>>> secondSlot;
+            public Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> secondSlot;
         }
 
         [Header("Debug Settings")]
@@ -98,8 +97,8 @@ namespace ATF.Scripts.Storage
                 () => {
                     FirstSlotDtoToSerialize = new FirstSlotDto()
                     {
-                        firstSlot = ATFDictionaryBasedActionStorage
-                                .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>)
+                        firstSlot = AtfDictionaryBasedActionStorage
+                                .ReturnNewCopyOf(actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>)
                     };
                     SaveAll();
                     return null;
@@ -107,8 +106,8 @@ namespace ATF.Scripts.Storage
                 () => {
                     SecondSlotDtoToSerialize = new SecondSlotDto()
                     {
-                        secondSlot = ATFDictionaryBasedActionStorage
-                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>)?[GetRecordName()]),
+                        secondSlot = AtfDictionaryBasedActionStorage
+                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>)?[GetRecordName()]),
                         recordName = GetRecordName()
                     };
                     SaveRecord();

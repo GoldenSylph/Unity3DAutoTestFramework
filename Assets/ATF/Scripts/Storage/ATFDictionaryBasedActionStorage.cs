@@ -10,45 +10,18 @@ using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Storage
 {
-    public static class ATFIdHelper
-    {
-        private static int _idCounter;
-        private static Dictionary<string, int> _ids;        
-        
-        public static int GetNewId(string displayName)
-        {
-            if (_ids == null)
-            {
-                _ids = new Dictionary<string, int>();
-            }
-
-            if (displayName == null)
-            {
-                return ++_idCounter;
-            }
-            
-            if (_ids.ContainsKey(displayName))
-            {
-                return _ids[displayName];
-            }
-
-            _ids[displayName] = ++_idCounter;
-            return _ids[displayName];
-        }
-    }
-    
     [Injectable]
-    public class ATFDictionaryBasedActionStorage : MonoSingleton<ATFDictionaryBasedActionStorage>, IATFActionStorage
+    public class AtfDictionaryBasedActionStorage : MonoSingleton<AtfDictionaryBasedActionStorage>, IAtfActionStorage
     {
 
-        [Inject(typeof(ATFQueueBasedRecorder))]
-        public IATFRecorder recorder;
+        [Inject(typeof(AtfQueueBasedRecorder))]
+        public IAtfRecorder recorder;
 
-        [Inject(typeof(ATFPlayerPrefsBasedActionStorageSaver))]
-        public IATFActionStorageSaver saver;
+        [Inject(typeof(AtfPlayerPrefsBasedActionStorageSaver))]
+        public IAtfActionStorageSaver saver;
 
-        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> ActionStorage;
-        private Dictionary<FakeInput, Dictionary<object, Queue<Action>>> PlayStorage;
+        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> ActionStorage;
+        private Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> PlayStorage;
 
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
@@ -62,9 +35,9 @@ namespace ATF.Scripts.Storage
                 }
                 if (recorder.IsPlaying() && !recorder.IsPlayPaused())
                 {
-                    return PlayStorage[kind][fakeInputParameter].Dequeue().content;
+                    return PlayStorage[kind][fakeInputParameter].Dequeue().Content;
                 }
-                return PlayStorage[kind][fakeInputParameter].Peek().content;
+                return PlayStorage[kind][fakeInputParameter].Peek().Content;
             } catch (Exception)
             {
                 if (DependencyInjector.DebugOn) print("Clearing play cache");
@@ -74,34 +47,34 @@ namespace ATF.Scripts.Storage
             return null;
         }
 
-        public void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, Action action)
+        public void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, AtfAction atfAction)
         {
-            BeforeIfNameAndKindAndFIPAreNotExistInStorage(recordName, kind, fakeInputParameter,
+            BeforeIfNameAndKindAndFipAreNotExistInStorage(recordName, kind, fakeInputParameter,
                 (r, k, fip) => {
-                    ActionStorage[r][k][fip].Enqueue(action);
+                    ActionStorage[r][k][fip].Enqueue(atfAction);
                 },
                 (r, k, fip) => {
-                    ActionStorage.Add(r, new Dictionary<FakeInput, Dictionary<object, Queue<Action>>>());
-                    ActionStorage[r].Add(k, new Dictionary<object, Queue<Action>>());
-                    ActionStorage[r][k][fip] = new Queue<Action>();
+                    ActionStorage.Add(r, new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>());
+                    ActionStorage[r].Add(k, new Dictionary<object, Queue<AtfAction>>());
+                    ActionStorage[r][k][fip] = new Queue<AtfAction>();
                 });
         }
 
-        public Action Peek(string recordName, FakeInput kind, object fakeInputParameter)
+        public AtfAction Peek(string recordName, FakeInput kind, object fakeInputParameter)
         {
-            return IfNameAndKindAndFIPIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
+            return IfNameAndKindAndFipIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
                 () => ActionStorage[recordName][kind][fakeInputParameter].Peek(), null);
         }
 
-        public Action Dequeue(string recordName, FakeInput kind, object fakeInputParameter)
+        public AtfAction Dequeue(string recordName, FakeInput kind, object fakeInputParameter)
         {
-            return IfNameAndKindAndFIPIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
+            return IfNameAndKindAndFipIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
                 () => ActionStorage[recordName][kind][fakeInputParameter].Dequeue(), null);
         }
 
         public void Initialize()
         {
-            ActionStorage = new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>();
+            ActionStorage = new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>();
         }
 
         public bool PrepareToPlayRecord(string recordName)
@@ -122,10 +95,10 @@ namespace ATF.Scripts.Storage
             var loadedData = saver.GetActions();
             switch (loadedData)
             {
-                case Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> data:
+                case Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> data:
                     ActionStorage = ReturnNewCopyOf(data);
                     break;
-                case Dictionary<FakeInput, Dictionary<object, Queue<Action>>> data:
+                case Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> data:
                     ActionStorage[recordName] = ReturnNewCopyOf(data);
                     break;
             }
@@ -155,7 +128,7 @@ namespace ATF.Scripts.Storage
             {
                 result.Add(new TreeViewItem
                 {
-                    id = ATFIdHelper.GetNewId(key),
+                    id = DictionaryBasedIdGenerator.GetNewId(key),
                     depth = 0,
                     displayName = key
                 });
@@ -171,34 +144,32 @@ namespace ATF.Scripts.Storage
             {
                 var rootFakeInput = new TreeViewItem
                 {
-                    id = ATFIdHelper.GetNewId(fakeInputAndDictionary.Key.ToString()),
+                    id = DictionaryBasedIdGenerator.GetNewId(fakeInputAndDictionary.Key.ToString()),
                     depth = 0,
                     displayName = fakeInputAndDictionary.Key.ToString()
                 };
-                var childrenActions = new List<TreeViewItem>();
+                result.Add(rootFakeInput);
                 foreach (var fakeInputParameterAndQueue in fakeInputAndDictionary.Value)
                 {
                     var displayNameForFip = fakeInputParameterAndQueue.Key.ToString();
                     var fakeInputParameterViewItem = new TreeViewItem
                     {
-                        id = ATFIdHelper.GetNewId(displayNameForFip),
+                        id = DictionaryBasedIdGenerator.GetNewId(displayNameForFip),
                         depth = 1,
                         displayName = displayNameForFip
                     };
+                    rootFakeInput.AddChild(fakeInputParameterViewItem);
                     foreach (var action in fakeInputParameterAndQueue.Value)
                     {
                         var actionTreeViewItem = new TreeViewItem
                         {
-                            id = ATFIdHelper.GetNewId(action.content.ToString()),
+                            id = DictionaryBasedIdGenerator.GetNewId(action.Content.ToString()),
                             depth = 2,
-                            displayName = action.content.ToString()
+                            displayName = action.Content.ToString()
                         };
+                        fakeInputParameterViewItem.AddChild(actionTreeViewItem);
                     }
-//                    rootFakeInput.AddChild(actionTreeViewItem);
-//                    childrenActions.Add(actionTreeViewItem);
                 }
-                result.Add(rootFakeInput);
-                result.AddRange(childrenActions);
             }
             return result;
         }
@@ -208,29 +179,29 @@ namespace ATF.Scripts.Storage
             return null;
         }
 
-        public static Dictionary<FakeInput, Dictionary<object, Queue<Action>>> ReturnNewCopyOf(Dictionary<FakeInput, Dictionary<object, Queue<Action>>> etalon)
+        public static Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> ReturnNewCopyOf(Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> etalon)
         {
-            var result = new Dictionary<FakeInput, Dictionary<object, Queue<Action>>>();
+            var result = new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>();
             if (etalon == null) return result;
             foreach (var fi in etalon.Keys)
             {
                 foreach (var objectToQueue in etalon.Values)
                 {
-                    result[fi] = new Dictionary<object, Queue<Action>>();
+                    result[fi] = new Dictionary<object, Queue<AtfAction>>();
                     foreach (var pair in objectToQueue)
                     {
-                        result[fi][pair.Key] = new Queue<Action>(pair.Value);
+                        result[fi][pair.Key] = new Queue<AtfAction>(pair.Value);
                     }
                 }
             }
             return result;
         }
 
-        public static Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> ReturnNewCopyOf(Dictionary<string, 
-            Dictionary<FakeInput, Dictionary<object, Queue<Action>>>> etalon)
+        public static Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> ReturnNewCopyOf(Dictionary<string, 
+            Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> etalon)
         {
             var result =
-                new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<Action>>>>();
+                new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>();
             foreach (var recordName in etalon.Keys)
             {
                 result[recordName] = ReturnNewCopyOf(etalon[recordName]);
@@ -238,7 +209,7 @@ namespace ATF.Scripts.Storage
             return result;
         }
 
-        private void BeforeIfNameAndKindAndFIPAreNotExistInStorage(string recordName, FakeInput kind, object fakeInputParameter,
+        private void BeforeIfNameAndKindAndFipAreNotExistInStorage(string recordName, FakeInput kind, object fakeInputParameter,
             Action<string, FakeInput, object> then, Action<string, FakeInput, object> beforeAction)
         {
             if (!ActionStorage.ContainsKey(recordName) || !ActionStorage[recordName].ContainsKey(kind) || !ActionStorage[recordName][kind].ContainsKey(fakeInputParameter))
@@ -249,7 +220,7 @@ namespace ATF.Scripts.Storage
             then(recordName, kind, fakeInputParameter);
         }
 
-        private T IfNameAndKindAndFIPIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, object fakeInputParameter, Func<T> toReturn, T defaultValue)
+        private T IfNameAndKindAndFipIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, object fakeInputParameter, Func<T> toReturn, T defaultValue)
         {
             if (!ActionStorage.ContainsKey(recordName) || !ActionStorage[recordName].ContainsKey(kind) || !ActionStorage[recordName][kind].ContainsKey(fakeInputParameter))
             {

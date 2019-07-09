@@ -2,7 +2,7 @@
 
 namespace ATF.Scripts.Integration
 {
-    public class ATFFileSystemBasedIntegrator : MonoSingleton<ATFFileSystemBasedIntegrator>,  IATFIntegrator
+    public class AtfFileSystemBasedIntegrator : MonoSingleton<AtfFileSystemBasedIntegrator>,  IAtfIntegrator
     {
         public void Initialize()
         {

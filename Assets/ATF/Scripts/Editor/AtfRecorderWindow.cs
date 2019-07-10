@@ -11,12 +11,11 @@ namespace ATF.Scripts.Editor
         public IAtfRecorder recorder;
 
         private string NewNameOfRecording;
-        
+
         private void OnFocus()
         {
             if (!EditorApplication.isPlaying) return;
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
-            NewNameOfRecording = recorder.GetCurrentRecordingName();
         }
 
         private void OnGUI()
@@ -50,10 +49,10 @@ namespace ATF.Scripts.Editor
                         NewNameOfRecording = EditorGUILayout.TextField("Name of the recording", NewNameOfRecording);
                         if (Event.current.keyCode == KeyCode.Return)
                         {
-                            recorder.SetCurrentRecordingName(NewNameOfRecording);  
+                            recorder.SetCurrentRecordName(NewNameOfRecording);  
                         }
                     }
-                    GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordingName()}", EditorStyles.label);
+                    GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordName()}", EditorStyles.label);
 
                     if (!recorder.IsPlaying())
                     {

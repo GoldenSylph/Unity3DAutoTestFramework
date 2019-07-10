@@ -36,9 +36,9 @@ namespace ATF.Scripts.Storage
         
         private T IfCurrentRecordNameEqualsToCodeAndNotNull<T>(Func<T> thenDo, Func<T> elseDo, Func<T> ifNullDo)
         {
-            if (GetRecordName() != null)
+            if (GetCurrentRecordName() != null)
             {
-                return GetRecordName().Equals(allRecordsCodeName) ? thenDo() : elseDo();
+                return GetCurrentRecordName().Equals(allRecordsCodeName) ? thenDo() : elseDo();
             }
             else
             {
@@ -61,7 +61,7 @@ namespace ATF.Scripts.Storage
             );
         }
 
-        public string GetRecordName()
+        public string GetCurrentRecordName()
         {
             return currentRecordName;
         }
@@ -78,7 +78,7 @@ namespace ATF.Scripts.Storage
 
         public void LoadRecord()
         {
-            SecondSlotDtoToSerialize = JsonUtility.FromJson<SecondSlotDto>(PlayerPrefs.GetString(GetRecordName()));
+            SecondSlotDtoToSerialize = JsonUtility.FromJson<SecondSlotDto>(PlayerPrefs.GetString(GetCurrentRecordName()));
         }
 
         public void SaveAll()
@@ -88,7 +88,7 @@ namespace ATF.Scripts.Storage
 
         public void SaveRecord()
         {
-            PlayerPrefs.SetString(GetRecordName(), JsonUtility.ToJson(SecondSlotDtoToSerialize));
+            PlayerPrefs.SetString(GetCurrentRecordName(), JsonUtility.ToJson(SecondSlotDtoToSerialize));
         }
 
         public void SetActions(IEnumerable actionEnumerable)
@@ -107,8 +107,8 @@ namespace ATF.Scripts.Storage
                     SecondSlotDtoToSerialize = new SecondSlotDto()
                     {
                         secondSlot = AtfDictionaryBasedActionStorage
-                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>)?[GetRecordName()]),
-                        recordName = GetRecordName()
+                            .ReturnNewCopyOf((actionEnumerable as Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>)?[GetCurrentRecordName()]),
+                        recordName = GetCurrentRecordName()
                     };
                     SaveRecord();
                     return null;
@@ -117,14 +117,14 @@ namespace ATF.Scripts.Storage
             );
         }
 
-        public void SetRecordName(string recordName)
+        public void SetCurrentRecordName(string recordName)
         {
             currentRecordName = recordName;
         }
 
         public void ScrapRecord()
         {
-            PlayerPrefs.DeleteKey(GetRecordName());
+            PlayerPrefs.DeleteKey(GetCurrentRecordName());
         }
 
         public void ScrapAll()

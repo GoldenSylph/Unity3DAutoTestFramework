@@ -33,6 +33,10 @@ namespace ATF.Scripts.Editor
         // ReSharper disable once MemberCanBePrivate.Global
         public readonly IAtfRecorder Recorder;
         public readonly IAtfActionStorage Storage;
+
+        public delegate void RecordNameUsedHandler(string name, AtfStorageTreeView context);
+        public event RecordNameUsedHandler RecordNameChanged;
+        public event RecordNameUsedHandler RecordNameUsedInLoad;
         
         public AtfStorageTreeView(TreePurpose treePurpose, TreeViewState treeViewState, IAtfRecorder recorder, IAtfActionStorage storage)
             : base(treeViewState)
@@ -150,11 +154,13 @@ namespace ATF.Scripts.Editor
             {
                 
                 case TreePurpose.DRAW_CURRENT_NAMES:
-                    Recorder?.SetCurrentRecordingName(clickedItem.displayName);
+                    RecordNameChanged?.Invoke(clickedItem.displayName, this);
+                    Recorder.SetCurrentRecordName(clickedItem.displayName);
                     break;
                 
                 case TreePurpose.DRAW_SAVED_NAMES:
-                    Storage?.LoadStorage(clickedItem.displayName);
+                    RecordNameUsedInLoad?.Invoke(clickedItem.displayName, this);
+                    Storage.SetCurrentRecordName(clickedItem.displayName);
                     break;
 
                 case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:

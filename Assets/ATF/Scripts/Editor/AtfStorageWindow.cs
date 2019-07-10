@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
@@ -41,17 +42,30 @@ namespace ATF.Scripts.Editor
         public IAtfActionStorage storage;
         public IAtfRecorder recorder;
 
+        private string CurrentRecordName;
+        private bool ShowDetailsOfSavedRecord;
+        private bool ShowDetailsOfCurrentRecord = true;
+
         private void OnFocus()
         {
             if (!EditorApplication.isPlaying) return;
             storage = FindObjectOfType<AtfDictionaryBasedActionStorage>();
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
             InitTreeViewOf(ref TreeViewForCurrentNames, ref SearchFieldForCurrentNames, ref treeViewStateForCurrentNames, TreePurpose.DRAW_CURRENT_NAMES, recorder, storage);
-            InitTreeViewOf(ref TreeViewForCurrentKindsAndActions, ref SearchFieldForCurrentKindsAndActions, ref treeViewStateForCurrentKindsAndActions, TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS, recorder, storage);
-            InitTreeViewOf(ref TreeViewForSavedNames, ref SearchFieldForSavedNames, ref treeViewStateForSavedNames, TreePurpose.DRAW_SAVED_NAMES, recorder, storage);
-            InitTreeViewOf(ref TreeViewForSavedKindsAndActions, ref SearchFieldForSavedKindsAndActions, ref treeViewStateForSavedKindsAndActions, TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS, recorder, storage);
+            InitTreeViewOf(ref TreeViewForCurrentKindsAndActions, ref SearchFieldForCurrentKindsAndActions, 
+                ref treeViewStateForCurrentKindsAndActions, TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS, recorder, storage);
+            InitTreeViewOf(ref TreeViewForSavedNames, ref SearchFieldForSavedNames, 
+                ref treeViewStateForSavedNames, TreePurpose.DRAW_SAVED_NAMES, recorder, storage);
+            InitTreeViewOf(ref TreeViewForSavedKindsAndActions, ref SearchFieldForSavedKindsAndActions, 
+                ref treeViewStateForSavedKindsAndActions, TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS, recorder, storage);
             TreeViewForCurrentNames.KindsAndActionsTreeView = TreeViewForCurrentKindsAndActions;
+            TreeViewForCurrentNames.RecordNameChanged += RepaintRecorderWindow;
             TreeViewForSavedNames.KindsAndActionsTreeView = TreeViewForSavedKindsAndActions;
+        }
+
+        private static void RepaintRecorderWindow(string recordName, AtfStorageTreeView context)
+        {
+            AtfWindow.GetRecorderWindow().Repaint();
         }
 
         private static void InitTreeViewOf(ref AtfStorageTreeView view, ref SearchField field, ref TreeViewState state, TreePurpose purpose, IAtfRecorder recorder, IAtfActionStorage storage)
@@ -115,21 +129,32 @@ namespace ATF.Scripts.Editor
                 if (!stateLoaded) return;
                 
                 GUILayout.Label("Save/Load control", EditorStyles.boldLabel);
-                GUILayout.Label($"Current recording name: {recorder.GetCurrentRecordingName()}", EditorStyles.label);
+                CurrentRecordName = EditorGUILayout.TextField("Name of the recording", CurrentRecordName);
+                if (Event.current.keyCode == KeyCode.Return)
+                {
+                    storage.SetCurrentRecordName(CurrentRecordName);  
+                }
+                GUILayout.Label($"Current recording name: {storage.GetCurrentRecordName()}", EditorStyles.label);
+                
+                EditorGUILayout.BeginHorizontal();
+                ShowDetailsOfSavedRecord = EditorGUILayout.Toggle("Display saved details", ShowDetailsOfSavedRecord);
+                ShowDetailsOfCurrentRecord = EditorGUILayout.Toggle("Display current details", ShowDetailsOfCurrentRecord);
+                EditorGUILayout.EndHorizontal();
+                
                 if (!recorder.IsPlaying() && !recorder.IsRecording())
                 {
                     EditorGUILayout.BeginHorizontal();
                     if (GUILayout.Button("Save"))
                     {
-                        storage.SaveStorage(recorder.GetCurrentRecordingName());
+                        storage.SaveStorage();
                     }
                     if (GUILayout.Button("Load"))
                     {
-                        storage.LoadStorage(recorder.GetCurrentRecordingName());
+                        storage.LoadStorage();
                     }
                     if (GUILayout.Button("Scrap"))
                     {
-                        storage.ScrapSavedStorage(recorder.GetCurrentRecordingName());
+                        storage.ScrapSavedStorage();
                     }
                     EditorGUILayout.EndHorizontal();
                 }
@@ -137,15 +162,19 @@ namespace ATF.Scripts.Editor
                 GUILayout.Label("Current records", EditorStyles.boldLabel);
                 DoToolbarFor(TreeViewForCurrentNames, SearchFieldForCurrentNames);
                 DoTreeViewFor(TreeViewForCurrentNames);
-                
-                GUILayout.Label("Current commands and actions queues", EditorStyles.boldLabel);
-                DoToolbarFor(TreeViewForCurrentKindsAndActions, SearchFieldForCurrentKindsAndActions);
-                DoTreeViewFor(TreeViewForCurrentKindsAndActions);
+
+                if (ShowDetailsOfCurrentRecord)
+                {
+                    GUILayout.Label("Current commands and actions queues", EditorStyles.boldLabel);
+                    DoToolbarFor(TreeViewForCurrentKindsAndActions, SearchFieldForCurrentKindsAndActions);
+                    DoTreeViewFor(TreeViewForCurrentKindsAndActions);
+                }
                 
                 GUILayout.Label("Saved records", EditorStyles.boldLabel);
                 DoToolbarFor(TreeViewForSavedNames, SearchFieldForSavedNames);
                 DoTreeViewFor(TreeViewForSavedNames);
-                
+
+                if (!ShowDetailsOfSavedRecord) return;
                 GUILayout.Label("Saved commands and actions queues", EditorStyles.boldLabel);
                 DoToolbarFor(TreeViewForSavedKindsAndActions, SearchFieldForSavedKindsAndActions);
                 DoTreeViewFor(TreeViewForSavedKindsAndActions);

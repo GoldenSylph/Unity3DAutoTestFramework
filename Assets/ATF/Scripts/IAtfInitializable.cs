@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace ATF {
+﻿namespace ATF.Scripts {
     public interface IAtfInitializable
     {
         void Initialize();

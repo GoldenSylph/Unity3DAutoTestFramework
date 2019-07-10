@@ -9,15 +9,15 @@
       <e p="Assets" t="Include">
         <e p="ATF" t="Include">
           <e p="Scripts" t="Include">
-            <e p="ATFInitializer.cs" t="Include" />
-            <e p="ATFInput.cs" t="Include" />
-            <e p="ATFStandaloneInputManager.cs" t="Include" />
+            <e p="AtfInitializer.cs" t="Include" />
+            <e p="AtfInput.cs" t="Include" />
+            <e p="AtfStandaloneInputManager.cs" t="Include" />
             <e p="Editor" t="Include">
-              <e p="ATFIntegratorWindow.cs" t="Include" />
-              <e p="ATFRecorderWindow.cs" t="Include" />
-              <e p="ATFStorageTreeView.cs" t="Include" />
-              <e p="ATFStorageWindow.cs" t="Include" />
-              <e p="ATFWindow.cs" t="Include" />
+              <e p="AtfIntegratorWindow.cs" t="Include" />
+              <e p="AtfRecorderWindow.cs" t="Include" />
+              <e p="AtfStorageTreeView.cs" t="Include" />
+              <e p="AtfStorageWindow.cs" t="Include" />
+              <e p="AtfWindow.cs" t="Include" />
             </e>
             <e p="Example" t="Include">
               <e p="IntegrationExample" t="Include">
@@ -28,22 +28,23 @@
               </e>
               <e p="Mover.cs" t="Include" />
             </e>
-            <e p="IATFInitializable.cs" t="Include" />
+            <e p="IAtfGetSetRecordName.cs" t="Include" />
+            <e p="IAtfInitializable.cs" t="Include" />
             <e p="Integration" t="Include">
-              <e p="ATFFileSystemBasedIntegrator.cs" t="Include" />
-              <e p="IATFIntegrator.cs" t="Include" />
+              <e p="AtfFileSystemBasedIntegrator.cs" t="Include" />
+              <e p="IAtfIntegrator.cs" t="Include" />
             </e>
             <e p="Recorder" t="Include">
-              <e p="ATFQueueBasedRecorder.cs" t="Include" />
-              <e p="ATFRecorder.cs" t="Include" />
+              <e p="AtfQueueBasedRecorder.cs" t="Include" />
+              <e p="AtfRecorder.cs" t="Include" />
             </e>
             <e p="Storage" t="Include">
-              <e p="ATFAction.cs" t="Include" />
-              <e p="ATFDictionaryBasedActionStorage.cs" t="Include" />
-              <e p="ATFPlayerPrefsBasedActionStorageSaver.cs" t="Include" />
+              <e p="AtfAction.cs" t="Include" />
+              <e p="AtfDictionaryBasedActionStorage.cs" t="Include" />
+              <e p="AtfPlayerPrefsBasedActionStorageSaver.cs" t="Include" />
               <e p="Interfaces" t="Include">
-                <e p="ATFActionStorage.cs" t="Include" />
-                <e p="ATFActionStorageSaver.cs" t="Include" />
+                <e p="AtfActionStorage.cs" t="Include" />
+                <e p="AtfActionStorageSaver.cs" t="Include" />
               </e>
             </e>
           </e>

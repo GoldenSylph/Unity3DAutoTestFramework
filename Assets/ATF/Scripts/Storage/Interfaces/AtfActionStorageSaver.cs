@@ -2,7 +2,7 @@
 
 namespace ATF.Scripts.Storage.Interfaces
 {
-    public interface IAtfActionStorageSaver : IAtfInitializable
+    public interface IAtfActionStorageSaver : IAtfInitializable, IAtfGetSetRecordName
     {
         void SaveAll();
         void LoadAll();
@@ -10,9 +10,6 @@ namespace ATF.Scripts.Storage.Interfaces
         void LoadRecord();
         void ScrapRecord();
         void ScrapAll();
-
-        void SetRecordName(string recordName);
-        string GetRecordName();
 
         IEnumerable GetActions();
         void SetActions(IEnumerable actionEnumerable);

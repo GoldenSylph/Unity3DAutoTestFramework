@@ -1,6 +1,6 @@
 ﻿namespace ATF.Scripts.Recorder
 {
-    public interface IAtfRecorder : IAtfInitializable
+    public interface IAtfRecorder : IAtfInitializable, IAtfGetSetRecordName
     {
         bool IsRecording();
         bool IsPlaying();
@@ -22,9 +22,6 @@
         void SetPlaying(bool value);
         void SetRecordingPaused(bool value);
         void SetPlayPaused(bool value);
-
-        string GetCurrentRecordingName();
-        void SetCurrentRecordingName(string value);
 
         void Record(FakeInput kind, object input, object fakeInputParameter);
     }

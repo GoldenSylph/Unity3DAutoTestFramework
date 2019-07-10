@@ -3,7 +3,7 @@ using UnityEditor.IMGUI.Controls;
 
 namespace ATF.Scripts.Storage.Interfaces
 {
-    public interface IAtfActionStorage : IAtfInitializable
+    public interface IAtfActionStorage : IAtfInitializable, IAtfGetSetRecordName
     {
         object GetPartOfRecord(FakeInput kind, object fakeInputParameter);
         void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, AtfAction atfAction);
@@ -11,9 +11,9 @@ namespace ATF.Scripts.Storage.Interfaces
         AtfAction Peek(string recordName, FakeInput kind, object fakeInputParameter);
         bool PrepareToPlayRecord(string recordName);
         void ClearPlayStorage();
-        void SaveStorage(string recordName);
-        void LoadStorage(string recordName);
-        void ScrapSavedStorage(string recordName);
+        void SaveStorage();
+        void LoadStorage();
+        void ScrapSavedStorage();
         List<TreeViewItem> GetSavedRecordNames();
         List<TreeViewItem> GetCurrentRecordNames();
         List<TreeViewItem> GetCurrentActions(string recordName);

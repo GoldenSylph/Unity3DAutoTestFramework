@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ATF.Scripts.Recorder;
@@ -23,6 +24,8 @@ namespace ATF.Scripts.Storage
         private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> ActionStorage;
         private Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> PlayStorage;
 
+        private string CurrentRecordName;
+        
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
             if (kind == FakeInput.NONE || PlayStorage == null || !PlayStorage.ContainsKey(kind) 
@@ -89,9 +92,23 @@ namespace ATF.Scripts.Storage
             PlayStorage = null;
         }
 
-        public void LoadStorage(string recordName)
+        public string GetCurrentRecordName()
         {
-            saver.SetRecordName(recordName);
+            if (string.IsNullOrEmpty(CurrentRecordName))
+            {
+                CurrentRecordName = "DefaultRecord";
+            }
+            return CurrentRecordName;
+        }
+
+        public void SetCurrentRecordName(string recordName)
+        {
+            CurrentRecordName = recordName;
+        }
+
+        public void LoadStorage()
+        {
+            saver.SetCurrentRecordName(GetCurrentRecordName());
             var loadedData = saver.GetActions();
             switch (loadedData)
             {
@@ -99,25 +116,27 @@ namespace ATF.Scripts.Storage
                     ActionStorage = ReturnNewCopyOf(data);
                     break;
                 case Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> data:
-                    ActionStorage[recordName] = ReturnNewCopyOf(data);
+                    ActionStorage[GetCurrentRecordName()] = ReturnNewCopyOf(data);
                     break;
             }
         }
 
-        public void SaveStorage(string recordName)
+        public void SaveStorage()
         {
-            saver.SetRecordName(recordName);
+            saver.SetCurrentRecordName(GetCurrentRecordName());
             saver.SetActions(ActionStorage);
         }
 
-        public void ScrapSavedStorage(string recordName)
+        public void ScrapSavedStorage()
         {
-            saver.SetRecordName(recordName);
+            saver.SetCurrentRecordName(GetCurrentRecordName());
             saver.ScrapSavedActions();
         }
 
         public List<TreeViewItem> GetSavedRecordNames()
         {
+            saver.SetCurrentRecordName(GetCurrentRecordName());
+            var temp = saver.GetActions();
             return null;
         }
 

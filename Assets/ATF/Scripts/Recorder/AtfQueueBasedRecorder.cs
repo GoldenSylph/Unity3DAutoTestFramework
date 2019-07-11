@@ -30,12 +30,12 @@ namespace ATF.Scripts.Recorder
         [SerializeField]
         private string currentRecordingName;
 
-        public string GetCurrentRecordingName()
+        public string GetCurrentRecordName()
         {
             return currentRecordingName ?? (currentRecordingName = "DefaultRecord");
         }
 
-        public void SetCurrentRecordingName(string value)
+        public void SetCurrentRecordName(string value)
         {
             currentRecordingName = value;
         }
@@ -80,7 +80,7 @@ namespace ATF.Scripts.Recorder
 
         public void PlayRecord()
         {
-            if (!Storage.PrepareToPlayRecord(GetCurrentRecordingName())) return;
+            if (!Storage.PrepareToPlayRecord(GetCurrentRecordName())) return;
             SetRecording(false);
             SetPlaying(true);
         }
@@ -93,7 +93,7 @@ namespace ATF.Scripts.Recorder
 
         public void Record(FakeInput kind, object input, object fakeInputParameter)
         {
-            Storage.Enqueue(GetCurrentRecordingName(), kind, fakeInputParameter, new AtfAction { Content = input });
+            Storage.Enqueue(GetCurrentRecordName(), kind, fakeInputParameter, new AtfAction { Content = input });
         }
 
         public void StopRecord()

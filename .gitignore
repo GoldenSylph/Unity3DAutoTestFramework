@@ -5,7 +5,7 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
-# Rider JetBrains cache directory
+# JetBrains Rider cache directory
 .idea/
 
 # Visual Studio cache directory

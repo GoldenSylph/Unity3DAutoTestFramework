@@ -109,15 +109,11 @@ namespace ATF.Scripts.Storage
         public void LoadStorage()
         {
             saver.SetCurrentRecordName(GetCurrentRecordName());
-            var loadedData = saver.GetActions();
-            switch (loadedData)
+            saver.LoadRecord();
+            var loadedData = (Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>) saver.GetActions();
+            if (loadedData != null)
             {
-                case Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> data:
-                    ActionStorage = ReturnNewCopyOf(data);
-                    break;
-                case Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> data:
-                    ActionStorage[GetCurrentRecordName()] = ReturnNewCopyOf(data);
-                    break;
+                ActionStorage = Merged(ActionStorage, loadedData);
             }
         }
 
@@ -125,19 +121,18 @@ namespace ATF.Scripts.Storage
         {
             saver.SetCurrentRecordName(GetCurrentRecordName());
             saver.SetActions(ActionStorage);
+            saver.SaveRecord();
         }
 
         public void ScrapSavedStorage()
         {
             saver.SetCurrentRecordName(GetCurrentRecordName());
-            saver.ScrapSavedActions();
+            saver.ScrapRecord();
         }
 
         public List<TreeViewItem> GetSavedRecordNames()
         {
-            saver.SetCurrentRecordName(GetCurrentRecordName());
-            var temp = saver.GetActions();
-            return null;
+            return saver.GetSavedNames();
         }
 
         public List<TreeViewItem> GetCurrentRecordNames()
@@ -195,25 +190,7 @@ namespace ATF.Scripts.Storage
 
         public List<TreeViewItem> GetSavedActions(string recordName)
         {
-            return null;
-        }
-
-        public static Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> ReturnNewCopyOf(Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> etalon)
-        {
-            var result = new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>();
-            if (etalon == null) return result;
-            foreach (var fi in etalon.Keys)
-            {
-                foreach (var objectToQueue in etalon.Values)
-                {
-                    result[fi] = new Dictionary<object, Queue<AtfAction>>();
-                    foreach (var pair in objectToQueue)
-                    {
-                        result[fi][pair.Key] = new Queue<AtfAction>(pair.Value);
-                    }
-                }
-            }
-            return result;
+            return saver.GetSavedRecordDetails(recordName);
         }
 
         public static Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> ReturnNewCopyOf(Dictionary<string, 
@@ -249,6 +226,33 @@ namespace ATF.Scripts.Storage
             return toReturn();
         }
 
+        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> Merged(
+            Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> first,
+            Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> second)
+        {
+            foreach (var key in second.Keys)
+            {
+                first.Add(key, second[key]);
+            }
+            return first;
+        }
         
+        private static Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> ReturnNewCopyOf(Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> etalon)
+        {
+            var result = new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>();
+            if (etalon == null) return result;
+            foreach (var fi in etalon.Keys)
+            {
+                foreach (var objectToQueue in etalon.Values)
+                {
+                    result[fi] = new Dictionary<object, Queue<AtfAction>>();
+                    foreach (var pair in objectToQueue)
+                    {
+                        result[fi][pair.Key] = new Queue<AtfAction>(pair.Value);
+                    }
+                }
+            }
+            return result;
+        }
     }
 }

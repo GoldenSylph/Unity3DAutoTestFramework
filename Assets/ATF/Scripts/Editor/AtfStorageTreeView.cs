@@ -102,11 +102,12 @@ namespace ATF.Scripts.Editor
 
         public void UpdateItems(List<TreeViewItem> items)
         {
-            if (items == null) return;
+            if (items == null || items.Count == 0) return;
             AllItems.RemoveAll(item => item.displayName.Equals(NoCurrentActionsLoaded) 
                                        || item.displayName.Equals(NoCurrentKindsAndActionsSelected)
                                        || item.displayName.Equals(NoRecordsSaved));
             AllItems = items;
+            if (AllItems.Count == 0) return;
             SetupDepthsFromParentsAndChildren(AllItems[0]);
             Reload();
         }

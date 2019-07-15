@@ -112,6 +112,35 @@ namespace ATF.Scripts.Editor
             Reload();
         }
 
+        protected override void SingleClickedItem(int id)
+        {
+            base.SingleClickedItem(id);
+            var clickedItem = FindItem(id, Root);
+            if (clickedItem == null || clickedItem.depth > 0
+                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
+                                    || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
+                                    || clickedItem.displayName.Equals(NoRecordsSaved)
+                                    || clickedItem.displayName.Equals(NoSavedKindsAndActionsSelected)) return;
+            switch (TreePurpose)
+            {
+                case TreePurpose.DRAW_CURRENT_NAMES:
+                case TreePurpose.DRAW_SAVED_NAMES:
+                    
+                    Storage.SetCurrentRecordName(clickedItem.displayName);
+                    break;
+                
+                case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
+                case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
+                    break;
+                
+                case TreePurpose.NONE:
+                    throw new System.ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
+
+                default:
+                    throw new System.ArgumentOutOfRangeException();
+            }
+        }
+
         protected override void DoubleClickedItem(int id)
         {
             base.DoubleClickedItem(id);

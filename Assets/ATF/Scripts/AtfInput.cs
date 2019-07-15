@@ -57,7 +57,7 @@ namespace ATF.Scripts {
                 return function();
             } catch (Exception e)
             {
-                if (DependencyInjector.DebugOn)
+                if (FindObjectOfType<AtfInitializer>().isDebugPrintOn)
                 {
                     print(e);
                 }

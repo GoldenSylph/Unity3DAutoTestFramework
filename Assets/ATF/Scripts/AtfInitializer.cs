@@ -10,13 +10,8 @@ namespace ATF.Scripts
     public class AtfInitializer : MonoBehaviour
     {
         [SerializeField]
-        private bool isDebugPrintOn = false;
-
-        private void Update()
-        {
-            DependencyInjector.DebugOn = isDebugPrintOn;
-        }
-
+        public bool isDebugPrintOn = true;
+        
         private void Awake()
         {
             IAtfInitializable[] allSystems = {

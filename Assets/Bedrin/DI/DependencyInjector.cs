@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Linq;
 using Bedrin.Helper;
 using System.Text.RegularExpressions;
+using ATF.Scripts;
 
 namespace Bedrin.DI
 {
@@ -43,8 +44,6 @@ namespace Bedrin.DI
 
     public class DependencyInjector : MonoSingleton<DependencyInjector>
     {
-        public static bool DebugOn = false;
-
         private class PathValidationResult
         {
             public string[] Result;
@@ -56,7 +55,7 @@ namespace Bedrin.DI
 
         private static void Print(object obj)
         {
-            if (DebugOn)
+            if (FindObjectOfType<AtfInitializer>().isDebugPrintOn)
             {
                 print(obj);
             }

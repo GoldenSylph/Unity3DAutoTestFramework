@@ -25,6 +25,21 @@ namespace ATF.Scripts.Storage
         private Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> PlayStorage;
 
         private string CurrentRecordName;
+
+        // ReSharper disable once InconsistentNaming
+        private AtfInitializer initializer;
+        private AtfInitializer Initializer
+        {
+            get
+            {
+                if (!initializer)
+                {
+                    initializer = FindObjectOfType<AtfInitializer>();
+                }
+
+                return initializer;
+            }
+        }
         
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
@@ -32,7 +47,7 @@ namespace ATF.Scripts.Storage
                 || !PlayStorage[kind].ContainsKey(fakeInputParameter)) return null;
             try
             {
-                if (DependencyInjector.DebugOn)
+                if (Initializer.isDebugPrintOn)
                 {
                     print($"Action to deliver remain: {PlayStorage[kind].Count}");
                 }
@@ -43,7 +58,7 @@ namespace ATF.Scripts.Storage
                 return PlayStorage[kind][fakeInputParameter].Peek().Content;
             } catch (Exception)
             {
-                if (DependencyInjector.DebugOn) print("Clearing play cache");
+                if (Initializer.isDebugPrintOn) print("Clearing play cache");
                 recorder.StopPlay();
                 ClearPlayStorage();
             }
@@ -111,10 +126,7 @@ namespace ATF.Scripts.Storage
             saver.SetCurrentRecordName(GetCurrentRecordName());
             saver.LoadRecord();
             var loadedData = (Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>) saver.GetActions();
-            if (loadedData != null)
-            {
-                ActionStorage = Merged(ActionStorage, loadedData);
-            }
+            ActionStorage = Merged(ActionStorage, loadedData);
         }
 
         public void SaveStorage()

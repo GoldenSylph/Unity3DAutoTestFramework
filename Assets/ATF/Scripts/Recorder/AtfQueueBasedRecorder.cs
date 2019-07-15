@@ -11,7 +11,9 @@ namespace ATF.Scripts.Recorder
     public class AtfQueueBasedRecorder : MonoSingleton<AtfQueueBasedRecorder>, IAtfRecorder
     {
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
-        public readonly static IAtfActionStorage Storage;
+        // ReSharper disable once UnassignedReadonlyField
+        // ReSharper disable once MemberCanBePrivate.Global
+        public static readonly IAtfActionStorage Storage;
 
         [Header("Debug Settings:")]
         

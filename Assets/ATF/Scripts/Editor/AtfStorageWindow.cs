@@ -42,7 +42,6 @@ namespace ATF.Scripts.Editor
         public IAtfActionStorage storage;
         public IAtfRecorder recorder;
 
-        private string CurrentRecordName;
         private bool ShowDetailsOfSavedRecord;
         private bool ShowDetailsOfCurrentRecord = true;
 
@@ -128,13 +127,7 @@ namespace ATF.Scripts.Editor
                         : "Storage realisation: Waiting to focus...", EditorStyles.label);
                 if (!stateLoaded) return;
                 
-                GUILayout.Label("Save/Load control", EditorStyles.boldLabel);
-                CurrentRecordName = EditorGUILayout.TextField("Name of the recording", CurrentRecordName);
-                if (Event.current.keyCode == KeyCode.Return)
-                {
-                    storage.SetCurrentRecordName(CurrentRecordName);  
-                }
-                GUILayout.Label($"Current recording name: {storage.GetCurrentRecordName()}", EditorStyles.label);
+                GUILayout.Label($"Current recording name: {storage.GetCurrentRecordName()}", EditorStyles.boldLabel);
                 
                 EditorGUILayout.BeginHorizontal();
                 ShowDetailsOfSavedRecord = EditorGUILayout.Toggle("Display saved details", ShowDetailsOfSavedRecord);

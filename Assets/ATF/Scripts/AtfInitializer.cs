@@ -3,11 +3,12 @@ using ATF.Scripts.Integration;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using Bedrin.DI;
+using Bedrin.Helper;
 using UnityEngine;
 
 namespace ATF.Scripts
 {
-    public class AtfInitializer : MonoBehaviour
+    public class AtfInitializer : MonoSingleton<AtfInitializer>
     {
         [SerializeField]
         public bool isDebugPrintOn = true;

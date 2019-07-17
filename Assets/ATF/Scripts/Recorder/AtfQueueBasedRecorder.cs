@@ -13,7 +13,7 @@ namespace ATF.Scripts.Recorder
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
         // ReSharper disable once UnassignedReadonlyField
         // ReSharper disable once MemberCanBePrivate.Global
-        public static readonly IAtfActionStorage Storage;
+        public static readonly IAtfActionStorage STORAGE;
 
         [Header("Debug Settings:")]
         
@@ -82,7 +82,7 @@ namespace ATF.Scripts.Recorder
 
         public void PlayRecord()
         {
-            if (!Storage.PrepareToPlayRecord(GetCurrentRecordName())) return;
+            if (!STORAGE.PrepareToPlayRecord(GetCurrentRecordName())) return;
             SetRecording(false);
             SetPlaying(true);
         }
@@ -95,7 +95,7 @@ namespace ATF.Scripts.Recorder
 
         public void Record(FakeInput kind, object input, object fakeInputParameter)
         {
-            Storage.Enqueue(GetCurrentRecordName(), kind, fakeInputParameter, new AtfAction { Content = input });
+            STORAGE.Enqueue(GetCurrentRecordName(), kind, fakeInputParameter, new AtfAction { Content = input });
         }
 
         public void StopRecord()
@@ -119,7 +119,7 @@ namespace ATF.Scripts.Recorder
         {
             SetPlaying(false);
             SetRecording(false);
-            Storage.ClearPlayStorage();
+            STORAGE.ClearPlayStorage();
             SetPlayPaused(false);
         }
 

@@ -9,9 +9,20 @@ using UnityEngine.EventSystems;
 namespace ATF.Scripts {
 
     public enum FakeInput {
-        NONE, ANY_KEY_DOWN, ANY_KEY, GET_AXIS, GET_AXIS_RAW, GET_BUTTON,
-        GET_BUTTON_DOWN, GET_BUTTON_UP, GET_KEY, GET_KEY_DOWN, GET_KEY_UP,
-        GET_MOUSE_BUTTON, GET_MOUSE_BUTTON_DOWN, GET_MOUSE_BUTTON_UP
+        NONE,
+        ANY_KEY_DOWN,
+        ANY_KEY,
+        GET_AXIS,
+        GET_AXIS_RAW,
+        GET_BUTTON,
+        GET_BUTTON_DOWN,
+        GET_BUTTON_UP,
+        GET_KEY,
+        GET_KEY_DOWN,
+        GET_KEY_UP,
+        GET_MOUSE_BUTTON,
+        GET_MOUSE_BUTTON_DOWN,
+        GET_MOUSE_BUTTON_UP
     }
 
     [Serializable]
@@ -21,28 +32,28 @@ namespace ATF.Scripts {
         [Inject(typeof(AtfQueueBasedRecorder))]
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnassignedReadonlyField
-        public static readonly IAtfRecorder Recorder;
+        public static readonly IAtfRecorder RECORDER;
 
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
         // ReSharper disable once UnassignedReadonlyField
         // ReSharper disable once MemberCanBePrivate.Global
-        public static readonly IAtfActionStorage Storage;
+        public static readonly IAtfActionStorage STORAGE;
 
         private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, object fakeInputParameter, FakeInput kind)
         {
-            if (Recorder.IsPlaying() && !Recorder.IsPlayPaused() && !Recorder.IsRecording())
+            if (RECORDER.IsPlaying() && !RECORDER.IsPlayPaused() && !RECORDER.IsRecording())
             {
                 return fakeInput;
             }
 
-            if (!Recorder.IsPlaying() && Recorder.IsRecording() && !Recorder.IsRecordingPaused())
+            if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
             {
-                Recorder.Record(kind, realInput, fakeInputParameter);
+                RECORDER.Record(kind, realInput, fakeInputParameter);
                 return realInput;
             }
 
-            if (!Recorder.IsPlaying() && !Recorder.IsRecording() || 
-                Recorder.IsRecording() && Recorder.IsRecordingPaused() || Recorder.IsPlaying() && Recorder.IsPlayPaused())
+            if (!RECORDER.IsPlaying() && !RECORDER.IsRecording() || 
+                RECORDER.IsRecording() && RECORDER.IsRecordingPaused() || RECORDER.IsPlaying() && RECORDER.IsPlayPaused())
             {
                 return realInput;
             }
@@ -57,7 +68,7 @@ namespace ATF.Scripts {
                 return function();
             } catch (Exception e)
             {
-                if (FindObjectOfType<AtfInitializer>().isDebugPrintOn)
+                if (AtfInitializer.Instance.isDebugPrintOn)
                 {
                     print(e);
                 }
@@ -67,7 +78,7 @@ namespace ATF.Scripts {
 
         private static object GetCurrentFakeInput(FakeInput inputKind, object fakeInputParameter)
         {
-            return Storage.GetPartOfRecord(inputKind, fakeInputParameter);
+            return STORAGE.GetPartOfRecord(inputKind, fakeInputParameter);
         }
 
         private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue, object fakeInputParameter = null)

@@ -25,10 +25,10 @@ namespace ATF.Scripts.Editor
         private List<TreeViewItem> AllItems;
         private readonly TreeViewItem Root;
         
-        private const string NoCurrentKindsAndActionsSelected = "No current record selected.";
-        private const string NoSavedKindsAndActionsSelected = "No saved record selected.";
-        private const string NoCurrentActionsLoaded = "No current actions loaded.";
-        private const string NoRecordsSaved = "No records saved.";
+        private const string NO_CURRENT_KINDS_AND_ACTIONS_SELECTED = "No current record selected.";
+        private const string NO_SAVED_KINDS_AND_ACTIONS_SELECTED = "No saved record selected.";
+        private const string NO_CURRENT_ACTIONS_LOADED = "No current actions loaded.";
+        private const string NO_RECORDS_SAVED = "No records saved.";
 
         // ReSharper disable once MemberCanBePrivate.Global
         public readonly IAtfRecorder Recorder;
@@ -62,33 +62,33 @@ namespace ATF.Scripts.Editor
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
                     AllItems.Add(new TreeViewItem {
-                        id = DictionaryBasedIdGenerator.GetNewId(NoCurrentActionsLoaded),
+                        id = DictionaryBasedIdGenerator.GetNewId(NO_CURRENT_ACTIONS_LOADED),
                         depth = 0,
-                        displayName = NoCurrentActionsLoaded
+                        displayName = NO_CURRENT_ACTIONS_LOADED
                     });
                     break;
 
                 case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
                     AllItems.Add(new TreeViewItem {
-                        id = DictionaryBasedIdGenerator.GetNewId(NoCurrentKindsAndActionsSelected),
+                        id = DictionaryBasedIdGenerator.GetNewId(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED),
                         depth = 0,
-                        displayName = NoCurrentKindsAndActionsSelected
+                        displayName = NO_CURRENT_KINDS_AND_ACTIONS_SELECTED
                     });
                     break;
 
                 case TreePurpose.DRAW_SAVED_NAMES:
                     AllItems.Add(new TreeViewItem {
-                        id = DictionaryBasedIdGenerator.GetNewId(NoRecordsSaved),
+                        id = DictionaryBasedIdGenerator.GetNewId(NO_RECORDS_SAVED),
                         depth = 0,
-                        displayName = NoRecordsSaved
+                        displayName = NO_RECORDS_SAVED
                     });
                     break;
 
                 case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
                     AllItems.Add(new TreeViewItem {
-                        id = DictionaryBasedIdGenerator.GetNewId(NoSavedKindsAndActionsSelected),
+                        id = DictionaryBasedIdGenerator.GetNewId(NO_SAVED_KINDS_AND_ACTIONS_SELECTED),
                         depth = 0,
-                        displayName = NoSavedKindsAndActionsSelected
+                        displayName = NO_SAVED_KINDS_AND_ACTIONS_SELECTED
                     });
                     break;
                 
@@ -103,9 +103,9 @@ namespace ATF.Scripts.Editor
         public void UpdateItems(List<TreeViewItem> items)
         {
             if (items == null || items.Count == 0) return;
-            AllItems.RemoveAll(item => item.displayName.Equals(NoCurrentActionsLoaded) 
-                                       || item.displayName.Equals(NoCurrentKindsAndActionsSelected)
-                                       || item.displayName.Equals(NoRecordsSaved));
+            AllItems.RemoveAll(item => item.displayName.Equals(NO_CURRENT_ACTIONS_LOADED) 
+                                       || item.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED)
+                                       || item.displayName.Equals(NO_RECORDS_SAVED));
             AllItems = items;
             if (AllItems.Count == 0) return;
             SetupDepthsFromParentsAndChildren(AllItems[0]);
@@ -117,10 +117,10 @@ namespace ATF.Scripts.Editor
             base.SingleClickedItem(id);
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || clickedItem.depth > 0
-                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
-                                    || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
-                                    || clickedItem.displayName.Equals(NoRecordsSaved)
-                                    || clickedItem.displayName.Equals(NoSavedKindsAndActionsSelected)) return;
+                                    || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
+                                    || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)
+                                    || clickedItem.displayName.Equals(NO_RECORDS_SAVED)
+                                    || clickedItem.displayName.Equals(NO_SAVED_KINDS_AND_ACTIONS_SELECTED)) return;
             switch (TreePurpose)
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
@@ -146,9 +146,9 @@ namespace ATF.Scripts.Editor
             base.DoubleClickedItem(id);
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || clickedItem.depth > 0
-                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
-                                    || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
-                                    || clickedItem.displayName.Equals(NoRecordsSaved)) return;
+                                    || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
+                                    || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)
+                                    || clickedItem.displayName.Equals(NO_RECORDS_SAVED)) return;
             switch (TreePurpose)
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
@@ -177,9 +177,9 @@ namespace ATF.Scripts.Editor
             base.ContextClickedItem(id);
             var clickedItem = FindItem(id, Root);
             if (clickedItem == null || clickedItem.depth > 0
-                                    || clickedItem.displayName.Equals(NoCurrentKindsAndActionsSelected) 
-                                    || clickedItem.displayName.Equals(NoCurrentActionsLoaded)
-                                    || clickedItem.displayName.Equals(NoRecordsSaved)) return;
+                                    || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
+                                    || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)
+                                    || clickedItem.displayName.Equals(NO_RECORDS_SAVED)) return;
             switch (TreePurpose)
             {
                 

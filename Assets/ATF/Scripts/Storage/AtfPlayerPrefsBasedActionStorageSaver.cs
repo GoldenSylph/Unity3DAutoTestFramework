@@ -180,11 +180,11 @@ namespace ATF.Scripts.Storage
                 {
                     if (temp.content == null || temp.content.Count == 0)
                     {
-                        const string noRecordsSaved = "No records saved.";
+                        const string NO_RECORDS_SAVED = "No records saved.";
                         result.Add(new TreeViewItem {
-                            id = DictionaryBasedIdGenerator.GetNewId(noRecordsSaved),
+                            id = DictionaryBasedIdGenerator.GetNewId(NO_RECORDS_SAVED),
                             depth = 0,
-                            displayName = noRecordsSaved
+                            displayName = NO_RECORDS_SAVED
                         });
                     }
                     else

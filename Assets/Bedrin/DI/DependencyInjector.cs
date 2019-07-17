@@ -55,7 +55,7 @@ namespace Bedrin.DI
 
         private static void Print(object obj)
         {
-            if (FindObjectOfType<AtfInitializer>().isDebugPrintOn)
+            if (AtfInitializer.Instance.isDebugPrintOn)
             {
                 print(obj);
             }

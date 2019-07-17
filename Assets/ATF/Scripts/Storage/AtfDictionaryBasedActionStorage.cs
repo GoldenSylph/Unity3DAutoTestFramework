@@ -26,28 +26,13 @@ namespace ATF.Scripts.Storage
 
         private string CurrentRecordName;
 
-        // ReSharper disable once InconsistentNaming
-        private AtfInitializer initializer;
-        private AtfInitializer Initializer
-        {
-            get
-            {
-                if (!initializer)
-                {
-                    initializer = FindObjectOfType<AtfInitializer>();
-                }
-
-                return initializer;
-            }
-        }
-        
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
             if (kind == FakeInput.NONE || PlayStorage == null || !PlayStorage.ContainsKey(kind) 
                 || !PlayStorage[kind].ContainsKey(fakeInputParameter)) return null;
             try
             {
-                if (Initializer.isDebugPrintOn)
+                if (AtfInitializer.Instance.isDebugPrintOn)
                 {
                     print($"Action to deliver remain: {PlayStorage[kind].Count}");
                 }
@@ -58,7 +43,7 @@ namespace ATF.Scripts.Storage
                 return PlayStorage[kind][fakeInputParameter].Peek().Content;
             } catch (Exception)
             {
-                if (Initializer.isDebugPrintOn) print("Clearing play cache");
+                if (AtfInitializer.Instance.isDebugPrintOn) print("Clearing play cache");
                 recorder.StopPlay();
                 ClearPlayStorage();
             }
@@ -238,7 +223,7 @@ namespace ATF.Scripts.Storage
             return toReturn();
         }
 
-        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> Merged(
+        private static Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> Merged(
             Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> first,
             Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> second)
         {

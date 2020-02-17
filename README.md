@@ -1,1 +1,2 @@
-# Unity3DAutoTestFramework
+# My diploma work
+## Unity Action Automation Tool

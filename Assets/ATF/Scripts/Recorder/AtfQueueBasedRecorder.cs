@@ -13,6 +13,7 @@ namespace ATF.Scripts.Recorder
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
         // ReSharper disable once UnassignedReadonlyField
         // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once InconsistentNaming
         public static readonly IAtfActionStorage STORAGE;
 
         [Header("Debug Settings:")]

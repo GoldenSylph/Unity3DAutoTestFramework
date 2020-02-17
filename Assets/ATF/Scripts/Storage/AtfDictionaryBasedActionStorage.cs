@@ -21,26 +21,26 @@ namespace ATF.Scripts.Storage
         [Inject(typeof(AtfPlayerPrefsBasedActionStorageSaver))]
         public IAtfActionStorageSaver saver;
 
-        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> ActionStorage;
-        private Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> PlayStorage;
+        private Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>> _actionStorage;
+        private Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>> _playStorage;
 
-        private string CurrentRecordName;
+        private string _currentRecordName;
 
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
-            if (kind == FakeInput.NONE || PlayStorage == null || !PlayStorage.ContainsKey(kind) 
-                || !PlayStorage[kind].ContainsKey(fakeInputParameter)) return null;
+            if (kind == FakeInput.NONE || _playStorage == null || !_playStorage.ContainsKey(kind) 
+                || !_playStorage[kind].ContainsKey(fakeInputParameter)) return null;
             try
             {
                 if (AtfInitializer.Instance.isDebugPrintOn)
                 {
-                    print($"Action to deliver remain: {PlayStorage[kind].Count}");
+                    print($"Action to deliver remain: {_playStorage[kind].Count}");
                 }
                 if (recorder.IsPlaying() && !recorder.IsPlayPaused())
                 {
-                    return PlayStorage[kind][fakeInputParameter].Dequeue().Content;
+                    return _playStorage[kind][fakeInputParameter].Dequeue().Content;
                 }
-                return PlayStorage[kind][fakeInputParameter].Peek().Content;
+                return _playStorage[kind][fakeInputParameter].Peek().Content;
             } catch (Exception)
             {
                 if (AtfInitializer.Instance.isDebugPrintOn) print("Clearing play cache");
@@ -54,56 +54,56 @@ namespace ATF.Scripts.Storage
         {
             BeforeIfNameAndKindAndFipAreNotExistInStorage(recordName, kind, fakeInputParameter,
                 (r, k, fip) => {
-                    ActionStorage[r][k][fip].Enqueue(atfAction);
+                    _actionStorage[r][k][fip].Enqueue(atfAction);
                 },
                 (r, k, fip) => {
-                    ActionStorage.Add(r, new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>());
-                    ActionStorage[r].Add(k, new Dictionary<object, Queue<AtfAction>>());
-                    ActionStorage[r][k][fip] = new Queue<AtfAction>();
+                    _actionStorage.Add(r, new Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>());
+                    _actionStorage[r].Add(k, new Dictionary<object, Queue<AtfAction>>());
+                    _actionStorage[r][k][fip] = new Queue<AtfAction>();
                 });
         }
 
         public AtfAction Peek(string recordName, FakeInput kind, object fakeInputParameter)
         {
             return IfNameAndKindAndFipIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
-                () => ActionStorage[recordName][kind][fakeInputParameter].Peek(), null);
+                () => _actionStorage[recordName][kind][fakeInputParameter].Peek(), null);
         }
 
         public AtfAction Dequeue(string recordName, FakeInput kind, object fakeInputParameter)
         {
             return IfNameAndKindAndFipIsNotExistInStorageReturnDefault(recordName, kind, fakeInputParameter,
-                () => ActionStorage[recordName][kind][fakeInputParameter].Dequeue(), null);
+                () => _actionStorage[recordName][kind][fakeInputParameter].Dequeue(), null);
         }
 
         public void Initialize()
         {
-            ActionStorage = new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>();
+            _actionStorage = new Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>();
         }
 
         public bool PrepareToPlayRecord(string recordName)
         {
-            if (!ActionStorage.ContainsKey(recordName)) return false;
-            PlayStorage = ReturnNewCopyOf(ActionStorage[recordName]);
+            if (!_actionStorage.ContainsKey(recordName)) return false;
+            _playStorage = ReturnNewCopyOf(_actionStorage[recordName]);
             return true;
         }
 
         public void ClearPlayStorage()
         {
-            PlayStorage = null;
+            _playStorage = null;
         }
 
         public string GetCurrentRecordName()
         {
-            if (string.IsNullOrEmpty(CurrentRecordName))
+            if (string.IsNullOrEmpty(_currentRecordName))
             {
-                CurrentRecordName = "DefaultRecord";
+                _currentRecordName = "DefaultRecord";
             }
-            return CurrentRecordName;
+            return _currentRecordName;
         }
 
         public void SetCurrentRecordName(string recordName)
         {
-            CurrentRecordName = recordName;
+            _currentRecordName = recordName;
         }
 
         public void LoadStorage()
@@ -111,13 +111,13 @@ namespace ATF.Scripts.Storage
             saver.SetCurrentRecordName(GetCurrentRecordName());
             saver.LoadRecord();
             var loadedData = (Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>) saver.GetActions();
-            ActionStorage = Merged(ActionStorage, loadedData);
+            _actionStorage = Merged(_actionStorage, loadedData);
         }
 
         public void SaveStorage()
         {
             saver.SetCurrentRecordName(GetCurrentRecordName());
-            saver.SetActions(ActionStorage);
+            saver.SetActions(_actionStorage);
             saver.SaveRecord();
         }
 
@@ -135,7 +135,7 @@ namespace ATF.Scripts.Storage
         public List<TreeViewItem> GetCurrentRecordNames()
         {
             var result = new List<TreeViewItem>();
-            foreach (var key in ActionStorage.Keys)
+            foreach (var key in _actionStorage.Keys)
             {
                 result.Add(new TreeViewItem
                 {
@@ -150,8 +150,8 @@ namespace ATF.Scripts.Storage
         public List<TreeViewItem> GetCurrentActions(string recordName)
         {
             var result = new List<TreeViewItem>();
-            if (!ActionStorage.ContainsKey(recordName)) return null;
-            foreach (var fakeInputAndDictionary in ActionStorage[recordName])
+            if (!_actionStorage.ContainsKey(recordName)) return null;
+            foreach (var fakeInputAndDictionary in _actionStorage[recordName])
             {
                 var rootFakeInput = new TreeViewItem
                 {
@@ -170,14 +170,13 @@ namespace ATF.Scripts.Storage
                         displayName = displayNameForFip
                     };
                     rootFakeInput.AddChild(fakeInputParameterViewItem);
-                    foreach (var action in fakeInputParameterAndQueue.Value)
+                    foreach (var actionTreeViewItem in fakeInputParameterAndQueue.Value.Select(action => new TreeViewItem
                     {
-                        var actionTreeViewItem = new TreeViewItem
-                        {
-                            id = DictionaryBasedIdGenerator.GetNewId(action.Content.ToString()),
-                            depth = 2,
-                            displayName = action.Content.ToString()
-                        };
+                        id = DictionaryBasedIdGenerator.GetNewId(action.Content.ToString()),
+                        depth = 2,
+                        displayName = action.Content.ToString()
+                    }))
+                    {
                         fakeInputParameterViewItem.AddChild(actionTreeViewItem);
                     }
                 }
@@ -205,7 +204,7 @@ namespace ATF.Scripts.Storage
         private void BeforeIfNameAndKindAndFipAreNotExistInStorage(string recordName, FakeInput kind, object fakeInputParameter,
             Action<string, FakeInput, object> then, Action<string, FakeInput, object> beforeAction)
         {
-            if (!ActionStorage.ContainsKey(recordName) || !ActionStorage[recordName].ContainsKey(kind) || !ActionStorage[recordName][kind].ContainsKey(fakeInputParameter))
+            if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
             {
                 beforeAction(recordName, kind, fakeInputParameter);
 
@@ -215,7 +214,7 @@ namespace ATF.Scripts.Storage
 
         private T IfNameAndKindAndFipIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, object fakeInputParameter, Func<T> toReturn, T defaultValue)
         {
-            if (!ActionStorage.ContainsKey(recordName) || !ActionStorage[recordName].ContainsKey(kind) || !ActionStorage[recordName][kind].ContainsKey(fakeInputParameter))
+            if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
             {
                 return defaultValue;
             }

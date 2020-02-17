@@ -58,7 +58,9 @@ namespace ATF.Scripts.Storage
                 return fakeInputsWithFipsAndActions?.ConvertAll((e) => e.fakeInput);
             }
 
+#pragma warning disable 659
             public override bool Equals(object obj)
+#pragma warning restore 659
             {
                 return obj is Record record && record.recordName.Equals(recordName);
             }
@@ -94,18 +96,18 @@ namespace ATF.Scripts.Storage
         [SerializeField]
         private string slotKey;
         
-        private Slot SlotToSerialize;
-        private bool IsDebugOn;
+        private Slot _slotToSerialize;
+        private bool _isDebugOn;
 
         public void Initialize()
         {
             slotKey = "SAVED_ACTION_STORAGE";
-            IsDebugOn = FindObjectOfType<AtfInitializer>().isDebugPrintOn;
+            _isDebugOn = FindObjectOfType<AtfInitializer>().isDebugPrintOn;
         }
 
         private void Print(object o)
         {
-            if (IsDebugOn)
+            if (_isDebugOn)
             {
                 print(o);
             }
@@ -117,7 +119,7 @@ namespace ATF.Scripts.Storage
             IfHasSlotKey((temp) =>
             {
                 if (temp.content == null) return;
-                SlotToSerialize.content = temp.content.Where((r) => r.recordName.Equals(GetCurrentRecordName())).ToList();
+                _slotToSerialize.content = temp.content.Where((r) => r.recordName.Equals(GetCurrentRecordName())).ToList();
             });
         }
 
@@ -126,21 +128,21 @@ namespace ATF.Scripts.Storage
             IfHasSlotKey(
                 (temp) =>
                 {
-                    if (SlotToSerialize?.content == null) return;
+                    if (_slotToSerialize?.content == null) return;
                     Print("Has key, updating...");
-                    SlotToSerialize.content = SlotToSerialize.content
+                    _slotToSerialize.content = _slotToSerialize.content
                         .Where((r) => r.recordName.Equals(GetCurrentRecordName())).ToList();
-                    var serializedSlot = JsonUtility.ToJson(Slot.Merge(SlotToSerialize, temp));
+                    var serializedSlot = JsonUtility.ToJson(Slot.Merge(_slotToSerialize, temp));
                     Print(serializedSlot);
                     PlayerPrefs.SetString(slotKey, serializedSlot);
                 },
                 () =>
                 {
-                    if (SlotToSerialize.content == null) return;
+                    if (_slotToSerialize.content == null) return;
                     Print("Hasn't key, creating...");
-                    SlotToSerialize.content = SlotToSerialize.content
+                    _slotToSerialize.content = _slotToSerialize.content
                         .Where((r) => r.recordName.Equals(GetCurrentRecordName())).ToList();
-                    var serializedSlot = JsonUtility.ToJson(SlotToSerialize);
+                    var serializedSlot = JsonUtility.ToJson(_slotToSerialize);
                     Print(serializedSlot);
                     PlayerPrefs.SetString(slotKey, serializedSlot);
                 });
@@ -164,12 +166,12 @@ namespace ATF.Scripts.Storage
             var newContent =
                 (Dictionary<string, Dictionary<FakeInput, Dictionary<object, Queue<AtfAction>>>>) actionEnumerable;
             if (newContent.Count == 0) return;
-            SlotToSerialize.content = Pack(newContent);
+            _slotToSerialize.content = Pack(newContent);
         }
 
         public IEnumerable GetActions()
         {
-            return Unpack(SlotToSerialize);
+            return Unpack(_slotToSerialize);
         }
         
         public List<TreeViewItem> GetSavedNames()
@@ -180,6 +182,7 @@ namespace ATF.Scripts.Storage
                 {
                     if (temp.content == null || temp.content.Count == 0)
                     {
+                        // ReSharper disable once InconsistentNaming
                         const string NO_RECORDS_SAVED = "No records saved.";
                         result.Add(new TreeViewItem {
                             id = DictionaryBasedIdGenerator.GetNewId(NO_RECORDS_SAVED),
@@ -259,9 +262,9 @@ namespace ATF.Scripts.Storage
 
         private void InitSlotIfNeeded()
         {
-            if (SlotToSerialize == null)
+            if (_slotToSerialize == null)
             {
-                SlotToSerialize = new Slot();
+                _slotToSerialize = new Slot();
             }
         }
         

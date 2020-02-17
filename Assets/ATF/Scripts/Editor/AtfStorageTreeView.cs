@@ -22,8 +22,8 @@ namespace ATF.Scripts.Editor
         public readonly TreePurpose TreePurpose;
         public AtfStorageTreeView KindsAndActionsTreeView;
         
-        private List<TreeViewItem> AllItems;
-        private readonly TreeViewItem Root;
+        private List<TreeViewItem> _allItems;
+        private readonly TreeViewItem _root;
         
         private const string NO_CURRENT_KINDS_AND_ACTIONS_SELECTED = "No current record selected.";
         private const string NO_SAVED_KINDS_AND_ACTIONS_SELECTED = "No saved record selected.";
@@ -44,24 +44,24 @@ namespace ATF.Scripts.Editor
             TreePurpose = treePurpose;
             Recorder = recorder;
             Storage = storage;
-            Root = new TreeViewItem {id = 0, depth = -1, displayName = "Root"};
+            _root = new TreeViewItem {id = 0, depth = -1, displayName = "Root"};
             InitializeAllItems();
             Reload();
         }
 
         protected override TreeViewItem BuildRoot()
         {
-            SetupParentsAndChildrenFromDepths(Root, AllItems);
-            return Root;
+            SetupParentsAndChildrenFromDepths(_root, _allItems);
+            return _root;
         }
 
         private void InitializeAllItems()
         {
-            AllItems = new List<TreeViewItem>();
+            _allItems = new List<TreeViewItem>();
             switch (TreePurpose)
             {
                 case TreePurpose.DRAW_CURRENT_NAMES:
-                    AllItems.Add(new TreeViewItem {
+                    _allItems.Add(new TreeViewItem {
                         id = DictionaryBasedIdGenerator.GetNewId(NO_CURRENT_ACTIONS_LOADED),
                         depth = 0,
                         displayName = NO_CURRENT_ACTIONS_LOADED
@@ -69,7 +69,7 @@ namespace ATF.Scripts.Editor
                     break;
 
                 case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
-                    AllItems.Add(new TreeViewItem {
+                    _allItems.Add(new TreeViewItem {
                         id = DictionaryBasedIdGenerator.GetNewId(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED),
                         depth = 0,
                         displayName = NO_CURRENT_KINDS_AND_ACTIONS_SELECTED
@@ -77,7 +77,7 @@ namespace ATF.Scripts.Editor
                     break;
 
                 case TreePurpose.DRAW_SAVED_NAMES:
-                    AllItems.Add(new TreeViewItem {
+                    _allItems.Add(new TreeViewItem {
                         id = DictionaryBasedIdGenerator.GetNewId(NO_RECORDS_SAVED),
                         depth = 0,
                         displayName = NO_RECORDS_SAVED
@@ -85,7 +85,7 @@ namespace ATF.Scripts.Editor
                     break;
 
                 case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
-                    AllItems.Add(new TreeViewItem {
+                    _allItems.Add(new TreeViewItem {
                         id = DictionaryBasedIdGenerator.GetNewId(NO_SAVED_KINDS_AND_ACTIONS_SELECTED),
                         depth = 0,
                         displayName = NO_SAVED_KINDS_AND_ACTIONS_SELECTED
@@ -103,19 +103,19 @@ namespace ATF.Scripts.Editor
         public void UpdateItems(List<TreeViewItem> items)
         {
             if (items == null || items.Count == 0) return;
-            AllItems.RemoveAll(item => item.displayName.Equals(NO_CURRENT_ACTIONS_LOADED) 
+            _allItems.RemoveAll(item => item.displayName.Equals(NO_CURRENT_ACTIONS_LOADED) 
                                        || item.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED)
                                        || item.displayName.Equals(NO_RECORDS_SAVED));
-            AllItems = items;
-            if (AllItems.Count == 0) return;
-            SetupDepthsFromParentsAndChildren(AllItems[0]);
+            _allItems = items;
+            if (_allItems.Count == 0) return;
+            SetupDepthsFromParentsAndChildren(_allItems[0]);
             Reload();
         }
 
         protected override void SingleClickedItem(int id)
         {
             base.SingleClickedItem(id);
-            var clickedItem = FindItem(id, Root);
+            var clickedItem = FindItem(id, _root);
             if (clickedItem == null || clickedItem.depth > 0
                                     || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
                                     || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)
@@ -144,7 +144,7 @@ namespace ATF.Scripts.Editor
         protected override void DoubleClickedItem(int id)
         {
             base.DoubleClickedItem(id);
-            var clickedItem = FindItem(id, Root);
+            var clickedItem = FindItem(id, _root);
             if (clickedItem == null || clickedItem.depth > 0
                                     || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
                                     || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)
@@ -175,7 +175,7 @@ namespace ATF.Scripts.Editor
         protected override void ContextClickedItem(int id)
         {
             base.ContextClickedItem(id);
-            var clickedItem = FindItem(id, Root);
+            var clickedItem = FindItem(id, _root);
             if (clickedItem == null || clickedItem.depth > 0
                                     || clickedItem.displayName.Equals(NO_CURRENT_KINDS_AND_ACTIONS_SELECTED) 
                                     || clickedItem.displayName.Equals(NO_CURRENT_ACTIONS_LOADED)

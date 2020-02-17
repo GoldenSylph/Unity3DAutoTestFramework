@@ -32,11 +32,13 @@ namespace ATF.Scripts {
         [Inject(typeof(AtfQueueBasedRecorder))]
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnassignedReadonlyField
+        // ReSharper disable once InconsistentNaming
         public static readonly IAtfRecorder RECORDER;
 
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
         // ReSharper disable once UnassignedReadonlyField
         // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once InconsistentNaming
         public static readonly IAtfActionStorage STORAGE;
 
         private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, object fakeInputParameter, FakeInput kind)

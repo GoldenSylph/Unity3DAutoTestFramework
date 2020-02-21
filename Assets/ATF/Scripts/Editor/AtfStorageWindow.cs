@@ -50,71 +50,18 @@ namespace ATF.Scripts.Editor
             if (!EditorApplication.isPlaying) return;
             storage = FindObjectOfType<AtfDictionaryBasedActionStorage>();
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
-            InitTreeViewOf(ref _treeViewForCurrentNames, ref _searchFieldForCurrentNames, ref treeViewStateForCurrentNames, TreePurpose.DRAW_CURRENT_NAMES, recorder, storage);
-            InitTreeViewOf(ref _treeViewForCurrentKindsAndActions, ref _searchFieldForCurrentKindsAndActions, 
+            AtfWindow.InitTreeViewOf(ref _treeViewForCurrentNames, ref _searchFieldForCurrentNames, ref treeViewStateForCurrentNames, TreePurpose.DRAW_CURRENT_NAMES, recorder, storage);
+            AtfWindow.InitTreeViewOf(ref _treeViewForCurrentKindsAndActions, ref _searchFieldForCurrentKindsAndActions, 
                 ref treeViewStateForCurrentKindsAndActions, TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS, recorder, storage);
-            InitTreeViewOf(ref _treeViewForSavedNames, ref _searchFieldForSavedNames, 
+            AtfWindow.InitTreeViewOf(ref _treeViewForSavedNames, ref _searchFieldForSavedNames, 
                 ref treeViewStateForSavedNames, TreePurpose.DRAW_SAVED_NAMES, recorder, storage);
-            InitTreeViewOf(ref _treeViewForSavedKindsAndActions, ref _searchFieldForSavedKindsAndActions, 
+            AtfWindow.InitTreeViewOf(ref _treeViewForSavedKindsAndActions, ref _searchFieldForSavedKindsAndActions, 
                 ref treeViewStateForSavedKindsAndActions, TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS, recorder, storage);
             _treeViewForCurrentNames.KindsAndActionsTreeView = _treeViewForCurrentKindsAndActions;
-            _treeViewForCurrentNames.RecordNameChanged += RepaintRecorderWindow;
+            _treeViewForCurrentNames.RecordNameChanged += AtfWindow.RepaintRecorderWindow;
             _treeViewForSavedNames.KindsAndActionsTreeView = _treeViewForSavedKindsAndActions;
         }
-
-        private static void RepaintRecorderWindow(string recordName, AtfStorageTreeView context)
-        {
-            AtfWindow.GetRecorderWindow().Repaint();
-        }
-
-        private static void InitTreeViewOf(ref AtfStorageTreeView view, ref SearchField field, ref TreeViewState state, TreePurpose purpose, IAtfRecorder recorder, IAtfActionStorage storage)
-        {
-            if (view != null && field != null) return;
-            if (state == null)
-            {
-                state = new TreeViewState();
-            }
-            view = new AtfStorageTreeView(purpose, state, recorder, storage);
-            field = new SearchField();
-            field.downOrUpArrowKeyPressed += view.SetFocusAndEnsureSelectedItem;
-        }
-
-        private static void DoToolbarFor(TreeView view, SearchField field)
-        {
-            GUILayout.BeginHorizontal(EditorStyles.toolbar);
-            GUILayout.Space(100);
-            GUILayout.FlexibleSpace();
-            view.searchString = field.OnToolbarGUI(view.searchString);
-            GUILayout.EndHorizontal();
-        }
         
-        private static void DoTreeViewFor(AtfStorageTreeView view)
-        {
-            var rect = GUILayoutUtility.GetRect(0, 100000, 0, 100000);
-            view.OnGUI(rect);
-            switch (view.TreePurpose)
-            {
-                case TreePurpose.DRAW_CURRENT_NAMES:
-                    view.UpdateItems(view.Storage.GetCurrentRecordNames());
-                    break;
-                
-                case TreePurpose.DRAW_SAVED_NAMES:
-                    view.UpdateItems(view.Storage.GetSavedRecordNames());
-                    break;
-                
-                case TreePurpose.DRAW_SAVED_KINDS_AND_ACTIONS:
-                case TreePurpose.DRAW_CURRENT_KINDS_AND_ACTIONS:
-                    break;
-                
-                case TreePurpose.NONE:
-                    throw new ArgumentOutOfRangeException(string.Empty, "Tree purpose is NONE!");
-                
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            view.Reload();
-        }
-
         private void OnGUI()
         {
             var stateLoaded = storage != null;
@@ -145,7 +92,7 @@ namespace ATF.Scripts.Editor
                     {
                         storage.LoadStorage();
                     }
-                    if (GUILayout.Button("Scrap"))
+                    if (GUILayout.Button("Scrap saved"))
                     {
                         storage.ScrapSavedStorage();
                     }
@@ -153,25 +100,24 @@ namespace ATF.Scripts.Editor
                 }
 
                 GUILayout.Label("Current records", EditorStyles.boldLabel);
-                DoToolbarFor(_treeViewForCurrentNames, _searchFieldForCurrentNames);
-                DoTreeViewFor(_treeViewForCurrentNames);
+                AtfWindow.DoToolbarFor(_treeViewForCurrentNames, _searchFieldForCurrentNames);
+                AtfWindow.DoTreeViewFor(_treeViewForCurrentNames);
 
                 if (_showDetailsOfCurrentRecord)
                 {
                     GUILayout.Label("Current commands and actions queues", EditorStyles.boldLabel);
-                    DoToolbarFor(_treeViewForCurrentKindsAndActions, _searchFieldForCurrentKindsAndActions);
-                    DoTreeViewFor(_treeViewForCurrentKindsAndActions);
+                    AtfWindow.DoToolbarFor(_treeViewForCurrentKindsAndActions, _searchFieldForCurrentKindsAndActions);
+                    AtfWindow.DoTreeViewFor(_treeViewForCurrentKindsAndActions);
                 }
                 
                 GUILayout.Label("Saved records", EditorStyles.boldLabel);
-                DoToolbarFor(_treeViewForSavedNames, _searchFieldForSavedNames);
-                DoTreeViewFor(_treeViewForSavedNames);
+                AtfWindow.DoToolbarFor(_treeViewForSavedNames, _searchFieldForSavedNames);
+                AtfWindow.DoTreeViewFor(_treeViewForSavedNames);
 
                 if (!_showDetailsOfSavedRecord) return;
                 GUILayout.Label("Saved commands and actions queues", EditorStyles.boldLabel);
-                DoToolbarFor(_treeViewForSavedKindsAndActions, _searchFieldForSavedKindsAndActions);
-                DoTreeViewFor(_treeViewForSavedKindsAndActions);
-                
+                AtfWindow.DoToolbarFor(_treeViewForSavedKindsAndActions, _searchFieldForSavedKindsAndActions);
+                AtfWindow.DoTreeViewFor(_treeViewForSavedKindsAndActions);
             }
             else
             {

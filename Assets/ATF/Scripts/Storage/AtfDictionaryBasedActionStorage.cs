@@ -134,16 +134,11 @@ namespace ATF.Scripts.Storage
 
         public List<TreeViewItem> GetCurrentRecordNames()
         {
-            var result = new List<TreeViewItem>();
-            foreach (var key in _actionStorage.Keys)
-            {
-                result.Add(new TreeViewItem
+            var result = _actionStorage.Keys
+                .Select(key => new TreeViewItem
                 {
-                    id = DictionaryBasedIdGenerator.GetNewId(key),
-                    depth = 0,
-                    displayName = key
-                });
-            }
+                    id = DictionaryBasedIdGenerator.GetNewId(key), depth = 0, displayName = key
+                }).ToList();
             return result.Count == 0 ? null : result;
         }
 

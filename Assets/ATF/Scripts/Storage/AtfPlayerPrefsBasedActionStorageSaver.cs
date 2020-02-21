@@ -58,6 +58,12 @@ namespace ATF.Scripts.Storage
                 return fakeInputsWithFipsAndActions?.ConvertAll((e) => e.fakeInput);
             }
 
+            public override int GetHashCode()
+            {
+                // ReSharper disable NonReadonlyMemberInGetHashCode
+                return recordName.GetHashCode();
+            }
+
 #pragma warning disable 659
             public override bool Equals(object obj)
 #pragma warning restore 659
@@ -231,15 +237,13 @@ namespace ATF.Scripts.Storage
                             displayName = fakeInputParameter.ToString()
                         };
                         var fipAndActions = fakeInputWithFipAndActions.FindFipAndActionsByFip(fakeInputParameter);
-                        foreach (var action in fipAndActions.actions)
+                        foreach (var treeViewItemOfAction in fipAndActions.actions.Select(action => action.GetDeserialized()).Select(deserialized => new TreeViewItem
                         {
-                            var deserialized = action.GetDeserialized();
-                            var treeViewItemOfAction = new TreeViewItem
-                            {
-                                id = DictionaryBasedIdGenerator.GetNewId(deserialized.Content.ToString()),
-                                depth = 2,
-                                displayName = deserialized.Content.ToString()
-                            };
+                            id = DictionaryBasedIdGenerator.GetNewId(deserialized.Content.ToString()),
+                            depth = 2,
+                            displayName = deserialized.Content.ToString()
+                        }))
+                        {
                             treeViewItemOfFip.AddChild(treeViewItemOfAction);
                         }
                         treeViewItemOfInputKind.AddChild(treeViewItemOfFip);

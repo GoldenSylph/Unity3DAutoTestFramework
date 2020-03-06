@@ -6,11 +6,10 @@ using System.Net.Mime;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using ATF.Scripts.Helper;
 using ATF.Scripts.Integration;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage.Interfaces;
-using Bedrin.DI;
-using Bedrin.Helper;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
@@ -57,6 +56,32 @@ namespace ATF.Scripts.Editor
             }
             return message.ToString();
         }
+
+        private void UpdateTree()
+        {
+            integrator.SetUris(_pathsToSendIntoIntegrator);
+            if (_pathsToSendIntoIntegrator.Count == 0)
+            {
+                // ReSharper disable once InconsistentNaming
+                const string NO_PATHS_ACCEPTED = "No paths accepted";
+                _treeViewForPaths.UpdateItems(new List<TreeViewItem>
+                {
+                    new TreeViewItem
+                    {
+                        id = DictionaryBasedIdGenerator.GetNewId(NO_PATHS_ACCEPTED),
+                        displayName = NO_PATHS_ACCEPTED
+                    }
+                });    
+            }
+            else
+            {
+                _treeViewForPaths.UpdateItems(_pathsToSendIntoIntegrator.Select(s => new TreeViewItem
+                {
+                    id = DictionaryBasedIdGenerator.GetNewId(s),
+                    displayName = s
+                }).ToList());
+            }
+        }
         
         private void UpdatePathsButton(string buttonText, Action ifPathValid)
         {
@@ -66,29 +91,7 @@ namespace ATF.Scripts.Editor
             if (int.TryParse(pathValidationResult, out _))
             {
                 ifPathValid();
-                integrator.SetUrls(_pathsToSendIntoIntegrator);
-                if (_pathsToSendIntoIntegrator.Count == 0)
-                {
-                    // ReSharper disable once InconsistentNaming
-                    const string NO_PATHS_ACCEPTED = "No paths accepted";
-                    _treeViewForPaths.UpdateItems(new List<TreeViewItem>
-                    {
-                        new TreeViewItem
-                        {
-                            id = DictionaryBasedIdGenerator.GetNewId(NO_PATHS_ACCEPTED),
-                            displayName = NO_PATHS_ACCEPTED
-                        }
-                    });    
-                }
-                else
-                {
-                    _treeViewForPaths.UpdateItems(_pathsToSendIntoIntegrator.Select(s => new TreeViewItem
-                    {
-                        id = DictionaryBasedIdGenerator.GetNewId(s),
-                        displayName = s
-                    }).ToList());
-                }
-                
+                UpdateTree();
             }
             else
             {
@@ -127,6 +130,26 @@ namespace ATF.Scripts.Editor
                 if (GUILayout.Button("Integrate and replace"))
                 {
                     integrator.IntegrateAndReplace();
+                }
+                EditorGUILayout.EndHorizontal();
+                if (GUILayout.Button("Integrate All"))
+                {
+                    integrator.IntegrateAll();
+                }
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Save paths"))
+                {
+                    integrator.SaveUris();
+                }
+                if (GUILayout.Button("Load paths"))
+                {
+                    _pathsToSendIntoIntegrator = new HashSet<string>();
+                    var rawPaths = integrator.LoadUris();
+                    foreach (var path in rawPaths)
+                    {
+                        _pathsToSendIntoIntegrator.Add(path);
+                    }
+                    UpdateTree();
                 }
                 EditorGUILayout.EndHorizontal();
             }

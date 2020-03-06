@@ -1,13 +1,15 @@
-﻿using ATF.Scripts.Storage;
+﻿using ATF.Scripts.DI;
+using ATF.Scripts.Helper;
+using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
-using Bedrin.DI;
-using Bedrin.Helper;
+using ATF.Scripts.Storage.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace ATF.Scripts.Recorder
 {
     [Injectable]
+    [AtfSystem]
     public class AtfQueueBasedRecorder : MonoSingleton<AtfQueueBasedRecorder>, IAtfRecorder
     {
         [Inject(typeof(AtfDictionaryBasedActionStorage))]
@@ -43,12 +45,13 @@ namespace ATF.Scripts.Recorder
             currentRecordingName = value;
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             SetRecording(false);
             SetPlaying(false);
             SetRecordingPaused(false);
             SetPlayPaused(false);
+            base.Initialize();
         }
 
         public bool IsPlaying()

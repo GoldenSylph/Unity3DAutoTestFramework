@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ATF.Scripts.Helper;
 using UnityEditor.IMGUI.Controls;
 
 namespace ATF.Scripts.Storage.Interfaces
 {
-    public interface IAtfActionStorageSaver : IAtfInitializable, IAtfGetSetRecordName
+    public interface IAtfActionStorageSaver : IAtfGetSetRecordName
     {
         void SaveRecord();
         void LoadRecord();

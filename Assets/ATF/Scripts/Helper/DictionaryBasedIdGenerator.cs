@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bedrin.Helper
+namespace ATF.Scripts.Helper
 {
     public static class DictionaryBasedIdGenerator
     {

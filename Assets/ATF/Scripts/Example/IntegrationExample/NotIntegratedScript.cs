@@ -8,7 +8,7 @@ namespace ATF.Scripts.Example.IntegrationExample
 
         private void Update()
         {
-            if (AtfInput.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 transform.Rotate(new Vector3(0, 1, 1), Time.deltaTime * SPEED);
             }

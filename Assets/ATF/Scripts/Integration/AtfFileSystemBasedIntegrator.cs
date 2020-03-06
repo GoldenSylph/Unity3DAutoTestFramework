@@ -1,25 +1,38 @@
-﻿using Bedrin.Helper;
-using System.IO;
+﻿using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Mime;
 using System.Text.RegularExpressions;
+using ATF.Scripts.DI;
+using ATF.Scripts.Helper;
 using UnityEditor;
 using UnityEngine;
 
 namespace ATF.Scripts.Integration
 {
+    [AtfSystem]
     public class AtfFileSystemBasedIntegrator : MonoSingleton<AtfFileSystemBasedIntegrator>,  IAtfIntegrator
     {
+
+        [Serializable]
+        public class SerializedPaths
+        {
+            public List<string> paths;
+        }
+        
+        private const string SAVE_KEY = "FSBI_URIS";
+        
         private List<string> _paths;
         private string _currentRecordName;
-        
-        public void Initialize()
+
+        public override void Initialize()
         {
             _paths = new List<string>();
+            base.Initialize();
         }
 
-        public void SetUrls(IEnumerable<string> filePaths)
+        public void SetUris(IEnumerable<string> filePaths)
         {
             _paths.AddRange(filePaths);
         }
@@ -38,6 +51,35 @@ namespace ATF.Scripts.Integration
             {
                 PerformIntegrationForPath(script, true);
             }
+        }
+
+        public void IntegrateAll()
+        {
+            print("Integrate All");
+        }
+
+        public void SaveUris()
+        {
+            var serializedPaths = new SerializedPaths {paths = new List<string>()};
+            if (_paths != null && _paths.Count > 0)
+            {
+                _paths.ForEach(e => serializedPaths.paths.Add(e));
+                PlayerPrefs.SetString(SAVE_KEY, JsonUtility.ToJson(serializedPaths));
+                print($"All paths are saved in PlayerPrefs under the key {SAVE_KEY}");
+            }
+            else
+            {
+                Debug.LogWarning("Paths are not saved because the paths list is empty.");
+            }
+        }
+
+        public IEnumerable<string> LoadUris()
+        {
+            var serializedPaths = JsonUtility.FromJson<SerializedPaths>(PlayerPrefs.GetString(SAVE_KEY));
+            _paths = new List<string>();
+            serializedPaths.paths.ForEach(e => _paths.Add(e));
+            print($"All paths are loaded from PlayerPrefs under the key {SAVE_KEY}");
+            return _paths;
         }
 
         private static string GetFilePathAccordingToMode(string filePath, bool isReplacing)

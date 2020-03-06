@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Reflection;
 using System.Linq;
-using Bedrin.Helper;
+using System.Reflection;
 using System.Text.RegularExpressions;
-using ATF.Scripts;
+using ATF.Scripts.Helper;
+using UnityEngine;
 
-namespace Bedrin.DI
+namespace ATF.Scripts.DI
 {
     #region Attributes definition
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
@@ -40,8 +38,12 @@ namespace Bedrin.DI
 
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public class InjectableAttribute : Attribute { }
+    
+    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
+    public class AtfSystemAttribute : Attribute { }
     #endregion
 
+    [AtfSystem]
     public class DependencyInjector : MonoSingleton<DependencyInjector>
     {
         private class PathValidationResult
@@ -98,7 +100,7 @@ namespace Bedrin.DI
             return path;
         }
 
-        private static IEnumerable<Type> GetInjectableTypesInNamespace(string _namespace)
+        public static IEnumerable<Type> GetAttributeTypesInNamespace(string @namespace, Type attributeType)
         {
             return
                 Assembly
@@ -106,10 +108,15 @@ namespace Bedrin.DI
                     .GetTypes()
                     .Where(
                         t => t.Namespace != null 
-                            && t.Namespace.StartsWith(_namespace) 
-                            && ContainsAnyAttributeOfType(t.GetCustomAttributes(false), typeof(InjectableAttribute))
-                     )
+                             && t.Namespace.StartsWith(@namespace) 
+                             && ContainsAnyAttributeOfType(t.GetCustomAttributes(false), attributeType)
+                    )
                     .ToArray();
+        }
+        
+        private static IEnumerable<Type> GetInjectableTypesInNamespace(string @namespace)
+        {
+            return GetAttributeTypesInNamespace(@namespace, typeof(InjectableAttribute));
         }
 
         public static void InjectType(Type t)
@@ -128,7 +135,7 @@ namespace Bedrin.DI
 
                 Print(
                     $"Injectable {t}: contains field ({fi}), with custom attribute ({temp}) of" +
-                    $" inject type ({((temp.ComponentType != null) ? temp.ComponentType.ToString() : "None")}) " +
+                    $" inject type ({(temp.ComponentType != null ? temp.ComponentType.ToString() : "None")}) " +
                     $"and path ({(isScenePathEmpty ? "None" : temp.ScenePath)}). Searching on scene..."
                     );
 
@@ -197,22 +204,29 @@ namespace Bedrin.DI
             InjectScene(CurrentNamespace);
         }
 
-        private static void ForEachTypeInTypesOfNamespace(string _namespace, Action<Type> action)
+        private static void ForEachTypeInTypesOfNamespace(string @namespace, Action<Type> action)
         {
-            foreach (var t in GetInjectableTypesInNamespace(_namespace))
+            foreach (var t in GetInjectableTypesInNamespace(@namespace))
             {
                 action(t);
             }
         }
 
-        public static void InjectScene(string _namespace)
+        // ReSharper disable once MemberCanBePrivate.Global
+        public static void InjectScene(string @namespace)
         {
-            ForEachTypeInTypesOfNamespace(_namespace, InjectType);
+            ForEachTypeInTypesOfNamespace(@namespace, InjectType);
         }
 
-        public void Initialize(string _namespace)
+        public void Initialize(string @namespace)
         {
-            CurrentNamespace = _namespace;
+            CurrentNamespace = @namespace;
+        }
+
+        public override void Initialize()
+        {
+            Initialize(AtfInitializer.ATF_NAMESPACE_NAME);
+            base.Initialize();
         }
     }
 }

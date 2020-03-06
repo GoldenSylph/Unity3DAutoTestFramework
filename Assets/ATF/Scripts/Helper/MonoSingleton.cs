@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Bedrin.Helper
+namespace ATF.Scripts.Helper
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class MonoSingleton<T> : MonoBehaviour, IAtfInitializable where T : MonoBehaviour
     {
 
         private static T _sInstance;
@@ -44,6 +44,11 @@ namespace Bedrin.Helper
         public bool IsLive()
         {
             return _sIsDestroyed;
+        }
+
+        public virtual void Initialize()
+        {
+            print($"{Instance} is created.");
         }
     }
 }

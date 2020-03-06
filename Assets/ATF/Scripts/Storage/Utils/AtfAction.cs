@@ -1,31 +1,40 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ATF.Scripts.Storage
+namespace ATF.Scripts.Storage.Utils
 {
     [Serializable]
     public class AtfAction
     {
-        // ReSharper disable once InconsistentNaming
         private object _content;
         public object Content
         {
             get => _content;
             set
             {
-                serializedContent = value.ToString();
+                if (string.IsNullOrEmpty(serializedContent))
+                {
+                    serializedContent = value.ToString();
+                }
                 _content = value;
             }
         }
 
         public string serializedContent;
 
+        public AtfAction() {}
+
+        public AtfAction(AtfAction prototype)
+        {
+            Content = prototype.Content;
+        }
+        
         public AtfAction GetDeserialized()
         {
             Content = ParseContent(serializedContent);
             return this;
         }
-        
+
         private static object ParseContent(string serializedContent)
         {
             if (bool.TryParse(serializedContent, out var boolVariant))

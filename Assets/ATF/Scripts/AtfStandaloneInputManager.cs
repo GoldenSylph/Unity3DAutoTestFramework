@@ -1,4 +1,4 @@
-﻿using Bedrin.DI;
+﻿using ATF.Scripts.DI;
 using UnityEngine.EventSystems;
 
 namespace ATF.Scripts

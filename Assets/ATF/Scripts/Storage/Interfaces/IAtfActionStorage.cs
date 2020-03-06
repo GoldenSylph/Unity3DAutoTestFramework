@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using ATF.Scripts.Helper;
+using ATF.Scripts.Storage.Utils;
 using UnityEditor.IMGUI.Controls;
 
 namespace ATF.Scripts.Storage.Interfaces
 {
-    public interface IAtfActionStorage : IAtfInitializable, IAtfGetSetRecordName
+    public interface IAtfActionStorage : IAtfGetSetRecordName
     {
         object GetPartOfRecord(FakeInput kind, object fakeInputParameter);
         void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, AtfAction atfAction);

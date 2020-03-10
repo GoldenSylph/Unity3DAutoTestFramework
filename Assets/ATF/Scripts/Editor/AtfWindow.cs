@@ -1,5 +1,6 @@
 ﻿using System;
 using ATF.Scripts.Integration;
+using ATF.Scripts.Integration.Interfaces;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage.Interfaces;
 using UnityEditor;

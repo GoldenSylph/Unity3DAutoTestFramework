@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ATF.Scripts.Helper;
 using ATF.Scripts.Integration;
+using ATF.Scripts.Integration.Interfaces;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage.Interfaces;
 using UnityEditor;

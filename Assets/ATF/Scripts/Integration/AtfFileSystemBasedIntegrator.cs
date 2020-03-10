@@ -6,15 +6,20 @@ using System.Net.Mime;
 using System.Text.RegularExpressions;
 using ATF.Scripts.DI;
 using ATF.Scripts.Helper;
+using ATF.Scripts.Integration.Interfaces;
 using UnityEditor;
 using UnityEngine;
 
 namespace ATF.Scripts.Integration
 {
     [AtfSystem]
+    [Injectable]
     public class AtfFileSystemBasedIntegrator : MonoSingleton<AtfFileSystemBasedIntegrator>,  IAtfIntegrator
     {
 
+        [Inject(typeof(AtfCodeDomBasedAutomaticIntegrator))]
+        public IAtfAutomaticIntegrator automaticIntegrator;
+        
         [Serializable]
         public class SerializedPaths
         {
@@ -55,7 +60,7 @@ namespace ATF.Scripts.Integration
 
         public void IntegrateAll()
         {
-            print("Integrate All");
+            automaticIntegrator.IntegrateAll();
         }
 
         public void SaveUris()

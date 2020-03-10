@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using ATF.Scripts.Helper;
 using ATF.Scripts.Integration;
+using ATF.Scripts.Integration.Interfaces;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 

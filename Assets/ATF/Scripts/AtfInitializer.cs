@@ -37,7 +37,9 @@ namespace ATF.Scripts
                 DependencyInjector.GetAttributeTypesInNamespace(ATF_NAMESPACE_NAME, typeof(AtfSystemAttribute));
             foreach (var systemType in atfSystemsTypes)
             {
-                var systemInstance = systemType.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.FlattenHierarchy)?.GetValue(null, null) as IAtfInitializable;
+                var systemInstance = systemType.GetProperty("Instance", 
+                    BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.FlattenHierarchy)
+                    ?.GetValue(null, null) as IAtfInitializable;
                 Print(systemInstance);
                 systemInstance?.Initialize();
             }

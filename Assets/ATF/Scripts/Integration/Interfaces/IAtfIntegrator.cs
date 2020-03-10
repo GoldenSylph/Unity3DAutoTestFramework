@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ATF.Scripts.Helper;
 
-namespace ATF.Scripts.Integration
+namespace ATF.Scripts.Integration.Interfaces
 {
     public interface IAtfIntegrator : IAtfGetSetRecordName
     {

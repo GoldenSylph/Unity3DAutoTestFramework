@@ -1,6 +1,7 @@
+using ATF.Scripts;
 using UnityEngine;
 
-namespace ATF.Scripts.Example.IntegrationExample
+namespace Example.IntegrationExample
 {
     public class NotIntegratedScript : MonoBehaviour
     {
@@ -8,7 +9,7 @@ namespace ATF.Scripts.Example.IntegrationExample
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (AtfInput.GetKey(KeyCode.Space))
             {
                 transform.Rotate(new Vector3(0, 1, 1), Time.deltaTime * SPEED);
             }

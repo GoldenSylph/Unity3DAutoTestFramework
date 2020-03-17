@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using System.Text.RegularExpressions;
 using ATF.Scripts.DI;
 using ATF.Scripts.Helper;
@@ -16,10 +15,6 @@ namespace ATF.Scripts.Integration
     [Injectable]
     public class AtfFileSystemBasedIntegrator : MonoSingleton<AtfFileSystemBasedIntegrator>,  IAtfIntegrator
     {
-
-        [Inject(typeof(AtfCodeDomBasedAutomaticIntegrator))]
-        public IAtfAutomaticIntegrator automaticIntegrator;
-        
         [Serializable]
         public class SerializedPaths
         {
@@ -27,7 +22,7 @@ namespace ATF.Scripts.Integration
         }
         
         private const string SAVE_KEY = "FSBI_URIS";
-        
+
         private List<string> _paths;
         private string _currentRecordName;
 
@@ -46,7 +41,7 @@ namespace ATF.Scripts.Integration
         {
             foreach (var script in _paths)
             {
-                PerformIntegrationForPath(script, false);
+                PerformIntegrationForPath(script, false, false);
             }
         }
 
@@ -54,13 +49,21 @@ namespace ATF.Scripts.Integration
         {
             foreach (var script in _paths)
             {
-                PerformIntegrationForPath(script, true);
+                PerformIntegrationForPath(script, true, false);
             }
         }
 
         public void IntegrateAll()
         {
-            automaticIntegrator.IntegrateAll();
+            Debug.LogWarning("Starting full integration...");
+            var sourceCodeFileNames = Directory.GetFiles(GetRoot(), "*.cs", SearchOption.AllDirectories)
+                .Where(filename => !filename.Contains("ATF"));
+            foreach (var sourceFileName in sourceCodeFileNames)
+            {
+                print($"Integrating in {sourceFileName}...");
+                PerformIntegrationForPath(sourceFileName, true, true);
+            }
+            Debug.LogWarning("Full integration complete...");
         }
 
         public void SaveUris()
@@ -86,23 +89,48 @@ namespace ATF.Scripts.Integration
             print($"All paths are loaded from PlayerPrefs under the key {SAVE_KEY}");
             return _paths;
         }
+        
+        public string GetCurrentRecordName()
+        {
+            return _currentRecordName;
+        }
+
+        public void SetCurrentRecordName(string recordName)
+        {
+            _currentRecordName = recordName;
+        }
 
         private static string GetFilePathAccordingToMode(string filePath, bool isReplacing)
         {
             return isReplacing ? filePath : filePath.Insert(filePath.Length - 3, "ATF");
         }
+
+        private static string ClassNameMatchEvaluator(Match match)
+        {
+            var groups = match.Groups;
+            return $"{groups["prefix"]}AtfInput{groups["postfix"]}";
+        }
         
-        private static void PerformIntegrationForPath(string filePath, bool isReplacing)
+        private static void PerformIntegrationForPath(string filePath, bool isReplacing, bool isFoolFilePath)
         {
             try
             {
                 string scriptSource;
-                var fullPath = $"{Application.dataPath}{Path.DirectorySeparatorChar}{filePath}";
+                var fullPath = isFoolFilePath ? filePath : $"{GetRoot()}{filePath}";
                 using (var sr = new StreamReader(fullPath))
                 {
                     scriptSource = sr.ReadToEnd();
                 }
-                scriptSource = scriptSource.Replace("Input.", "AtfInput.");
+                
+                var matchEvaluator = new MatchEvaluator(ClassNameMatchEvaluator);
+                var originalSource = scriptSource;
+                scriptSource = Regex.Replace(scriptSource, @"(?<prefix>[(\[(\s,=\+\-\*/\?&|])Input(?<postfix>\.)", matchEvaluator);
+                if (scriptSource.Equals(originalSource))
+                {
+                    print($"{filePath} is already integrated...");
+                    return;
+                }
+                
                 using (var writer = new StreamWriter(GetFilePathAccordingToMode(fullPath, isReplacing)))  
                 {  
                     writer.Write(scriptSource);  
@@ -120,14 +148,9 @@ namespace ATF.Scripts.Integration
             }
         }
 
-        public string GetCurrentRecordName()
+        private static string GetRoot()
         {
-            return _currentRecordName;
-        }
-
-        public void SetCurrentRecordName(string recordName)
-        {
-            _currentRecordName = recordName;
+            return $"{Application.dataPath}{Path.DirectorySeparatorChar}";
         }
     }
 }

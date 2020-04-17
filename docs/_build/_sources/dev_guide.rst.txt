@@ -1,0 +1,167 @@
+Developer Guide
+===============
+
+The following is a set of guidelines for creating new systems as extension to current ones and some information about ground architecture of the ATF assets.
+
+********************
+Creating new system
+********************
+
+Here is some base steps for creating and integrating some new system.
+
+Initializer
+********************
+
+The `AtfInitializer class <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/AtfInitializer.cs>`_ is for instantiating automatically all *MonoSingleton<T>* instances as **Initializer** game object child
+that are marked by AtfSystem attribute.
+
+In context of ATF it is used to instantiate all main systems described below.
+
+.. code-block:: csharp
+  :linenos:
+
+  using ATF.Scripts.DI;
+  using ATF.Scripts.Helper;
+
+  namespace MyLovely.Namespace
+  {
+      [AtfSystem]
+      public class MyNewSystem : MonoSingleton<MyNewSystem>
+      {
+          ...
+      }
+  }
+
+If you now enter the Play Mode the *AtfInitializer* class will instantiate as child of itself your newly created class *MyNewSystem*.
+
+DI Container
+********************
+
+DI Container stands for `Dependency Injection Container <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/DI/DependencyInjector.cs>`_.
+It's a common method to implement the Dependency Inversion Principle (DIP) of SOLID principles.
+Usage:
+
+.. code-block:: csharp
+   :linenos:
+
+   using ATF.Scripts.DI;
+   using ATF.Scripts.Helper;
+
+   namespace MyLovely.Namespace
+   {
+       public interface IMySystem {
+          ...
+       }
+
+       [AtfSystem]
+       [Injectable]
+       public class MyNewSystemA : MonoSingleton<MyNewSystemA>, IMySystem
+       {
+           ...
+       }
+
+       [AtfSystem]
+       [Injectable]
+       public class MyNewSystemB : MonoSingleton<MyNewSystemB>
+       {
+           ...
+       }
+
+       [AtfSystem]
+       [Injectable]
+       public class MyNewSystemC : MonoSingleton<MyNewSystemC>, IMySystem
+       {
+         [Inject(typeof(MyNewSystemA))]
+         public static readonly IMySystem SYSTEM_A;
+
+         [Inject(typeof(MyNewSystemB))]
+         public static readonly MyNewSystemB SYSTEM_B;
+
+           ...
+       }
+   }
+
+The main attributes here are *Injectable* and *Inject*.
+First is used to appear in queue to dependency injection.
+Second is used with one required parameter of *Type* class.
+The purpose of the second is to mark field of class that is to be populated by instance of class that has type *Type* via DI Container.
+
+.. note:: Every ATF system has *Injectable* and *AtfSystem* attributes so you can use them in your own systems.
+
+********************
+Platform Diagram
+********************
+
+.. image:: platform.png
+    :align: center
+    :alt: Platform diagram
+
+Every block at the ATF platform diagram above is an isolated class group:
+
+* *Custom Unity Input Module* -- an abstraction that combines input management;
+* *Custom Input API* -- module that calls native methods on an input request;
+* *Custom BaseInput* -- an entity that is an implementation of a data flow processing object across a bridge combining static methods for intercepting/simulating input and wrapped events;
+* *Storage* -- a group of classes that is responsible for storing and manipulating recorded actions;
+* *Recorder* -- a group of classes that is responsible for recording actions;
+* *Custom Editor UI* -- a system of custom windows for managing all processes;
+* *PlayerPrefs Save/Load Module* -- system for implementing the module for saving / loading recorded actions based on the standard PlayerPrefs class;
+* *Dictionary based Module* -- implementation of the recorded action store abstraction based on the Dictionary data structure;
+* *Queue based Recorder Module* -- implementation of the module responsible for recording actions based on the Queue data structure with RLE-compression;
+
+********************
+Main systems
+********************
+
+The next several titles are describing the base systems of the ATF.
+
+Recorder System
+********************
+
+The `Recorder System <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/Recorder/AtfQueueBasedRecorder.cs>`_ is serving as arbitrator.
+It's managing state and deciding
+
+.. code-block:: csharp
+   :linenos:
+
+   using ATF.Scripts.Helper;
+
+   namespace ATF.Scripts.Recorder
+   {
+       public interface IAtfRecorder : IAtfGetSetRecordName
+       {
+           bool IsRecording();
+           bool IsPlaying();
+
+           bool IsRecordingPaused();
+           bool IsPlayPaused();
+
+           void PlayRecord();
+           void PausePlay();
+           void ContinuePlay();
+           void StopPlay();
+
+           void StartRecord();
+           void PauseRecord();
+           void ContinueRecord();
+           void StopRecord();
+
+           void SetRecording(bool value);
+           void SetPlaying(bool value);
+           void SetRecordingPaused(bool value);
+           void SetPlayPaused(bool value);
+
+           void Record(FakeInput kind, object input, object fakeInputParameter);
+       }
+   }
+
+Action Storage System
+*********************
+
+Packer System
+********************
+
+Action Storage Saver System
+***************************
+
+Integrator System
+********************

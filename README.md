@@ -1,2 +1,2 @@
-# My diploma work
-## Unity Action Automation Tool
+# Automated Testing Framework
+## Here is [Documentation](https://www.google.com)

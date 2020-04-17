@@ -1,7 +1,7 @@
 ATF documentation
 ====================================
 
-**Date**: April 20, 2020 **Version**: 0.0.1
+**Date**: Mar 20, 2020 **Version**: 0.0.1
 
 `ATF <./index.html#welcome-to-atf-s-documentation>`_ is an open-source, MIT-licensed Unity asset providing easy-to-use tools for
 recording and playing actions in playmode intercepted from *Input* class along with comfortable integration methods.

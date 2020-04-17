@@ -37,3 +37,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Ignoring github credentials
+research/diploma_spider/github_config.json

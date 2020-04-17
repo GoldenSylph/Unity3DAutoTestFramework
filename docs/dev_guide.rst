@@ -92,7 +92,7 @@ The purpose of the second is to mark field of class that is to be populated by i
 Platform Diagram
 ********************
 
-.. image:: _static/platform.png
+.. image:: platform.png
     :align: center
     :alt: Platform diagram
 

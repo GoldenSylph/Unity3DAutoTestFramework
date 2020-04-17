@@ -25,6 +25,7 @@ author = 'Oleg Bedrin'
 release = '0.0.1'
 
 master_doc = 'index'
+latex_engine = 'xelatex'
 
 # -- General configuration ---------------------------------------------------
 
@@ -32,7 +33,7 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 # 'autoapi.extension', 'sphinxcontrib.dotnetdomain'
-extensions = ['recommonmark']
+# extensions = ['recommonmark']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -64,11 +65,11 @@ html_static_path = ['_static']
 
 # If false, no module index is generated.
 #
-html_domain_indices = True
+# html_domain_indices = True
 
 # If false, no index is generated.
 #
-html_use_index = True
+# html_use_index = True
 
 # autoapi_type = 'dotnet'
 # autoapi_dirs = ['../Assets/ATF/Scripts']

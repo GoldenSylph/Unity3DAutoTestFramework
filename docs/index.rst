@@ -18,8 +18,11 @@ Contents
    dev_guide
    license
 
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+
+
 Indices and tables
 ==================
 
-* :ref:`genindex`
 * :ref:`search`

@@ -63,6 +63,7 @@ Integrator Window
 The Integrator Window is used to integrate ATF functionality easily into complete code base.
 
 .. image:: integrator.png
+    :target: user_guide.html
     :align: center
 
 If you starting from existing project you may want to use one of the options:
@@ -96,6 +97,7 @@ Recorder Window
 The Recorder Window is pretty basic to use. The window features three sections: **Recorder state**, **Recording control**, **Replay control**.
 
 .. image:: recorder.png
+    :target: user_guide.html
     :align: center
 
 **Recorder state** is uninteractable section, it just show you the state of the recording.
@@ -107,11 +109,13 @@ The Recorder Window is pretty basic to use. The window features three sections: 
 2. Hit record button *Start* and the window will change like that:
 
 .. image:: recorder_recording.png
+    :target: user_guide.html
     :align: center
 
 The *Stop* and *Pause* buttons are to stop or pause recording. If you click *Pause* the window will change:
 
 .. image:: recorder_paused.png
+    :target: user_guide.html
     :align: center
 
 To continue recording just click *Continue* button.
@@ -122,11 +126,13 @@ To continue recording just click *Continue* button.
 2. Hit replay button *Start* and see how window has changed:
 
 .. image:: recorder_playing.png
+    :target: user_guide.html
     :align: center
 
 The *Stop* and *Pause* buttons are to stop or pause replay. If you click *Pause* the window will change:
 
 .. image:: recorder_playing_paused.png
+    :target: user_guide.html
     :align: center
 
 To continue replay just click *Continue* button.
@@ -145,6 +151,7 @@ It features two required sections and two optional sections: **Current records**
 Optional means you can hide those sections by checking and unchecking the *Display current details* or *Display saved details* checkboxes.
 
 .. image:: storage.png
+    :target: user_guide.html
     :align: center
 
 **Current records** is section where records that just loaded to RAM are illustrated and they are ready to be recorded again (with erasing previous actions data) and replayed.
@@ -154,6 +161,7 @@ Optional means you can hide those sections by checking and unchecking the *Displ
 By double-clicking to saved or current record you can see the contents of it in **Current commands and actions queues** section or **Saved commands and actions queues** section. There is the example of such contents:
 
 .. image:: storageContains.png
+    :target: user_guide.html
     :align: center
 
 Here is how to use the window:

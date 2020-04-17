@@ -93,6 +93,7 @@ Platform Diagram
 ********************
 
 .. image:: platform.png
+    :target: dev_guide.html
     :align: center
     :alt: Platform diagram
 

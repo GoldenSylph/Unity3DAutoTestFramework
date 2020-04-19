@@ -41,11 +41,11 @@ namespace ATF.Scripts {
         // ReSharper disable once InconsistentNaming
         public static readonly IAtfActionStorage STORAGE;
 
-        private static object RealOrFakeInputOrRecord(object realInput, object fakeInput, object fakeInputParameter, FakeInput kind)
+        private static object RealOrFakeInputOrRecord(object realInput, object fakeInputParameter, FakeInput kind)
         {
             if (RECORDER.IsPlaying() && !RECORDER.IsPlayPaused() && !RECORDER.IsRecording())
             {
-                return fakeInput;
+                return GetCurrentFakeInput(kind, fakeInputParameter);
             }
 
             if (!RECORDER.IsPlaying() && RECORDER.IsRecording() && !RECORDER.IsRecordingPaused())
@@ -59,7 +59,6 @@ namespace ATF.Scripts {
             {
                 return realInput;
             }
-
             return null;
         }
 
@@ -85,9 +84,13 @@ namespace ATF.Scripts {
 
         private static T Intercept<T>(object realInput, FakeInput fakeInputKind, T defaultValue, object fakeInputParameter = null)
         {
-            if (fakeInputParameter == null) fakeInputParameter = new object(); 
+            if (fakeInputParameter == null) 
+                fakeInputParameter = "EMPTY FAKE INPUT PARAMETER"; 
             return IfExceptionReturnDefault(
-                () => (T) RealOrFakeInputOrRecord(realInput, GetCurrentFakeInput(fakeInputKind, fakeInputParameter), fakeInputParameter, fakeInputKind), 
+                () => (T) RealOrFakeInputOrRecord(
+                    realInput, 
+                    fakeInputParameter, 
+                    fakeInputKind), 
                 defaultValue
             );
         }

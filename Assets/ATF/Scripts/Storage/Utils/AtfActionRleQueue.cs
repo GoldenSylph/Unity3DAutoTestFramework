@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using ATF.Scripts.Storage.Utils.Nito.Collections;
+using UnityEngine;
 
 namespace ATF.Scripts.Storage.Utils
 {
@@ -47,12 +49,12 @@ namespace ATF.Scripts.Storage.Utils
         {
             if (Count > 0 && last.serializedContent.Equals(action.serializedContent))
             {
-                var previousCount = rleCounts.RemoveFromFront();
-                rleCounts.AddToFront(previousCount + 1);
+                var previousCount = rleCounts.RemoveFromBack();
+                rleCounts.AddToBack(previousCount + 1);
             }
             else
             {
-                rleCounts.AddToFront(0);
+                rleCounts.AddToBack(0);
                 last = action;
                 base.Enqueue(action);
             }
@@ -60,13 +62,13 @@ namespace ATF.Scripts.Storage.Utils
             
         public new AtfAction Dequeue()
         {
-            var previousCount = rleCounts.RemoveFromBack();
+            var previousCount = rleCounts.RemoveFromFront();
             if (previousCount == 0)
             {
                 var toRemove = base.Dequeue();
                 return toRemove;
             }
-            rleCounts.AddToBack(previousCount - 1);
+            rleCounts.AddToFront(previousCount - 1);
             return Peek();
         }
 

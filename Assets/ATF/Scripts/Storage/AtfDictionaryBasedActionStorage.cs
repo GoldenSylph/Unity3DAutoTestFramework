@@ -33,8 +33,13 @@ namespace ATF.Scripts.Storage
 
         public object GetPartOfRecord(FakeInput kind, object fakeInputParameter)
         {
-            if (kind == FakeInput.NONE || _playStorage == null || !_playStorage.ContainsKey(kind) 
-                || !_playStorage[kind].ContainsKey(fakeInputParameter)) return null;
+            if (kind == FakeInput.NONE 
+                || _playStorage == null 
+                || !_playStorage.ContainsKey(kind)
+                || !_playStorage[kind].ContainsKey(fakeInputParameter))
+            {
+                return null;
+            }
             try
             {
                 if (AtfInitializer.Instance.isDebugPrintOn)
@@ -58,15 +63,23 @@ namespace ATF.Scripts.Storage
 
         public void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, AtfAction atfAction)
         {
-            BeforeIfNameAndKindAndFipAreNotExistInStorage(recordName, kind, fakeInputParameter,
-                (r, k, fip) => {
-                    _actionStorage[r][k][fip].Enqueue(atfAction);
-                },
-                (r, k, fip) => {
-                    _actionStorage.Add(r, new Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>());
-                    _actionStorage[r].Add(k, new Dictionary<object, AtfActionRleQueue>());
-                    _actionStorage[r][k][fip] = new AtfActionRleQueue();
-                });
+            
+            if (!_actionStorage.ContainsKey(recordName))
+            {
+                _actionStorage.Add(recordName, new Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>());
+            }
+
+            if (!_actionStorage[recordName].ContainsKey(kind))
+            {
+                _actionStorage[recordName].Add(kind, new Dictionary<object, AtfActionRleQueue>());
+            }
+
+            if (!_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
+            {
+                _actionStorage[recordName][kind][fakeInputParameter] = new AtfActionRleQueue();
+            }
+            
+            _actionStorage[recordName][kind][fakeInputParameter].Enqueue(atfAction);
         }
 
         public AtfAction Peek(string recordName, FakeInput kind, object fakeInputParameter)
@@ -203,17 +216,6 @@ namespace ATF.Scripts.Storage
             return result;
         }
 
-        private void BeforeIfNameAndKindAndFipAreNotExistInStorage(string recordName, FakeInput kind, object fakeInputParameter,
-            Action<string, FakeInput, object> then, Action<string, FakeInput, object> beforeAction)
-        {
-            if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
-            {
-                beforeAction(recordName, kind, fakeInputParameter);
-
-            }
-            then(recordName, kind, fakeInputParameter);
-        }
-
         private T IfNameAndKindAndFipIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, object fakeInputParameter, Func<T> toReturn, T defaultValue)
         {
             if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
@@ -241,13 +243,10 @@ namespace ATF.Scripts.Storage
             if (etalon == null) return result;
             foreach (var fi in etalon.Keys)
             {
-                foreach (var objectToQueue in etalon.Values)
+                result[fi] = new Dictionary<object, AtfActionRleQueue>();
+                foreach (var objectToQueue in etalon[fi])
                 {
-                    result[fi] = new Dictionary<object, AtfActionRleQueue>();
-                    foreach (var pair in objectToQueue)
-                    {
-                        result[fi][pair.Key] = new AtfActionRleQueue(pair.Value);
-                    }
+                    result[fi][objectToQueue.Key] = new AtfActionRleQueue(objectToQueue.Value);
                 }
             }
             return result;

@@ -25,7 +25,7 @@ author = 'Oleg Bedrin'
 release = '0.0.1'
 
 master_doc = 'index'
-# latex_engine = 'xelatex'
+latex_engine = 'xelatex'
 
 # -- General configuration ---------------------------------------------------
 
@@ -62,15 +62,3 @@ html_theme = 'nature'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
-# If false, no module index is generated.
-#
-# html_domain_indices = True
-
-# If false, no index is generated.
-#
-# html_use_index = True
-
-# autoapi_type = 'dotnet'
-# autoapi_dirs = ['../Assets/ATF/Scripts']
-# autoapi_ignore = ['*.meta']

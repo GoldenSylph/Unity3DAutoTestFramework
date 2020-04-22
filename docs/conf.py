@@ -25,7 +25,7 @@ author = 'Oleg Bedrin'
 release = '0.0.1'
 
 master_doc = 'index'
-latex_engine = 'xelatex'
+# latex_engine = 'xelatex'
 
 # -- General configuration ---------------------------------------------------
 

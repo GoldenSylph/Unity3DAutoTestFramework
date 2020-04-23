@@ -69,11 +69,6 @@ namespace ATF.Scripts.Storage
                         result[record.recordName][fakeInputWithFipAndActions.fakeInput][ParseFip(fipAndActions.fakeInputParameter)] = newRleQueue;
                     }
                 }
-                print($"Record name {record.recordName}");
-                foreach (var key in result[record.recordName].Keys)
-                {
-                    print(key);
-                }
             }
             return result;
         }

@@ -54,12 +54,10 @@ namespace ATF.Scripts.Storage
             var result = new Dictionary<string, Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>>();
             foreach (var record in slot.content)
             {
+                result[record.recordName] = new Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>();
                 foreach (var fakeInputWithFipAndActions in record.fakeInputsWithFipsAndActions)
                 {
-                    result[record.recordName] = new Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>
-                    {
-                        [fakeInputWithFipAndActions.fakeInput] = new Dictionary<object, AtfActionRleQueue>()
-                    };
+                    result[record.recordName][fakeInputWithFipAndActions.fakeInput] = new Dictionary<object, AtfActionRleQueue>();
                     foreach (var fipAndActions in fakeInputWithFipAndActions.fipsAndActions)
                     {
                         var newRleQueue = new AtfActionRleQueue {last = fipAndActions.last};
@@ -70,6 +68,11 @@ namespace ATF.Scripts.Storage
                         }
                         result[record.recordName][fakeInputWithFipAndActions.fakeInput][ParseFip(fipAndActions.fakeInputParameter)] = newRleQueue;
                     }
+                }
+                print($"Record name {record.recordName}");
+                foreach (var key in result[record.recordName].Keys)
+                {
+                    print(key);
                 }
             }
             return result;

@@ -28,14 +28,17 @@ Remember, if you destroy this game object the asset functionality won't work.
 3. Preparing Unity Editor
 
 All of the management windows are now fully functional.
-To add Integrator Window press: ATF/Integrator.
-To add Recorder Window press: ATF/Recorder.
-To add Storage Window press: ATF/Storage.
+
+* To add Integrator Window press: Tools/ATF/Integrator.
+
+* To add Recorder Window press: Tools/ATF/Recorder.
+
+* To add Storage Window press: ToolsATF/Storage.
 
 Starting from scratch
 *********************
 
-Just use *AtfInput* instead of *Input* class and recorder will work perfectly.
+Just use *AtfInput* instead of *Input* class and recorder, storage and integrator will work perfectly.
 
 Here is an example of Mover class that will rotate around YZ axis given game object when you hit space key:
 
@@ -59,6 +62,18 @@ Here is an example of Mover class that will rotate around YZ axis given game obj
            }
        }
    }
+
+Starting from existing project
+******************************
+
+Use *AtfInput* instead of *Input* class in all further modifications of your code base
+and recorder, storage and integrator will work.
+
+For integration in existing project the Integrator Window comes in.
+To integrate in the specific files you can populate the list of such files and hit *Integrate* or *Integrate and replace*.
+But if you want to integrate automatically without choosing files, just hit *Integrate All*.
+
+.. note:: For further information about integration process just check the Integrator Window part of documentation. 
 
 *****************
 Integrator Window

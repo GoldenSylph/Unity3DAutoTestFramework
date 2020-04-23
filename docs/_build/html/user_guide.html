@@ -61,13 +61,15 @@ Remember, if you destroy this game object the asset functionality won’t work.<
 <ol class="arabic simple" start="3">
 <li><p>Preparing Unity Editor</p></li>
 </ol>
-<p>All of the management windows are now fully functional.
-To add Integrator Window press: ATF/Integrator.
-To add Recorder Window press: ATF/Recorder.
-To add Storage Window press: ATF/Storage.</p>
+<p>All of the management windows are now fully functional.</p>
+<ul class="simple">
+<li><p>To add Integrator Window press: Tools/ATF/Integrator.</p></li>
+<li><p>To add Recorder Window press: Tools/ATF/Recorder.</p></li>
+<li><p>To add Storage Window press: ToolsATF/Storage.</p></li>
+</ul>
 <div class="section" id="starting-from-scratch">
 <h3>Starting from scratch<a class="headerlink" href="#starting-from-scratch" title="Permalink to this headline">¶</a></h3>
-<p>Just use <em>AtfInput</em> instead of <em>Input</em> class and recorder will work perfectly.</p>
+<p>Just use <em>AtfInput</em> instead of <em>Input</em> class and recorder, storage and integrator will work perfectly.</p>
 <p>Here is an example of Mover class that will rotate around YZ axis given game object when you hit space key:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -105,11 +107,23 @@ To add Storage Window press: ATF/Storage.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
+<div class="section" id="starting-from-existing-project">
+<h3>Starting from existing project<a class="headerlink" href="#starting-from-existing-project" title="Permalink to this headline">¶</a></h3>
+<p>Use <em>AtfInput</em> instead of <em>Input</em> class in all further modifications of your code base
+and recorder, storage and integrator will work.</p>
+<p>For integration in existing project the Integrator Window comes in.
+To integrate in the specific files you can populate the list of such files and hit <em>Integrate</em> or <em>Integrate and replace</em>.
+But if you want to integrate automatically without choosing files, just hit <em>Integrate All</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For further information about integration process just check the Integrator Window part of documentation.</p>
+</div>
+</div>
 </div>
 <div class="section" id="integrator-window">
 <h2>Integrator Window<a class="headerlink" href="#integrator-window" title="Permalink to this headline">¶</a></h2>
 <p>The Integrator Window is used to integrate ATF functionality easily into complete code base.</p>
-<img alt="https://drive.google.com/file/d/1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz" />
 <p>If you starting from existing project you may want to use one of the options:</p>
 <div class="section" id="automatic-integration">
 <h3>Automatic integration<a class="headerlink" href="#automatic-integration" title="Permalink to this headline">¶</a></h3>
@@ -133,25 +147,25 @@ After paths list preparation you have two options:</p>
 <div class="section" id="recorder-window">
 <h2>Recorder Window<a class="headerlink" href="#recorder-window" title="Permalink to this headline">¶</a></h2>
 <p>The Recorder Window is pretty basic to use. The window features three sections: <strong>Recorder state</strong>, <strong>Recording control</strong>, <strong>Replay control</strong>.</p>
-<img alt="https://drive.google.com/file/d/1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP" />
 <p><strong>Recorder state</strong> is uninteractable section, it just show you the state of the recording.</p>
 <p><strong>Recording control</strong> is interactable section. Here is how to use it:</p>
 <ol class="arabic simple">
 <li><p>The recorder is a state machine and the name of the record is used as cursor. To set the record name just type to <em>Name of the recording</em> field specific name and hit enter. You will see that <em>Current recording name</em> has changed.</p></li>
 <li><p>Hit record button <em>Start</em> and the window will change like that:</p></li>
 </ol>
-<img alt="https://drive.google.com/file/d/1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew" />
 <p>The <em>Stop</em> and <em>Pause</em> buttons are to stop or pause recording. If you click <em>Pause</em> the window will change:</p>
-<img alt="https://drive.google.com/file/d/1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce" />
 <p>To continue recording just click <em>Continue</em> button.</p>
 <p><strong>Replay control</strong> is also interactable section. Here is how to use it:</p>
 <ol class="arabic simple">
 <li><p>Now you can play previously recorded actions. Simply type the name of the record a hit enter.</p></li>
 <li><p>Hit replay button <em>Start</em> and see how window has changed:</p></li>
 </ol>
-<img alt="https://drive.google.com/file/d/1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC" />
 <p>The <em>Stop</em> and <em>Pause</em> buttons are to stop or pause replay. If you click <em>Pause</em> the window will change:</p>
-<img alt="https://drive.google.com/file/d/1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8" />
 <p>To continue replay just click <em>Continue</em> button.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -164,11 +178,11 @@ After paths list preparation you have two options:</p>
 <p>It features two required sections and two optional sections: <strong>Current records</strong>,
 <strong>Saved records</strong> and <strong>Current commands and actions queues</strong>, <strong>Saved commands and actions queues</strong>.</p>
 <p>Optional means you can hide those sections by checking and unchecking the <em>Display current details</em> or <em>Display saved details</em> checkboxes.</p>
-<img alt="https://drive.google.com/file/d/10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U" />
 <p><strong>Current records</strong> is section where records that just loaded to RAM are illustrated and they are ready to be recorded again (with erasing previous actions data) and replayed.</p>
 <p><strong>Saved records</strong> is section for records that are saved.</p>
 <p>By double-clicking to saved or current record you can see the contents of it in <strong>Current commands and actions queues</strong> section or <strong>Saved commands and actions queues</strong> section. There is the example of such contents:</p>
-<img alt="https://drive.google.com/file/d/1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB/view?usp=sharing" class="align-center" src="https://drive.google.com/file/d/1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB/view?usp=sharing" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB" />
 <p>Here is how to use the window:</p>
 <ol class="arabic simple">
 <li><p>The Storage Window is also a state machine. The cursor is <em>Current recording name</em> in this window. To set up this cursor you have to just click on any record name in <strong>Current records</strong> or <strong>Saved records</strong> sections.</p></li>
@@ -193,6 +207,7 @@ After paths list preparation you have two options:</p>
 <li><a class="reference internal" href="#">User Guide</a><ul>
 <li><a class="reference internal" href="#getting-started">Getting started</a><ul>
 <li><a class="reference internal" href="#starting-from-scratch">Starting from scratch</a></li>
+<li><a class="reference internal" href="#starting-from-existing-project">Starting from existing project</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#integrator-window">Integrator Window</a><ul>

@@ -115,8 +115,8 @@ namespace ATF.Scripts {
         
         public static bool simulateMouseWithTouches
         {
-            get { return Intercept(Input.simulateMouseWithTouches, FakeInput.SIMULATE_MOUSE_WITH_TOUCHES, false, "Simulate mouse with touches"); }
-            set { Input.simulateMouseWithTouches = value; }
+            get => Intercept(Input.simulateMouseWithTouches, FakeInput.SIMULATE_MOUSE_WITH_TOUCHES, false, "Simulate mouse with touches");
+            set => Input.simulateMouseWithTouches = value;
         }
         
         public static bool AnyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
@@ -203,52 +203,34 @@ namespace ATF.Scripts {
             return GetMouseButton(button);
         }
 
-        public Vector2 mousePosition
-        {
-            get { return Intercept(BASE_INPUT.mousePosition, FakeInput.MOUSE_POSITION, Vector2.zero, "Mouse"); }
-        }
+        public Vector2 mousePosition => Intercept(BASE_INPUT.mousePosition, FakeInput.MOUSE_POSITION, Vector2.zero, "Mouse");
 
-        public Vector2 mouseScrollDelta
-        {
-            get { return Intercept(BASE_INPUT.mouseScrollDelta, FakeInput.MOUSE_SCROLL_DELTA, Vector2.zero, "Mouse scroll delta"); }
-        }
+        public Vector2 mouseScrollDelta => Intercept(BASE_INPUT.mouseScrollDelta, FakeInput.MOUSE_SCROLL_DELTA, Vector2.zero, "Mouse scroll delta");
 
-        public bool touchSupported
-        {
-            get { return Intercept(BASE_INPUT.touchSupported, FakeInput.TOUCH_SUPPORTED, false, "Touch supported"); }
-        }
+        public bool touchSupported => Intercept(BASE_INPUT.touchSupported, FakeInput.TOUCH_SUPPORTED, false, "Touch supported");
 
-        public int touchCount
-        {
-            get { return Intercept(BASE_INPUT.touchCount, FakeInput.TOUCH_COUNT, 0, "Touch count"); }
-        }
+        public int touchCount => Intercept(BASE_INPUT.touchCount, FakeInput.TOUCH_COUNT, 0, "Touch count");
 
         public static bool GetMouseButton(int button)
         {
             return Intercept(Input.GetMouseButton(button), FakeInput.GET_MOUSE_BUTTON, false, button);
         }
 
-        public string compositionString
-        {
-            get { return Intercept(BASE_INPUT.compositionString, FakeInput.COMPOSITION_STRING, string.Empty, "Composition string"); }
-        }
+        public string compositionString => Intercept(BASE_INPUT.compositionString, FakeInput.COMPOSITION_STRING, string.Empty, "Composition string");
 
         public IMECompositionMode imeCompositionMode
         {
-            get { return Intercept(BASE_INPUT.imeCompositionMode, FakeInput.IME_COMPOSITION_MODE, IMECompositionMode.Auto, "IME Composition mode"); }
-            set { BASE_INPUT.imeCompositionMode = value; }
+            get => Intercept(BASE_INPUT.imeCompositionMode, FakeInput.IME_COMPOSITION_MODE, IMECompositionMode.Auto, "IME Composition mode");
+            set => BASE_INPUT.imeCompositionMode = value;
         }
 
         public Vector2 compositionCursorPos
         {
-            get { return Intercept(BASE_INPUT.compositionCursorPos, FakeInput.COMPOSITION_CURSOR_POS, Vector2.zero, "Composition Cursor Pos"); }
-            set { BASE_INPUT.compositionCursorPos = value; }
+            get => Intercept(BASE_INPUT.compositionCursorPos, FakeInput.COMPOSITION_CURSOR_POS, Vector2.zero, "Composition Cursor Pos");
+            set => BASE_INPUT.compositionCursorPos = value;
         }
 
-        public bool mousePresent
-        {
-            get { return Intercept(BASE_INPUT.mousePresent, FakeInput.MOUSE_PRESENT, false, "Mouse present"); }
-        }
+        public bool mousePresent => Intercept(BASE_INPUT.mousePresent, FakeInput.MOUSE_PRESENT, false, "Mouse present");
 
         public static bool GetMouseButtonDown(int button)
         {

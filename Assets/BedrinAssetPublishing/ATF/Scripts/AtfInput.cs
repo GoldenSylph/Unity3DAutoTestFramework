@@ -1,5 +1,6 @@
 ﻿using System;
 using ATF.Scripts.DI;
+using ATF.Scripts.Helper;
 using ATF.Scripts.Recorder;
 using ATF.Scripts.Storage;
 using ATF.Scripts.Storage.Interfaces;
@@ -22,12 +23,23 @@ namespace ATF.Scripts {
         GET_KEY_UP,
         GET_MOUSE_BUTTON,
         GET_MOUSE_BUTTON_DOWN,
-        GET_MOUSE_BUTTON_UP
+        GET_MOUSE_BUTTON_UP,
+        GET_TOUCH,
+        MOUSE_POSITION,
+        TOUCH_COUNT,
+        MOUSE_SCROLL_DELTA,
+        TOUCH_SUPPORTED,
+        COMPOSITION_STRING,
+        IME_COMPOSITION_MODE,
+        COMPOSITION_CURSOR_POS,
+        MOUSE_PRESENT,
+        SIMULATE_MOUSE_WITH_TOUCHES
     }
 
+    [AtfSystem]
     [Serializable]
     [Injectable]
-    public class AtfInput : BaseInput
+    public class AtfInput : MonoSingleton<AtfInput>, IBaseInput
     {
         [Inject(typeof(AtfQueueBasedRecorder))]
         // ReSharper disable once MemberCanBePrivate.Global
@@ -40,6 +52,12 @@ namespace ATF.Scripts {
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once InconsistentNaming
         public static readonly IAtfActionStorage STORAGE;
+
+        [Inject(typeof(BaseInput))]
+        // ReSharper disable once UnassignedReadonlyField
+        // ReSharper disable once MemberCanBePrivate.Global
+        // ReSharper disable once InconsistentNaming
+        public static readonly BaseInput BASE_INPUT;
 
         private static object RealOrFakeInputOrRecord(object realInput, object fakeInputParameter, FakeInput kind)
         {
@@ -95,6 +113,12 @@ namespace ATF.Scripts {
             );
         }
         
+        public static bool simulateMouseWithTouches
+        {
+            get { return Intercept(Input.simulateMouseWithTouches, FakeInput.SIMULATE_MOUSE_WITH_TOUCHES, false, "Simulate mouse with touches"); }
+            set { Input.simulateMouseWithTouches = value; }
+        }
+        
         public static bool AnyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
 
         public static bool AnyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
@@ -102,6 +126,21 @@ namespace ATF.Scripts {
         public static float GetAxis(string axisName)
         {
             return Intercept(Input.GetAxis(axisName), FakeInput.GET_AXIS, 0f, axisName);
+        }
+
+        Touch IBaseInput.GetTouch(int index)
+        {
+            return GetTouch(index);
+        }
+
+        float IBaseInput.GetAxisRaw(string axisName)
+        {
+            return GetAxisRaw(axisName);
+        }
+
+        bool IBaseInput.GetButtonDown(string buttonName)
+        {
+            return GetButtonDown(buttonName);
         }
 
         public new static float GetAxisRaw(string axisName)
@@ -154,20 +193,81 @@ namespace ATF.Scripts {
             return Intercept(Input.GetKeyUp(name), FakeInput.GET_KEY_UP, false, name);
         }
 
-        public new static bool GetMouseButton(int button)
+        bool IBaseInput.GetMouseButtonUp(int button)
+        {
+            return GetMouseButtonUp(button);
+        }
+
+        bool IBaseInput.GetMouseButton(int button)
+        {
+            return GetMouseButton(button);
+        }
+
+        public Vector2 mousePosition
+        {
+            get { return Intercept(BASE_INPUT.mousePosition, FakeInput.MOUSE_POSITION, Vector2.zero, "Mouse"); }
+        }
+
+        public Vector2 mouseScrollDelta
+        {
+            get { return Intercept(BASE_INPUT.mouseScrollDelta, FakeInput.MOUSE_SCROLL_DELTA, Vector2.zero, "Mouse scroll delta"); }
+        }
+
+        public bool touchSupported
+        {
+            get { return Intercept(BASE_INPUT.touchSupported, FakeInput.TOUCH_SUPPORTED, false, "Touch supported"); }
+        }
+
+        public int touchCount
+        {
+            get { return Intercept(BASE_INPUT.touchCount, FakeInput.TOUCH_COUNT, 0, "Touch count"); }
+        }
+
+        public static bool GetMouseButton(int button)
         {
             return Intercept(Input.GetMouseButton(button), FakeInput.GET_MOUSE_BUTTON, false, button);
         }
 
-        public new static bool GetMouseButtonDown(int button)
+        public string compositionString
+        {
+            get { return Intercept(BASE_INPUT.compositionString, FakeInput.COMPOSITION_STRING, string.Empty, "Composition string"); }
+        }
+
+        public IMECompositionMode imeCompositionMode
+        {
+            get { return Intercept(BASE_INPUT.imeCompositionMode, FakeInput.IME_COMPOSITION_MODE, IMECompositionMode.Auto, "IME Composition mode"); }
+            set { BASE_INPUT.imeCompositionMode = value; }
+        }
+
+        public Vector2 compositionCursorPos
+        {
+            get { return Intercept(BASE_INPUT.compositionCursorPos, FakeInput.COMPOSITION_CURSOR_POS, Vector2.zero, "Composition Cursor Pos"); }
+            set { BASE_INPUT.compositionCursorPos = value; }
+        }
+
+        public bool mousePresent
+        {
+            get { return Intercept(BASE_INPUT.mousePresent, FakeInput.MOUSE_PRESENT, false, "Mouse present"); }
+        }
+
+        public static bool GetMouseButtonDown(int button)
         {
             return Intercept(Input.GetMouseButtonDown(button), FakeInput.GET_MOUSE_BUTTON_DOWN, false, button);
         }
 
-        public new static bool GetMouseButtonUp(int button)
+        bool IBaseInput.GetMouseButtonDown(int button)
+        {
+            return GetMouseButtonDown(button);
+        }
+
+        public static bool GetMouseButtonUp(int button)
         {
             return Intercept(Input.GetMouseButtonUp(button), FakeInput.GET_MOUSE_BUTTON_UP, false, button);
         }
-  
+
+        public static Touch GetTouch(int index)
+        {
+            return Intercept(Input.GetTouch(index), FakeInput.GET_TOUCH, new Touch(), index);
+        }
     }
 }

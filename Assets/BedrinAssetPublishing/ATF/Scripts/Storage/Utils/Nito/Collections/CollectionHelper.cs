@@ -9,19 +9,30 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
     {
         public static IReadOnlyCollection<T> ReifyCollection<T>(IEnumerable<T> source)
         {
-            switch (source)
+            if (source == null)
             {
-                case null:
-                    throw new ArgumentNullException(nameof(source));
-                case IReadOnlyCollection<T> result:
-                    return result;
-                case ICollection<T> collection:
-                    return new CollectionWrapper<T>(collection);
-                case ICollection nonGenericCollection:
-                    return new NonGenericCollectionWrapper<T>(nonGenericCollection);
-                default:
-                    return new List<T>(source);
+                throw new ArgumentNullException(nameof(source));
             }
+
+            if (source is IReadOnlyCollection<T>)
+            {
+                var result = (IReadOnlyCollection<T>) source;
+                return result;
+            }
+
+            if (source is ICollection<T>)
+            {
+                var collection = (ICollection<T>) source;
+                return new CollectionWrapper<T>(collection);
+            }
+
+            if (source is ICollection)
+            {
+                var nonGenericCollection = (ICollection) source;
+                return new NonGenericCollectionWrapper<T>(nonGenericCollection);
+            }
+            
+            return new List<T>(source);
         }
 
         private sealed class NonGenericCollectionWrapper<T> : IReadOnlyCollection<T>
@@ -30,7 +41,14 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
 
             public NonGenericCollectionWrapper(ICollection collection)
             {
-                _collection = collection ?? throw new ArgumentNullException(nameof(collection));
+                if (collection != null)
+                {
+                    _collection = collection;
+                }
+                else
+                {
+                    throw new ArgumentNullException(nameof(collection));
+                }
             }
 
             public int Count => _collection.Count;
@@ -52,7 +70,14 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
 
             public CollectionWrapper(ICollection<T> collection)
             {
-                _collection = collection ?? throw new ArgumentNullException(nameof(collection));
+                if (collection != null)
+                {
+                    _collection = collection;
+                }
+                else
+                {
+                    throw new ArgumentNullException(nameof(collection));    
+                }
             }
 
             public int Count => _collection.Count;

@@ -15,7 +15,6 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.Serialization;
-using File = UnityEngine.Windows.File;
 
 namespace ATF.Scripts.Editor
 {
@@ -89,6 +88,7 @@ namespace ATF.Scripts.Editor
             if (!GUILayout.Button(buttonText)) return;
             if (_pathsToSendIntoIntegrator == null) _pathsToSendIntoIntegrator = new HashSet<string>();
             var pathValidationResult = CheckCurrentPath();
+            int _;
             if (int.TryParse(pathValidationResult, out _))
             {
                 ifPathValid();

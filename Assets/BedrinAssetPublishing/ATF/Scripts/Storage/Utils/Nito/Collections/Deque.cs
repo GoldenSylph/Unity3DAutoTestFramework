@@ -332,7 +332,7 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
 
         object System.Collections.IList.this[int index]
         {
-            get => this[index];
+            get { return this[index]; }
 
             set
             {
@@ -450,7 +450,9 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
         // ReSharper disable once MemberCanBePrivate.Global
         public int Capacity
         {
-            get => _buffer.Length;
+            get {
+                return _buffer.Length;
+            }
 
             set
             {
@@ -844,13 +846,7 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
             }
 
             [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-            public T[] Items
-            {
-                get
-                {
-                    return deque.ToArray();
-                }
-            }
+            public T[] Items => deque.ToArray();
         }
     }
 }

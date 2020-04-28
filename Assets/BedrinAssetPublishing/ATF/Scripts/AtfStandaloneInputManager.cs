@@ -8,7 +8,7 @@ namespace ATF.Scripts
         protected override void Start()
         {
             base.Start();
-            m_InputOverride = gameObject.AddComponent<AtfInput>();
+            m_InputOverride = AtfInput.BASE_INPUT;
             DependencyInjector.InjectType(m_InputOverride.GetType());
         }
     }

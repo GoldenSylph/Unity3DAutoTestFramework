@@ -126,7 +126,8 @@ namespace ATF.Scripts.DI
             {
                 var fiAttributes = fi.GetCustomAttributes(true);
                 if (!ContainsAnyAttributeOfType(fiAttributes, typeof(InjectAttribute))) continue;
-                if (!(fiAttributes[0] is InjectAttribute temp)) continue;
+                if (!(fiAttributes[0] is InjectAttribute)) continue;
+                var temp = (InjectAttribute) fiAttributes[0];
                 var isScenePathEmpty = string.IsNullOrEmpty(temp.ScenePath);
                 if (temp.ComponentType == null && isScenePathEmpty)
                 {

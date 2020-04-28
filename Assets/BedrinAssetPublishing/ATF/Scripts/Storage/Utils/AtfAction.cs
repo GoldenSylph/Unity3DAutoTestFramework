@@ -41,10 +41,12 @@ namespace ATF.Scripts.Storage.Utils
             {
                 return boolVariant;
             }
+
             if (float.TryParse(serializedContent, out var floatVariant))
             {
                 return floatVariant;
             }
+
             if (int.TryParse(serializedContent, out var intVariant))
             {
                 return intVariant;

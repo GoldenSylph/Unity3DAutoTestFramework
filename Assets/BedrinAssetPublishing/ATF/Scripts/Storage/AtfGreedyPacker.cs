@@ -80,22 +80,30 @@ namespace ATF.Scripts.Storage
         
         private static object ParseFip(string fip)
         {
-            if (bool.TryParse(fip, out var boolVariant))
+            bool boolVariant;
+            if (bool.TryParse(fip, out boolVariant))
             {
                 return boolVariant;
             }
-            if (float.TryParse(fip, out var floatVariant))
+
+            float floatVariant;
+            if (float.TryParse(fip, out floatVariant))
             {
                 return floatVariant;
             }
-            if (int.TryParse(fip, out var intVariant))
+
+            int intVariant;
+            if (int.TryParse(fip, out intVariant))
             {
                 return intVariant;
             }
-            if (Enum.TryParse<KeyCode>(fip, out var keyCodeVariant))
+
+            KeyCode keyCodeVariant;
+            if (Enum.TryParse<KeyCode>(fip, out keyCodeVariant))
             {
                 return keyCodeVariant;
             }
+            
             return fip;
         }
 

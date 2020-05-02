@@ -33,7 +33,7 @@ All of the management windows are now fully functional.
 
 * To add Recorder Window press: Tools/ATF/Recorder.
 
-* To add Storage Window press: ToolsATF/Storage.
+* To add Storage Window press: Tools/ATF/Storage.
 
 Starting from scratch
 *********************
@@ -66,14 +66,17 @@ Here is an example of Mover class that will rotate around YZ axis given game obj
 Starting from existing project
 ******************************
 
-Use *AtfInput* instead of *Input* class in all further modifications of your code base
+Use *AtfInput* class or *AtfInput.Instance* object instead of *Input* class in all further modifications of your code base
 and recorder, storage and integrator will work.
+
+*Input* class is sealed so *AtfInput* class and *AtfInput.Instance* object are together to represent it's unified interface.
+In other words, if you want to use a certain *Input* method you can access it either through static invokation or through object *AtfInput.Instance* invokation.
 
 For integration in existing project the Integrator Window comes in.
 To integrate in the specific files you can populate the list of such files and hit *Integrate* or *Integrate and replace*.
 But if you want to integrate automatically without choosing files, just hit *Integrate All*.
 
-.. note:: For further information about integration process just check the Integrator Window part of documentation. 
+.. note:: For further information about integration process just check the Integrator Window part of documentation.
 
 *****************
 Integrator Window
@@ -90,8 +93,8 @@ Automatic integration
 *********************
 
 Just hit *Integrate All* button and it's done.
-The algorith of integration is simple. The integrator selects all of .cs files in your project
-then in all files it performs regexp search of *Input* class usage turning it in *AtfInput* class usage.
+The algorithm of integration is simple. The integrator selects all of .cs files in your project
+then in all files it performs regexp search of *Input* class usage turning it in *AtfInput.Instance* class usage.
 
 Integration in specific files
 *********************************
@@ -151,6 +154,22 @@ The *Stop* and *Pause* buttons are to stop or pause replay. If you click *Pause*
 To continue replay just click *Continue* button.
 
 .. note:: If you try to replay a non-existent record it'll do nothing. Also there is no mechanism to reverse replay yet. Please consider this using the asset.
+
+Input Disable Function
+**********************
+
+If you want to disable or enable input you can address to Tools/ATF/Utils/Toggle Input or press *Ctrl+I*. Of course it will work only in Play Mode.
+
+This function is to allow interacting with control windows without interacting with application in Play Mode.
+For example you want to replay a certain record from certain point of your application but when you move your mouse the application is responding and it's state is changing.
+To prevent that you can disable input and move your mouse without changing the application state.
+
+Last Input
+**********
+
+While recording your new scenario you can see that there is already a record named *Last input* in action storage.
+This record contains last state of the requested input and it's content is constantly played where you disable input.
+It's also can be used for debug for example.
 
 **************
 Storage Window

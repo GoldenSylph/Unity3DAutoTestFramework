@@ -9,7 +9,10 @@ namespace ATF.Scripts
         {
             base.Start();
             m_InputOverride = AtfInput.BASE_INPUT;
-            DependencyInjector.InjectType(m_InputOverride.GetType());
+            DependencyInjector
+                .InjectType(
+                m_InputOverride
+                    .GetType());
         }
     }
 }

@@ -65,7 +65,7 @@ Remember, if you destroy this game object the asset functionality won’t work.<
 <ul class="simple">
 <li><p>To add Integrator Window press: Tools/ATF/Integrator.</p></li>
 <li><p>To add Recorder Window press: Tools/ATF/Recorder.</p></li>
-<li><p>To add Storage Window press: ToolsATF/Storage.</p></li>
+<li><p>To add Storage Window press: Tools/ATF/Storage.</p></li>
 </ul>
 <div class="section" id="starting-from-scratch">
 <h3>Starting from scratch<a class="headerlink" href="#starting-from-scratch" title="Permalink to this headline">¶</a></h3>
@@ -109,8 +109,10 @@ Remember, if you destroy this game object the asset functionality won’t work.<
 </div>
 <div class="section" id="starting-from-existing-project">
 <h3>Starting from existing project<a class="headerlink" href="#starting-from-existing-project" title="Permalink to this headline">¶</a></h3>
-<p>Use <em>AtfInput</em> instead of <em>Input</em> class in all further modifications of your code base
+<p>Use <em>AtfInput</em> class or <em>AtfInput.Instance</em> object instead of <em>Input</em> class in all further modifications of your code base
 and recorder, storage and integrator will work.</p>
+<p><em>Input</em> class is sealed so <em>AtfInput</em> class and <em>AtfInput.Instance</em> object are together to represent it’s unified interface.
+In other words, if you want to use a certain <em>Input</em> method you can access it either through static invokation or through object <em>AtfInput.Instance</em> invokation.</p>
 <p>For integration in existing project the Integrator Window comes in.
 To integrate in the specific files you can populate the list of such files and hit <em>Integrate</em> or <em>Integrate and replace</em>.
 But if you want to integrate automatically without choosing files, just hit <em>Integrate All</em>.</p>
@@ -128,8 +130,8 @@ But if you want to integrate automatically without choosing files, just hit <em>
 <div class="section" id="automatic-integration">
 <h3>Automatic integration<a class="headerlink" href="#automatic-integration" title="Permalink to this headline">¶</a></h3>
 <p>Just hit <em>Integrate All</em> button and it’s done.
-The algorith of integration is simple. The integrator selects all of .cs files in your project
-then in all files it performs regexp search of <em>Input</em> class usage turning it in <em>AtfInput</em> class usage.</p>
+The algorithm of integration is simple. The integrator selects all of .cs files in your project
+then in all files it performs regexp search of <em>Input</em> class usage turning it in <em>AtfInput.Instance</em> class usage.</p>
 </div>
 <div class="section" id="integration-in-specific-files">
 <h3>Integration in specific files<a class="headerlink" href="#integration-in-specific-files" title="Permalink to this headline">¶</a></h3>
@@ -170,6 +172,19 @@ After paths list preparation you have two options:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you try to replay a non-existent record it’ll do nothing. Also there is no mechanism to reverse replay yet. Please consider this using the asset.</p>
+</div>
+<div class="section" id="input-disable-function">
+<h3>Input Disable Function<a class="headerlink" href="#input-disable-function" title="Permalink to this headline">¶</a></h3>
+<p>If you want to disable or enable input you can address to Tools/ATF/Utils/Toggle Input or press <em>Ctrl+I</em>. Of course it will work only in Play Mode.</p>
+<p>This function is to allow interacting with control windows without interacting with application in Play Mode.
+For example you want to replay a certain record from certain point of your application but when you move your mouse the application is responding and it’s state is changing.
+To prevent that you can disable input and move your mouse without changing the application state.</p>
+</div>
+<div class="section" id="last-input">
+<h3>Last Input<a class="headerlink" href="#last-input" title="Permalink to this headline">¶</a></h3>
+<p>While recording your new scenario you can see that there is already a record named <em>Last input</em> in action storage.
+This record contains last state of the requested input and it’s content is constantly played where you disable input.
+It’s also can be used for debug for example.</p>
 </div>
 </div>
 <div class="section" id="storage-window">
@@ -215,7 +230,11 @@ After paths list preparation you have two options:</p>
 <li><a class="reference internal" href="#integration-in-specific-files">Integration in specific files</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#recorder-window">Recorder Window</a></li>
+<li><a class="reference internal" href="#recorder-window">Recorder Window</a><ul>
+<li><a class="reference internal" href="#input-disable-function">Input Disable Function</a></li>
+<li><a class="reference internal" href="#last-input">Last Input</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#storage-window">Storage Window</a></li>
 </ul>
 </li>

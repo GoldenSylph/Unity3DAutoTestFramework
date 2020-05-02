@@ -846,7 +846,13 @@ namespace ATF.Scripts.Storage.Utils.Nito.Collections
             }
 
             [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
-            public T[] Items => deque.ToArray();
+            public T[] Items
+            {
+                get
+                {
+                    return deque.ToArray();
+                }
+            }
         }
     }
 }

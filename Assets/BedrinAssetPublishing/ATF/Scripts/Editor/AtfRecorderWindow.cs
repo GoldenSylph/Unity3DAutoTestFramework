@@ -1,4 +1,5 @@
-﻿using ATF.Scripts.Recorder;
+﻿using System;
+using ATF.Scripts.Recorder;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,12 +12,18 @@ namespace ATF.Scripts.Editor
         public IAtfRecorder recorder;
 
         private string _newNameOfRecording;
-
+        
         private void OnFocus()
         {
             if (!EditorApplication.isPlaying) return;
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
         }
+
+        // [MenuItem("Test/Toggle %g")]
+        // private void ToggleInputStopped()
+        // {
+        //     _isInputStopped = !_isInputStopped;
+        // }
 
         private void OnGUI()
         {
@@ -40,10 +47,12 @@ namespace ATF.Scripts.Editor
                     EditorGUILayout.Toggle("Is Recording Paused", recorder.IsRecordingPaused());
                     EditorGUILayout.Toggle("Is Playing Paused", recorder.IsPlayPaused());
                     EditorGUILayout.EndVertical();
-
+                    
                     EditorGUILayout.EndHorizontal();
+                    EditorGUILayout.Toggle("Is Input Stopped", recorder.IsInputStopped());
                     
                     GUILayout.Label("Recording control", EditorStyles.boldLabel);
+                    
                     if (!recorder.IsPlaying() && !recorder.IsRecording())
                     {
                         _newNameOfRecording = EditorGUILayout.TextField("Name of the recording", _newNameOfRecording);
@@ -79,8 +88,7 @@ namespace ATF.Scripts.Editor
 
                         EditorGUILayout.EndHorizontal();
                     }
-
-
+                    
                     if (recorder.IsRecording()) return;
                     GUILayout.Label("Replay control", EditorStyles.boldLabel);
                     EditorGUILayout.BeginHorizontal();

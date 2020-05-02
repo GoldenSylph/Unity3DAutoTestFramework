@@ -204,6 +204,7 @@ namespace ATF.Scripts.Storage
             return saver.GetSavedRecordDetails(recordName);
         }
 
+        // ReSharper disable once UnusedMember.Global
         public static Dictionary<string, Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>> ReturnNewCopyOf(Dictionary<string, 
             Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>> etalon)
         {
@@ -216,9 +217,12 @@ namespace ATF.Scripts.Storage
             return result;
         }
 
-        private T IfNameAndKindAndFipIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, object fakeInputParameter, Func<T> toReturn, T defaultValue)
+        private T IfNameAndKindAndFipIsNotExistInStorageReturnDefault<T>(string recordName, FakeInput kind, 
+            object fakeInputParameter, Func<T> toReturn, T defaultValue)
         {
-            if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter))
+            if (!_actionStorage.ContainsKey(recordName) || !_actionStorage[recordName].ContainsKey(kind) 
+                                                        || !_actionStorage[recordName][kind].ContainsKey(fakeInputParameter) 
+                                                        || _actionStorage[recordName][kind][fakeInputParameter].Count == 0)
             {
                 return defaultValue;
             }

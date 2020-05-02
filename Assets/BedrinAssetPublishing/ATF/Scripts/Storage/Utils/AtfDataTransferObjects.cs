@@ -64,7 +64,13 @@ namespace ATF.Scripts.Storage.Utils
         public override bool Equals(object obj)
 #pragma warning restore 659
         {
-            return obj is Record record && record.recordName.Equals(recordName);
+            var temp = obj as Record;
+            if (temp != null)
+            {
+                return temp.recordName.Equals(recordName);
+            }
+            return false;
+            // return obj is Record record && record.recordName.Equals(recordName);
         }
     }
 

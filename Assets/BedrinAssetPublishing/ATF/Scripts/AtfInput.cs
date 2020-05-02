@@ -61,6 +61,12 @@ namespace ATF.Scripts {
 
         private static object RealOrFakeInputOrRecord(object realInput, object fakeInputParameter, FakeInput kind)
         {
+            if (RECORDER.IsInputStopped())
+            {
+                return RECORDER.GetLastInput(kind, fakeInputParameter);
+            }
+            RECORDER.SetLastInput(kind, realInput, fakeInputParameter);
+            
             if (RECORDER.IsPlaying() && !RECORDER.IsPlayPaused() && !RECORDER.IsRecording())
             {
                 return GetCurrentFakeInput(kind, fakeInputParameter);
@@ -113,21 +119,25 @@ namespace ATF.Scripts {
             );
         }
         
+        // ReSharper disable once InconsistentNaming
+        // ReSharper disable once UnusedMember.Global
         public static bool simulateMouseWithTouches
         {
             get => Intercept(Input.simulateMouseWithTouches, FakeInput.SIMULATE_MOUSE_WITH_TOUCHES, false, "Simulate mouse with touches");
             set => Input.simulateMouseWithTouches = value;
         }
         
+        // ReSharper disable once UnusedMember.Global
         public static bool AnyKeyDown => Intercept(Input.anyKeyDown, FakeInput.ANY_KEY_DOWN, false);
 
+        // ReSharper disable once UnusedMember.Global
         public static bool AnyKey => Intercept(Input.anyKey, FakeInput.ANY_KEY, false);
 
         public static float GetAxis(string axisName)
         {
             return Intercept(Input.GetAxis(axisName), FakeInput.GET_AXIS, 0f, axisName);
         }
-
+        
         Touch IBaseInput.GetTouch(int index)
         {
             return GetTouch(index);
@@ -143,7 +153,7 @@ namespace ATF.Scripts {
             return GetButtonDown(buttonName);
         }
 
-        public new static float GetAxisRaw(string axisName)
+        public static float GetAxisRaw(string axisName)
         {
             return Intercept(Input.GetAxisRaw(axisName), FakeInput.GET_AXIS_RAW, 0f, axisName);
         }
@@ -153,7 +163,7 @@ namespace ATF.Scripts {
             return Intercept(Input.GetButton(buttonName), FakeInput.GET_BUTTON, false, buttonName);
         }
 
-        public new static bool GetButtonDown(string buttonName)
+        public static bool GetButtonDown(string buttonName)
         {
             return Intercept(Input.GetButtonDown(buttonName), FakeInput.GET_BUTTON_DOWN, false, buttonName);
         }

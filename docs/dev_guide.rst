@@ -265,8 +265,7 @@ Action Storage Saver System
 ***************************
 
 Because of the potential need in saving storage data in different places (ex. file system, *PlayerPrefs* class, etc.) this interface was created.
-T
-he current realisation uses *PlayerPrefs* class. You can always expand this on file system for example by implementing this interface with specific file system API usage.
+The current realisation uses *PlayerPrefs* class. You can always expand this on file system for example by implementing this interface with specific file system API usage.
 
 .. code-block:: csharp
    :linenos:

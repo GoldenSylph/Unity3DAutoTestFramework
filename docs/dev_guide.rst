@@ -12,7 +12,7 @@ Here is some base steps for creating and integrating some new system.
 Initializer
 ********************
 
-The `AtfInitializer class <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/AtfInitializer.cs>`_ is for instantiating automatically all *MonoSingleton<T>* instances as **Initializer** game object child
+The `AtfInitializer class <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/AtfInitializer.cs>`_ is for instantiating automatically all *MonoSingleton<T>* instances as **Initializer** game object child
 that are marked by AtfSystem attribute.
 
 In context of ATF it is used to instantiate all main systems described below.
@@ -37,7 +37,7 @@ If you now enter the Play Mode the *AtfInitializer* class will instantiate as ch
 DI Container
 ********************
 
-DI Container stands for `Dependency Injection Container <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/DI/DependencyInjector.cs>`_.
+DI Container stands for `Dependency Injection Container <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/DI/DependencyInjector.cs>`_.
 It's a common method to implement the Dependency Inversion Principle (DIP) of SOLID principles.
 Usage:
 
@@ -132,7 +132,7 @@ To check the current realisations just visit our github `page <https://github.co
 Recorder System
 ********************
 
-The `Recorder System <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/Recorder/AtfQueueBasedRecorder.cs>`_ is serving as arbitrator.
+The `Recorder System <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/Recorder/AtfQueueBasedRecorder.cs>`_ is serving as arbitrator.
 It's current realisation based on classic state machine. And it implements the following interface.
 
 .. code-block:: csharp
@@ -150,6 +150,8 @@ It's current realisation based on classic state machine. And it implements the f
            bool IsRecordingPaused();
            bool IsPlayPaused();
 
+           bool IsInputStopped();
+
            void PlayRecord();
            void PausePlay();
            void ContinuePlay();
@@ -164,15 +166,18 @@ It's current realisation based on classic state machine. And it implements the f
            void SetPlaying(bool value);
            void SetRecordingPaused(bool value);
            void SetPlayPaused(bool value);
+           void SetInputStopped(bool value);
 
            void Record(FakeInput kind, object input, object fakeInputParameter);
+           object GetLastInput(FakeInput kind, object fakeInputParameter);
+           void SetLastInput(FakeInput kind, object realInput, object fakeInputParameter);
        }
    }
 
 Action Storage System
 *********************
 
-The `Action Storage System <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/Storage/AtfDictionaryBasedActionStorage.cs>`_ is a core of the ATF.
+The `Action Storage System <https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/Storage/AtfDictionaryBasedActionStorage.cs>`_ is a core of the ATF.
 It implements the following interface and stores recorded actions in format of generic type **Dictionary<string, Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>>**.
 
 Where string - is name of the record, FakeInput is enum described below, object - is parameter of the input and *AtfActionRleQueue* is basic queue data structure but with RLE-compression of the elements.

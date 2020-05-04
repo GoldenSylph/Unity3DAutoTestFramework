@@ -19,12 +19,6 @@ namespace ATF.Scripts.Editor
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
         }
 
-        // [MenuItem("Test/Toggle %g")]
-        // private void ToggleInputStopped()
-        // {
-        //     _isInputStopped = !_isInputStopped;
-        // }
-
         private void OnGUI()
         {
             var recorderLoaded = recorder != null;

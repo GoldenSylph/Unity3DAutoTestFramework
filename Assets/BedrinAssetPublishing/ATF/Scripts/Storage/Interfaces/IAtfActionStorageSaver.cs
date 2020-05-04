@@ -15,5 +15,7 @@ namespace ATF.Scripts.Storage.Interfaces
         void SetActions(IEnumerable actionEnumerable);
         List<TreeViewItem> GetSavedNames();
         List<TreeViewItem> GetSavedRecordDetails(string recordName);
+        void ExportFile(string fullPath);
+        void ImportFile(string fullPath);
     }
 }

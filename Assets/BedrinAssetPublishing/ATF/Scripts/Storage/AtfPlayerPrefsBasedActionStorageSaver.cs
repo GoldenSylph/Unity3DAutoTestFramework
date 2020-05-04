@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using ATF.Scripts.DI;
@@ -186,6 +187,32 @@ namespace ATF.Scripts.Storage
                 }
             });
             return result;
+        }
+
+        public void ExportFile(string fullPath)
+        {
+            if (PlayerPrefs.HasKey(slotKey))
+            {
+                var serializedSlot = PlayerPrefs.GetString(slotKey);
+                using (var writer = new StreamWriter(fullPath))  
+                {  
+                    writer.Write(serializedSlot);  
+                }
+                print($"Export is complete: {fullPath}");
+            }
+            else
+            {
+                Debug.LogError("There is no saved storage.");
+            }
+        }
+
+        public void ImportFile(string fullPath)
+        {
+            using (var reader = new StreamReader(fullPath))
+            {
+                var serializedSlot = reader.ReadToEnd();
+                PlayerPrefs.SetString(slotKey, serializedSlot);
+            }
         }
 
         public void SetCurrentRecordName(string recordName)

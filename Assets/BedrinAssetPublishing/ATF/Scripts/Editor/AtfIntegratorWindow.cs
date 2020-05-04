@@ -38,14 +38,16 @@ namespace ATF.Scripts.Editor
             _treeViewForPaths.PathChanged += (s, context) => _currentPath = s;
         }
 
-        private string CheckCurrentPath()
+        public static string CheckPath(string path, bool isFileInAssetsFolder, string fileFormat)
         {
             var message = new StringBuilder();
-            if (!Regex.IsMatch(_currentPath, @"^(?:\w+/)*(?:\w+/\w+.cs)$"))
+            if (!Regex.IsMatch(path, $@"^(?:\w:/)?(?:\w+/)*(?:\w+/\w+.{fileFormat})$"))
             {
-                message.Append("Path is not valid. It must be a relational file directory, where root is Assets folder.\n");
+                message.Append(isFileInAssetsFolder
+                    ? "Path is not valid. It must be a relational file directory, where root is Assets folder.\n"
+                    : "Path is not valid. It must be a full absolute path to the file.");
             }
-            if (!File.Exists($"{Application.dataPath}{Path.DirectorySeparatorChar}{_currentPath}"))
+            if (isFileInAssetsFolder && !File.Exists($"{Application.dataPath}{Path.DirectorySeparatorChar}{path}"))
             {
                 message.Append("This file does not exist.\n");
             }
@@ -55,6 +57,11 @@ namespace ATF.Scripts.Editor
                 message.Append(0);
             }
             return message.ToString();
+        }
+        
+        private string CheckCurrentPath()
+        {
+            return CheckPath(_currentPath, true, "cs");
         }
 
         private void UpdateTree()
@@ -88,7 +95,6 @@ namespace ATF.Scripts.Editor
             if (!GUILayout.Button(buttonText)) return;
             if (_pathsToSendIntoIntegrator == null) _pathsToSendIntoIntegrator = new HashSet<string>();
             var pathValidationResult = CheckCurrentPath();
-            int _;
             if (int.TryParse(pathValidationResult, out _))
             {
                 ifPathValid();

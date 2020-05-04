@@ -43,6 +43,8 @@ namespace ATF.Scripts.Editor
 
         private bool _showDetailsOfSavedRecord;
         private bool _showDetailsOfCurrentRecord = true;
+        
+        private string _fullPathForStorageExport;
 
         private void OnFocus()
         {
@@ -59,6 +61,27 @@ namespace ATF.Scripts.Editor
             _treeViewForCurrentNames.KindsAndActionsTreeView = _treeViewForCurrentKindsAndActions;
             _treeViewForCurrentNames.RecordNameChanged += AtfWindow.RepaintRecorderWindow;
             _treeViewForSavedNames.KindsAndActionsTreeView = _treeViewForSavedKindsAndActions;
+        }
+
+        private void ImportExportButtons(string buttonText, bool import)
+        {
+            if (!GUILayout.Button(buttonText)) return;
+            var exportPathValidationResult = AtfIntegratorWindow.CheckPath(_fullPathForStorageExport, false, "json");
+            if (int.TryParse(exportPathValidationResult, out _))
+            {
+                if (import)
+                {
+                    storage.Import(_fullPathForStorageExport);
+                }
+                else
+                {
+                    storage.Export(_fullPathForStorageExport);
+                }
+            }
+            else
+            {
+                Debug.LogError($"Cannot export storage. Reason: {exportPathValidationResult}");
+            }
         }
         
         private void OnGUI()
@@ -97,6 +120,12 @@ namespace ATF.Scripts.Editor
                     }
                     EditorGUILayout.EndHorizontal();
                 }
+
+                _fullPathForStorageExport = EditorGUILayout.TextField("Absolute path:", _fullPathForStorageExport);
+                EditorGUILayout.BeginHorizontal();
+                ImportExportButtons("Export saved storage", false);
+                ImportExportButtons("Import saved storage", true);
+                EditorGUILayout.EndHorizontal();
 
                 GUILayout.Label("Current records", EditorStyles.boldLabel);
                 AtfWindow.DoToolbarFor(_treeViewForCurrentNames, _searchFieldForCurrentNames);

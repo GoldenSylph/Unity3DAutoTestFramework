@@ -20,5 +20,7 @@ namespace ATF.Scripts.Storage.Interfaces
         List<TreeViewItem> GetCurrentRecordNames();
         List<TreeViewItem> GetCurrentActions(string recordName);
         List<TreeViewItem> GetSavedActions(string recordName);
+        void Export(string fullPath);
+        void Import(string fullPath);
     }
 }

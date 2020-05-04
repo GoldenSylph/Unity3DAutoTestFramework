@@ -204,7 +204,16 @@ namespace ATF.Scripts.Storage
             return saver.GetSavedRecordDetails(recordName);
         }
 
-        // ReSharper disable once UnusedMember.Global
+        public void Export(string fullPath)
+        {
+            saver.ExportFile(fullPath);
+        }
+
+        public void Import(string fullPath)
+        {
+            saver.ImportFile(fullPath);
+        }
+
         public static Dictionary<string, Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>> ReturnNewCopyOf(Dictionary<string, 
             Dictionary<FakeInput, Dictionary<object, AtfActionRleQueue>>> etalon)
         {

@@ -46,7 +46,7 @@
 <p>Here is some base steps for creating and integrating some new system.</p>
 <div class="section" id="initializer">
 <h3>Initializer<a class="headerlink" href="#initializer" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/AtfInitializer.cs">AtfInitializer class</a> is for instantiating automatically all <em>MonoSingleton&lt;T&gt;</em> instances as <strong>Initializer</strong> game object child
+<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/AtfInitializer.cs">AtfInitializer class</a> is for instantiating automatically all <em>MonoSingleton&lt;T&gt;</em> instances as <strong>Initializer</strong> game object child
 that are marked by AtfSystem attribute.</p>
 <p>In context of ATF it is used to instantiate all main systems described below.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -76,7 +76,7 @@ that are marked by AtfSystem attribute.</p>
 </div>
 <div class="section" id="di-container">
 <h3>DI Container<a class="headerlink" href="#di-container" title="Permalink to this headline">¶</a></h3>
-<p>DI Container stands for <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/DI/DependencyInjector.cs">Dependency Injection Container</a>.
+<p>DI Container stands for <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/DI/DependencyInjector.cs">Dependency Injection Container</a>.
 It’s a common method to implement the Dependency Inversion Principle (DIP) of SOLID principles.
 Usage:</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -200,7 +200,7 @@ The purpose of the second is to mark field of class that is to be populated by i
 </td></tr></table></div>
 <div class="section" id="recorder-system">
 <h3>Recorder System<a class="headerlink" href="#recorder-system" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/Recorder/AtfQueueBasedRecorder.cs">Recorder System</a> is serving as arbitrator.
+<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/Recorder/AtfQueueBasedRecorder.cs">Recorder System</a> is serving as arbitrator.
 It’s current realisation based on classic state machine. And it implements the following interface.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -231,7 +231,12 @@ It’s current realisation based on classic state machine. And it implements the
 27
 28
 29
-30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">ATF.Scripts.Helper</span><span class="p">;</span>
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">ATF.Scripts.Helper</span><span class="p">;</span>
 
 <span class="k">namespace</span> <span class="nn">ATF.Scripts.Recorder</span>
 <span class="p">{</span>
@@ -242,6 +247,8 @@ It’s current realisation based on classic state machine. And it implements the
 
         <span class="kt">bool</span> <span class="nf">IsRecordingPaused</span><span class="p">();</span>
         <span class="kt">bool</span> <span class="nf">IsPlayPaused</span><span class="p">();</span>
+
+        <span class="kt">bool</span> <span class="nf">IsInputStopped</span><span class="p">();</span>
 
         <span class="k">void</span> <span class="nf">PlayRecord</span><span class="p">();</span>
         <span class="k">void</span> <span class="nf">PausePlay</span><span class="p">();</span>
@@ -257,8 +264,11 @@ It’s current realisation based on classic state machine. And it implements the
         <span class="k">void</span> <span class="nf">SetPlaying</span><span class="p">(</span><span class="kt">bool</span> <span class="k">value</span><span class="p">);</span>
         <span class="k">void</span> <span class="nf">SetRecordingPaused</span><span class="p">(</span><span class="kt">bool</span> <span class="k">value</span><span class="p">);</span>
         <span class="k">void</span> <span class="nf">SetPlayPaused</span><span class="p">(</span><span class="kt">bool</span> <span class="k">value</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">SetInputStopped</span><span class="p">(</span><span class="kt">bool</span> <span class="k">value</span><span class="p">);</span>
 
         <span class="k">void</span> <span class="nf">Record</span><span class="p">(</span><span class="n">FakeInput</span> <span class="n">kind</span><span class="p">,</span> <span class="kt">object</span> <span class="n">input</span><span class="p">,</span> <span class="kt">object</span> <span class="n">fakeInputParameter</span><span class="p">);</span>
+        <span class="kt">object</span> <span class="nf">GetLastInput</span><span class="p">(</span><span class="n">FakeInput</span> <span class="n">kind</span><span class="p">,</span> <span class="kt">object</span> <span class="n">fakeInputParameter</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">SetLastInput</span><span class="p">(</span><span class="n">FakeInput</span> <span class="n">kind</span><span class="p">,</span> <span class="kt">object</span> <span class="n">realInput</span><span class="p">,</span> <span class="kt">object</span> <span class="n">fakeInputParameter</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -266,7 +276,7 @@ It’s current realisation based on classic state machine. And it implements the
 </div>
 <div class="section" id="action-storage-system">
 <h3>Action Storage System<a class="headerlink" href="#action-storage-system" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/ATF/Scripts/Storage/AtfDictionaryBasedActionStorage.cs">Action Storage System</a> is a core of the ATF.
+<p>The <a class="reference external" href="https://github.com/GoldenSylph/Unity3DAutoTestFramework/blob/master/Assets/BedrinAssetPublishing/ATF/Scripts/Storage/AtfDictionaryBasedActionStorage.cs">Action Storage System</a> is a core of the ATF.
 It implements the following interface and stores recorded actions in format of generic type <strong>Dictionary&lt;string, Dictionary&lt;FakeInput, Dictionary&lt;object, AtfActionRleQueue&gt;&gt;&gt;</strong>.</p>
 <p>Where string - is name of the record, FakeInput is enum described below, object - is parameter of the input and <em>AtfActionRleQueue</em> is basic queue data structure but with RLE-compression of the elements.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -393,8 +403,7 @@ It implements the following interface and stores recorded actions in format of g
 <div class="section" id="action-storage-saver-system">
 <h3>Action Storage Saver System<a class="headerlink" href="#action-storage-saver-system" title="Permalink to this headline">¶</a></h3>
 <p>Because of the potential need in saving storage data in different places (ex. file system, <em>PlayerPrefs</em> class, etc.) this interface was created.
-T
-he current realisation uses <em>PlayerPrefs</em> class. You can always expand this on file system for example by implementing this interface with specific file system API usage.</p>
+The current realisation uses <em>PlayerPrefs</em> class. You can always expand this on file system for example by implementing this interface with specific file system API usage.</p>
 <div class="highlight-csharp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3

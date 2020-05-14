@@ -131,14 +131,10 @@ namespace ATF.Scripts.Integration
                     print($"{filePath} is already integrated...");
                     return;
                 }
-                // var user = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                // print($"Integrating as user: {user}");
-                // AddDirectorySecurity(fullPath, user, FileSystemRights.Write, AccessControlType.Allow);
                 using (var writer = new StreamWriter(GetFilePathAccordingToMode(fullPath, isReplacing)))  
                 {  
                     writer.Write(scriptSource);  
                 }
-                // RemoveDirectorySecurity(fullPath, user, FileSystemRights.Write, AccessControlType.Allow);
                 AssetDatabase.Refresh();
                 print($"Performed integration for {filePath}, replacing mode: {isReplacing}");
                 if (!isReplacing)
@@ -155,44 +151,6 @@ namespace ATF.Scripts.Integration
         private static string GetRoot()
         {
             return $"{Application.dataPath}{Path.DirectorySeparatorChar}";
-        }
-        
-        // Adds an ACL entry on the specified directory for the specified account.
-        private static void AddDirectorySecurity(string fileName, string account, FileSystemRights rights, AccessControlType controlType)
-        {
-            // Create a new DirectoryInfo object.
-            var fInfo = new FileInfo(fileName);
-
-            // Get a DirectorySecurity object that represents the 
-            // current security settings.
-            var fSecurity = fInfo.GetAccessControl();
-
-            // Add the FileSystemAccessRule to the security settings. 
-            fSecurity.AddAccessRule(new FileSystemAccessRule(account,
-                rights,
-                controlType));
-
-            // Set the new access settings.
-            fInfo.SetAccessControl(fSecurity);
-        }
-
-        // Removes an ACL entry on the specified directory for the specified account.
-        private static void RemoveDirectorySecurity(string fileName, string account, FileSystemRights rights, AccessControlType controlType)
-        {
-            // Create a new DirectoryInfo object.
-            var fInfo = new FileInfo(fileName);
-
-            // Get a DirectorySecurity object that represents the 
-            // current security settings.
-            var fSecurity = fInfo.GetAccessControl();
-
-            // Add the FileSystemAccessRule to the security settings. 
-            fSecurity.RemoveAccessRule(new FileSystemAccessRule(account,
-                rights,
-                controlType));
-
-            // Set the new access settings.
-            fInfo.SetAccessControl(fSecurity);
         }
     }
 }

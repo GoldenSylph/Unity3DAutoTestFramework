@@ -38,7 +38,7 @@ namespace ATF.Scripts.Storage
                 || !_playStorage.ContainsKey(kind)
                 || !_playStorage[kind].ContainsKey(fakeInputParameter))
             {
-                return null;
+                throw new Exception("Play Storage is unload.");
             }
             try
             {
@@ -53,12 +53,11 @@ namespace ATF.Scripts.Storage
                 return _playStorage[kind][fakeInputParameter].Peek().Content;
             } catch (Exception e)
             {
-                Debug.Log(e);
-                if (AtfInitializer.Instance.isDebugPrintOn) print("Clearing play cache");
+                if (AtfInitializer.Instance.isDebugPrintOn) print($"Clearing play cache: {e}");
                 recorder.StopPlay();
                 ClearPlayStorage();
             }
-            return null;
+            throw new Exception("Play Storage is unload or empty.");
         }
 
         public void Enqueue(string recordName, FakeInput kind, object fakeInputParameter, AtfAction atfAction)

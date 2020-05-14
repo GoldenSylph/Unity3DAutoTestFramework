@@ -46,6 +46,11 @@ namespace ATF.Scripts.Editor
         
         private string _fullPathForStorageExport;
 
+        private void OnInspectorUpdate()
+        {
+            Repaint();
+        }
+        
         private void OnFocus()
         {
             if (!EditorApplication.isPlaying) return;
@@ -66,6 +71,7 @@ namespace ATF.Scripts.Editor
         private void ImportExportButtons(string buttonText, bool import)
         {
             if (!GUILayout.Button(buttonText)) return;
+            int _;
             var exportPathValidationResult = AtfIntegratorWindow.CheckPath(_fullPathForStorageExport, false, "json");
             if (int.TryParse(exportPathValidationResult, out _))
             {

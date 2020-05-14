@@ -161,7 +161,7 @@ Input Disable Function
 If you want to disable or enable input you can address to Tools/ATF/Utils/Toggle Input or press *Ctrl+I*. Of course it will work only in Play Mode.
 
 This function is to allow interacting with control windows without interacting with application in Play Mode.
-For example you want to replay a certain record from certain point of your application but when you move your mouse the application is responding and it's state is changing.
+For example you want to replay a certain record from certain point of your application but when you move your mouse to click *Start* at the replay control the application is responding and it's state is changing.
 To prevent that you can disable input and move your mouse without changing the application state.
 
 Last Input
@@ -201,3 +201,19 @@ Here is how to use the window:
 3. To set up cursor in Recorder Window just right-click to any record name in **Current records** section.
 
 .. note:: You cannot set up Recorder Window cursor from Storage Window if record is not loaded to **Current records** section.
+
+**************
+Shortcuts
+**************
+
+.. image:: https://drive.google.com/uc?export=view&id=1t-CvL0GTxJ56Q2pcoDUJguoTMgl8efop
+    :align: center
+
+These shortcuts are to provide an opportunity to manage recordings without having to move your mouse to the buttons on special windows.
+It is useful if your application use mouse position data continuosly in play mode.
+
+1. *Ctrl+I* - Enable/Disable Input;
+2. *Ctrl+U* - Start/Stop recording with current record name;
+3. *Ctrl+Shift+U* - Pause/Continue current recording;
+4. *Ctrl+O* - Start/Stop playing current record;
+5. *Ctrl+Shift+O* - Pause/Continue current play of record;

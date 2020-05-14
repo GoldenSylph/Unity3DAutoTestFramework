@@ -41,7 +41,7 @@ namespace ATF.Scripts
 	    /// <summary>
 	    ///   <para>Interface to Input.mousePosition. Can be overridden to provide custom input instead of using the Input class.</para>
 	    /// </summary>
-	    Vector2 mousePosition { get; }
+	    Vector3 mousePosition { get; }
 
 	    /// <summary>
 	    ///   <para>Interface to Input.mouseScrollDelta. Can be overridden to provide custom input instead of using the Input class.</para>

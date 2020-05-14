@@ -19,6 +19,11 @@ namespace ATF.Scripts.Editor
             recorder = FindObjectOfType<AtfQueueBasedRecorder>();
         }
 
+        private void OnInspectorUpdate()
+        {
+            Repaint();
+        }
+
         private void OnGUI()
         {
             var recorderLoaded = recorder != null;

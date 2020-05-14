@@ -6,7 +6,7 @@ ATF documentation
 `ATF <./index.html#welcome-to-atf-s-documentation>`_ is an open-source, MIT-licensed Unity asset providing easy-to-use tools for
 recording and playing actions in playmode intercepted from *Input* class along with comfortable integration methods.
 
-.. note:: `<https://github.com/GoldenSylph/Unity3DAutoTestFramework>`_
+.. note:: Demo scenes and bleeding edge version of the ATF is at `<https://github.com/GoldenSylph/Unity3DAutoTestFramework>`_
 
 Contents
 ^^^^^^^^

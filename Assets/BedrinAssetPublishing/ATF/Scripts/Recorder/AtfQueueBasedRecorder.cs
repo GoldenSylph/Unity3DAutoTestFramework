@@ -56,6 +56,105 @@ namespace ATF.Scripts.Recorder
             }
         }
         
+        [MenuItem("Tools/ATF/Utils/Start-Stop Recording %u")]
+        public static void ChangeRecording()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                if (Instance.IsPlaying()) return;
+                if (!Instance.IsRecording())
+                {
+                    Instance.StartRecord();
+                }
+                else
+                {
+                    Instance.StopRecord();
+                }
+            }
+            else
+            {
+                print("Please enter the Play mode first.");
+            }
+        }
+        
+        [MenuItem("Tools/ATF/Utils/Pause-Continue Recording %#u")]
+        public static void ChangePausedRecording()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                if (Instance.IsPlaying()) return;
+                if (Instance.IsRecording())
+                {
+                    if (Instance.IsRecordingPaused())
+                    {
+                        Instance.ContinueRecord();
+                    }
+                    else
+                    {
+                        Instance.PauseRecord();
+                    }
+                }
+                else
+                {
+                    print("You cannot pause or continue recording without recording start command.");
+                }
+            }
+            else
+            {
+                print("Please enter the Play mode first.");
+            }
+        }
+        
+        [MenuItem("Tools/ATF/Utils/Start-Stop Playing %o")]
+        public static void ChangePlaying()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                if (Instance.IsRecording()) return;
+                if (!Instance.IsPlaying())
+                {
+                    Instance.PlayRecord();
+                }
+                else
+                {
+                    Instance.StopPlay();
+                }
+            }
+            else
+            {
+                print("Please enter the Play mode first.");
+            }
+        }
+        
+        [MenuItem("Tools/ATF/Utils/Pause-Continue Playing %#o")]
+        public static void ChangePausedPlaying()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                if (Instance.IsRecording()) return;
+                if (Instance.IsPlaying())
+                {
+                    if (Instance.IsPlayPaused())
+                    {
+                        Instance.ContinuePlay();
+                    }
+                    else
+                    {
+                        Instance.PausePlay();
+                    }
+                }
+                else
+                {
+                    print("You cannot pause or continue playing without playing start command.");
+                }
+            }
+            else
+            {
+                print("Please enter the Play mode first.");
+            }
+        }
+        
+        
         public string GetCurrentRecordName()
         {
             return currentRecordingName ?? (currentRecordingName = DEFAULT_RECORD_NAME);
@@ -75,6 +174,7 @@ namespace ATF.Scripts.Recorder
 
         public override void Initialize()
         {
+            SetInputStopped(false);
             SetRecording(false);
             SetPlaying(false);
             SetRecordingPaused(false);
@@ -109,7 +209,6 @@ namespace ATF.Scripts.Recorder
 
         public void ContinueRecord()
         {
-            SetInputStopped(false);
             SetRecordingPaused(false);
         }
 
@@ -120,15 +219,14 @@ namespace ATF.Scripts.Recorder
 
         public void PlayRecord()
         {
-            SetInputStopped(false);
             if (!STORAGE.PrepareToPlayRecord(GetCurrentRecordName())) return;
+            SetInputStopped(false);
             SetRecording(false);
             SetPlaying(true);
         }
 
         public void StartRecord()
         {
-            SetInputStopped(false);
             SetRecording(true);
             SetPlaying(false);
         }

@@ -17,7 +17,7 @@ Getting started
 
 Short version is just drag-and-drop the .unitypackage file into opened Unity Editor if you have one and it's done.
 
-Or you can hit *Add* in `asset store page <https://assetstore.unity.com/>`_ of the asset.
+Or you can hit *Add* in `asset store page <https://assetstore.unity.com/packages/tools/utilities/automated-test-framework-167509>`_ of the asset.
 If you have some troubles installing this asset, i suggest you to see this `official guide <https://docs.unity3d.com/Manual/ImportingAssets.html>`_ on importing things in Unity.
 
 2. Preparing scene

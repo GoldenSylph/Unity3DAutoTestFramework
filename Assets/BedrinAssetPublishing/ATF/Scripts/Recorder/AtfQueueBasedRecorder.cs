@@ -105,7 +105,7 @@ namespace ATF.Scripts.Recorder
             }
         }
         
-        [MenuItem("Tools/ATF/Utils/Start-Stop Playing %o")]
+        [MenuItem("Tools/ATF/Utils/Start-Stop Playing %y")]
         public static void ChangePlaying()
         {
             if (EditorApplication.isPlaying)
@@ -126,7 +126,7 @@ namespace ATF.Scripts.Recorder
             }
         }
         
-        [MenuItem("Tools/ATF/Utils/Pause-Continue Playing %#o")]
+        [MenuItem("Tools/ATF/Utils/Pause-Continue Playing %#y")]
         public static void ChangePausedPlaying()
         {
             if (EditorApplication.isPlaying)

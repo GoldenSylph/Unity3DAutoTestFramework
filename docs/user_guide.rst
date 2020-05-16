@@ -215,5 +215,5 @@ It is useful if your application use mouse position data continuosly in play mod
 1. *Ctrl+I* - Enable/Disable Input;
 2. *Ctrl+U* - Start/Stop recording with current record name;
 3. *Ctrl+Shift+U* - Pause/Continue current recording;
-4. *Ctrl+O* - Start/Stop playing current record;
-5. *Ctrl+Shift+O* - Pause/Continue current play of record;
+4. *Ctrl+Y* - Start/Stop playing current record;
+5. *Ctrl+Shift+Y* - Pause/Continue current play of record;

@@ -206,7 +206,7 @@ Here is how to use the window:
 Shortcuts
 **************
 
-.. image:: https://drive.google.com/uc?export=view&id=1t-CvL0GTxJ56Q2pcoDUJguoTMgl8efop
+.. image:: https://drive.google.com/uc?export=view&id=15GuuT2ro9NdXty2vRhZfYLYe2Ya_EtZm
     :align: center
 
 These shortcuts are to provide an opportunity to manage recordings without having to move your mouse to the buttons on special windows.

@@ -302,7 +302,9 @@ It implements the following interface and stores recorded actions in format of g
 21
 22
 23
-24</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">ATF.Scripts.Helper</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">ATF.Scripts.Storage.Utils</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEditor.IMGUI.Controls</span><span class="p">;</span>
@@ -324,6 +326,8 @@ It implements the following interface and stores recorded actions in format of g
         <span class="n">List</span><span class="p">&lt;</span><span class="n">TreeViewItem</span><span class="p">&gt;</span> <span class="n">GetCurrentRecordNames</span><span class="p">();</span>
         <span class="n">List</span><span class="p">&lt;</span><span class="n">TreeViewItem</span><span class="p">&gt;</span> <span class="n">GetCurrentActions</span><span class="p">(</span><span class="kt">string</span> <span class="n">recordName</span><span class="p">);</span>
         <span class="n">List</span><span class="p">&lt;</span><span class="n">TreeViewItem</span><span class="p">&gt;</span> <span class="n">GetSavedActions</span><span class="p">(</span><span class="kt">string</span> <span class="n">recordName</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">Export</span><span class="p">(</span><span class="kt">string</span> <span class="n">fullPath</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">Import</span><span class="p">(</span><span class="kt">string</span> <span class="n">fullPath</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -344,7 +348,17 @@ It implements the following interface and stores recorded actions in format of g
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">enum</span> <span class="n">FakeInput</span> <span class="p">{</span>
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">enum</span> <span class="n">FakeInput</span> <span class="p">{</span>
     <span class="n">NONE</span><span class="p">,</span>
     <span class="n">ANY_KEY_DOWN</span><span class="p">,</span>
     <span class="n">ANY_KEY</span><span class="p">,</span>
@@ -358,7 +372,17 @@ It implements the following interface and stores recorded actions in format of g
     <span class="n">GET_KEY_UP</span><span class="p">,</span>
     <span class="n">GET_MOUSE_BUTTON</span><span class="p">,</span>
     <span class="n">GET_MOUSE_BUTTON_DOWN</span><span class="p">,</span>
-    <span class="n">GET_MOUSE_BUTTON_UP</span>
+    <span class="n">GET_MOUSE_BUTTON_UP</span><span class="p">,</span>
+    <span class="n">GET_TOUCH</span><span class="p">,</span>
+    <span class="n">MOUSE_POSITION</span><span class="p">,</span>
+    <span class="n">TOUCH_COUNT</span><span class="p">,</span>
+    <span class="n">MOUSE_SCROLL_DELTA</span><span class="p">,</span>
+    <span class="n">TOUCH_SUPPORTED</span><span class="p">,</span>
+    <span class="n">COMPOSITION_STRING</span><span class="p">,</span>
+    <span class="n">IME_COMPOSITION_MODE</span><span class="p">,</span>
+    <span class="n">COMPOSITION_CURSOR_POS</span><span class="p">,</span>
+    <span class="n">MOUSE_PRESENT</span><span class="p">,</span>
+    <span class="n">SIMULATE_MOUSE_WITH_TOUCHES</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -422,7 +446,9 @@ The current realisation uses <em>PlayerPrefs</em> class. You can always expand t
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">ATF.Scripts.Helper</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">UnityEditor.IMGUI.Controls</span><span class="p">;</span>
@@ -439,6 +465,8 @@ The current realisation uses <em>PlayerPrefs</em> class. You can always expand t
         <span class="k">void</span> <span class="nf">SetActions</span><span class="p">(</span><span class="n">IEnumerable</span> <span class="n">actionEnumerable</span><span class="p">);</span>
         <span class="n">List</span><span class="p">&lt;</span><span class="n">TreeViewItem</span><span class="p">&gt;</span> <span class="n">GetSavedNames</span><span class="p">();</span>
         <span class="n">List</span><span class="p">&lt;</span><span class="n">TreeViewItem</span><span class="p">&gt;</span> <span class="n">GetSavedRecordDetails</span><span class="p">(</span><span class="kt">string</span> <span class="n">recordName</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">ExportFile</span><span class="p">(</span><span class="kt">string</span> <span class="n">fullPath</span><span class="p">);</span>
+        <span class="k">void</span> <span class="nf">ImportFile</span><span class="p">(</span><span class="kt">string</span> <span class="n">fullPath</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

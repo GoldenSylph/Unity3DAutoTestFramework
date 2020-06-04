@@ -83,25 +83,34 @@ Integrator Window
 *****************
 
 The Integrator Window is used to integrate ATF functionality easily into complete code base.
-
-.. image:: https://drive.google.com/uc?export=view&id=1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz
-    :align: center
-
 If you starting from existing project you may want to use one of the options:
 
 Automatic integration
 *********************
 
 Just hit *Integrate All* button and it's done.
-The algorithm of integration is simple. The integrator selects all of .cs files in your project
+The algorithm of integration is simple. The integrator selects all of ".cs" files in your project
 then in all files it performs regexp search of *Input* class usage turning it in *AtfInput.Instance* class usage.
 
 Integration in specific files
 *********************************
 
-To integrate in some specific files you can enter to *.cs file path* path from Assets directory to your script with *Input* class usage.
+There is two modes of integration functionality. First mode allows you to select files in Project window and selected files will be
+added to queue on integration. Second mode allows you to add and delete files from queue by entering paths.
 
-Clicking *Add path* and *Remove path* buttons you can prepare your own set of scripts for integration.
+To choose modes you can alter state of the checkbox *Manual path choosing*. When it's on first mode is enabled, when it's off second mode is enabled.
+
+.. image:: https://drive.google.com/uc?export=view&id=1YaeLRbwTLj534_K34CZNeJRMdKd5z3hz
+    :align: center
+
+You can also delete selected paths from queue.
+Just empty your selection in Project window, choose some file you want to delete from queue and hit *Remove path* button.
+
+.. image:: https://drive.google.com/uc?export=view&id=1m_WtDwM5HykNjzsq01QcFbsfAv_SqlWH
+    :align: center
+
+To integrate in specific files in second mode you can enter to *.cs file path* path from Assets directory to your script with *Input* class usage.
+Clicking *Add path* and *Remove path* buttons you can prepare your own set of scripts for integration by adding or deleting files from queue.
 
 Using *Save paths* and *Load paths* buttons allow you to save and load set of scripts for reintegration if it is needed.
 
@@ -117,7 +126,7 @@ Recorder Window
 
 The Recorder Window is pretty basic to use. The window features three sections: **Recorder state**, **Recording control**, **Replay control**.
 
-.. image:: https://drive.google.com/uc?export=view&id=1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP
+.. image:: https://drive.google.com/uc?export=view&id=1tI0mfVrkQaEI_2Yo8ffc1RcCFVznCogW
     :align: center
 
 **Recorder state** is uninteractable section, it just show you the state of the recording.
@@ -128,12 +137,12 @@ The Recorder Window is pretty basic to use. The window features three sections: 
 
 2. Hit record button *Start* and the window will change like that:
 
-.. image:: https://drive.google.com/uc?export=view&id=1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew
+.. image:: https://drive.google.com/uc?export=view&id=1Z6WuHGZYhn43jDh-Sl8daPq9M3spxxz7
     :align: center
 
 The *Stop* and *Pause* buttons are to stop or pause recording. If you click *Pause* the window will change:
 
-.. image:: https://drive.google.com/uc?export=view&id=1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce
+.. image:: https://drive.google.com/uc?export=view&id=187qJxOV9HEypAUcdiCSRH91Sr5QgV62d
     :align: center
 
 To continue recording just click *Continue* button.
@@ -143,12 +152,12 @@ To continue recording just click *Continue* button.
 1. Now you can play previously recorded actions. Simply type the name of the record a hit enter.
 2. Hit replay button *Start* and see how window has changed:
 
-.. image:: https://drive.google.com/uc?export=view&id=1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC
+.. image:: https://drive.google.com/uc?export=view&id=1CwTOSKQEuXwWormZc5qXi-Z0qPFLxVth
     :align: center
 
 The *Stop* and *Pause* buttons are to stop or pause replay. If you click *Pause* the window will change:
 
-.. image:: https://drive.google.com/uc?export=view&id=1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8
+.. image:: https://drive.google.com/uc?export=view&id=12mgiCaoGOzaEcX7wyQi-Wzg19uAf2hMn
     :align: center
 
 To continue replay just click *Continue* button.
@@ -182,7 +191,7 @@ It features two required sections and two optional sections: **Current records**
 
 Optional means you can hide those sections by checking and unchecking the *Display current details* or *Display saved details* checkboxes.
 
-.. image:: https://drive.google.com/uc?export=view&id=10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U
+.. image:: https://drive.google.com/uc?export=view&id=1bD9zECrQPH_fcMgBj4yXcdjrBijP-Aar
     :align: center
 
 **Current records** is section where records that just loaded to RAM are illustrated and they are ready to be recorded again (with erasing previous actions data) and replayed.
@@ -191,7 +200,7 @@ Optional means you can hide those sections by checking and unchecking the *Displ
 
 By double-clicking to saved or current record you can see the contents of it in **Current commands and actions queues** section or **Saved commands and actions queues** section. There is the example of such contents:
 
-.. image:: https://drive.google.com/uc?export=view&id=1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB
+.. image:: https://drive.google.com/uc?export=view&id=1yAyzEgSsTzZpfgMF7J6RopXjWtusA6iS
     :align: center
 
 Here is how to use the window:
@@ -199,6 +208,8 @@ Here is how to use the window:
 1. The Storage Window is also a state machine. The cursor is *Current recording name* in this window. To set up this cursor you have to just click on any record name in **Current records** or **Saved records** sections.
 2. The buttons *Save*, *Load* and *Scrap* are to save to **Saved records** section, load to **Current records** section and scrap record from saved records.
 3. To set up cursor in Recorder Window just right-click to any record name in **Current records** section.
+4. To export contents of **Saved records** section you can specify an absolute path to ".json" file that will contain the contents and hit *Export saved storage* button.
+5. To import contents of **Saved records** section you also specity an absolute path to existing ".json" file of the storage and hit *Import saved storage* button.
 
 .. note:: You cannot set up Recorder Window cursor from Storage Window if record is not loaded to **Current records** section.
 

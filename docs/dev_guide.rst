@@ -207,8 +207,11 @@ Where string - is name of the record, FakeInput is enum described below, object 
            List<TreeViewItem> GetCurrentRecordNames();
            List<TreeViewItem> GetCurrentActions(string recordName);
            List<TreeViewItem> GetSavedActions(string recordName);
+           void Export(string fullPath);
+           void Import(string fullPath);
        }
    }
+
 
 FakeInput enum is the following:
 
@@ -229,7 +232,17 @@ FakeInput enum is the following:
        GET_KEY_UP,
        GET_MOUSE_BUTTON,
        GET_MOUSE_BUTTON_DOWN,
-       GET_MOUSE_BUTTON_UP
+       GET_MOUSE_BUTTON_UP,
+       GET_TOUCH,
+       MOUSE_POSITION,
+       TOUCH_COUNT,
+       MOUSE_SCROLL_DELTA,
+       TOUCH_SUPPORTED,
+       COMPOSITION_STRING,
+       IME_COMPOSITION_MODE,
+       COMPOSITION_CURSOR_POS,
+       MOUSE_PRESENT,
+       SIMULATE_MOUSE_WITH_TOUCHES
    }
 
 And it's represent any kind of input that we can acquire from *Input* class.
@@ -287,6 +300,8 @@ The current realisation uses *PlayerPrefs* class. You can always expand this on 
            void SetActions(IEnumerable actionEnumerable);
            List<TreeViewItem> GetSavedNames();
            List<TreeViewItem> GetSavedRecordDetails(string recordName);
+           void ExportFile(string fullPath);
+           void ImportFile(string fullPath);
        }
    }
 

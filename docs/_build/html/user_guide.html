@@ -51,7 +51,7 @@
 <li><p>Installing asset</p></li>
 </ol>
 <p>Short version is just drag-and-drop the .unitypackage file into opened Unity Editor if you have one and it’s done.</p>
-<p>Or you can hit <em>Add</em> in <a class="reference external" href="https://assetstore.unity.com/">asset store page</a> of the asset.
+<p>Or you can hit <em>Add</em> in <a class="reference external" href="https://assetstore.unity.com/packages/tools/utilities/automated-test-framework-167509">asset store page</a> of the asset.
 If you have some troubles installing this asset, i suggest you to see this <a class="reference external" href="https://docs.unity3d.com/Manual/ImportingAssets.html">official guide</a> on importing things in Unity.</p>
 <ol class="arabic simple" start="2">
 <li><p>Preparing scene</p></li>
@@ -124,19 +124,25 @@ But if you want to integrate automatically without choosing files, just hit <em>
 </div>
 <div class="section" id="integrator-window">
 <h2>Integrator Window<a class="headerlink" href="#integrator-window" title="Permalink to this headline">¶</a></h2>
-<p>The Integrator Window is used to integrate ATF functionality easily into complete code base.</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1ywvndo0ZJVvbpH57Q_R6cl8bzd01NfYz" />
-<p>If you starting from existing project you may want to use one of the options:</p>
+<p>The Integrator Window is used to integrate ATF functionality easily into complete code base.
+If you starting from existing project you may want to use one of the options:</p>
 <div class="section" id="automatic-integration">
 <h3>Automatic integration<a class="headerlink" href="#automatic-integration" title="Permalink to this headline">¶</a></h3>
 <p>Just hit <em>Integrate All</em> button and it’s done.
-The algorithm of integration is simple. The integrator selects all of .cs files in your project
+The algorithm of integration is simple. The integrator selects all of “.cs” files in your project
 then in all files it performs regexp search of <em>Input</em> class usage turning it in <em>AtfInput.Instance</em> class usage.</p>
 </div>
 <div class="section" id="integration-in-specific-files">
 <h3>Integration in specific files<a class="headerlink" href="#integration-in-specific-files" title="Permalink to this headline">¶</a></h3>
-<p>To integrate in some specific files you can enter to <em>.cs file path</em> path from Assets directory to your script with <em>Input</em> class usage.</p>
-<p>Clicking <em>Add path</em> and <em>Remove path</em> buttons you can prepare your own set of scripts for integration.</p>
+<p>There is two modes of integration functionality. First mode allows you to select files in Project window and selected files will be
+added to queue on integration. Second mode allows you to add and delete files from queue by entering paths.</p>
+<p>To choose modes you can alter state of the checkbox <em>Manual path choosing</em>. When it’s on first mode is enabled, when it’s off second mode is enabled.</p>
+<img alt="https://drive.google.com/uc?export=view&amp;id=1YaeLRbwTLj534_K34CZNeJRMdKd5z3hz" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1YaeLRbwTLj534_K34CZNeJRMdKd5z3hz" />
+<p>You can also delete selected paths from queue.
+Just empty your selection in Project window, choose some file you want to delete from queue and hit <em>Remove path</em> button.</p>
+<img alt="https://drive.google.com/uc?export=view&amp;id=1m_WtDwM5HykNjzsq01QcFbsfAv_SqlWH" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1m_WtDwM5HykNjzsq01QcFbsfAv_SqlWH" />
+<p>To integrate in specific files in second mode you can enter to <em>.cs file path</em> path from Assets directory to your script with <em>Input</em> class usage.
+Clicking <em>Add path</em> and <em>Remove path</em> buttons you can prepare your own set of scripts for integration by adding or deleting files from queue.</p>
 <p>Using <em>Save paths</em> and <em>Load paths</em> buttons allow you to save and load set of scripts for reintegration if it is needed.</p>
 <p>To clear all saved paths you can just remove all paths and hit <em>Save paths</em>.
 After paths list preparation you have two options:</p>
@@ -149,25 +155,25 @@ After paths list preparation you have two options:</p>
 <div class="section" id="recorder-window">
 <h2>Recorder Window<a class="headerlink" href="#recorder-window" title="Permalink to this headline">¶</a></h2>
 <p>The Recorder Window is pretty basic to use. The window features three sections: <strong>Recorder state</strong>, <strong>Recording control</strong>, <strong>Replay control</strong>.</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1U_IevbYjd7bENAhwQcAH4TxoOUu3RUOP" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1tI0mfVrkQaEI_2Yo8ffc1RcCFVznCogW" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1tI0mfVrkQaEI_2Yo8ffc1RcCFVznCogW" />
 <p><strong>Recorder state</strong> is uninteractable section, it just show you the state of the recording.</p>
 <p><strong>Recording control</strong> is interactable section. Here is how to use it:</p>
 <ol class="arabic simple">
 <li><p>The recorder is a state machine and the name of the record is used as cursor. To set the record name just type to <em>Name of the recording</em> field specific name and hit enter. You will see that <em>Current recording name</em> has changed.</p></li>
 <li><p>Hit record button <em>Start</em> and the window will change like that:</p></li>
 </ol>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1gHSqTPygeIciMVRHJlwH6DJMgBHuWQew" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1Z6WuHGZYhn43jDh-Sl8daPq9M3spxxz7" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1Z6WuHGZYhn43jDh-Sl8daPq9M3spxxz7" />
 <p>The <em>Stop</em> and <em>Pause</em> buttons are to stop or pause recording. If you click <em>Pause</em> the window will change:</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1qM_aUSRXkeCOX6dnKpKlTdnAN-JwCMce" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=187qJxOV9HEypAUcdiCSRH91Sr5QgV62d" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=187qJxOV9HEypAUcdiCSRH91Sr5QgV62d" />
 <p>To continue recording just click <em>Continue</em> button.</p>
 <p><strong>Replay control</strong> is also interactable section. Here is how to use it:</p>
 <ol class="arabic simple">
 <li><p>Now you can play previously recorded actions. Simply type the name of the record a hit enter.</p></li>
 <li><p>Hit replay button <em>Start</em> and see how window has changed:</p></li>
 </ol>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1pqu6GGFrkKGsZPixiiux_5ZHOc0IekiC" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1CwTOSKQEuXwWormZc5qXi-Z0qPFLxVth" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1CwTOSKQEuXwWormZc5qXi-Z0qPFLxVth" />
 <p>The <em>Stop</em> and <em>Pause</em> buttons are to stop or pause replay. If you click <em>Pause</em> the window will change:</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1GWuCsP2BvJ_Kn0UXxhkgmTGr-2Prp5S8" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=12mgiCaoGOzaEcX7wyQi-Wzg19uAf2hMn" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=12mgiCaoGOzaEcX7wyQi-Wzg19uAf2hMn" />
 <p>To continue replay just click <em>Continue</em> button.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -193,16 +199,18 @@ It’s also can be used for debug for example.</p>
 <p>It features two required sections and two optional sections: <strong>Current records</strong>,
 <strong>Saved records</strong> and <strong>Current commands and actions queues</strong>, <strong>Saved commands and actions queues</strong>.</p>
 <p>Optional means you can hide those sections by checking and unchecking the <em>Display current details</em> or <em>Display saved details</em> checkboxes.</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=10ykvo_o_gSEHOhycCnY_TxgTTT1XlC-U" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1bD9zECrQPH_fcMgBj4yXcdjrBijP-Aar" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1bD9zECrQPH_fcMgBj4yXcdjrBijP-Aar" />
 <p><strong>Current records</strong> is section where records that just loaded to RAM are illustrated and they are ready to be recorded again (with erasing previous actions data) and replayed.</p>
 <p><strong>Saved records</strong> is section for records that are saved.</p>
 <p>By double-clicking to saved or current record you can see the contents of it in <strong>Current commands and actions queues</strong> section or <strong>Saved commands and actions queues</strong> section. There is the example of such contents:</p>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1jLXzQr6xLPJ6sxoaNNeN_gFmL6TeR5fB" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=1yAyzEgSsTzZpfgMF7J6RopXjWtusA6iS" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1yAyzEgSsTzZpfgMF7J6RopXjWtusA6iS" />
 <p>Here is how to use the window:</p>
 <ol class="arabic simple">
 <li><p>The Storage Window is also a state machine. The cursor is <em>Current recording name</em> in this window. To set up this cursor you have to just click on any record name in <strong>Current records</strong> or <strong>Saved records</strong> sections.</p></li>
 <li><p>The buttons <em>Save</em>, <em>Load</em> and <em>Scrap</em> are to save to <strong>Saved records</strong> section, load to <strong>Current records</strong> section and scrap record from saved records.</p></li>
 <li><p>To set up cursor in Recorder Window just right-click to any record name in <strong>Current records</strong> section.</p></li>
+<li><p>To export contents of <strong>Saved records</strong> section you can specify an absolute path to “.json” file that will contain the contents and hit <em>Export saved storage</em> button.</p></li>
+<li><p>To import contents of <strong>Saved records</strong> section you also specity an absolute path to existing “.json” file of the storage and hit <em>Import saved storage</em> button.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -211,15 +219,15 @@ It’s also can be used for debug for example.</p>
 </div>
 <div class="section" id="shortcuts">
 <h2>Shortcuts<a class="headerlink" href="#shortcuts" title="Permalink to this headline">¶</a></h2>
-<img alt="https://drive.google.com/uc?export=view&amp;id=1t-CvL0GTxJ56Q2pcoDUJguoTMgl8efop" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=1t-CvL0GTxJ56Q2pcoDUJguoTMgl8efop" />
+<img alt="https://drive.google.com/uc?export=view&amp;id=15GuuT2ro9NdXty2vRhZfYLYe2Ya_EtZm" class="align-center" src="https://drive.google.com/uc?export=view&amp;id=15GuuT2ro9NdXty2vRhZfYLYe2Ya_EtZm" />
 <p>These shortcuts are to provide an opportunity to manage recordings without having to move your mouse to the buttons on special windows.
 It is useful if your application use mouse position data continuosly in play mode.</p>
 <ol class="arabic simple">
 <li><p><em>Ctrl+I</em> - Enable/Disable Input;</p></li>
 <li><p><em>Ctrl+U</em> - Start/Stop recording with current record name;</p></li>
 <li><p><em>Ctrl+Shift+U</em> - Pause/Continue current recording;</p></li>
-<li><p><em>Ctrl+O</em> - Start/Stop playing current record;</p></li>
-<li><p><em>Ctrl+Shift+O</em> - Pause/Continue current play of record;</p></li>
+<li><p><em>Ctrl+Y</em> - Start/Stop playing current record;</p></li>
+<li><p><em>Ctrl+Shift+Y</em> - Pause/Continue current play of record;</p></li>
 </ol>
 </div>
 </div>
